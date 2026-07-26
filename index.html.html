@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The AI Revolution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night: #0f1016;
+    --night-2: #171923;
+    --gold: #c9a227;
+    --gold-dim: #8a7024;
+    --bone: #e9e3d0;
+    --bone-dim: #a8a290;
+    --ember: #8b3a2e;
+    --line: rgba(233,227,208,0.12);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(201,162,39,0.08), transparent 45%),
+      radial-gradient(ellipse at 80% 0%, rgba(139,58,46,0.08), transparent 40%),
+      var(--night);
+    color:var(--bone);
+    font-family:'Spectral', serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- Header ---------- */
+  header{
+    padding:28px 0 0;
+  }
+  .nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:20px; border-bottom:1px solid var(--line);
+  }
+  .brand{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    letter-spacing:0.12em;
+    font-size:1.1rem;
+    color:var(--gold);
+  }
+  .nav-links{ display:flex; gap:28px; list-style:none; }
+  .nav-links a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+    text-decoration:none;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--gold); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:100px 0 90px;
+    text-align:center;
+    position:relative;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; left:50%; top:0; transform:translateX(-50%);
+    width:1px; height:56px; background:linear-gradient(var(--gold-dim), transparent);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--ember);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:'Cinzel', serif;
+    font-weight:700;
+    font-size:clamp(2.4rem, 6vw, 4.4rem);
+    letter-spacing:0.02em;
+    color:var(--bone);
+    line-height:1.1;
+    text-shadow:0 0 40px rgba(201,162,39,0.15);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--gold);
+  }
+  .hero p{
+    max-width:520px;
+    margin:22px auto 0;
+    color:var(--bone-dim);
+    font-size:1.05rem;
+  }
+
+  /* ---------- Section headers ---------- */
+  .section{ padding:70px 0; border-top:1px solid var(--line); }
+  .section-head{
+    display:flex; align-items:baseline; gap:16px;
+    margin-bottom:40px;
+  }
+  .section-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem;
+    color:var(--gold-dim);
+  }
+  .section-head h2{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:1.6rem;
+    letter-spacing:0.05em;
+    color:var(--bone);
+  }
+  .section-head .sub{
+    margin-left:auto;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--bone-dim);
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- Video grid ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:22px;
+  }
+  .card{
+    background:var(--night-2);
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .card:hover{ border-color:var(--gold-dim); transform:translateY(-3px); }
+  .card .frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:9/16;
+    background:#000;
+  }
+  .card .frame.wide{ aspect-ratio:16/9; }
+  .card iframe, .card .fb-video, .card .fb-post{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+  .card .meta{
+    padding:14px 16px 16px;
+    border-top:1px solid var(--line);
+  }
+  .card .meta .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+  }
+  .card .meta h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    font-size:0.98rem;
+    margin-top:4px;
+    color:var(--bone);
+  }
+
+  /* ---------- Relics (merch) ---------- */
+  .relics-note{
+    color:var(--bone-dim);
+    font-size:0.95rem;
+    max-width:520px;
+    margin-bottom:32px;
+  }
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:22px;
+  }
+  .product{
+    background:var(--night-2);
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .product:hover{ border-color:var(--gold-dim); transform:translateY(-3px); }
+  .product .shot{
+    width:100%;
+    aspect-ratio:1/1;
+    background:#1c1e29 center/cover no-repeat;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--bone-dim);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+  }
+  .product .info{
+    padding:16px;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+  }
+  .product h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    font-size:1rem;
+    color:var(--bone);
+  }
+  .product .price{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    color:var(--gold);
+  }
+  .product .buy{
+    margin-top:auto;
+    display:inline-block;
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--night);
+    background:var(--gold);
+    padding:10px 14px;
+    border-radius:2px;
+    text-decoration:none;
+    transition:background .2s ease;
+  }
+  .product .buy:hover, .product .buy:focus-visible{ background:#e0bb3a; }
+  .product .buy.disabled{
+    background:transparent;
+    color:var(--bone-dim);
+    border:1px solid var(--line);
+    pointer-events:none;
+  }
+
+  /* ---------- Playlists ---------- */
+  .playlist-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:22px;
+  }
+  .playlist-card{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:var(--night-2);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:20px;
+    text-decoration:none;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .playlist-card:hover{ border-color:var(--gold-dim); transform:translateY(-3px); }
+  .playlist-card .icon{
+    flex-shrink:0;
+    width:44px; height:44px;
+    border-radius:50%;
+    background:rgba(201,162,39,0.1);
+    border:1px solid var(--gold-dim);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--gold);
+    font-family:'JetBrains Mono', monospace;
+    font-size:1rem;
+  }
+  .playlist-card .info{ flex:1; }
+  .playlist-card .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+  }
+  .playlist-card h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    font-size:0.98rem;
+    margin-top:4px;
+    color:var(--bone);
+  }
+  .playlist-card .arrow{
+    color:var(--bone-dim);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.9rem;
+  }
+
+  /* ---------- Series (theme-grouped Reels, since Reels can't join FB playlists) ---------- */
+  .series-card{
+    background:var(--night-2);
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .series-card summary{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:20px;
+    cursor:pointer;
+    list-style:none;
+  }
+  .series-card summary::-webkit-details-marker{ display:none; }
+  .series-card .icon{
+    flex-shrink:0;
+    width:44px; height:44px;
+    border-radius:50%;
+    background:rgba(201,162,39,0.1);
+    border:1px solid var(--gold-dim);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--gold);
+    font-family:'JetBrains Mono', monospace;
+    font-size:1rem;
+  }
+  .series-card .info{ flex:1; }
+  .series-card .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+  }
+  .series-card h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    font-size:0.98rem;
+    margin-top:4px;
+    color:var(--bone);
+  }
+  .series-card .arrow{
+    color:var(--bone-dim);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.9rem;
+    transition:transform .2s ease;
+  }
+  .series-card[open] .arrow{ transform:rotate(90deg); }
+  .series-card .episodes{
+    border-top:1px solid var(--line);
+    padding:8px 20px 16px 80px;
+  }
+  .series-card .episodes a{
+    display:block;
+    padding:10px 0;
+    color:var(--bone-dim);
+    text-decoration:none;
+    font-size:0.92rem;
+    border-bottom:1px solid var(--line);
+  }
+  .series-card .episodes a:last-child{ border-bottom:none; }
+  .series-card .episodes a:hover, .series-card .episodes a:focus-visible{ color:var(--gold); }
+
+  footer{
+    padding:40px 0 60px;
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    color:var(--bone-dim);
+    letter-spacing:0.05em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card, .playlist-card{ transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  @media (max-width:640px){
+    .nav-links{ gap:16px; }
+    .hero{ padding:70px 0 60px; }
+    .section{ padding:50px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="nav">
+    <div class="brand">CHRONICLE</div>
+    <ul class="nav-links">
+      <li><a href="#youtube">Youtube</a></li>
+      <li><a href="#playlists">Playlists</a></li>
+      <li><a href="#series">Series</a></li>
+      <li><a href="#reels">Reels</a></li>
+      <li><a href="#relics">Relics</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="eyebrow">Myth, retold in motion</div>
+  <h1>The Myth<br><em>Behind the Myth</em></h1>
+  <p>Every myth carries a memory. Ancient Greek giants, forgotten heroes, and the mysteries historians still can't explain — examined for what they might actually be telling us.</p>
+</section>
+
+<section class="section wrap" id="youtube">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h2>From the Chronicle (YouTube)</h2>
+    <span class="sub">longer cuts</span>
+  </div>
+  <div class="grid" id="youtube-grid">
+    <!-- Repeat this card block for each video. Replace VIDEO_ID with the YouTube video ID
+         (the part after v= in the URL, e.g. https://youtube.com/watch?v=VIDEO_ID) -->
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/RM7oONPXUq4" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>Could We Have Misunderstood Noah's Ark All Along?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/BEGe9jN-bR8" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>The Lost World of Eden | Was Paradise Hidden Beneath the Persian Gulf</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/_tjAyV52sfQ" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>Evidence of Sodom and Gomorrah?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/bTcMN5i91mM" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>Scientists Scanned Mount Ararat… and Found Something They Can't Explain</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/n2qflpKMA-c" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>Ancient Maps Knew Too Much… Here's the Problem</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/IRHtDuqlW6A" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>Every Civilization Tells the Same Flood Story… Why?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/7k1BR088L7g" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>Why Do Humans Keep Drawing the Same Symbols</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/HRFbo9umXn4" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>Why Do Ancient Monuments Match The Stars?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/ccXX5zaLK5M" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>China's Underground Secret That Has No Records</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/a1xxkyI8JIA" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>These Ancient Stones Weigh More Than Jets… But No One Can Prove How They Moved</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/pNYNo71Qel8" title="YouTube video" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="meta">
+        <div class="tag">Ancient Mysteries Rediscovered</div>
+        <h3>The Tower That Challenged Heaven</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="playlists">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2>Playlists</h2>
+    <span class="sub">watch in order</span>
+  </div>
+  <div class="playlist-grid" id="playlist-grid">
+    <!-- Repeat this card block for each Facebook playlist. Replace PLAYLIST_URL with the
+         playlist link from your Facebook Page (Page → Videos → Playlists → ... → Copy Link) -->
+    <a class="playlist-card" href="https://www.facebook.com/202141506308587/playlists/1591216535894954" target="_blank" rel="noopener">
+      <div class="icon">▶</div>
+      <div class="info">
+        <div class="tag">The Guardian Chronicles</div>
+        <h3>Hyperborea: The Lost Giant Civilization</h3>
+      </div>
+      <div class="arrow">↗</div>
+    </a>
+      <div class="icon">▶</div>
+      <div class="info">
+        <div class="tag">Series</div>
+        <h3>Playlist name</h3>
+      </div>
+      <div class="arrow">↗</div>
+    </a>
+  </div>
+</section>
+
+<section class="section wrap" id="series">
+  <div class="section-head">
+    <span class="section-num">02b</span>
+    <h2>Series</h2>
+    <span class="sub">Reels grouped by story</span>
+  </div>
+  <div class="playlist-grid" id="series-grid">
+    <!-- Reels can't join Facebook playlists, so series like this are grouped manually.
+         Click to expand, then add/remove <a> lines for each Reel in the series. -->
+    <details class="series-card">
+      <summary>
+        <div class="icon">▶</div>
+        <div class="info">
+          <div class="tag">Norse / Giants</div>
+          <h3>Hyperborea Saga</h3>
+        </div>
+        <div class="arrow">›</div>
+      </summary>
+      <div class="episodes">
+        <a href="https://www.facebook.com/reel/1631713731262467/" target="_blank" rel="noopener">1. What If Hyperborea Was the Giants' Lost Paradise?</a>
+        <a href="https://www.facebook.com/reel/2816183322092821/" target="_blank" rel="noopener">2. Why Apollo Left Olympus Every Winter Ep.4 (Hyperborea)</a>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="section wrap" id="reels">
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <h2>Field Notes (Reels)</h2>
+    <span class="sub">short cuts</span>
+  </div>
+  <div class="grid" id="reels-grid">
+    <!-- Repeat this card block for each Facebook Reel. Replace REEL_URL with the full
+         facebook.com/.../videos/... URL for the reel -->
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/2233006690888099/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>The Norse Believed the Last Winter Was a Giant..</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/1452246720042871/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>The Ancient Story That Still Defines Us</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/27834517712902153/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>The Cyclops Legend Is More Terrifying Than You Think</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/1631713731262467/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>What If Hyperborea Was the Giants' Lost Paradise?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/4299429180368599/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>What If the Greeks Were Remembering Something Real?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/1579968486797409/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>The Hidden Civilization That Kept the Universe in Balance</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/1784004382593275/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Was Humbaba Really the Monster?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/1043485381530196/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Why Did Gaia Summon the Gigantes?</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/1403543861595882/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>The Giant Race That Shared Our World</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/reel/2816183322092821/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Why Apollo Left Olympus Every Winter Ep.4 (Hyperborea)</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/share/r/1EAtsb25N4/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>They Finally Found the Breached Guardian Site</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="frame">
+        <div class="fb-video" data-href="https://www.facebook.com/share/r/1DzWdijfqp/" data-width="auto" data-show-text="false"></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Was Medusa Really the Monster?</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="relics">
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <h2>Relics</h2>
+    <span class="sub">merch</span>
+  </div>
+  <p class="relics-note">Each item checks out through Stripe directly — no cart, no account needed on your end. Fulfillment runs through Printful once an order comes in.</p>
+  <div class="product-grid" id="product-grid"></div>
+</section>
+
+<footer>
+  © <span id="year"></span> Chronicle. Handmade, not automated.
+</footer>
+
+<!-- Facebook SDK — required once per page for the Reel embeds above -->
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------------------------------------------------------------------
+     RELICS (MERCH) SETUP — this is the part that needs your own accounts.
+
+     For each product below, "link" should be a Stripe Payment Link:
+       1. Create a free Stripe account at stripe.com
+       2. Dashboard → Payment links → + New (no code, no server needed)
+       3. Set the product name, price, and image there
+       4. Stripe gives you a URL like https://buy.stripe.com/xxxxxxxx
+       5. Paste that URL into "link" below
+
+     Fulfillment: design the same product in Printful (printful.com), and
+     when a Stripe order comes in, place the matching Printful order
+     manually — or connect Printful's "Etsy/Shopify" integrations later
+     once you're doing enough volume to automate it.
+
+     Leave "link" as null to show a disabled "Coming Soon" button instead
+     of a live Buy button — useful while a product isn't ready yet.
+  ------------------------------------------------------------------------ */
+  const products = [
+    {
+      name: "Chronicle Tee",
+      price: "$28",
+      image: null,          // e.g. "images/tee.jpg"
+      link: null            // e.g. "https://buy.stripe.com/xxxxxxxx"
+    },
+    {
+      name: "Epic Mug",
+      price: "$18",
+      image: null,
+      link: null
+    },
+    {
+      name: "Norse Tee",
+      price: "$28",
+      image: null,
+      link: null
+    }
+  ];
+
+  const grid = document.getElementById('product-grid');
+  products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product';
+
+    const shotStyle = p.image ? ` style="background-image:url('${p.image}')"` : '';
+    const shotLabel = p.image ? '' : 'No image yet';
+
+    const buyButton = p.link
+      ? `<a class="buy" href="${p.link}" target="_blank" rel="noopener">Buy — ${p.price}</a>`
+      : `<span class="buy disabled">Coming Soon</span>`;
+
+    card.innerHTML = `
+      <div class="shot"${shotStyle}>${shotLabel}</div>
+      <div class="info">
+        <h3>${p.name}</h3>
+        <div class="price">${p.price}</div>
+        ${buyButton}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
