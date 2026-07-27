@@ -362,6 +362,56 @@
   .series-card .episodes a:last-child{ border-bottom:none; }
   .series-card .episodes a:hover, .series-card .episodes a:focus-visible{ color:var(--gold); }
 
+  /* ---------- Reel cards with thumbnail image ---------- */
+  .reel-card{
+    display:block;
+    background:var(--night-2);
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    text-decoration:none;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .reel-card:hover{ border-color:var(--gold-dim); transform:translateY(-3px); }
+  .reel-card .thumb{
+    position:relative;
+    width:100%;
+    aspect-ratio:9/16;
+    background:#000 center/cover no-repeat;
+  }
+  .reel-card .thumb .play{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(to top, rgba(0,0,0,0.5), transparent 40%);
+  }
+  .reel-card .thumb .play span{
+    width:48px; height:48px;
+    border-radius:50%;
+    background:rgba(15,16,22,0.75);
+    border:1px solid var(--gold);
+    color:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem;
+  }
+  .reel-card .meta{
+    padding:14px 16px 16px;
+    border-top:1px solid var(--line);
+  }
+  .reel-card .meta .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+  }
+  .reel-card .meta h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    font-size:0.98rem;
+    margin-top:4px;
+    color:var(--bone);
+  }
+
   footer{
     padding:40px 0 60px;
     text-align:center;
@@ -585,49 +635,54 @@
     <span class="sub">short cuts</span>
   </div>
   <div class="playlist-grid" id="reels-grid">
-    <a class="playlist-card" href="https://www.facebook.com/reel/2233006690888099/" target="_blank" rel="noopener">
-      <div class="icon">▶</div>
-      <div class="info">
+    <a class="reel-card" href="https://www.facebook.com/reel/2233006690888099/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('images/last-winter.jpg')">
+        <div class="play"><span>▶</span></div>
+      </div>
+      <div class="meta">
         <div class="tag">Reel</div>
         <h3>The Norse Believed the Last Winter Was a Giant..</h3>
       </div>
-      <div class="arrow">↗</div>
     </a>
 
-    <a class="playlist-card" href="https://www.facebook.com/reel/1452246720042871/" target="_blank" rel="noopener">
-      <div class="icon">▶</div>
-      <div class="info">
+    <a class="reel-card" href="https://www.facebook.com/reel/1452246720042871/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('images/keep-climbing.jpg')">
+        <div class="play"><span>▶</span></div>
+      </div>
+      <div class="meta">
         <div class="tag">Reel</div>
         <h3>The Ancient Story That Still Defines Us</h3>
       </div>
-      <div class="arrow">↗</div>
     </a>
 
-    <a class="playlist-card" href="https://www.facebook.com/reel/27834517712902153/" target="_blank" rel="noopener">
-      <div class="icon">▶</div>
-      <div class="info">
+    <a class="reel-card" href="https://www.facebook.com/reel/27834517712902153/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('images/cyclops.jpg')">
+        <div class="play"><span>▶</span></div>
+      </div>
+      <div class="meta">
         <div class="tag">Reel</div>
         <h3>The Cyclops Legend Is More Terrifying Than You Think</h3>
       </div>
-      <div class="arrow">↗</div>
     </a>
 
-    <a class="playlist-card" href="https://www.facebook.com/reel/1631713731262467/" target="_blank" rel="noopener">
-      <div class="icon">▶</div>
-      <div class="info">
+    <a class="reel-card" href="https://www.facebook.com/reel/1631713731262467/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('images/hyperborea-giants.jpg')">
+        <div class="play"><span>▶</span></div>
+      </div>
+      <div class="meta">
         <div class="tag">Reel</div>
         <h3>What If Hyperborea Was the Giants' Lost Paradise?</h3>
       </div>
-      <div class="arrow">↗</div>
     </a>
 
-    <a class="playlist-card" href="https://www.facebook.com/reel/4299429180368599/" target="_blank" rel="noopener">
-      <div class="icon">▶</div>
-      <div class="info">
+    <a class="reel-card" href="https://www.facebook.com/reel/4299429180368599/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('images/greeks-remembering.jpg')">
+        <div class="play"><span>▶</span></div>
+      </div>
+      <div class="meta">
         <div class="tag">Reel</div>
         <h3>What If the Greeks Were Remembering Something Real?</h3>
       </div>
-      <div class="arrow">↗</div>
     </a>
 
     <a class="playlist-card" href="https://www.facebook.com/reel/1579968486797409/" target="_blank" rel="noopener">
