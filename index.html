@@ -129,6 +129,12 @@
     color:var(--bone-dim);
     letter-spacing:0.05em;
   }
+  .section-intro{
+    max-width:680px;
+    margin:-22px 0 34px 40px;
+    color:var(--bone-dim);
+    font-size:1rem;
+  }
 
   /* ---------- Video grid ---------- */
   .grid{
@@ -363,6 +369,17 @@
   .series-card .episodes a:hover, .series-card .episodes a:focus-visible{ color:var(--gold); }
 
   /* ---------- Reel cards with thumbnail image ---------- */
+  .featured-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:26px;
+    margin-bottom:28px;
+  }
+  .reel-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:22px;
+  }
   .reel-card{
     display:block;
     background:var(--night-2);
@@ -377,7 +394,28 @@
     position:relative;
     width:100%;
     aspect-ratio:9/16;
-    background:#000 center/cover no-repeat;
+    background:#000 center/contain no-repeat;
+  }
+  .reel-card.featured{
+    border-color:rgba(201,162,39,0.32);
+    box-shadow:0 20px 48px rgba(0,0,0,0.18);
+  }
+  .reel-card.featured .meta{ padding:18px 20px 20px; }
+  .reel-card.featured .meta h3{ font-size:1.1rem; }
+  .reel-card .badge{
+    position:absolute;
+    top:12px;
+    right:12px;
+    z-index:1;
+    background:rgba(15,16,22,0.82);
+    border:1px solid var(--gold);
+    color:var(--gold);
+    border-radius:2px;
+    padding:5px 8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
   }
   .reel-card .thumb .play{
     position:absolute; inset:0;
@@ -430,6 +468,9 @@
     .nav-links{ gap:16px; }
     .hero{ padding:70px 0 60px; }
     .section{ padding:50px 0; }
+    .section-head{ flex-wrap:wrap; }
+    .section-head .sub{ width:100%; margin-left:40px; }
+    .section-intro{ margin:-22px 0 30px 40px; }
   }
 </style>
 </head>
@@ -439,8 +480,8 @@
   <div class="nav">
     <div class="brand">CHRONICLE</div>
     <ul class="nav-links">
-      <li><a href="#youtube">Youtube</a></li>
-      <li><a href="#reels">Reels</a></li>
+      <li><a href="#featured-reels">Featured Reels</a></li>
+      <li><a href="#archives">Archives</a></li>
       <li><a href="#series">Series</a></li>
       <li><a href="#relics">Relics</a></li>
     </ul>
@@ -453,12 +494,126 @@
   <p>Every myth carries a memory. Ancient Greek giants, forgotten heroes, and the mysteries historians still can't explain — examined for what they might actually be telling us.</p>
 </section>
 
-<section class="section wrap" id="youtube">
+<section class="section wrap" id="featured-reels">
   <div class="section-head">
     <span class="section-num">01</span>
-    <h2>From the Chronicle (YouTube)</h2>
-    <span class="sub">longer cuts</span>
+    <h2>Featured Reels</h2>
+    <span class="sub">newest cinematic work</span>
   </div>
+  <div class="featured-grid">
+    <!-- Insert future newest releases at the beginning of this featured row. -->
+    <a class="reel-card featured" href="https://www.facebook.com/share/r/18s1pksjjU/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('Humbaba%20Poster%20Final.png')">
+        <div class="badge">Featured</div>
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Featured Reel</div>
+        <h3>Was Humbaba Really the Monster?</h3>
+      </div>
+    </a>
+
+    <a class="reel-card featured" href="https://www.facebook.com/share/r/1DMvefKEir/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('Why%20did%20Gaia%20%20summon%20the%20Gigantes%20Poster.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Featured Reel</div>
+        <h3>Why Did Gaia Summon the Gigantes?</h3>
+      </div>
+    </a>
+
+    <a class="reel-card featured" href="https://www.facebook.com/reel/1403543861595882" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('The%20Nephilim%20Poster.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Featured Reel</div>
+        <h3>The Giant Race That Shared Our World</h3>
+      </div>
+    </a>
+  </div>
+
+  <div class="reel-gallery">
+    <a class="reel-card" href="https://www.facebook.com/share/r/199EJND8UQ/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('Cycolps%20Poster%20final.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>The Cyclops Legend Is More Terrifying Than You Think</h3>
+      </div>
+    </a>
+
+    <a class="reel-card" href="https://www.facebook.com/share/r/1FHqzixMjK/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('What%20if%20the%20Greeks%20Were%20sRemembering%20Something%20Real%20Poster.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Were the Greeks Remembering Something Real? (Typhon)</h3>
+      </div>
+    </a>
+
+    <a class="reel-card" href="https://www.facebook.com/share/r/19Pa7o5srP/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('The%20Last%20Winter%20Poster.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>The Norse Believed The Last Winter Was a Giant - Jotnar</h3>
+      </div>
+    </a>
+
+    <a class="reel-card" href="https://www.facebook.com/share/r/1EP1buhjzE/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('Keep%20Climbing%20Poster.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Keep Climbing - Sisyphus</h3>
+      </div>
+    </a>
+
+    <a class="reel-card" href="https://www.facebook.com/share/r/195JNuF6ry/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('What%20if%20%20Hyperborea%20was%20the%20Giants%20Lost%20Paradise%20Poster.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Hyperborea: The Giants' Lost Paradise</h3>
+      </div>
+    </a>
+
+    <a class="reel-card" href="https://www.facebook.com/share/r/1EAtsb25N4/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('The%20Finally%20found%20the%20Breached%20Guardian%20Site.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>They Finally Found the Breached Guardian Site</h3>
+      </div>
+    </a>
+
+    <a class="reel-card" href="https://www.facebook.com/share/r/1DzWdijfqp/" target="_blank" rel="noopener">
+      <div class="thumb" style="background-image:url('Medusa%20Poster.png')">
+        <div class="play"><span>&#9654;</span></div>
+      </div>
+      <div class="meta">
+        <div class="tag">Reel</div>
+        <h3>Was Medusa Really the Monster?</h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section wrap" id="archives">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2>From the Archives</h2>
+    <span class="sub">YouTube foundation</span>
+  </div>
+  <p class="section-intro">Explore where the journey began. These earlier investigations laid the foundation for Ancient Mysteries Rediscovered.</p>
   <div class="grid" id="youtube-grid">
     <!-- Repeat this card block for each video. Replace VIDEO_ID with the YouTube video ID
          (the part after v= in the URL, e.g. https://youtube.com/watch?v=VIDEO_ID) -->
@@ -582,96 +737,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-<section class="section wrap" id="reels">
-  <div class="section-head">
-    <span class="section-num">02</span>
-    <h2>Reels</h2>
-    <span class="sub">Facebook shorts</span>
-  </div>
-  <div class="playlist-grid" id="playlist-grid">
-    <!-- Facebook Reel poster gallery -->
-    <a class="reel-card" href="https://www.facebook.com/share/r/18s1pksjjU/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Humbaba%20Poster%20Final.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>Was Humbaba Really the Monster?</h3>
-      </div>
-    </a>
-
-    <a class="reel-card" href="https://www.facebook.com/share/r/1DMvefKEir/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Why%20did%20Gaia%20%20summon%20the%20Gigantes%20Poster.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>Why Did Gaia Summon the Gigantes?</h3>
-      </div>
-    </a>
-
-    <a class="reel-card" href="https://www.facebook.com/reel/1403543861595882" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Nephilim%20Poster.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>The Giant Race That Shared Our World</h3>
-      </div>
-    </a>
-
-    <a class="reel-card" href="https://www.facebook.com/share/r/199EJND8UQ/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Cycolps%20Poster%20final.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>The Cyclops Legend Is More Terrifying Than You Think</h3>
-      </div>
-    </a>
-
-    <a class="reel-card" href="https://www.facebook.com/share/r/1FHqzixMjK/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('What%20if%20the%20Greeks%20Were%20sRemembering%20Something%20Real%20Poster.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>Were the Greeks Remembering Something Real? (Typhon)</h3>
-      </div>
-    </a>
-
-    <a class="reel-card" href="https://www.facebook.com/share/r/19Pa7o5srP/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Last%20Winter%20Poster.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>The Norse Believed The Last Winter Was a Giant - Jotnar</h3>
-      </div>
-    </a>
-
-    <a class="reel-card" href="https://www.facebook.com/share/r/1EP1buhjzE/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Keep%20Climbing%20Poster.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>Keep Climbing - Sisyphus</h3>
-      </div>
-    </a>
-
-    <a class="reel-card" href="https://www.facebook.com/share/r/195JNuF6ry/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('What%20if%20Hyperborea%20Was%20the%20Giants%20Lost%20Paradis%20Poster.png')">
-        <div class="play"><span>&#9654;</span></div>
-      </div>
-      <div class="meta">
-        <div class="tag">Reel</div>
-        <h3>Hyperborea: The Giants' Lost Paradise</h3>
-      </div>
-    </a>
   </div>
 </section>
 
