@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Community Discussions | Ancient Mysteries Rediscovered</title>
+<meta name="description" content="Join the first Ancient Mysteries Rediscovered community discussions for Fan Favorite mysteries." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./discussion-styles.css">
+</head>
+<body>
+
+<header class="wrap">
+  <div class="nav">
+    <a class="brand" href="../">CHRONICLE</a>
+    <ul class="nav-links">
+      <li><a href="../#fan-favorites">Fan Favorites</a></li>
+      <li><a href="../#featured-reels">Featured Reels</a></li>
+      <li><a href="../#archives">Archives</a></li>
+      <li><a href="./">Discussions</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="section wrap">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h1>Community Discussions</h1>
+    <span class="sub">Every mystery leaves another question.</span>
+  </div>
+  <p class="section-intro">Start with the four Fan Favorites, then follow the questions wherever the evidence and legends lead.</p>
+  <div class="discussion-grid" id="discussion-grid"></div>
+</main>
+
+<footer class="wrap">ANCIENT MYSTERIES REDISCOVERED</footer>
+
+<script src="./discussion-data.js"></script>
+<script>
+  const grid = document.getElementById("discussion-grid");
+
+  DISCUSSIONS.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "discussion-card";
+    card.innerHTML = `
+      <img src="${item.hubPoster}" alt="Ancient Mysteries Rediscovered poster - ${item.title}" loading="lazy">
+      <div>
+        <div class="tag">Fan Favorite Discussion</div>
+        <h2>${item.title}</h2>
+        <p>${item.question}</p>
+        <a class="text-link" href="${item.discussionUrl}">Join the Discussion &rarr;</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

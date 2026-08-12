@@ -395,6 +395,23 @@
     grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
     gap:26px;
   }
+  .fan-favorites{
+    position:relative;
+  }
+  .fan-favorites::before{
+    content:"";
+    position:absolute;
+    left:28px;
+    right:28px;
+    top:-1px;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(201,162,39,0.46), transparent);
+  }
+  .fan-favorites-grid{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:24px;
+  }
   .reel-card{
     display:block;
     background:linear-gradient(180deg, rgba(23,25,35,0.98), rgba(17,19,27,0.98));
@@ -418,6 +435,12 @@
     background-position:center;
     background-size:contain;
     background-repeat:no-repeat;
+  }
+  .reel-card .thumb img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
   }
   .reel-card.featured{
     border-color:rgba(201,162,39,0.34);
@@ -479,6 +502,30 @@
     margin-top:4px;
     color:var(--bone);
   }
+  .reel-card .title-link{
+    color:inherit;
+    text-decoration:none;
+  }
+  .reel-card .title-link:hover,
+  .reel-card .title-link:focus-visible{
+    color:var(--gold);
+  }
+  .discussion-link{
+    display:inline-block;
+    margin-top:12px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+    text-decoration:none;
+    transition:color .2s ease, text-shadow .2s ease;
+  }
+  .discussion-link:hover,
+  .discussion-link:focus-visible{
+    color:var(--gold);
+    text-shadow:0 0 22px rgba(201,162,39,0.22);
+  }
 
   footer{
     padding:40px 0 60px;
@@ -490,12 +537,13 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .card, .playlist-card, .reel-card, .reel-card .thumb .play{ transition:none; }
+    .card, .playlist-card, .reel-card, .reel-card .thumb .play, .discussion-link{ transition:none; }
     html{ scroll-behavior:auto; }
   }
 
   @media (max-width:900px){
     .featured-grid{ grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); }
+    .fan-favorites-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width:640px){
@@ -508,6 +556,7 @@
     .section-head .sub{ width:100%; margin-left:40px; }
     .section-intro{ margin:-22px 0 30px 40px; }
     .featured-grid{ gap:24px; margin-bottom:34px; }
+    .fan-favorites-grid{ grid-template-columns:1fr; gap:24px; }
     .reel-gallery{ gap:22px; }
   }
 </style>
@@ -518,9 +567,11 @@
   <div class="nav">
     <div class="brand">CHRONICLE</div>
     <ul class="nav-links">
+      <li><a href="#fan-favorites">Fan Favorites</a></li>
       <li><a href="#featured-reels">Featured Reels</a></li>
       <li><a href="#archives">Archives</a></li>
       <li><a href="#series">Series</a></li>
+      <li><a href="discussions/">Discussions</a></li>
       <li><a href="#relics">Relics</a></li>
     </ul>
   </div>
@@ -532,9 +583,74 @@
   <p>Every myth carries a memory. Ancient Greek giants, forgotten heroes, and the mysteries historians still can't explain — examined for what they might actually be telling us.</p>
 </section>
 
-<section class="section wrap" id="featured-reels">
+<section class="section wrap fan-favorites" id="fan-favorites">
   <div class="section-head">
     <span class="section-num">01</span>
+    <h2>Fan Favorites</h2>
+    <span class="sub">The mysteries viewers couldn't stop watching.</span>
+  </div>
+  <div class="fan-favorites-grid">
+    <article class="reel-card featured">
+      <a class="title-link" href="https://www.facebook.com/share/r/1EbujMyKbt/" target="_blank" rel="noopener" aria-label="Watch What Fell From the Sky in Ancient Mesopotamia? on Facebook">
+        <div class="thumb">
+        <img src="What%20Fell%20from%20the%20Sky%20Poster.png" alt="Ancient Mysteries Rediscovered poster - What Fell From the Sky in Ancient Mesopotamia?" loading="lazy">
+        <div class="play"><span>&#9654;</span></div>
+        </div>
+      </a>
+      <div class="meta">
+        <div class="tag">Fan Favorite</div>
+        <h3><a class="title-link" href="https://www.facebook.com/share/r/1EbujMyKbt/" target="_blank" rel="noopener">What Fell From the Sky in Ancient Mesopotamia?</a></h3>
+        <a class="discussion-link" href="discussions/bull-of-heaven/">Join the Discussion &rarr;</a>
+      </div>
+    </article>
+
+    <article class="reel-card featured">
+      <a class="title-link" href="https://www.facebook.com/share/r/19Hxr3cqc2/" target="_blank" rel="noopener" aria-label="Watch Why Did They Fear Balor's Eye? on Facebook">
+        <div class="thumb">
+        <img src="Balor%20Why%20did%20they%20fear%20Balors%20Eye%20Poster.png" alt="Ancient Mysteries Rediscovered poster - Why Did They Fear Balor's Eye?" loading="lazy">
+        <div class="play"><span>&#9654;</span></div>
+        </div>
+      </a>
+      <div class="meta">
+        <div class="tag">Fan Favorite</div>
+        <h3><a class="title-link" href="https://www.facebook.com/share/r/19Hxr3cqc2/" target="_blank" rel="noopener">Why Did They Fear Balor's Eye?</a></h3>
+        <a class="discussion-link" href="discussions/balor/">Join the Discussion &rarr;</a>
+      </div>
+    </article>
+
+    <article class="reel-card featured">
+      <a class="title-link" href="https://www.facebook.com/share/r/1AYnoo7ArJ/" target="_blank" rel="noopener" aria-label="Watch The Norse Thought Winter Was a Giant on Facebook">
+        <div class="thumb">
+        <img src="The%20Norse%20thought%20Winter%20was%20Alive%20Poster.png" alt="Ancient Mysteries Rediscovered poster - The Norse Thought Winter Was a Giant" loading="lazy">
+        <div class="play"><span>&#9654;</span></div>
+        </div>
+      </a>
+      <div class="meta">
+        <div class="tag">Fan Favorite</div>
+        <h3><a class="title-link" href="https://www.facebook.com/share/r/1AYnoo7ArJ/" target="_blank" rel="noopener">The Norse Thought Winter Was a Giant</a></h3>
+        <a class="discussion-link" href="discussions/jotnar/">Join the Discussion &rarr;</a>
+      </div>
+    </article>
+
+    <article class="reel-card featured">
+      <a class="title-link" href="https://www.facebook.com/share/r/1EuVG4QyPF/" target="_blank" rel="noopener" aria-label="Watch Did Giants Really Walk the Earth? on Facebook">
+        <div class="thumb">
+        <img src="Did%20Giants%20really%20walk%20%20the%20%20earth%20Poster.png" alt="Ancient Mysteries Rediscovered poster - Did Giants Really Walk the Earth?" loading="lazy">
+        <div class="play"><span>&#9654;</span></div>
+        </div>
+      </a>
+      <div class="meta">
+        <div class="tag">Fan Favorite</div>
+        <h3><a class="title-link" href="https://www.facebook.com/share/r/1EuVG4QyPF/" target="_blank" rel="noopener">Did Giants Really Walk the Earth?</a></h3>
+        <a class="discussion-link" href="discussions/gigantes/">Join the Discussion &rarr;</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap" id="featured-reels">
+  <div class="section-head">
+    <span class="section-num">02</span>
     <h2>Featured Reels</h2>
     <span class="sub">newest cinematic work</span>
   </div>
@@ -808,7 +924,7 @@
 
 <section class="section wrap" id="archives">
   <div class="section-head">
-    <span class="section-num">02</span>
+    <span class="section-num">03</span>
     <h2>From the Archives</h2>
     <span class="sub">YouTube foundation</span>
   </div>
@@ -951,7 +1067,7 @@
 
 <section class="section wrap" id="series">
   <div class="section-head">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2>Video Series &amp; Playlists</h2>
     <span class="sub">curated paths</span>
   </div>
@@ -1011,7 +1127,7 @@
 
 <section class="section wrap" id="relics">
   <div class="section-head">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2>Relics</h2>
     <span class="sub">merch</span>
   </div>
