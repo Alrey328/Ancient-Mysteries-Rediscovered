@@ -40,8 +40,8 @@ const DISCUSSIONS = [
 const GISCUS_CONFIG = {
   repo: "Alrey328/Ancient-Mysteries-Rediscovered",
   repoId: "R_kgDOTkLbcQ",
-  category: "",
-  categoryId: "",
+  category: "Announcements",
+  categoryId: "DIC_kwDOTkLbcc4DEA5M",
   mapping: "pathname",
   strict: "0",
   reactionsEnabled: "1",
