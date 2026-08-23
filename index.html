@@ -542,7 +542,7 @@
   }
 
   @media (max-width:900px){
-    .featured-grid{ grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); }
+    .featured-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .fan-favorites-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
   }
 
@@ -550,14 +550,100 @@
     .wrap{ padding:0 20px; }
     .nav{ align-items:flex-start; flex-direction:column; }
     .nav-links{ gap:14px 18px; justify-content:flex-start; }
-    .hero{ padding:72px 0 58px; }
-    .section{ padding:58px 0; }
+    .hero{ padding:60px 0 46px; }
+    .hero p{ font-size:0.98rem; margin-top:20px; }
+    .section{ padding:44px 0; }
     .section-head{ flex-wrap:wrap; }
+    .section-head{ gap:10px 14px; margin-bottom:28px; }
     .section-head .sub{ width:100%; margin-left:40px; }
-    .section-intro{ margin:-22px 0 30px 40px; }
-    .featured-grid{ gap:24px; margin-bottom:34px; }
-    .fan-favorites-grid{ grid-template-columns:1fr; gap:24px; }
-    .reel-gallery{ gap:22px; }
+    .section-intro{ margin:-14px 0 24px 40px; font-size:0.92rem; }
+
+    .grid,
+    .featured-grid,
+    .reel-gallery,
+    .fan-favorites-grid{
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+    .featured-grid{ margin-bottom:22px; }
+
+    .card,
+    .reel-card{
+      box-shadow:0 12px 28px rgba(0,0,0,0.2);
+    }
+    .card:hover,
+    .reel-card:hover{
+      transform:none;
+      box-shadow:0 12px 28px rgba(0,0,0,0.2);
+    }
+    .card .meta,
+    .reel-card .meta,
+    .reel-card.featured .meta{
+      padding:10px 10px 12px;
+    }
+    .card .meta .tag,
+    .reel-card .meta .tag{
+      font-size:0.56rem;
+      letter-spacing:0.05em;
+    }
+    .card .meta h3,
+    .reel-card .meta h3,
+    .reel-card.featured .meta h3{
+      display:-webkit-box;
+      -webkit-line-clamp:3;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      overflow-wrap:anywhere;
+      font-size:0.82rem;
+      line-height:1.25;
+      margin-top:3px;
+    }
+    .fan-favorites-grid .reel-card .meta h3,
+    .featured-grid .reel-card .meta h3{
+      -webkit-line-clamp:2;
+    }
+    .discussion-link{
+      margin-top:8px;
+      font-size:0.56rem;
+      line-height:1.25;
+      overflow-wrap:anywhere;
+    }
+    .reel-card .badge{
+      top:8px;
+      right:8px;
+      padding:4px 6px;
+      font-size:0.54rem;
+    }
+    .reel-card .thumb .play span{
+      width:38px;
+      height:38px;
+      font-size:0.86rem;
+    }
+    .playlist-grid{ grid-template-columns:1fr; gap:14px; }
+    .playlist-card,
+    .series-card summary{ padding:16px; }
+    .series-card .episodes{ padding:6px 16px 14px 68px; }
+  }
+
+  @media (max-width:340px){
+    .wrap{ padding:0 14px; }
+    .nav-links{ gap:12px 14px; }
+    .grid,
+    .featured-grid,
+    .reel-gallery,
+    .fan-favorites-grid{
+      gap:10px;
+    }
+    .card .meta,
+    .reel-card .meta,
+    .reel-card.featured .meta{
+      padding:9px 8px 10px;
+    }
+    .card .meta h3,
+    .reel-card .meta h3,
+    .reel-card.featured .meta h3{
+      font-size:0.76rem;
+    }
   }
 </style>
 </head>
