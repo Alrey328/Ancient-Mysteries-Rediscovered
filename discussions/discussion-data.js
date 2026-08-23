@@ -38,8 +38,8 @@ const DISCUSSIONS = [
 ];
 
 const GISCUS_CONFIG = {
-  repo: "",
-  repoId: "",
+  repo: "Alrey328/Ancient-Mysteries-Rediscovered",
+  repoId: "R_kgDOTkLbcQ",
   category: "",
   categoryId: "",
   mapping: "pathname",
@@ -61,8 +61,8 @@ function renderGiscus(target, term) {
   if (!GISCUS_CONFIG.repo || !GISCUS_CONFIG.repoId || !GISCUS_CONFIG.categoryId) {
     target.innerHTML = `
       <div class="comment-placeholder">
-        <div class="tag">Comments Setup Required</div>
-        <p>Community comments are ready to connect with Giscus once GitHub Discussions and the Giscus app are configured for this repository.</p>
+        <div class="tag">Comments Almost Ready</div>
+        <p>GitHub Discussions still need to be enabled for this repository, then the Giscus app can connect these Fan Favorite pages to live community comments.</p>
       </div>
     `;
     return;
