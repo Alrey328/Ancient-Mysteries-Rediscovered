@@ -46,7 +46,9 @@ Changing `mysteries/new-investigation/index.html` submits:
 
 `https://ancientmysteriesrediscovered.com/mysteries/new-investigation/`
 
-If a future change cannot be detected automatically, add one production URL per line to `indexnow-urls.txt`, or run the workflow manually and paste URLs into the `urls` input.
+If a future change cannot be detected automatically, run the workflow manually and paste production URLs into the `urls` input.
+
+You can also add one production URL per line to `indexnow-urls.txt` in the same deployment commit. The script reads that file only when `indexnow-urls.txt` changed in the deployed commit, which avoids resubmitting stale manual URLs on unrelated future deployments.
 
 ## Visitor Traffic
 

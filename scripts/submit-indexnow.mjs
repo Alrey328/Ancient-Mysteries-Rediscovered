@@ -77,12 +77,11 @@ if (!/^[A-Za-z0-9-]{8,128}$/.test(key)) {
   throw new Error(`Invalid IndexNow key in ${KEY_FILE}`);
 }
 
-const manualUrls = [
-  ...readLines("indexnow-urls.txt"),
-  ...(process.env.INDEXNOW_URLS || "").split(/\s+/).map((url) => url.trim()).filter(Boolean),
-];
-
-const changedUrls = changedFilesFromGitHubEvent().flatMap(fileToUrls);
+const changedFiles = changedFilesFromGitHubEvent();
+const manualFileUrls = changedFiles.includes("indexnow-urls.txt") ? readLines("indexnow-urls.txt") : [];
+const manualInputUrls = (process.env.INDEXNOW_URLS || "").split(/\s+/).map((url) => url.trim()).filter(Boolean);
+const manualUrls = [...manualFileUrls, ...manualInputUrls];
+const changedUrls = changedFiles.flatMap(fileToUrls);
 const urlList = [...new Set([...manualUrls, ...changedUrls])].filter(productionUrlOnly);
 
 if (urlList.length === 0) {
