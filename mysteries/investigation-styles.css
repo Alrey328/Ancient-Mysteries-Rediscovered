@@ -242,6 +242,13 @@ strong{ color:var(--bone); }
   aspect-ratio:16/9;
   max-height:none;
 }
+.video-frame.portrait{
+  aspect-ratio:9/16;
+  max-width:460px;
+  max-height:none;
+  min-height:0;
+  margin:0 auto;
+}
 .video-frame iframe{
   width:100%;
   height:100%;
@@ -418,6 +425,7 @@ footer{
     padding:20px 18px;
   }
   .video-frame{ max-height:620px; }
+  .video-frame.portrait{ max-height:none; }
   .faq details{ padding:16px 18px; }
 }
 @media (max-width:340px){
@@ -425,4 +433,5 @@ footer{
   .nav-links{ gap:12px 14px; }
   .mystery-hero h1{ font-size:2.1rem; }
   .video-frame{ max-height:540px; }
+  .video-frame.portrait{ max-height:none; }
 }
