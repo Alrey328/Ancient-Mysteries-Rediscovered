@@ -233,6 +233,22 @@ strong{ color:var(--bone); }
   height:100%;
   border:0;
 }
+.watch-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:16px;
+  color:var(--gold);
+  font-family:'JetBrains Mono', monospace;
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+.watch-link:hover,
+.watch-link:focus-visible{
+  color:var(--bone);
+}
 .media-needed{
   padding:28px;
   text-align:center;
