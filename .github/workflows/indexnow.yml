@@ -1,0 +1,39 @@
+name: Submit IndexNow URLs
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Optional production URLs to submit, separated by spaces or new lines"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  submit-indexnow:
+    name: Submit changed production URLs
+    runs-on: ubuntu-latest
+    if: >
+      github.repository == 'Alrey328/Ancient-Mysteries-Rediscovered' &&
+      (
+        github.event_name == 'workflow_dispatch' ||
+        (
+          github.event.deployment_status.state == 'success' &&
+          github.event.deployment.environment == 'github-pages' &&
+          github.event.deployment.ref == 'main'
+        )
+      )
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+          fetch-depth: 2
+
+      - name: Submit URLs to IndexNow
+        env:
+          INDEXNOW_URLS: ${{ github.event.inputs.urls || '' }}
+        run: node scripts/submit-indexnow.mjs

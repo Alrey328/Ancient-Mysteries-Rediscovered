@@ -1,0 +1,4 @@
+# Optional deployment-time IndexNow submissions.
+# Add one production URL per line when a changed page cannot be detected automatically.
+# Example:
+# https://ancientmysteriesrediscovered.com/mysteries/giant-of-kandahar/
