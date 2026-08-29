@@ -510,6 +510,112 @@
   .reel-card .title-link:focus-visible{
     color:var(--gold);
   }
+  .reel-card.has-investigation{
+    --investigation-primary:var(--gold);
+    --investigation-secondary:#7b5c23;
+    --investigation-accent:#d8b45a;
+    --investigation-panel:#2a2117;
+    --investigation-shadow:#080604;
+    --investigation-muted:#b89445;
+    --investigation-text:#f1dfaa;
+  }
+  .reel-card.has-investigation .thumb-link{
+    display:block;
+    color:inherit;
+    text-decoration:none;
+  }
+  .reel-card.has-investigation .title-link{
+    display:inline-block;
+  }
+  .investigation-cta{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    margin-top:16px;
+    padding:10px 12px 12px;
+    border:1px solid color-mix(in srgb, var(--investigation-accent) 58%, transparent);
+    border-bottom-color:color-mix(in srgb, var(--investigation-secondary) 72%, #000 28%);
+    border-radius:3px 2px 4px 2px;
+    color:var(--investigation-text);
+    background:
+      linear-gradient(135deg, rgba(255,238,172,0.18), transparent 26%),
+      linear-gradient(180deg, var(--investigation-secondary), var(--investigation-panel) 56%, var(--investigation-shadow)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 7px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,232,151,0.44),
+      inset 0 -3px 0 rgba(28,18,11,0.72),
+      0 4px 0 color-mix(in srgb, var(--investigation-secondary) 54%, #000 46%),
+      0 14px 24px rgba(0,0,0,0.32);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.65rem;
+    line-height:1.15;
+    letter-spacing:0.07em;
+    text-align:center;
+    text-decoration:none;
+    text-transform:uppercase;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,0.86),
+      0 -1px 0 rgba(255,228,153,0.18);
+    transform:translateY(0);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .investigation-cta::before,
+  .investigation-cta::after{
+    content:"";
+    position:absolute;
+    pointer-events:none;
+  }
+  .investigation-cta::before{
+    inset:3px;
+    border:1px solid rgba(241,214,136,0.18);
+    border-radius:2px;
+    box-shadow:inset 0 0 18px rgba(8,6,4,0.34);
+  }
+  .investigation-cta::after{
+    left:12%;
+    right:15%;
+    top:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,233,160,0.62), transparent);
+  }
+  .investigation-cta:hover,
+  .investigation-cta:focus-visible{
+    color:#fff2bf;
+    border-color:color-mix(in srgb, var(--investigation-accent) 78%, transparent);
+    transform:translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,232,151,0.56),
+      inset 0 -4px 0 rgba(28,18,11,0.76),
+      0 6px 0 color-mix(in srgb, var(--investigation-secondary) 54%, #000 46%),
+      0 18px 30px rgba(0,0,0,0.4);
+  }
+  .investigation-cta:focus-visible{
+    outline:2px solid rgba(241,214,136,0.88);
+    outline-offset:4px;
+  }
+  .investigation-cta:active{
+    transform:translateY(2px);
+    box-shadow:
+      inset 0 1px 5px rgba(0,0,0,0.58),
+      inset 0 -1px 0 rgba(28,18,11,0.68),
+      0 1px 0 color-mix(in srgb, var(--investigation-secondary) 54%, #000 46%),
+      0 8px 16px rgba(0,0,0,0.32);
+  }
+  .investigation-cta .arrow{
+    margin-left:0.45em;
+    color:var(--investigation-accent);
+  }
+  .kandahar-investigation-card{
+    --investigation-primary:#c79b3f;
+    --investigation-secondary:#6c4a20;
+    --investigation-accent:#e0bd65;
+    --investigation-panel:#2c2118;
+    --investigation-shadow:#070504;
+    --investigation-muted:#aa8238;
+    --investigation-text:#f1dfaa;
+  }
   .discussion-link{
     display:inline-block;
     margin-top:12px;
@@ -526,11 +632,6 @@
     color:var(--gold);
     text-shadow:0 0 22px rgba(201,162,39,0.22);
   }
-  .investigation-link{
-    margin:-20px 0 34px;
-    text-align:center;
-  }
-
   footer{
     padding:40px 0 60px;
     text-align:center;
@@ -541,7 +642,7 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .card, .playlist-card, .reel-card, .reel-card .thumb .play, .discussion-link{ transition:none; }
+    .card, .playlist-card, .reel-card, .reel-card .thumb .play, .discussion-link, .investigation-cta{ transition:none; }
     html{ scroll-behavior:auto; }
   }
 
@@ -612,6 +713,14 @@
       line-height:1.25;
       overflow-wrap:anywhere;
     }
+    .investigation-cta{
+      min-height:44px;
+      margin-top:11px;
+      padding:8px 7px 10px;
+      font-size:0.52rem;
+      letter-spacing:0.04em;
+      overflow-wrap:anywhere;
+    }
     .reel-card .badge{
       top:8px;
       right:8px;
@@ -647,6 +756,11 @@
     .reel-card .meta h3,
     .reel-card.featured .meta h3{
       font-size:0.76rem;
+    }
+    .investigation-cta{
+      min-height:44px;
+      padding:7px 6px 9px;
+      font-size:0.48rem;
     }
   }
 </style>
@@ -749,16 +863,21 @@
   </div>
   <div class="featured-grid">
     <!-- Insert future newest releases at the beginning of this featured row. -->
-    <a class="reel-card featured" href="https://www.facebook.com/share/r/1DNeJrgAUu/" target="_blank" rel="noopener">
+    <article class="reel-card featured has-investigation kandahar-investigation-card">
+      <a class="thumb-link" href="https://www.facebook.com/share/r/1DNeJrgAUu/" target="_blank" rel="noopener" aria-label="Watch The Giant of Kandahar Reel on Facebook">
       <div class="thumb" style="background-image:url('Final%20Khandajarposter.png')">
         <div class="badge">Newest</div>
         <div class="play"><span>&#9654;</span></div>
       </div>
+      </a>
       <div class="meta">
         <div class="tag">Newest Release</div>
-        <h3>The Giant of Kandahar</h3>
+        <h3><a class="title-link" href="https://www.facebook.com/share/r/1DNeJrgAUu/" target="_blank" rel="noopener">The Giant of Kandahar</a></h3>
+        <a class="investigation-cta" href="mysteries/giant-of-kandahar/" aria-label="Investigate the Giant of Kandahar mystery">
+          <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
-    </a>
+    </article>
 
     <a class="reel-card featured" href="https://www.facebook.com/share/r/1BoHoauQW2/" target="_blank" rel="noopener">
       <div class="thumb" style="background-image:url('REd%20Haired%20Giants%20Poster.png')">
@@ -841,8 +960,6 @@
     </a>
 
   </div>
-
-  <p class="investigation-link"><a class="discussion-link" href="mysteries/giant-of-kandahar/">Investigate the Giant of Kandahar &rarr;</a></p>
 
   <div class="reel-gallery">
     <a class="reel-card" href="https://www.facebook.com/share/r/1TNzwt5oq5/" target="_blank" rel="noopener">
