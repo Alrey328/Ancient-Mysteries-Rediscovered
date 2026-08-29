@@ -27,6 +27,13 @@
   --mystery-heading-text-fill:currentColor;
   --mystery-heading-shadow:0 0 46px rgba(201,162,39,0.2);
   --mystery-heading-filter:none;
+  --mystery-heading-weathering:none;
+  --mystery-heading-ambient:none;
+  --mystery-heading-ambient-opacity:0;
+  --mystery-heading-divider-detail:none;
+  --mystery-heading-level-1-shadow:var(--mystery-heading-shadow);
+  --mystery-heading-level-2-shadow:var(--mystery-heading-shadow);
+  --mystery-heading-level-3-shadow:0 1px 0 rgba(0,0,0,0.5);
   --mystery-divider:linear-gradient(90deg, rgba(201,162,39,0), rgba(201,162,39,0.82), rgba(201,162,39,0));
   --mystery-divider-glow:0 0 18px rgba(201,162,39,0.22);
   --mystery-panel:
@@ -85,15 +92,43 @@ body.kandahar-theme{
     repeating-linear-gradient(0deg, rgba(245,220,166,0.035) 0 1px, transparent 1px 5px),
     repeating-linear-gradient(90deg, rgba(245,220,166,0.024) 0 1px, transparent 1px 7px);
   --mystery-heading-gradient:
-    linear-gradient(180deg, #fff6c9 0%, #ffd36b 34%, #df9d35 66%, #ffe8a6 100%);
-  --mystery-heading-text-fill:#f4c86a;
+    linear-gradient(180deg, #fff2bd 0%, #f8cf73 22%, #d99435 48%, #8a4a24 52%, #e3ac4e 70%, #fff0b7 100%);
+  --mystery-heading-text-fill:transparent;
   --mystery-heading-shadow:
-    0 1px 0 rgba(54,30,8,0.96),
-    0 3px 14px rgba(0,0,0,0.72),
-    0 0 30px rgba(255,204,91,0.34);
-  --mystery-heading-filter:drop-shadow(0 1px 0 rgba(0,0,0,0.62));
-  --mystery-divider:linear-gradient(90deg, rgba(240,189,80,0), rgba(255,213,110,0.9), rgba(181,82,50,0.42), rgba(240,189,80,0));
-  --mystery-divider-glow:0 0 20px rgba(240,189,80,0.28);
+    0 1px 0 rgba(255,238,174,0.28),
+    0 2px 0 rgba(87,44,17,0.92),
+    0 8px 18px rgba(0,0,0,0.72),
+    0 0 28px rgba(245,178,70,0.24);
+  --mystery-heading-filter:drop-shadow(0 1px 0 rgba(24,15,7,0.8));
+  --mystery-heading-weathering:
+    repeating-linear-gradient(101deg, rgba(34,20,9,0.26) 0 1px, transparent 1px 15px),
+    repeating-linear-gradient(7deg, rgba(255,238,182,0.14) 0 1px, transparent 1px 21px),
+    radial-gradient(circle at 16% 32%, rgba(69,38,16,0.28) 0 1px, transparent 2px),
+    radial-gradient(circle at 73% 64%, rgba(255,231,156,0.18) 0 1px, transparent 2px);
+  --mystery-heading-ambient:
+    radial-gradient(ellipse at 28% 50%, rgba(245,188,74,0.18), transparent 58%),
+    linear-gradient(90deg, rgba(49,31,14,0.72), rgba(49,31,14,0.12) 62%, transparent);
+  --mystery-heading-ambient-opacity:1;
+  --mystery-heading-divider-detail:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(48,28,11,0.72) 18px 21px, transparent 21px 30px);
+  --mystery-heading-level-1-shadow:
+    0 1px 0 rgba(255,244,194,0.46),
+    0 3px 0 rgba(103,53,20,0.98),
+    0 7px 0 rgba(35,20,9,0.86),
+    0 16px 24px rgba(0,0,0,0.76),
+    0 0 42px rgba(242,181,74,0.3),
+    0 -1px 14px rgba(255,225,139,0.18);
+  --mystery-heading-level-2-shadow:
+    0 1px 0 rgba(255,238,174,0.38),
+    0 2px 0 rgba(94,48,18,0.92),
+    0 8px 18px rgba(0,0,0,0.68),
+    0 0 28px rgba(217,148,53,0.24);
+  --mystery-heading-level-3-shadow:
+    0 1px 0 rgba(255,228,150,0.22),
+    0 2px 10px rgba(0,0,0,0.64);
+  --mystery-divider:
+    linear-gradient(90deg, rgba(240,189,80,0), rgba(73,42,16,0.75) 16%, rgba(255,220,127,0.96) 45%, rgba(181,82,50,0.54) 60%, rgba(73,42,16,0.76) 84%, rgba(240,189,80,0));
+  --mystery-divider-glow:0 0 18px rgba(240,189,80,0.22), 0 1px 0 rgba(0,0,0,0.56);
   --mystery-panel:
     linear-gradient(180deg, rgba(70,55,34,0.9), rgba(35,37,27,0.92)),
     radial-gradient(ellipse at 0% 0%, rgba(240,189,80,0.18), transparent 42%),
@@ -131,11 +166,11 @@ body.kandahar-theme{
     linear-gradient(158deg, transparent 0 55%, rgba(96,47,24,0.38) 55.3% 100%);
   --mystery-faq-heading:#f4d276;
   --mystery-hero-bg-color:#786241;
-  --mystery-hero-position:center, center, right 3% center;
-  --mystery-hero-size:cover, cover, auto 116%;
+  --mystery-hero-position:center, center, right -1% center;
+  --mystery-hero-size:cover, cover, auto 124%;
   --mystery-hero-shadow:inset 0 -48px 86px rgba(25,18,11,0.72);
-  --mystery-hero-overlay:linear-gradient(180deg, rgba(75,83,80,0.04), rgba(122,76,35,0.16) 48%, rgba(25,18,11,0.82) 100%);
-  --mystery-hero-side-overlay:linear-gradient(90deg, rgba(19,17,14,0.9), rgba(47,38,25,0.42) 42%, rgba(71,45,24,0.3) 68%, rgba(18,15,12,0.48));
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(75,83,80,0.03), rgba(122,76,35,0.12) 48%, rgba(25,18,11,0.82) 100%);
+  --mystery-hero-side-overlay:linear-gradient(90deg, rgba(19,17,14,0.88), rgba(47,38,25,0.34) 38%, rgba(126,82,37,0.18) 62%, rgba(18,15,12,0.34));
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
@@ -305,14 +340,21 @@ header{ padding:30px 0 0; }
 .question-title h2,
 .section h2,
 .door-beyond .question{
+  position:relative;
+  isolation:isolate;
   color:var(--mystery-heading);
-  background:var(--mystery-heading-gradient);
+  background:
+    var(--mystery-heading-weathering),
+    var(--mystery-heading-gradient);
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:var(--mystery-heading-text-fill);
   text-shadow:var(--mystery-heading-shadow);
   filter:var(--mystery-heading-filter);
 }
+.mystery-hero h1{ text-shadow:var(--mystery-heading-level-1-shadow); }
+.question-title h2,
+.section h2{ text-shadow:var(--mystery-heading-level-2-shadow); }
 .mystery-hero h1,
 .section h2{
   text-transform:uppercase;
@@ -320,7 +362,26 @@ header{ padding:30px 0 0; }
 body.kandahar-theme .mystery-hero h1,
 body.kandahar-theme .section h2,
 body.kandahar-theme .question-title h2{
-  -webkit-text-stroke:0.35px rgba(255,238,180,0.22);
+  -webkit-text-stroke:0.45px rgba(255,238,180,0.2);
+}
+body.kandahar-theme .mystery-hero h1::before,
+body.kandahar-theme .section h2::before,
+body.kandahar-theme .question-title h2::before{
+  content:"";
+  position:absolute;
+  inset:-0.36em -0.42em -0.28em;
+  z-index:-1;
+  pointer-events:none;
+  background:var(--mystery-heading-ambient);
+  filter:blur(10px);
+  opacity:var(--mystery-heading-ambient-opacity);
+}
+body.kandahar-theme .mystery-hero h1::before{
+  inset:-0.42em -0.24em -0.2em -0.34em;
+  background:
+    radial-gradient(ellipse at 32% 58%, rgba(255,201,92,0.22), transparent 54%),
+    linear-gradient(90deg, rgba(40,25,11,0.88), rgba(54,34,16,0.18) 62%, transparent);
+  filter:blur(12px);
 }
 .mystery-hero h1::after,
 .section h2::after,
@@ -328,10 +389,13 @@ body.kandahar-theme .question-title h2{
   content:"";
   display:block;
   width:min(220px, 46vw);
-  height:1px;
-  margin:16px 0 0;
-  background:var(--mystery-divider);
+  height:3px;
+  margin:18px 0 0;
+  background:
+    var(--mystery-heading-divider-detail),
+    var(--mystery-divider);
   box-shadow:var(--mystery-divider-glow);
+  opacity:0.94;
 }
 .hero-subtitle{
   max-width:640px;
@@ -381,6 +445,24 @@ main{ padding-bottom:52px; }
   font-size:1.05rem;
   letter-spacing:0.04em;
   margin:24px 0 10px;
+}
+body.kandahar-theme .section h3,
+body.kandahar-theme .timeline-date,
+body.kandahar-theme .faq summary,
+body.kandahar-theme .callout h3,
+body.kandahar-theme .source-kicker,
+body.kandahar-theme .related-card h3{
+  color:#f0c875;
+  text-shadow:var(--mystery-heading-level-3-shadow);
+}
+body.kandahar-theme .section h3,
+body.kandahar-theme .callout h3{
+  background:
+    repeating-linear-gradient(94deg, rgba(45,26,10,0.18) 0 1px, transparent 1px 18px),
+    linear-gradient(180deg, #ffe5a1, #bd7c30 56%, #f2c875);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 p{ color:var(--bone-dim); margin:0 0 16px; }
 strong{ color:var(--bone); }
