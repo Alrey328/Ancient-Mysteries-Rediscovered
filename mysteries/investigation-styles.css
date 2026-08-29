@@ -60,76 +60,82 @@
 }
 
 body.kandahar-theme{
-  --mystery-primary:#d8ad46;
-  --mystery-secondary:#8b3a2e;
-  --mystery-accent:#b88945;
-  --mystery-heading:#d8ad46;
-  --mystery-muted:#b9ad91;
-  --mystery-border:rgba(216,173,70,0.18);
-  --mystery-border-strong:rgba(216,173,70,0.34);
+  --mystery-primary:#f0bd50;
+  --mystery-secondary:#b55232;
+  --mystery-accent:#c9953e;
+  --mystery-heading:#f2c967;
+  --mystery-muted:#d1c2a0;
+  --mystery-border:rgba(240,189,80,0.24);
+  --mystery-border-strong:rgba(240,189,80,0.46);
   --mystery-background:
-    linear-gradient(180deg, rgba(63,45,23,0.18), rgba(15,16,22,0.76) 34%, #090907 100%),
-    radial-gradient(ellipse at 18% 7%, rgba(216,173,70,0.22), transparent 36%),
-    radial-gradient(ellipse at 72% 0%, rgba(139,58,46,0.18), transparent 42%),
-    linear-gradient(166deg, #1b1812 0%, #111317 42%, #080908 100%);
+    linear-gradient(180deg, rgba(81,104,119,0.22), rgba(145,92,48,0.2) 28%, rgba(32,34,27,0.78) 67%, #16120d 100%),
+    radial-gradient(ellipse at 18% 5%, rgba(250,211,124,0.34), transparent 38%),
+    radial-gradient(ellipse at 78% 0%, rgba(106,130,140,0.3), transparent 42%),
+    radial-gradient(ellipse at 60% 38%, rgba(185,82,48,0.24), transparent 46%),
+    linear-gradient(166deg, #40321e 0%, #2c322a 38%, #1a1710 100%);
   --mystery-atmosphere:
-    linear-gradient(177deg, transparent 0 30%, rgba(8,8,7,0.2) 30.4% 100%),
-    linear-gradient(154deg, transparent 0 49%, rgba(184,137,69,0.13) 49.2% 49.7%, transparent 50%),
-    linear-gradient(20deg, transparent 0 55%, rgba(216,173,70,0.08) 55.3% 55.8%, transparent 56%),
-    radial-gradient(ellipse at 50% 13%, rgba(232,191,101,0.1), transparent 38%),
-    linear-gradient(150deg, transparent 0 56%, rgba(0,0,0,0.42) 56.2% 100%),
-    linear-gradient(28deg, transparent 0 62%, rgba(0,0,0,0.36) 62.2% 100%);
+    linear-gradient(177deg, transparent 0 26%, rgba(150,100,53,0.16) 26.4% 56%, rgba(23,19,14,0.24) 56.3% 100%),
+    linear-gradient(154deg, transparent 0 49%, rgba(226,170,75,0.18) 49.2% 49.7%, transparent 50%),
+    linear-gradient(20deg, transparent 0 55%, rgba(246,205,111,0.12) 55.3% 55.8%, transparent 56%),
+    radial-gradient(ellipse at 50% 10%, rgba(250,218,151,0.18), transparent 38%),
+    radial-gradient(ellipse at 74% 18%, rgba(117,139,144,0.16), transparent 32%),
+    linear-gradient(150deg, transparent 0 58%, rgba(91,49,24,0.24) 58.2% 100%),
+    linear-gradient(28deg, transparent 0 64%, rgba(52,61,43,0.22) 64.2% 100%);
   --mystery-texture:
-    repeating-linear-gradient(0deg, rgba(216,192,138,0.025) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(90deg, rgba(216,192,138,0.018) 0 1px, transparent 1px 7px);
+    repeating-linear-gradient(0deg, rgba(245,220,166,0.035) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(245,220,166,0.024) 0 1px, transparent 1px 7px);
   --mystery-heading-gradient:
-    linear-gradient(180deg, #ffe19a 0%, #d8ad46 34%, #a9782d 68%, #f0d187 100%);
-  --mystery-heading-text-fill:transparent;
+    linear-gradient(180deg, #fff6c9 0%, #ffd36b 34%, #df9d35 66%, #ffe8a6 100%);
+  --mystery-heading-text-fill:#f4c86a;
   --mystery-heading-shadow:
-    0 1px 0 rgba(42,25,8,0.92),
-    0 3px 18px rgba(0,0,0,0.72),
-    0 0 22px rgba(216,173,70,0.16);
-  --mystery-heading-filter:drop-shadow(0 1px 0 rgba(0,0,0,0.7));
-  --mystery-divider:linear-gradient(90deg, rgba(216,173,70,0), rgba(216,173,70,0.82), rgba(216,173,70,0));
-  --mystery-divider-glow:0 0 18px rgba(216,173,70,0.22);
+    0 1px 0 rgba(54,30,8,0.96),
+    0 3px 14px rgba(0,0,0,0.72),
+    0 0 30px rgba(255,204,91,0.34);
+  --mystery-heading-filter:drop-shadow(0 1px 0 rgba(0,0,0,0.62));
+  --mystery-divider:linear-gradient(90deg, rgba(240,189,80,0), rgba(255,213,110,0.9), rgba(181,82,50,0.42), rgba(240,189,80,0));
+  --mystery-divider-glow:0 0 20px rgba(240,189,80,0.28);
   --mystery-panel:
-    linear-gradient(180deg, rgba(37,31,23,0.94), rgba(15,15,14,0.97)),
-    radial-gradient(ellipse at 0% 0%, rgba(216,173,70,0.1), transparent 42%);
-  --mystery-panel-border:rgba(216,173,70,0.18);
-  --mystery-panel-shadow:0 22px 54px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,225,154,0.06);
+    linear-gradient(180deg, rgba(70,55,34,0.9), rgba(35,37,27,0.92)),
+    radial-gradient(ellipse at 0% 0%, rgba(240,189,80,0.18), transparent 42%),
+    radial-gradient(ellipse at 100% 20%, rgba(89,109,80,0.18), transparent 40%);
+  --mystery-panel-border:rgba(240,189,80,0.25);
+  --mystery-panel-shadow:0 24px 54px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,225,154,0.1);
   --mystery-answer-panel:
-    linear-gradient(180deg, rgba(35,29,20,0.96), rgba(14,14,13,0.98)),
-    repeating-linear-gradient(135deg, rgba(216,192,138,0.035) 0 1px, transparent 1px 12px);
-  --mystery-answer-border:rgba(216,173,70,0.34);
-  --mystery-label-color:#f0d187;
-  --mystery-label-border:rgba(216,173,70,0.48);
+    linear-gradient(180deg, rgba(96,70,39,0.92), rgba(42,45,31,0.96)),
+    radial-gradient(ellipse at 12% 0%, rgba(255,218,137,0.2), transparent 38%),
+    repeating-linear-gradient(135deg, rgba(240,220,164,0.052) 0 1px, transparent 1px 12px);
+  --mystery-answer-border:rgba(240,189,80,0.5);
+  --mystery-label-color:#ffe6a1;
+  --mystery-label-border:rgba(240,189,80,0.6);
   --mystery-label-bg:
-    linear-gradient(180deg, rgba(93,50,25,0.28), rgba(16,13,10,0.72)),
-    repeating-linear-gradient(-8deg, rgba(216,173,70,0.08) 0 1px, transparent 1px 8px);
-  --mystery-label-shadow:inset 0 0 0 1px rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.22);
-  --mystery-video-border:rgba(216,173,70,0.34);
-  --mystery-video-shadow:inset 0 0 0 1px rgba(0,0,0,0.52), 0 18px 42px rgba(0,0,0,0.28);
-  --mystery-play-border:rgba(216,173,70,0.58);
-  --mystery-timeline-line:linear-gradient(rgba(216,173,70,0.62), rgba(216,173,70,0));
-  --mystery-marker-border:rgba(216,173,70,0.84);
-  --mystery-marker-bg:rgba(216,173,70,0.16);
+    linear-gradient(180deg, rgba(137,72,34,0.38), rgba(55,46,27,0.76)),
+    repeating-linear-gradient(-8deg, rgba(240,189,80,0.1) 0 1px, transparent 1px 8px);
+  --mystery-label-shadow:inset 0 0 0 1px rgba(0,0,0,0.22), 0 10px 24px rgba(0,0,0,0.18);
+  --mystery-video-border:rgba(240,189,80,0.46);
+  --mystery-video-shadow:inset 0 0 0 1px rgba(0,0,0,0.44), 0 18px 42px rgba(0,0,0,0.24);
+  --mystery-play-border:rgba(240,189,80,0.68);
+  --mystery-timeline-line:linear-gradient(rgba(240,189,80,0.72), rgba(181,82,50,0.18), rgba(240,189,80,0));
+  --mystery-marker-border:rgba(255,213,110,0.9);
+  --mystery-marker-bg:rgba(240,189,80,0.24);
   --mystery-comparison-panel:
-    linear-gradient(180deg, rgba(34,29,22,0.94), rgba(15,14,12,0.98)),
-    repeating-linear-gradient(90deg, rgba(216,192,138,0.026) 0 1px, transparent 1px 11px);
+    linear-gradient(180deg, rgba(72,55,35,0.9), rgba(30,34,27,0.96)),
+    radial-gradient(ellipse at 100% 0%, rgba(89,109,80,0.2), transparent 42%),
+    repeating-linear-gradient(90deg, rgba(240,220,164,0.034) 0 1px, transparent 1px 11px);
   --mystery-callout-panel:
-    linear-gradient(180deg, rgba(44,30,17,0.86), rgba(12,11,10,0.98)),
-    radial-gradient(ellipse at 12% 0%, rgba(216,173,70,0.13), transparent 42%);
+    linear-gradient(180deg, rgba(116,63,31,0.82), rgba(31,33,23,0.96)),
+    radial-gradient(ellipse at 12% 0%, rgba(255,213,110,0.22), transparent 42%);
   --mystery-door-panel:
-    linear-gradient(180deg, rgba(21,16,11,0.62), rgba(8,8,8,0.94)),
-    radial-gradient(ellipse at 70% 0%, rgba(216,173,70,0.18), transparent 42%),
-    linear-gradient(158deg, transparent 0 55%, rgba(0,0,0,0.52) 55.3% 100%);
-  --mystery-faq-heading:#e7c36f;
-  --mystery-hero-bg-color:#0c0b08;
-  --mystery-hero-position:center, center, right 7% center;
-  --mystery-hero-size:cover, cover, auto 72%;
-  --mystery-hero-shadow:inset 0 -90px 130px rgba(6,7,7,0.94);
-  --mystery-hero-overlay:linear-gradient(180deg, rgba(7,8,9,0.42), rgba(7,8,9,0.84) 58%, rgba(7,8,9,0.98) 100%);
-  --mystery-hero-side-overlay:linear-gradient(90deg, rgba(7,8,9,0.96), rgba(7,8,9,0.64) 46%, rgba(7,8,9,0.92));
+    linear-gradient(180deg, rgba(58,40,22,0.58), rgba(19,18,14,0.9)),
+    radial-gradient(ellipse at 70% 0%, rgba(240,189,80,0.24), transparent 42%),
+    radial-gradient(ellipse at 12% 12%, rgba(104,123,111,0.16), transparent 40%),
+    linear-gradient(158deg, transparent 0 55%, rgba(96,47,24,0.38) 55.3% 100%);
+  --mystery-faq-heading:#f4d276;
+  --mystery-hero-bg-color:#786241;
+  --mystery-hero-position:center, center, right 3% center;
+  --mystery-hero-size:cover, cover, auto 116%;
+  --mystery-hero-shadow:inset 0 -48px 86px rgba(25,18,11,0.72);
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(75,83,80,0.04), rgba(122,76,35,0.16) 48%, rgba(25,18,11,0.82) 100%);
+  --mystery-hero-side-overlay:linear-gradient(90deg, rgba(19,17,14,0.9), rgba(47,38,25,0.42) 42%, rgba(71,45,24,0.3) 68%, rgba(18,15,12,0.48));
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
@@ -273,8 +279,8 @@ header{ padding:30px 0 0; }
   padding:76px 28px 72px;
 }
 .kandahar-hero .hero-inner{
-  padding-top:112px;
-  padding-bottom:86px;
+  padding-top:96px;
+  padding-bottom:72px;
 }
 .overline,
 .tag,
@@ -311,6 +317,11 @@ header{ padding:30px 0 0; }
 .section h2{
   text-transform:uppercase;
 }
+body.kandahar-theme .mystery-hero h1,
+body.kandahar-theme .section h2,
+body.kandahar-theme .question-title h2{
+  -webkit-text-stroke:0.35px rgba(255,238,180,0.22);
+}
 .mystery-hero h1::after,
 .section h2::after,
 .question-title h2::after{
@@ -328,7 +339,7 @@ header{ padding:30px 0 0; }
   padding:12px 16px;
   color:var(--bone);
   border-left:2px solid var(--mystery-primary);
-  background:linear-gradient(90deg, rgba(14,10,6,0.72), rgba(14,10,6,0.08));
+  background:linear-gradient(90deg, rgba(35,24,12,0.72), rgba(35,24,12,0.12));
   font-size:clamp(1rem, 2vw, 1.2rem);
   letter-spacing:0.02em;
 }
@@ -627,7 +638,8 @@ footer{
   .mystery-hero::after{ width:52vw; opacity:0.42; }
   .mystery-hero.kandahar-hero{
     background-position:center, center, center top;
-    background-size:cover, cover, auto 52%;
+    background-size:cover, cover, auto 78%;
+    box-shadow:inset 0 -42px 72px rgba(25,18,11,0.72);
   }
 }
 @media (max-width:640px){
@@ -635,8 +647,12 @@ footer{
   .nav{ align-items:flex-start; flex-direction:column; }
   .nav-links{ gap:14px 18px; justify-content:flex-start; }
   .breadcrumbs{ margin-top:24px; }
-  .mystery-hero{ min-height:430px; }
-  .hero-inner{ padding:54px 20px 50px; }
+  .mystery-hero{ min-height:700px; }
+  .hero-inner{ padding:54px 20px 48px; }
+  .kandahar-hero .hero-inner{
+    padding-top:394px;
+    padding-bottom:48px;
+  }
   .question-title{ padding:34px 0 18px; }
   .section{ padding:44px 0; }
   .answer-box,
@@ -659,6 +675,12 @@ footer{
   .wrap{ padding:0 14px; }
   .nav-links{ gap:12px 14px; }
   .mystery-hero h1{ font-size:2.1rem; }
+  .mystery-hero.kandahar-hero{
+    background-size:cover, cover, auto 74%;
+  }
+  .kandahar-hero .hero-inner{
+    padding-top:372px;
+  }
   .video-frame{ max-height:540px; }
   .video-frame.portrait{ max-height:none; }
 }
