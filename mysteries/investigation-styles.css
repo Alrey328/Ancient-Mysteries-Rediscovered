@@ -78,65 +78,47 @@ body.kandahar-theme{
   --mystery-border:rgba(240,189,80,0.24);
   --mystery-border-strong:rgba(240,189,80,0.46);
   --mystery-background:
-    linear-gradient(122deg, rgba(84,55,25,0.46) 0 12%, rgba(9,5,2,0.62) 12.2% 21%, transparent 21.3% 100%),
-    linear-gradient(73deg, transparent 0 18%, rgba(135,78,28,0.24) 18.2% 30%, rgba(14,8,3,0.56) 30.2% 41%, transparent 41.3% 100%),
-    linear-gradient(151deg, transparent 0 41%, rgba(5,3,1,0.68) 41.1% 49%, rgba(93,56,23,0.26) 49.2% 61%, transparent 61.3% 100%),
-    linear-gradient(28deg, rgba(7,4,2,0.62) 0 18%, transparent 18.3% 44%, rgba(44,55,39,0.22) 44.2% 57%, transparent 57.4%),
-    linear-gradient(96deg, transparent 0 64%, rgba(3,2,1,0.58) 64.1% 72%, rgba(122,72,28,0.18) 72.2% 81%, transparent 81.3%),
-    linear-gradient(157deg, transparent 0 19%, rgba(5,3,1,0.86) 19.12% 19.62%, rgba(238,183,76,0.14) 19.74% 20.02%, transparent 20.34% 53%, rgba(11,6,2,0.76) 53.12% 53.74%, transparent 54.05%),
-    linear-gradient(33deg, transparent 0 38%, rgba(8,4,1,0.84) 38.1% 38.62%, rgba(226,168,70,0.12) 38.75% 38.98%, transparent 39.28%),
-    radial-gradient(circle at 14% 22%, rgba(255,226,153,0.09) 0 1.8px, transparent 3.6px),
-    radial-gradient(circle at 46% 48%, rgba(10,5,2,0.34) 0 3.4px, transparent 6.8px),
-    radial-gradient(circle at 83% 64%, rgba(255,214,127,0.07) 0 2.2px, transparent 4.8px),
-    linear-gradient(112deg, transparent 0 58%, rgba(5,3,1,0.58) 58.06% 58.34%, transparent 58.65%),
-    linear-gradient(145deg, #2e2214 0%, #241f13 31%, #1b2017 52%, #0d0a06 100%);
+    linear-gradient(180deg, rgba(7,5,3,0.46), rgba(9,6,3,0.82) 62%, #080502 100%),
+    linear-gradient(90deg, rgba(6,4,2,0.72), rgba(11,7,4,0.2) 42%, rgba(5,3,2,0.78)),
+    url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg'),
+    #100b06;
   --mystery-atmosphere:
-    radial-gradient(ellipse 58% 42% at 50% 8%, rgba(255,226,161,0.12), transparent 38%),
-    radial-gradient(ellipse 48% 40% at 74% 18%, rgba(117,139,144,0.12), transparent 34%),
-    radial-gradient(ellipse 62% 54% at 25% 70%, rgba(18,10,4,0.48), transparent 48%),
-    linear-gradient(164deg, transparent 0 32%, rgba(8,4,1,0.38) 32.08% 32.38%, transparent 32.7%),
-    linear-gradient(31deg, transparent 0 66%, rgba(41,48,35,0.18) 66.18% 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(246,182,84,0.16), transparent 36%),
+    radial-gradient(ellipse at 82% 20%, rgba(118,54,25,0.12), transparent 34%),
+    linear-gradient(180deg, transparent 0 42%, rgba(7,5,3,0.62) 100%);
   --mystery-texture:
-    radial-gradient(circle at 14% 18%, rgba(255,229,158,0.2) 0 1.3px, transparent 2.8px),
-    radial-gradient(circle at 62% 42%, rgba(13,7,3,0.52) 0 2.2px, transparent 4.6px),
-    radial-gradient(circle at 81% 68%, rgba(234,179,88,0.14) 0 1.3px, transparent 2.9px),
-    radial-gradient(circle at 36% 58%, rgba(7,4,2,0.42) 0 2.6px, transparent 5.4px),
-    linear-gradient(117deg, transparent 0 23%, rgba(255,218,137,0.045) 23.08% 23.2%, transparent 23.36%),
-    linear-gradient(44deg, transparent 0 73%, rgba(5,3,1,0.18) 73.08% 73.32%, transparent 73.56%),
-    linear-gradient(151deg, transparent 0 47%, rgba(15,8,3,0.48) 47.16% 47.52%, rgba(255,223,142,0.1) 47.6% 47.78%, transparent 48%),
-    linear-gradient(62deg, transparent 0 28%, rgba(6,3,1,0.38) 28.12% 28.42%, transparent 28.62%),
-    linear-gradient(116deg, transparent 0 72%, rgba(230,172,82,0.08) 72.1% 72.28%, rgba(7,4,2,0.44) 72.34% 72.68%, transparent 72.88%);
+    radial-gradient(circle at 14% 18%, rgba(255,224,142,0.14) 0 1.2px, transparent 2.8px),
+    radial-gradient(circle at 62% 42%, rgba(8,4,2,0.38) 0 2px, transparent 4.6px),
+    radial-gradient(circle at 81% 68%, rgba(234,179,88,0.1) 0 1.2px, transparent 2.9px),
+    radial-gradient(circle at 36% 58%, rgba(7,4,2,0.32) 0 2.4px, transparent 5.4px);
   --mystery-heading-gradient:
-    radial-gradient(ellipse 42% 58% at 17% 28%, rgba(226,181,93,0.72) 0 18%, rgba(101,57,19,0.54) 19% 34%, transparent 52%),
-    radial-gradient(ellipse 46% 44% at 78% 62%, rgba(13,5,1,0.98) 0 20%, rgba(77,34,10,0.66) 21% 39%, transparent 58%),
-    radial-gradient(ellipse 36% 48% at 39% 42%, rgba(58,25,6,0.94) 0 22%, rgba(174,106,39,0.46) 23% 42%, transparent 60%),
-    radial-gradient(ellipse 34% 40% at 63% 15%, rgba(222,165,76,0.46) 0 18%, transparent 44%),
-    radial-gradient(ellipse 38% 44% at 31% 74%, rgba(10,4,1,0.95) 0 19%, rgba(88,45,15,0.58) 20% 40%, transparent 60%),
-    radial-gradient(ellipse 30% 36% at 88% 32%, rgba(218,169,91,0.36) 0 16%, transparent 42%),
-    linear-gradient(103deg, rgba(19,8,2,0.98) 0 12%, transparent 13% 17%, rgba(255,232,149,0.42) 18% 23%, rgba(67,28,7,0.76) 24% 31%, transparent 32% 45%, rgba(22,8,2,0.96) 46% 55%, transparent 56% 100%),
-    repeating-conic-gradient(from 12deg at 46% 52%, rgba(255,235,164,0.1) 0deg 4deg, rgba(38,16,4,0.28) 5deg 10deg, transparent 11deg 24deg),
-    linear-gradient(180deg, #d7aa56 0%, #a86b2a 17%, #553015 36%, #170802 51%, #7d3f18 68%, #bd8e44 100%);
+    radial-gradient(ellipse at 18% 28%, rgba(222,187,116,0.76) 0 10%, transparent 22%),
+    radial-gradient(ellipse at 74% 56%, rgba(13,6,2,0.98) 0 16%, transparent 31%),
+    linear-gradient(101deg, rgba(21,10,4,0.96) 0 9%, transparent 10% 16%, rgba(211,166,94,0.48) 17% 22%, rgba(60,28,10,0.78) 23% 31%, transparent 32% 44%, rgba(18,8,3,0.94) 45% 53%, transparent 54% 100%),
+    linear-gradient(180deg, rgba(212,176,107,0.86) 0%, rgba(157,106,49,0.78) 16%, rgba(71,48,25,0.82) 35%, rgba(18,7,4,0.88) 51%, rgba(107,54,21,0.8) 69%, rgba(192,139,62,0.84) 100%),
+    url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
   --mystery-heading-text-fill:transparent;
   --mystery-heading-shadow:
-    0 1px 0 rgba(255,238,174,0.28),
+    0 1px 0 rgba(218,166,82,0.24),
     0 2px 0 rgba(87,44,17,0.92),
     0 8px 18px rgba(0,0,0,0.72),
     0 0 28px rgba(245,178,70,0.24);
   --mystery-heading-filter:drop-shadow(0 1px 0 rgba(24,15,7,0.8));
   --mystery-heading-weathering:
-    radial-gradient(circle at 9% 28%, rgba(6,2,1,0.98) 0 12px, transparent 18px),
-    radial-gradient(circle at 36% 72%, rgba(218,172,88,0.54) 0 5px, transparent 8.4px),
-    radial-gradient(circle at 66% 35%, rgba(7,2,1,0.98) 0 11px, transparent 17px),
-    radial-gradient(circle at 82% 18%, rgba(216,165,85,0.46) 0 4px, transparent 7.6px),
-    radial-gradient(circle at 27% 54%, rgba(21,7,2,0.98) 0 10px, transparent 16px),
-    radial-gradient(circle at 54% 80%, rgba(211,155,70,0.4) 0 4px, transparent 7px),
-    radial-gradient(ellipse 46% 20% at 48% 47%, rgba(6,2,1,0.92) 0 26%, transparent 52%),
-    linear-gradient(17deg, transparent 0 43%, rgba(5,2,1,0.96) 43.92% 45.42%, rgba(213,158,76,0.2) 45.52% 45.8%, transparent 46.12%),
-    linear-gradient(153deg, transparent 0 60%, rgba(6,2,1,0.9) 60.92% 61.9%, rgba(211,165,91,0.18) 62.02% 62.22%, transparent 62.52%),
-    repeating-linear-gradient(101deg, rgba(8,3,1,0.82) 0 1.4px, transparent 1.4px 5.6px),
-    repeating-linear-gradient(7deg, rgba(210,157,80,0.26) 0 1px, transparent 1px 7px),
-    repeating-linear-gradient(174deg, transparent 0 5px, rgba(7,3,1,0.76) 6px 12px, transparent 13px 20px);
-  --mystery-heading-texture-size:136px 104px, 150px 112px, 144px 110px, 132px 98px, 152px 112px, 118px 92px, 180px 94px, 210px 132px, 190px 118px, 88px 66px, 78px 58px, 136px 88px, 240px 166px, 260px 182px, 248px 176px, 230px 160px, 238px 168px, 220px 154px, auto, 320px 230px, auto;
+    radial-gradient(circle at 9% 28%, rgba(4,1,0,1) 0 15px, transparent 22px),
+    radial-gradient(circle at 36% 72%, rgba(225,182,103,0.62) 0 5px, transparent 9px),
+    radial-gradient(circle at 66% 35%, rgba(5,1,0,1) 0 14px, transparent 21px),
+    radial-gradient(circle at 82% 18%, rgba(220,166,82,0.5) 0 5px, transparent 8px),
+    radial-gradient(circle at 27% 54%, rgba(10,3,1,0.98) 0 13px, transparent 20px),
+    radial-gradient(circle at 54% 80%, rgba(215,158,72,0.45) 0 5px, transparent 8px),
+    radial-gradient(circle at 91% 62%, rgba(4,1,0,0.96) 0 11px, transparent 18px),
+    radial-gradient(ellipse 50% 20% at 48% 47%, rgba(4,1,0,0.94) 0 28%, transparent 54%),
+    linear-gradient(17deg, transparent 0 43%, rgba(4,1,0,0.98) 43.8% 45.58%, rgba(211,158,79,0.22) 45.68% 45.95%, transparent 46.2%),
+    linear-gradient(153deg, transparent 0 60%, rgba(5,2,1,0.92) 60.8% 62.08%, rgba(209,157,80,0.2) 62.2% 62.42%, transparent 62.72%),
+    repeating-linear-gradient(101deg, rgba(6,2,1,0.88) 0 1.8px, transparent 1.8px 6.2px),
+    repeating-linear-gradient(7deg, rgba(214,160,82,0.28) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(174deg, transparent 0 4px, rgba(5,2,1,0.8) 5px 13px, transparent 14px 20px);
+  --mystery-heading-texture-size:136px 104px, 150px 112px, 144px 110px, 132px 98px, 152px 112px, 118px 92px, 128px 86px, 180px 94px, 210px 132px, 190px 118px, 88px 66px, 78px 58px, 136px 88px, 220px 150px, 260px 178px, 172px 120px, auto, 900px 620px;
   --mystery-heading-ambient:
     radial-gradient(ellipse at 28% 50%, rgba(245,188,74,0.2), transparent 58%),
     radial-gradient(ellipse at 6% 68%, rgba(27,17,8,0.42), transparent 44%),
@@ -152,12 +134,12 @@ body.kandahar-theme{
     0 0 26px rgba(242,181,74,0.18),
     0 -1px 8px rgba(214,160,78,0.1);
   --mystery-heading-level-2-shadow:
-    0 1px 0 rgba(255,238,174,0.38),
+    0 1px 0 rgba(214,164,78,0.28),
     0 2px 0 rgba(94,48,18,0.92),
     0 8px 18px rgba(0,0,0,0.68),
     0 0 28px rgba(217,148,53,0.24);
   --mystery-heading-level-3-shadow:
-    0 1px 0 rgba(255,228,150,0.22),
+    0 1px 0 rgba(212,157,74,0.2),
     0 2px 10px rgba(0,0,0,0.64);
   --mystery-divider:
     linear-gradient(90deg, rgba(240,189,80,0), rgba(73,42,16,0.75) 16%, rgba(255,220,127,0.96) 45%, rgba(181,82,50,0.54) 60%, rgba(73,42,16,0.76) 84%, rgba(240,189,80,0));
@@ -207,17 +189,13 @@ body.kandahar-theme{
     linear-gradient(158deg, transparent 0 55%, rgba(96,47,24,0.4) 55.3% 100%);
   --mystery-faq-heading:#f4d276;
   --mystery-hero-bg-color:#17110a;
-  --mystery-hero-position:center, center, center, center, center, center, center, right -2% center;
-  --mystery-hero-size:cover, cover, cover, cover, cover, cover, cover, auto 108%;
+  --mystery-hero-position:center, left center, left center, right -1% center;
+  --mystery-hero-size:cover, cover, cover, auto 108%;
   --mystery-hero-shadow:inset 0 -48px 86px rgba(25,18,11,0.72);
-  --mystery-hero-overlay:linear-gradient(180deg, rgba(34,42,38,0.02), rgba(91,54,23,0.08) 45%, rgba(16,10,5,0.86) 100%);
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(7,5,3,0.02), rgba(9,6,3,0.12) 48%, rgba(7,4,2,0.88) 100%);
   --mystery-hero-side-overlay:
-    linear-gradient(90deg, rgba(6,5,3,0.99) 0 54%, rgba(16,11,7,0.76) 63%, rgba(15,11,8,0.18) 80%),
-    linear-gradient(128deg, rgba(47,30,14,0.64) 0 18%, rgba(8,5,2,0.86) 18.2% 30%, rgba(117,67,24,0.22) 30.2% 42%, transparent 42.3% 100%),
-    linear-gradient(74deg, transparent 0 12%, rgba(148,88,34,0.18) 12.2% 24%, rgba(9,5,2,0.7) 24.2% 35%, transparent 35.4% 100%),
-    linear-gradient(156deg, transparent 0 44%, rgba(5,3,1,0.84) 44.12% 44.86%, rgba(230,168,72,0.12) 44.98% 45.18%, transparent 45.5%),
-    linear-gradient(28deg, rgba(8,5,3,0.58) 0 22%, transparent 22.4% 48%, rgba(43,29,15,0.42) 48.2% 57%, transparent 57.4%),
-    linear-gradient(90deg, rgba(9,7,5,0.9), rgba(26,19,12,0.24) 42%, rgba(14,11,8,0.2));
+    linear-gradient(90deg, rgba(6,4,2,0.34) 0 48%, rgba(9,6,3,0.1) 62%, rgba(7,4,2,0.48) 100%),
+    url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
@@ -232,6 +210,12 @@ body{
   line-height:1.7;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+}
+body.kandahar-theme{
+  background-color:#100b06;
+  background-position:center top, center top, center top, center;
+  background-repeat:no-repeat;
+  background-size:cover, cover, cover, auto;
 }
 body::before{
   content:"";
@@ -342,6 +326,15 @@ header{ padding:30px 0 0; }
   background-size:var(--mystery-hero-size);
   box-shadow:var(--mystery-hero-shadow);
 }
+body.kandahar-theme .mystery-hero.has-art{
+  background-image:
+    var(--mystery-hero-overlay),
+    linear-gradient(90deg, rgba(6,4,2,0.74) 0 48%, rgba(9,6,3,0.04) 63%, rgba(5,3,1,0.2) 100%),
+    var(--hero-image),
+    url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
+  background-position:center, center, right -1% center, left center;
+  background-size:cover, cover, auto 108%, cover;
+}
 .mystery-hero::before{
   content:"";
   position:absolute;
@@ -354,20 +347,15 @@ header{ padding:30px 0 0; }
 }
 body.kandahar-theme .mystery-hero::before{
   background:
-    linear-gradient(180deg, rgba(65,43,20,0.02), rgba(17,10,4,0.32) 68%, rgba(6,4,2,0.78)),
-    linear-gradient(118deg, rgba(70,45,20,0.38) 0 13%, rgba(8,5,2,0.62) 13.2% 22%, transparent 22.3% 100%),
-    linear-gradient(148deg, transparent 0 18%, rgba(98,58,21,0.24) 18.2% 31%, rgba(5,3,1,0.76) 31.2% 39%, transparent 39.3% 100%),
-    linear-gradient(52deg, transparent 0 35%, rgba(143,82,29,0.16) 35.1% 47%, rgba(10,6,2,0.64) 47.2% 55%, transparent 55.3% 100%),
-    linear-gradient(161deg, transparent 0 24%, rgba(5,3,1,0.82) 24.08% 24.88%, rgba(227,166,69,0.13) 25% 25.22%, transparent 25.56% 46%, rgba(6,3,1,0.72) 46.08% 46.54%, transparent 46.88%),
-    linear-gradient(28deg, transparent 0 53%, rgba(5,3,1,0.74) 53.06% 53.86%, rgba(232,174,82,0.11) 53.98% 54.16%, transparent 54.48%),
-    linear-gradient(107deg, transparent 0 69%, rgba(8,4,1,0.62) 69.08% 69.62%, rgba(225,165,72,0.1) 69.72% 69.9%, transparent 70.18%),
+    linear-gradient(180deg, rgba(66,43,20,0.02), rgba(17,10,4,0.24) 68%, rgba(6,4,2,0.82)),
+    linear-gradient(90deg, rgba(5,3,1,0.46), rgba(8,5,2,0.04) 54%, rgba(5,3,1,0.28)),
     radial-gradient(circle at 18% 24%, rgba(255,225,148,0.08) 0 1.8px, transparent 3.8px),
     radial-gradient(circle at 39% 55%, rgba(5,3,1,0.36) 0 3.2px, transparent 6.4px),
     radial-gradient(circle at 72% 66%, rgba(255,210,124,0.06) 0 2.2px, transparent 4.8px),
-    repeating-linear-gradient(96deg, rgba(255,232,168,0.035) 0 1px, transparent 1px 11px);
-  background-size:auto, auto, auto, auto, auto, auto, auto, 116px 86px, 152px 118px, 132px 100px, auto;
+    radial-gradient(ellipse at 28% 50%, rgba(7,3,1,0.28), transparent 42%);
+  background-size:auto, auto, 157px 113px, 211px 167px, 181px 139px, auto;
   mix-blend-mode:normal;
-  opacity:0.82;
+  opacity:0.62;
   z-index:0;
 }
 .mystery-hero::after{
@@ -440,7 +428,10 @@ body.kandahar-theme .mystery-hero::before{
 body.kandahar-theme .mystery-hero h1,
 body.kandahar-theme .section h2,
 body.kandahar-theme .question-title h2{
-  -webkit-text-stroke:0.45px rgba(255,238,180,0.2);
+  -webkit-text-stroke:0.55px rgba(78,42,17,0.48);
+}
+body.kandahar-theme .mystery-hero h1{
+  filter:var(--mystery-heading-filter) contrast(1.18);
 }
 body.kandahar-theme .mystery-hero h1::before,
 body.kandahar-theme .section h2::before,
@@ -460,6 +451,21 @@ body.kandahar-theme .mystery-hero h1::before{
     radial-gradient(ellipse at 32% 58%, rgba(255,201,92,0.22), transparent 54%),
     linear-gradient(90deg, rgba(40,25,11,0.88), rgba(54,34,16,0.18) 62%, transparent);
   filter:blur(12px);
+}
+body.kandahar-theme .mystery-hero.has-art::after{
+  display:block;
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  width:auto;
+  height:auto;
+  clip-path:none;
+  background:
+    linear-gradient(90deg, transparent 0 55%, rgba(7,4,2,0.74) 64%, rgba(7,4,2,0.1) 76%, transparent 100%),
+    linear-gradient(180deg, rgba(7,4,2,0.56), transparent 24%, transparent 68%, rgba(7,4,2,0.76));
+  opacity:0.66;
 }
 .mystery-hero h1::after,
 .section h2::after,
@@ -501,22 +507,27 @@ body.kandahar-theme .section::before{
   z-index:-1;
   pointer-events:none;
   background:
-    linear-gradient(119deg, rgba(65,41,18,0.28) 0 14%, rgba(8,4,1,0.5) 14.2% 22%, transparent 22.3% 100%),
-    linear-gradient(74deg, transparent 0 24%, rgba(102,61,24,0.2) 24.2% 36%, rgba(7,4,1,0.42) 36.2% 44%, transparent 44.3% 100%),
-    linear-gradient(147deg, transparent 0 51%, rgba(8,4,1,0.48) 51.12% 51.72%, rgba(232,174,82,0.08) 51.86% 52.02%, transparent 52.34%),
+    linear-gradient(180deg, rgba(7,5,3,0.5), rgba(8,5,3,0.24) 46%, rgba(7,4,2,0.68)),
+    linear-gradient(90deg, rgba(4,3,2,0.6), rgba(10,7,4,0.12) 50%, rgba(4,3,2,0.62)),
+    url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg'),
     radial-gradient(circle at 18% 24%, rgba(255,231,167,0.04) 0 1.4px, transparent 3px),
     radial-gradient(circle at 44% 52%, rgba(7,3,1,0.22) 0 2.4px, transparent 5.2px),
     radial-gradient(circle at 78% 68%, rgba(255,218,134,0.035) 0 1.6px, transparent 3.4px);
-  opacity:0.92;
+  background-position:center top, center top, center top, center;
+  background-repeat:no-repeat;
+  background-size:cover, cover, cover, 173px 131px, 241px 193px, 197px 149px;
+  opacity:0.55;
 }
 body.kandahar-theme .section:nth-of-type(odd)::before{
   background:
-    linear-gradient(127deg, transparent 0 16%, rgba(8,5,2,0.44) 16.1% 28%, rgba(87,57,31,0.18) 28.2% 39%, transparent 39.3%),
-    linear-gradient(61deg, rgba(6,3,1,0.36) 0 19%, rgba(116,70,28,0.14) 19.2% 34%, transparent 34.3% 100%),
-    linear-gradient(174deg, transparent 0 58%, rgba(255,222,141,0.08) 58.1% 62%, transparent 62.3%),
-    linear-gradient(29deg, transparent 0 42%, rgba(9,4,1,0.44) 42.12% 42.72%, rgba(235,178,84,0.07) 42.85% 43.02%, transparent 43.32%),
+    linear-gradient(180deg, rgba(7,5,3,0.6), rgba(17,10,4,0.24) 50%, rgba(6,4,2,0.74)),
+    linear-gradient(90deg, rgba(3,2,1,0.52), rgba(73,43,18,0.12) 42%, rgba(3,2,1,0.58)),
+    url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg'),
     radial-gradient(circle at 22% 36%, rgba(255,226,151,0.035) 0 1.4px, transparent 3px),
     radial-gradient(circle at 64% 66%, rgba(7,3,1,0.18) 0 2.2px, transparent 5px);
+  background-position:center top, center top, center 34%, center;
+  background-repeat:no-repeat;
+  background-size:cover, cover, cover, 199px 151px, 263px 211px;
 }
 .question-title h2{
   font-family:'Cinzel', serif;
@@ -873,9 +884,9 @@ footer{
   .comparison-grid,
   .related-grid{ grid-template-columns:1fr; }
   .mystery-hero::after{ width:52vw; opacity:0.42; }
-  .mystery-hero.kandahar-hero{
-    background-position:center, center, center, center, center, center, center, center top;
-    background-size:cover, cover, cover, cover, cover, cover, cover, auto 78%;
+  body.kandahar-theme .mystery-hero.has-art{
+    background-position:center, center, center top, left center;
+    background-size:cover, cover, auto 78%, cover;
     box-shadow:inset 0 -42px 72px rgba(25,18,11,0.72);
   }
 }
@@ -908,12 +919,13 @@ footer{
   .video-frame.portrait{ max-height:none; }
   .faq details{ padding:16px 18px; }
   body.kandahar-theme{
-    --mystery-heading-texture-size:76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 150px 104px, 164px 114px, 156px 110px, 146px 102px, 150px 106px, 140px 98px, auto, 196px 142px, auto;
+    --mystery-heading-texture-size:76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 80px 54px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 150px 104px, 164px 114px, 116px 82px, auto, 560px 390px;
+    background-size:cover, cover, auto 140vh, auto;
   }
   body.kandahar-theme .mystery-hero h1,
   body.kandahar-theme .section h2,
   body.kandahar-theme .question-title h2{
-    -webkit-text-stroke:0.32px rgba(255,238,180,0.18);
+    -webkit-text-stroke:0.38px rgba(78,42,17,0.42);
   }
   body.kandahar-theme .mystery-hero h1::before,
   body.kandahar-theme .section h2::before,
@@ -925,8 +937,8 @@ footer{
   .wrap{ padding:0 14px; }
   .nav-links{ gap:12px 14px; }
   .mystery-hero h1{ font-size:2.1rem; }
-  .mystery-hero.kandahar-hero{
-    background-size:cover, cover, cover, cover, cover, cover, cover, auto 74%;
+  body.kandahar-theme .mystery-hero.has-art{
+    background-size:cover, cover, auto 74%, cover;
   }
   .kandahar-hero .hero-inner{
     padding-top:372px;
