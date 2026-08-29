@@ -77,10 +77,7 @@ body.kandahar-theme{
   --mystery-muted:#d1c2a0;
   --mystery-border:rgba(240,189,80,0.24);
   --mystery-border-strong:rgba(240,189,80,0.46);
-  --kandahar-rock-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='240' viewBox='0 0 360 240'%3E%3Cfilter id='stone'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.018 0.052' numOctaves='5' seed='37'/%3E%3CfeColorMatrix type='matrix' values='0.18 0.18 0.18 0 0.025 0.14 0.14 0.14 0 0.018 0.09 0.09 0.09 0 0.01 0 0 0 0.24 0'/%3E%3C/filter%3E%3Crect width='360' height='240' filter='url(%23stone)'/%3E%3C/svg%3E");
-  --kandahar-letter-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='180' viewBox='0 0 260 180'%3E%3Cfilter id='letter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035 0.075' numOctaves='4' seed='19'/%3E%3CfeColorMatrix type='matrix' values='0.28 0.28 0.28 0 0.018 0.2 0.2 0.2 0 0.012 0.11 0.11 0.11 0 0.006 0 0 0 0.58 0'/%3E%3C/filter%3E%3Crect width='260' height='180' filter='url(%23letter)'/%3E%3C/svg%3E");
   --mystery-background:
-    var(--kandahar-rock-noise),
     linear-gradient(122deg, rgba(84,55,25,0.46) 0 12%, rgba(9,5,2,0.62) 12.2% 21%, transparent 21.3% 100%),
     linear-gradient(73deg, transparent 0 18%, rgba(135,78,28,0.24) 18.2% 30%, rgba(14,8,3,0.56) 30.2% 41%, transparent 41.3% 100%),
     linear-gradient(151deg, transparent 0 41%, rgba(5,3,1,0.68) 41.1% 49%, rgba(93,56,23,0.26) 49.2% 61%, transparent 61.3% 100%),
@@ -100,26 +97,25 @@ body.kandahar-theme{
     linear-gradient(164deg, transparent 0 32%, rgba(8,4,1,0.38) 32.08% 32.38%, transparent 32.7%),
     linear-gradient(31deg, transparent 0 66%, rgba(41,48,35,0.18) 66.18% 100%);
   --mystery-texture:
-    radial-gradient(circle at 14% 18%, rgba(255,229,158,0.26) 0 1.7px, transparent 3px),
-    radial-gradient(circle at 62% 42%, rgba(13,7,3,0.62) 0 2.6px, transparent 4.8px),
-    radial-gradient(circle at 81% 68%, rgba(234,179,88,0.18) 0 1.7px, transparent 3.2px),
-    radial-gradient(circle at 36% 58%, rgba(7,4,2,0.5) 0 3px, transparent 5.8px),
-    radial-gradient(ellipse at 28% 76%, rgba(9,5,2,0.44), transparent 20%),
-    radial-gradient(ellipse at 84% 22%, rgba(255,220,135,0.14), transparent 18%),
+    radial-gradient(circle at 14% 18%, rgba(255,229,158,0.2) 0 1.3px, transparent 2.8px),
+    radial-gradient(circle at 62% 42%, rgba(13,7,3,0.52) 0 2.2px, transparent 4.6px),
+    radial-gradient(circle at 81% 68%, rgba(234,179,88,0.14) 0 1.3px, transparent 2.9px),
+    radial-gradient(circle at 36% 58%, rgba(7,4,2,0.42) 0 2.6px, transparent 5.4px),
+    linear-gradient(117deg, transparent 0 23%, rgba(255,218,137,0.045) 23.08% 23.2%, transparent 23.36%),
+    linear-gradient(44deg, transparent 0 73%, rgba(5,3,1,0.18) 73.08% 73.32%, transparent 73.56%),
     linear-gradient(151deg, transparent 0 47%, rgba(15,8,3,0.48) 47.16% 47.52%, rgba(255,223,142,0.1) 47.6% 47.78%, transparent 48%),
     linear-gradient(62deg, transparent 0 28%, rgba(6,3,1,0.38) 28.12% 28.42%, transparent 28.62%),
     linear-gradient(116deg, transparent 0 72%, rgba(230,172,82,0.08) 72.1% 72.28%, rgba(7,4,2,0.44) 72.34% 72.68%, transparent 72.88%);
   --mystery-heading-gradient:
-    var(--kandahar-letter-noise),
-    radial-gradient(ellipse 42% 58% at 17% 28%, rgba(255,238,178,0.78) 0 18%, rgba(101,57,19,0.48) 19% 34%, transparent 52%),
+    radial-gradient(ellipse 42% 58% at 17% 28%, rgba(226,181,93,0.72) 0 18%, rgba(101,57,19,0.54) 19% 34%, transparent 52%),
     radial-gradient(ellipse 46% 44% at 78% 62%, rgba(13,5,1,0.98) 0 20%, rgba(77,34,10,0.66) 21% 39%, transparent 58%),
     radial-gradient(ellipse 36% 48% at 39% 42%, rgba(58,25,6,0.94) 0 22%, rgba(174,106,39,0.46) 23% 42%, transparent 60%),
-    radial-gradient(ellipse 34% 40% at 63% 15%, rgba(255,219,127,0.5) 0 18%, transparent 44%),
+    radial-gradient(ellipse 34% 40% at 63% 15%, rgba(222,165,76,0.46) 0 18%, transparent 44%),
     radial-gradient(ellipse 38% 44% at 31% 74%, rgba(10,4,1,0.95) 0 19%, rgba(88,45,15,0.58) 20% 40%, transparent 60%),
-    radial-gradient(ellipse 30% 36% at 88% 32%, rgba(255,232,164,0.42) 0 16%, transparent 42%),
+    radial-gradient(ellipse 30% 36% at 88% 32%, rgba(218,169,91,0.36) 0 16%, transparent 42%),
     linear-gradient(103deg, rgba(19,8,2,0.98) 0 12%, transparent 13% 17%, rgba(255,232,149,0.42) 18% 23%, rgba(67,28,7,0.76) 24% 31%, transparent 32% 45%, rgba(22,8,2,0.96) 46% 55%, transparent 56% 100%),
     repeating-conic-gradient(from 12deg at 46% 52%, rgba(255,235,164,0.1) 0deg 4deg, rgba(38,16,4,0.28) 5deg 10deg, transparent 11deg 24deg),
-    linear-gradient(180deg, #e7c474 0%, #aa6d2b 17%, #553015 36%, #170802 51%, #7d3f18 68%, #c9a35d 100%);
+    linear-gradient(180deg, #d7aa56 0%, #a86b2a 17%, #553015 36%, #170802 51%, #7d3f18 68%, #bd8e44 100%);
   --mystery-heading-text-fill:transparent;
   --mystery-heading-shadow:
     0 1px 0 rgba(255,238,174,0.28),
@@ -129,18 +125,18 @@ body.kandahar-theme{
   --mystery-heading-filter:drop-shadow(0 1px 0 rgba(24,15,7,0.8));
   --mystery-heading-weathering:
     radial-gradient(circle at 9% 28%, rgba(6,2,1,0.98) 0 12px, transparent 18px),
-    radial-gradient(circle at 36% 72%, rgba(255,235,158,0.62) 0 5px, transparent 8.4px),
+    radial-gradient(circle at 36% 72%, rgba(218,172,88,0.54) 0 5px, transparent 8.4px),
     radial-gradient(circle at 66% 35%, rgba(7,2,1,0.98) 0 11px, transparent 17px),
-    radial-gradient(circle at 82% 18%, rgba(255,235,164,0.5) 0 4px, transparent 7.6px),
+    radial-gradient(circle at 82% 18%, rgba(216,165,85,0.46) 0 4px, transparent 7.6px),
     radial-gradient(circle at 27% 54%, rgba(21,7,2,0.98) 0 10px, transparent 16px),
-    radial-gradient(circle at 54% 80%, rgba(244,204,119,0.44) 0 4px, transparent 7px),
+    radial-gradient(circle at 54% 80%, rgba(211,155,70,0.4) 0 4px, transparent 7px),
     radial-gradient(ellipse 46% 20% at 48% 47%, rgba(6,2,1,0.92) 0 26%, transparent 52%),
-    linear-gradient(17deg, transparent 0 43%, rgba(5,2,1,0.96) 43.92% 45.42%, rgba(255,227,144,0.22) 45.52% 45.8%, transparent 46.12%),
-    linear-gradient(153deg, transparent 0 60%, rgba(6,2,1,0.9) 60.92% 61.9%, rgba(255,232,170,0.2) 62.02% 62.22%, transparent 62.52%),
+    linear-gradient(17deg, transparent 0 43%, rgba(5,2,1,0.96) 43.92% 45.42%, rgba(213,158,76,0.2) 45.52% 45.8%, transparent 46.12%),
+    linear-gradient(153deg, transparent 0 60%, rgba(6,2,1,0.9) 60.92% 61.9%, rgba(211,165,91,0.18) 62.02% 62.22%, transparent 62.52%),
     repeating-linear-gradient(101deg, rgba(8,3,1,0.82) 0 1.4px, transparent 1.4px 5.6px),
-    repeating-linear-gradient(7deg, rgba(255,226,151,0.28) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(7deg, rgba(210,157,80,0.26) 0 1px, transparent 1px 7px),
     repeating-linear-gradient(174deg, transparent 0 5px, rgba(7,3,1,0.76) 6px 12px, transparent 13px 20px);
-  --mystery-heading-texture-size:136px 104px, 150px 112px, 144px 110px, 132px 98px, 152px 112px, 118px 92px, 180px 94px, 210px 132px, 190px 118px, 88px 66px, 78px 58px, 136px 88px, 260px 180px, 240px 166px, 260px 182px, 248px 176px, 230px 160px, 238px 168px, 220px 154px, auto, 320px 230px, auto;
+  --mystery-heading-texture-size:136px 104px, 150px 112px, 144px 110px, 132px 98px, 152px 112px, 118px 92px, 180px 94px, 210px 132px, 190px 118px, 88px 66px, 78px 58px, 136px 88px, 240px 166px, 260px 182px, 248px 176px, 230px 160px, 238px 168px, 220px 154px, auto, 320px 230px, auto;
   --mystery-heading-ambient:
     radial-gradient(ellipse at 28% 50%, rgba(245,188,74,0.2), transparent 58%),
     radial-gradient(ellipse at 6% 68%, rgba(27,17,8,0.42), transparent 44%),
@@ -149,12 +145,12 @@ body.kandahar-theme{
   --mystery-heading-divider-detail:
     repeating-linear-gradient(90deg, transparent 0 18px, rgba(48,28,11,0.72) 18px 21px, transparent 21px 30px);
   --mystery-heading-level-1-shadow:
-    0 1px 0 rgba(255,238,174,0.32),
+    0 1px 0 rgba(225,177,91,0.28),
     0 3px 0 rgba(103,53,20,0.98),
     0 7px 0 rgba(35,20,9,0.86),
     0 16px 24px rgba(0,0,0,0.76),
     0 0 26px rgba(242,181,74,0.18),
-    0 -1px 9px rgba(255,225,139,0.12);
+    0 -1px 8px rgba(214,160,78,0.1);
   --mystery-heading-level-2-shadow:
     0 1px 0 rgba(255,238,174,0.38),
     0 2px 0 rgba(94,48,18,0.92),
@@ -211,8 +207,8 @@ body.kandahar-theme{
     linear-gradient(158deg, transparent 0 55%, rgba(96,47,24,0.4) 55.3% 100%);
   --mystery-faq-heading:#f4d276;
   --mystery-hero-bg-color:#17110a;
-  --mystery-hero-position:center, left top, center, center, center, center, center, center, right -2% center;
-  --mystery-hero-size:cover, cover, cover, cover, cover, cover, 360px 240px, cover, auto 108%;
+  --mystery-hero-position:center, center, center, center, center, center, center, right -2% center;
+  --mystery-hero-size:cover, cover, cover, cover, cover, cover, cover, auto 108%;
   --mystery-hero-shadow:inset 0 -48px 86px rgba(25,18,11,0.72);
   --mystery-hero-overlay:linear-gradient(180deg, rgba(34,42,38,0.02), rgba(91,54,23,0.08) 45%, rgba(16,10,5,0.86) 100%);
   --mystery-hero-side-overlay:
@@ -221,7 +217,6 @@ body.kandahar-theme{
     linear-gradient(74deg, transparent 0 12%, rgba(148,88,34,0.18) 12.2% 24%, rgba(9,5,2,0.7) 24.2% 35%, transparent 35.4% 100%),
     linear-gradient(156deg, transparent 0 44%, rgba(5,3,1,0.84) 44.12% 44.86%, rgba(230,168,72,0.12) 44.98% 45.18%, transparent 45.5%),
     linear-gradient(28deg, rgba(8,5,3,0.58) 0 22%, transparent 22.4% 48%, rgba(43,29,15,0.42) 48.2% 57%, transparent 57.4%),
-    var(--kandahar-rock-noise),
     linear-gradient(90deg, rgba(9,7,5,0.9), rgba(26,19,12,0.24) 42%, rgba(14,11,8,0.2));
 }
 
@@ -262,8 +257,8 @@ body.kandahar-theme::before{
 }
 body.kandahar-theme::after{
   mix-blend-mode:multiply;
-  opacity:0.72;
-  background-size:150px 112px, 210px 166px, 132px 104px, 280px 190px, 230px 168px, 360px 240px, auto, auto, auto;
+  opacity:0.58;
+  background-size:197px 149px, 281px 213px, 173px 137px, 421px 287px, 337px 251px, auto, auto, auto, auto;
 }
 a{ color:inherit; }
 .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
@@ -366,12 +361,11 @@ body.kandahar-theme .mystery-hero::before{
     linear-gradient(161deg, transparent 0 24%, rgba(5,3,1,0.82) 24.08% 24.88%, rgba(227,166,69,0.13) 25% 25.22%, transparent 25.56% 46%, rgba(6,3,1,0.72) 46.08% 46.54%, transparent 46.88%),
     linear-gradient(28deg, transparent 0 53%, rgba(5,3,1,0.74) 53.06% 53.86%, rgba(232,174,82,0.11) 53.98% 54.16%, transparent 54.48%),
     linear-gradient(107deg, transparent 0 69%, rgba(8,4,1,0.62) 69.08% 69.62%, rgba(225,165,72,0.1) 69.72% 69.9%, transparent 70.18%),
-    var(--kandahar-rock-noise),
     radial-gradient(circle at 18% 24%, rgba(255,225,148,0.08) 0 1.8px, transparent 3.8px),
     radial-gradient(circle at 39% 55%, rgba(5,3,1,0.36) 0 3.2px, transparent 6.4px),
     radial-gradient(circle at 72% 66%, rgba(255,210,124,0.06) 0 2.2px, transparent 4.8px),
     repeating-linear-gradient(96deg, rgba(255,232,168,0.035) 0 1px, transparent 1px 11px);
-  background-size:auto, auto, auto, auto, auto, auto, auto, 360px 240px, 116px 86px, 152px 118px, 132px 100px, auto;
+  background-size:auto, auto, auto, auto, auto, auto, auto, 116px 86px, 152px 118px, 132px 100px, auto;
   mix-blend-mode:normal;
   opacity:0.82;
   z-index:0;
@@ -880,8 +874,8 @@ footer{
   .related-grid{ grid-template-columns:1fr; }
   .mystery-hero::after{ width:52vw; opacity:0.42; }
   .mystery-hero.kandahar-hero{
-    background-position:center, left top, center, center, center, center, center, center, center top;
-    background-size:cover, cover, cover, cover, cover, cover, 300px 200px, cover, auto 78%;
+    background-position:center, center, center, center, center, center, center, center top;
+    background-size:cover, cover, cover, cover, cover, cover, cover, auto 78%;
     box-shadow:inset 0 -42px 72px rgba(25,18,11,0.72);
   }
 }
@@ -914,7 +908,7 @@ footer{
   .video-frame.portrait{ max-height:none; }
   .faq details{ padding:16px 18px; }
   body.kandahar-theme{
-    --mystery-heading-texture-size:76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 180px 124px, 150px 104px, 164px 114px, 156px 110px, 146px 102px, 150px 106px, 140px 98px, auto, 196px 142px, auto;
+    --mystery-heading-texture-size:76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 150px 104px, 164px 114px, 156px 110px, 146px 102px, 150px 106px, 140px 98px, auto, 196px 142px, auto;
   }
   body.kandahar-theme .mystery-hero h1,
   body.kandahar-theme .section h2,
@@ -932,7 +926,7 @@ footer{
   .nav-links{ gap:12px 14px; }
   .mystery-hero h1{ font-size:2.1rem; }
   .mystery-hero.kandahar-hero{
-    background-size:cover, cover, cover, cover, cover, cover, 260px 174px, cover, auto 74%;
+    background-size:cover, cover, cover, cover, cover, cover, cover, auto 74%;
   }
   .kandahar-hero .hero-inner{
     padding-top:372px;
