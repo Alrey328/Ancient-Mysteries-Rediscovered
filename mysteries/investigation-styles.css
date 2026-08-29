@@ -77,44 +77,49 @@ body.kandahar-theme{
   --mystery-muted:#d1c2a0;
   --mystery-border:rgba(240,189,80,0.24);
   --mystery-border-strong:rgba(240,189,80,0.46);
+  --kandahar-rock-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='240' viewBox='0 0 360 240'%3E%3Cfilter id='stone'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.018 0.052' numOctaves='5' seed='37'/%3E%3CfeColorMatrix type='matrix' values='0.18 0.18 0.18 0 0.025 0.14 0.14 0.14 0 0.018 0.09 0.09 0.09 0 0.01 0 0 0 0.24 0'/%3E%3C/filter%3E%3Crect width='360' height='240' filter='url(%23stone)'/%3E%3C/svg%3E");
+  --kandahar-letter-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='180' viewBox='0 0 260 180'%3E%3Cfilter id='letter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035 0.075' numOctaves='4' seed='19'/%3E%3CfeColorMatrix type='matrix' values='0.28 0.28 0.28 0 0.018 0.2 0.2 0.2 0 0.012 0.11 0.11 0.11 0 0.006 0 0 0 0.58 0'/%3E%3C/filter%3E%3Crect width='260' height='180' filter='url(%23letter)'/%3E%3C/svg%3E");
   --mystery-background:
-    linear-gradient(180deg, rgba(42,51,48,0.36), rgba(102,69,39,0.13) 30%, rgba(24,23,18,0.88) 72%, #100d08 100%),
-    conic-gradient(from 218deg at 22% 18%, rgba(241,190,97,0.22), rgba(71,54,32,0.2) 21%, rgba(14,10,6,0.3) 35%, rgba(150,99,50,0.18) 58%, rgba(39,45,35,0.28) 78%, rgba(241,190,97,0.12)),
-    conic-gradient(from 38deg at 82% 33%, rgba(13,9,5,0.44), rgba(105,75,43,0.22) 18%, rgba(221,158,72,0.12) 31%, rgba(31,41,34,0.26) 56%, rgba(12,9,5,0.34) 84%, rgba(13,9,5,0.44)),
-    radial-gradient(ellipse at 11% 6%, rgba(255,221,139,0.28), transparent 28%),
-    radial-gradient(ellipse at 78% 6%, rgba(91,112,104,0.28), transparent 34%),
-    radial-gradient(ellipse at 42% 48%, rgba(187,104,54,0.2), transparent 28%),
-    radial-gradient(ellipse at 14% 78%, rgba(13,8,4,0.54), transparent 34%),
-    linear-gradient(145deg, #514026 0%, #332e1c 31%, #23261c 52%, #120f09 100%);
+    var(--kandahar-rock-noise),
+    linear-gradient(122deg, rgba(84,55,25,0.46) 0 12%, rgba(9,5,2,0.62) 12.2% 21%, transparent 21.3% 100%),
+    linear-gradient(73deg, transparent 0 18%, rgba(135,78,28,0.24) 18.2% 30%, rgba(14,8,3,0.56) 30.2% 41%, transparent 41.3% 100%),
+    linear-gradient(151deg, transparent 0 41%, rgba(5,3,1,0.68) 41.1% 49%, rgba(93,56,23,0.26) 49.2% 61%, transparent 61.3% 100%),
+    linear-gradient(28deg, rgba(7,4,2,0.62) 0 18%, transparent 18.3% 44%, rgba(44,55,39,0.22) 44.2% 57%, transparent 57.4%),
+    linear-gradient(96deg, transparent 0 64%, rgba(3,2,1,0.58) 64.1% 72%, rgba(122,72,28,0.18) 72.2% 81%, transparent 81.3%),
+    linear-gradient(157deg, transparent 0 19%, rgba(5,3,1,0.86) 19.12% 19.62%, rgba(238,183,76,0.14) 19.74% 20.02%, transparent 20.34% 53%, rgba(11,6,2,0.76) 53.12% 53.74%, transparent 54.05%),
+    linear-gradient(33deg, transparent 0 38%, rgba(8,4,1,0.84) 38.1% 38.62%, rgba(226,168,70,0.12) 38.75% 38.98%, transparent 39.28%),
+    radial-gradient(circle at 14% 22%, rgba(255,226,153,0.09) 0 1.8px, transparent 3.6px),
+    radial-gradient(circle at 46% 48%, rgba(10,5,2,0.34) 0 3.4px, transparent 6.8px),
+    radial-gradient(circle at 83% 64%, rgba(255,214,127,0.07) 0 2.2px, transparent 4.8px),
+    linear-gradient(112deg, transparent 0 58%, rgba(5,3,1,0.58) 58.06% 58.34%, transparent 58.65%),
+    linear-gradient(145deg, #2e2214 0%, #241f13 31%, #1b2017 52%, #0d0a06 100%);
   --mystery-atmosphere:
-    linear-gradient(169deg, transparent 0 18%, rgba(18,11,5,0.34) 18.18% 18.55%, rgba(239,185,84,0.16) 18.62% 18.82%, transparent 19.05%),
-    linear-gradient(27deg, transparent 0 41%, rgba(13,8,4,0.42) 41.16% 41.55%, rgba(238,188,91,0.16) 41.64% 41.82%, transparent 42.02%),
-    linear-gradient(151deg, transparent 0 55%, rgba(25,15,7,0.42) 55.14% 55.5%, rgba(255,222,142,0.12) 55.58% 55.72%, transparent 55.94%),
-    radial-gradient(ellipse at 50% 8%, rgba(255,226,161,0.2), transparent 34%),
-    radial-gradient(ellipse at 74% 18%, rgba(117,139,144,0.16), transparent 30%),
-    radial-gradient(ellipse at 25% 70%, rgba(30,17,8,0.44), transparent 34%),
-    linear-gradient(150deg, transparent 0 58%, rgba(91,49,24,0.34) 58.2% 100%),
-    linear-gradient(28deg, transparent 0 64%, rgba(47,58,39,0.3) 64.2% 100%);
+    radial-gradient(ellipse 58% 42% at 50% 8%, rgba(255,226,161,0.12), transparent 38%),
+    radial-gradient(ellipse 48% 40% at 74% 18%, rgba(117,139,144,0.12), transparent 34%),
+    radial-gradient(ellipse 62% 54% at 25% 70%, rgba(18,10,4,0.48), transparent 48%),
+    linear-gradient(164deg, transparent 0 32%, rgba(8,4,1,0.38) 32.08% 32.38%, transparent 32.7%),
+    linear-gradient(31deg, transparent 0 66%, rgba(41,48,35,0.18) 66.18% 100%);
   --mystery-texture:
-    radial-gradient(circle at 14% 18%, rgba(255,229,158,0.2) 0 1.4px, transparent 2.6px),
-    radial-gradient(circle at 62% 42%, rgba(18,10,4,0.44) 0 2px, transparent 3.5px),
-    radial-gradient(circle at 81% 68%, rgba(234,179,88,0.14) 0 1.4px, transparent 2.6px),
-    radial-gradient(circle at 36% 58%, rgba(11,7,3,0.36) 0 2.4px, transparent 4.8px),
-    radial-gradient(ellipse at 28% 76%, rgba(14,8,3,0.34), transparent 22%),
-    radial-gradient(ellipse at 84% 22%, rgba(255,220,135,0.1), transparent 20%),
-    linear-gradient(151deg, transparent 0 47%, rgba(25,15,7,0.34) 47.16% 47.44%, rgba(255,223,142,0.08) 47.5% 47.66%, transparent 47.86%),
-    linear-gradient(62deg, transparent 0 28%, rgba(10,6,3,0.28) 28.12% 28.32%, transparent 28.5%),
-    linear-gradient(116deg, transparent 0 72%, rgba(230,172,82,0.06) 72.1% 72.24%, rgba(11,7,3,0.32) 72.3% 72.56%, transparent 72.75%);
+    radial-gradient(circle at 14% 18%, rgba(255,229,158,0.26) 0 1.7px, transparent 3px),
+    radial-gradient(circle at 62% 42%, rgba(13,7,3,0.62) 0 2.6px, transparent 4.8px),
+    radial-gradient(circle at 81% 68%, rgba(234,179,88,0.18) 0 1.7px, transparent 3.2px),
+    radial-gradient(circle at 36% 58%, rgba(7,4,2,0.5) 0 3px, transparent 5.8px),
+    radial-gradient(ellipse at 28% 76%, rgba(9,5,2,0.44), transparent 20%),
+    radial-gradient(ellipse at 84% 22%, rgba(255,220,135,0.14), transparent 18%),
+    linear-gradient(151deg, transparent 0 47%, rgba(15,8,3,0.48) 47.16% 47.52%, rgba(255,223,142,0.1) 47.6% 47.78%, transparent 48%),
+    linear-gradient(62deg, transparent 0 28%, rgba(6,3,1,0.38) 28.12% 28.42%, transparent 28.62%),
+    linear-gradient(116deg, transparent 0 72%, rgba(230,172,82,0.08) 72.1% 72.28%, rgba(7,4,2,0.44) 72.34% 72.68%, transparent 72.88%);
   --mystery-heading-gradient:
-    radial-gradient(circle at 19% 22%, rgba(255,250,215,0.98) 0 4.6px, transparent 6.8px),
-    radial-gradient(circle at 76% 63%, rgba(20,10,3,0.96) 0 6.4px, transparent 8.8px),
-    radial-gradient(circle at 42% 36%, rgba(75,39,13,0.82) 0 5.2px, transparent 8px),
-    radial-gradient(circle at 61% 16%, rgba(255,238,170,0.54) 0 3.4px, transparent 5.8px),
-    radial-gradient(circle at 31% 66%, rgba(16,8,2,0.86) 0 4.8px, transparent 7.6px),
-    radial-gradient(circle at 88% 31%, rgba(255,239,182,0.46) 0 3px, transparent 5.6px),
-    radial-gradient(ellipse at 58% 78%, rgba(31,16,5,0.48), transparent 24%),
-    linear-gradient(96deg, rgba(34,18,6,0.82) 0 9%, transparent 10% 16%, rgba(255,238,171,0.5) 17% 21%, transparent 22% 39%, rgba(49,24,8,0.78) 40% 49%, transparent 50% 100%),
-    linear-gradient(180deg, #fff8d0 0%, #dec189 17%, #9b672f 37%, #2d1707 51%, #b8782d 69%, #f6df9a 100%);
+    var(--kandahar-letter-noise),
+    radial-gradient(ellipse 42% 58% at 17% 28%, rgba(255,238,178,0.78) 0 18%, rgba(101,57,19,0.48) 19% 34%, transparent 52%),
+    radial-gradient(ellipse 46% 44% at 78% 62%, rgba(13,5,1,0.98) 0 20%, rgba(77,34,10,0.66) 21% 39%, transparent 58%),
+    radial-gradient(ellipse 36% 48% at 39% 42%, rgba(58,25,6,0.94) 0 22%, rgba(174,106,39,0.46) 23% 42%, transparent 60%),
+    radial-gradient(ellipse 34% 40% at 63% 15%, rgba(255,219,127,0.5) 0 18%, transparent 44%),
+    radial-gradient(ellipse 38% 44% at 31% 74%, rgba(10,4,1,0.95) 0 19%, rgba(88,45,15,0.58) 20% 40%, transparent 60%),
+    radial-gradient(ellipse 30% 36% at 88% 32%, rgba(255,232,164,0.42) 0 16%, transparent 42%),
+    linear-gradient(103deg, rgba(19,8,2,0.98) 0 12%, transparent 13% 17%, rgba(255,232,149,0.42) 18% 23%, rgba(67,28,7,0.76) 24% 31%, transparent 32% 45%, rgba(22,8,2,0.96) 46% 55%, transparent 56% 100%),
+    repeating-conic-gradient(from 12deg at 46% 52%, rgba(255,235,164,0.1) 0deg 4deg, rgba(38,16,4,0.28) 5deg 10deg, transparent 11deg 24deg),
+    linear-gradient(180deg, #e7c474 0%, #aa6d2b 17%, #553015 36%, #170802 51%, #7d3f18 68%, #c9a35d 100%);
   --mystery-heading-text-fill:transparent;
   --mystery-heading-shadow:
     0 1px 0 rgba(255,238,174,0.28),
@@ -123,18 +128,19 @@ body.kandahar-theme{
     0 0 28px rgba(245,178,70,0.24);
   --mystery-heading-filter:drop-shadow(0 1px 0 rgba(24,15,7,0.8));
   --mystery-heading-weathering:
-    radial-gradient(circle at 9% 28%, rgba(17,8,2,0.98) 0 5.2px, transparent 8px),
-    radial-gradient(circle at 36% 72%, rgba(255,235,164,0.74) 0 3.5px, transparent 5.8px),
-    radial-gradient(circle at 66% 35%, rgba(24,11,3,0.92) 0 4.6px, transparent 7px),
-    radial-gradient(circle at 82% 18%, rgba(255,246,204,0.58) 0 3px, transparent 5.2px),
-    radial-gradient(circle at 27% 54%, rgba(42,20,6,0.86) 0 4.2px, transparent 7.2px),
-    radial-gradient(circle at 54% 80%, rgba(255,232,150,0.52) 0 2.8px, transparent 5px),
-    linear-gradient(17deg, transparent 0 44%, rgba(14,6,2,0.72) 44.2% 44.92%, rgba(255,234,164,0.24) 45.02% 45.2%, transparent 45.38%),
-    linear-gradient(153deg, transparent 0 61%, rgba(18,8,2,0.58) 61.12% 61.42%, rgba(255,241,190,0.18) 61.5% 61.64%, transparent 61.88%),
-    repeating-linear-gradient(101deg, rgba(21,10,3,0.6) 0 1px, transparent 1px 6px),
-    repeating-linear-gradient(7deg, rgba(255,238,182,0.38) 0 1px, transparent 1px 10px),
-    repeating-linear-gradient(174deg, transparent 0 8px, rgba(18,8,2,0.52) 9px 12px, transparent 13px 24px);
-  --mystery-heading-texture-size:82px 62px, 102px 76px, 118px 90px, 84px 64px, 126px 92px, 96px 72px, 190px 120px, 172px 112px, 104px 78px, 96px 72px, 156px 100px, auto;
+    radial-gradient(circle at 9% 28%, rgba(6,2,1,0.98) 0 12px, transparent 18px),
+    radial-gradient(circle at 36% 72%, rgba(255,235,158,0.62) 0 5px, transparent 8.4px),
+    radial-gradient(circle at 66% 35%, rgba(7,2,1,0.98) 0 11px, transparent 17px),
+    radial-gradient(circle at 82% 18%, rgba(255,235,164,0.5) 0 4px, transparent 7.6px),
+    radial-gradient(circle at 27% 54%, rgba(21,7,2,0.98) 0 10px, transparent 16px),
+    radial-gradient(circle at 54% 80%, rgba(244,204,119,0.44) 0 4px, transparent 7px),
+    radial-gradient(ellipse 46% 20% at 48% 47%, rgba(6,2,1,0.92) 0 26%, transparent 52%),
+    linear-gradient(17deg, transparent 0 43%, rgba(5,2,1,0.96) 43.92% 45.42%, rgba(255,227,144,0.22) 45.52% 45.8%, transparent 46.12%),
+    linear-gradient(153deg, transparent 0 60%, rgba(6,2,1,0.9) 60.92% 61.9%, rgba(255,232,170,0.2) 62.02% 62.22%, transparent 62.52%),
+    repeating-linear-gradient(101deg, rgba(8,3,1,0.82) 0 1.4px, transparent 1.4px 5.6px),
+    repeating-linear-gradient(7deg, rgba(255,226,151,0.28) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(174deg, transparent 0 5px, rgba(7,3,1,0.76) 6px 12px, transparent 13px 20px);
+  --mystery-heading-texture-size:136px 104px, 150px 112px, 144px 110px, 132px 98px, 152px 112px, 118px 92px, 180px 94px, 210px 132px, 190px 118px, 88px 66px, 78px 58px, 136px 88px, 260px 180px, 240px 166px, 260px 182px, 248px 176px, 230px 160px, 238px 168px, 220px 154px, auto, 320px 230px, auto;
   --mystery-heading-ambient:
     radial-gradient(ellipse at 28% 50%, rgba(245,188,74,0.2), transparent 58%),
     radial-gradient(ellipse at 6% 68%, rgba(27,17,8,0.42), transparent 44%),
@@ -143,12 +149,12 @@ body.kandahar-theme{
   --mystery-heading-divider-detail:
     repeating-linear-gradient(90deg, transparent 0 18px, rgba(48,28,11,0.72) 18px 21px, transparent 21px 30px);
   --mystery-heading-level-1-shadow:
-    0 1px 0 rgba(255,244,194,0.46),
+    0 1px 0 rgba(255,238,174,0.32),
     0 3px 0 rgba(103,53,20,0.98),
     0 7px 0 rgba(35,20,9,0.86),
     0 16px 24px rgba(0,0,0,0.76),
-    0 0 42px rgba(242,181,74,0.3),
-    0 -1px 14px rgba(255,225,139,0.18);
+    0 0 26px rgba(242,181,74,0.18),
+    0 -1px 9px rgba(255,225,139,0.12);
   --mystery-heading-level-2-shadow:
     0 1px 0 rgba(255,238,174,0.38),
     0 2px 0 rgba(94,48,18,0.92),
@@ -204,12 +210,19 @@ body.kandahar-theme{
     repeating-linear-gradient(165deg, rgba(255,226,151,0.05) 0 1px, transparent 1px 18px),
     linear-gradient(158deg, transparent 0 55%, rgba(96,47,24,0.4) 55.3% 100%);
   --mystery-faq-heading:#f4d276;
-  --mystery-hero-bg-color:#786241;
-  --mystery-hero-position:center, center, right -1% center;
-  --mystery-hero-size:cover, cover, auto 124%;
+  --mystery-hero-bg-color:#17110a;
+  --mystery-hero-position:center, left top, center, center, center, center, center, center, right -2% center;
+  --mystery-hero-size:cover, cover, cover, cover, cover, cover, 360px 240px, cover, auto 108%;
   --mystery-hero-shadow:inset 0 -48px 86px rgba(25,18,11,0.72);
-  --mystery-hero-overlay:linear-gradient(180deg, rgba(75,83,80,0.03), rgba(122,76,35,0.12) 48%, rgba(25,18,11,0.82) 100%);
-  --mystery-hero-side-overlay:linear-gradient(90deg, rgba(19,17,14,0.88), rgba(47,38,25,0.34) 38%, rgba(126,82,37,0.18) 62%, rgba(18,15,12,0.34));
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(34,42,38,0.02), rgba(91,54,23,0.08) 45%, rgba(16,10,5,0.86) 100%);
+  --mystery-hero-side-overlay:
+    linear-gradient(90deg, rgba(6,5,3,0.99) 0 54%, rgba(16,11,7,0.76) 63%, rgba(15,11,8,0.18) 80%),
+    linear-gradient(128deg, rgba(47,30,14,0.64) 0 18%, rgba(8,5,2,0.86) 18.2% 30%, rgba(117,67,24,0.22) 30.2% 42%, transparent 42.3% 100%),
+    linear-gradient(74deg, transparent 0 12%, rgba(148,88,34,0.18) 12.2% 24%, rgba(9,5,2,0.7) 24.2% 35%, transparent 35.4% 100%),
+    linear-gradient(156deg, transparent 0 44%, rgba(5,3,1,0.84) 44.12% 44.86%, rgba(230,168,72,0.12) 44.98% 45.18%, transparent 45.5%),
+    linear-gradient(28deg, rgba(8,5,3,0.58) 0 22%, transparent 22.4% 48%, rgba(43,29,15,0.42) 48.2% 57%, transparent 57.4%),
+    var(--kandahar-rock-noise),
+    linear-gradient(90deg, rgba(9,7,5,0.9), rgba(26,19,12,0.24) 42%, rgba(14,11,8,0.2));
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
@@ -248,9 +261,9 @@ body.kandahar-theme::before{
   opacity:0.96;
 }
 body.kandahar-theme::after{
-  mix-blend-mode:overlay;
-  opacity:0.62;
-  background-size:170px 130px, 240px 190px, 150px 118px, 320px 210px, 260px 190px, auto;
+  mix-blend-mode:multiply;
+  opacity:0.72;
+  background-size:150px 112px, 210px 166px, 132px 104px, 280px 190px, 230px 168px, 360px 240px, auto, auto, auto;
 }
 a{ color:inherit; }
 .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
@@ -346,15 +359,22 @@ header{ padding:30px 0 0; }
 }
 body.kandahar-theme .mystery-hero::before{
   background:
-    conic-gradient(from 226deg at 19% 34%, rgba(255,218,132,0.2), rgba(45,27,12,0.32) 18%, rgba(8,6,4,0.24) 31%, rgba(131,81,37,0.16) 52%, rgba(41,52,42,0.2) 78%, rgba(255,218,132,0.12)),
-    conic-gradient(from 44deg at 67% 24%, rgba(9,6,3,0.34), rgba(97,65,34,0.18) 20%, rgba(232,171,79,0.1) 34%, rgba(19,15,9,0.3) 70%, rgba(9,6,3,0.34)),
-    linear-gradient(166deg, transparent 0 33%, rgba(11,7,3,0.42) 33.12% 33.52%, rgba(243,190,91,0.12) 33.62% 33.82%, transparent 34.08%),
-    linear-gradient(24deg, transparent 0 58%, rgba(12,7,3,0.38) 58.12% 58.42%, rgba(255,220,137,0.1) 58.5% 58.66%, transparent 58.88%),
-    radial-gradient(circle at 22% 28%, rgba(255,226,156,0.14) 0 1.6px, transparent 3px),
-    radial-gradient(circle at 72% 66%, rgba(8,5,2,0.32) 0 2.2px, transparent 4.5px);
-  background-size:auto, auto, auto, auto, 150px 112px, 190px 150px;
-  mix-blend-mode:overlay;
-  opacity:0.86;
+    linear-gradient(180deg, rgba(65,43,20,0.02), rgba(17,10,4,0.32) 68%, rgba(6,4,2,0.78)),
+    linear-gradient(118deg, rgba(70,45,20,0.38) 0 13%, rgba(8,5,2,0.62) 13.2% 22%, transparent 22.3% 100%),
+    linear-gradient(148deg, transparent 0 18%, rgba(98,58,21,0.24) 18.2% 31%, rgba(5,3,1,0.76) 31.2% 39%, transparent 39.3% 100%),
+    linear-gradient(52deg, transparent 0 35%, rgba(143,82,29,0.16) 35.1% 47%, rgba(10,6,2,0.64) 47.2% 55%, transparent 55.3% 100%),
+    linear-gradient(161deg, transparent 0 24%, rgba(5,3,1,0.82) 24.08% 24.88%, rgba(227,166,69,0.13) 25% 25.22%, transparent 25.56% 46%, rgba(6,3,1,0.72) 46.08% 46.54%, transparent 46.88%),
+    linear-gradient(28deg, transparent 0 53%, rgba(5,3,1,0.74) 53.06% 53.86%, rgba(232,174,82,0.11) 53.98% 54.16%, transparent 54.48%),
+    linear-gradient(107deg, transparent 0 69%, rgba(8,4,1,0.62) 69.08% 69.62%, rgba(225,165,72,0.1) 69.72% 69.9%, transparent 70.18%),
+    var(--kandahar-rock-noise),
+    radial-gradient(circle at 18% 24%, rgba(255,225,148,0.08) 0 1.8px, transparent 3.8px),
+    radial-gradient(circle at 39% 55%, rgba(5,3,1,0.36) 0 3.2px, transparent 6.4px),
+    radial-gradient(circle at 72% 66%, rgba(255,210,124,0.06) 0 2.2px, transparent 4.8px),
+    repeating-linear-gradient(96deg, rgba(255,232,168,0.035) 0 1px, transparent 1px 11px);
+  background-size:auto, auto, auto, auto, auto, auto, auto, 360px 240px, 116px 86px, 152px 118px, 132px 100px, auto;
+  mix-blend-mode:normal;
+  opacity:0.82;
+  z-index:0;
 }
 .mystery-hero::after{
   content:"";
@@ -373,7 +393,7 @@ body.kandahar-theme .mystery-hero::before{
 .mystery-hero.has-art::after{ display:none; }
 .hero-inner{
   position:relative;
-  z-index:1;
+  z-index:2;
   padding:76px 28px 72px;
 }
 .kandahar-hero .hero-inner{
@@ -487,18 +507,22 @@ body.kandahar-theme .section::before{
   z-index:-1;
   pointer-events:none;
   background:
-    conic-gradient(from 245deg at 18% 42%, rgba(255,219,134,0.1), rgba(34,21,10,0.2) 18%, transparent 30%, rgba(85,54,29,0.12) 54%, rgba(13,8,4,0.22) 76%, rgba(255,219,134,0.08)),
-    radial-gradient(ellipse at 20% 18%, rgba(232,171,80,0.12), transparent 28%),
-    radial-gradient(ellipse at 70% 65%, rgba(8,5,2,0.24), transparent 32%),
-    linear-gradient(147deg, transparent 0 52%, rgba(16,9,4,0.28) 52.12% 52.42%, rgba(232,174,82,0.08) 52.5% 52.66%, transparent 52.86%);
-  opacity:0.78;
+    linear-gradient(119deg, rgba(65,41,18,0.28) 0 14%, rgba(8,4,1,0.5) 14.2% 22%, transparent 22.3% 100%),
+    linear-gradient(74deg, transparent 0 24%, rgba(102,61,24,0.2) 24.2% 36%, rgba(7,4,1,0.42) 36.2% 44%, transparent 44.3% 100%),
+    linear-gradient(147deg, transparent 0 51%, rgba(8,4,1,0.48) 51.12% 51.72%, rgba(232,174,82,0.08) 51.86% 52.02%, transparent 52.34%),
+    radial-gradient(circle at 18% 24%, rgba(255,231,167,0.04) 0 1.4px, transparent 3px),
+    radial-gradient(circle at 44% 52%, rgba(7,3,1,0.22) 0 2.4px, transparent 5.2px),
+    radial-gradient(circle at 78% 68%, rgba(255,218,134,0.035) 0 1.6px, transparent 3.4px);
+  opacity:0.92;
 }
 body.kandahar-theme .section:nth-of-type(odd)::before{
   background:
-    conic-gradient(from 35deg at 78% 28%, rgba(8,5,2,0.26), rgba(87,57,31,0.16) 22%, transparent 38%, rgba(224,160,72,0.09) 58%, rgba(29,38,31,0.18) 82%, rgba(8,5,2,0.26)),
-    radial-gradient(ellipse at 18% 70%, rgba(7,4,2,0.24), transparent 34%),
-    radial-gradient(ellipse at 72% 18%, rgba(255,222,141,0.1), transparent 26%),
-    linear-gradient(29deg, transparent 0 43%, rgba(18,10,4,0.24) 43.12% 43.45%, rgba(235,178,84,0.07) 43.55% 43.72%, transparent 43.94%);
+    linear-gradient(127deg, transparent 0 16%, rgba(8,5,2,0.44) 16.1% 28%, rgba(87,57,31,0.18) 28.2% 39%, transparent 39.3%),
+    linear-gradient(61deg, rgba(6,3,1,0.36) 0 19%, rgba(116,70,28,0.14) 19.2% 34%, transparent 34.3% 100%),
+    linear-gradient(174deg, transparent 0 58%, rgba(255,222,141,0.08) 58.1% 62%, transparent 62.3%),
+    linear-gradient(29deg, transparent 0 42%, rgba(9,4,1,0.44) 42.12% 42.72%, rgba(235,178,84,0.07) 42.85% 43.02%, transparent 43.32%),
+    radial-gradient(circle at 22% 36%, rgba(255,226,151,0.035) 0 1.4px, transparent 3px),
+    radial-gradient(circle at 64% 66%, rgba(7,3,1,0.18) 0 2.2px, transparent 5px);
 }
 .question-title h2{
   font-family:'Cinzel', serif;
@@ -856,8 +880,8 @@ footer{
   .related-grid{ grid-template-columns:1fr; }
   .mystery-hero::after{ width:52vw; opacity:0.42; }
   .mystery-hero.kandahar-hero{
-    background-position:center, center, center top;
-    background-size:cover, cover, auto 78%;
+    background-position:center, left top, center, center, center, center, center, center, center top;
+    background-size:cover, cover, cover, cover, cover, cover, 300px 200px, cover, auto 78%;
     box-shadow:inset 0 -42px 72px rgba(25,18,11,0.72);
   }
 }
@@ -890,7 +914,7 @@ footer{
   .video-frame.portrait{ max-height:none; }
   .faq details{ padding:16px 18px; }
   body.kandahar-theme{
-    --mystery-heading-texture-size:58px 46px, 72px 56px, 86px 68px, 62px 50px, 96px 72px, 68px 54px, 126px 90px, 116px 82px, 76px 58px, 82px 64px, 132px 88px, auto;
+    --mystery-heading-texture-size:76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 180px 124px, 150px 104px, 164px 114px, 156px 110px, 146px 102px, 150px 106px, 140px 98px, auto, 196px 142px, auto;
   }
   body.kandahar-theme .mystery-hero h1,
   body.kandahar-theme .section h2,
@@ -908,7 +932,7 @@ footer{
   .nav-links{ gap:12px 14px; }
   .mystery-hero h1{ font-size:2.1rem; }
   .mystery-hero.kandahar-hero{
-    background-size:cover, cover, auto 74%;
+    background-size:cover, cover, cover, cover, cover, cover, 260px 174px, cover, auto 74%;
   }
   .kandahar-hero .hero-inner{
     padding-top:372px;
