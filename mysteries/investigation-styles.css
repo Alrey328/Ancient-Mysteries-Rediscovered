@@ -289,6 +289,99 @@ body.rephaim-theme{
     linear-gradient(90deg, rgba(5,6,4,0.86) 0 38%, rgba(8,8,5,0.22) 58%, rgba(5,6,4,0.18) 100%);
 }
 
+body.sitecah-theme{
+  --sitecah-charcoal:#090706;
+  --sitecah-earth:#24150d;
+  --sitecah-ochre:#b76528;
+  --sitecah-red:#8e2e19;
+  --sitecah-sandstone:#d8b783;
+  --sitecah-fire-gold:#e0a344;
+  --sitecah-ivory:#f0e2c3;
+  --mystery-primary:var(--sitecah-fire-gold);
+  --mystery-secondary:var(--sitecah-red);
+  --mystery-accent:var(--sitecah-ochre);
+  --mystery-heading:var(--sitecah-sandstone);
+  --mystery-muted:#cfbda0;
+  --mystery-border:rgba(224,163,68,0.22);
+  --mystery-border-strong:rgba(224,163,68,0.45);
+  --mystery-background:
+    linear-gradient(180deg, rgba(9,7,6,0.24), rgba(12,8,5,0.74) 52%, #090706 100%),
+    linear-gradient(90deg, rgba(8,5,3,0.68), rgba(45,21,10,0.14) 46%, rgba(8,5,3,0.72)),
+    url('/mysteries/si-te-cah/sitecah-environment.png'),
+    linear-gradient(180deg, #24150d, #090706);
+  --mystery-atmosphere:
+    radial-gradient(ellipse at 18% 0%, rgba(255,123,34,0.18), transparent 34%),
+    radial-gradient(ellipse at 78% 12%, rgba(178,63,23,0.16), transparent 32%),
+    linear-gradient(180deg, rgba(67,23,10,0.08), rgba(9,7,6,0.72) 100%);
+  --mystery-texture:
+    radial-gradient(circle at 16% 24%, rgba(226,173,99,0.08) 0 1px, transparent 2.6px),
+    radial-gradient(circle at 70% 52%, rgba(4,3,2,0.38) 0 1.8px, transparent 4.2px),
+    repeating-linear-gradient(117deg, transparent 0 38px, rgba(222,154,82,0.035) 39px 40px, transparent 41px 78px);
+  --mystery-heading-gradient:
+    url('/mysteries/si-te-cah/sitecah-ochre-texture.png'),
+    linear-gradient(180deg, rgba(226,198,152,0.96), rgba(178,99,42,0.74) 48%, rgba(72,38,20,0.9) 100%);
+  --mystery-heading-text-fill:transparent;
+  --mystery-heading-filter:drop-shadow(0 1px 0 rgba(18,9,4,0.9)) brightness(1.2) contrast(1.12) saturate(0.86);
+  --mystery-heading-shadow:
+    0 1px 0 rgba(241,217,169,0.14),
+    0 5px 0 rgba(59,25,10,0.72),
+    0 15px 25px rgba(0,0,0,0.86);
+  --mystery-heading-level-1-shadow:
+    0 6px 0 rgba(54,23,10,0.7),
+    0 19px 30px rgba(0,0,0,0.88);
+  --mystery-heading-level-2-shadow:
+    0 4px 0 rgba(51,24,12,0.64),
+    0 12px 22px rgba(0,0,0,0.78);
+  --mystery-heading-level-3-shadow:
+    0 1px 0 rgba(31,13,6,0.78),
+    0 5px 12px rgba(0,0,0,0.62);
+  --mystery-heading-texture-size:620px 420px, auto;
+  --mystery-heading-divider-detail:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(70,34,15,0.66) 18px 21px, transparent 21px 31px);
+  --mystery-divider:
+    linear-gradient(90deg, rgba(224,163,68,0), rgba(142,46,25,0.56) 18%, rgba(216,183,131,0.9) 50%, rgba(142,46,25,0.56) 82%, rgba(224,163,68,0));
+  --mystery-divider-glow:0 0 15px rgba(224,93,35,0.2), 0 1px 0 rgba(0,0,0,0.58);
+  --mystery-panel:
+    linear-gradient(180deg, rgba(52,32,20,0.94), rgba(16,12,9,0.97)),
+    radial-gradient(ellipse at 0% 0%, rgba(226,143,66,0.13), transparent 42%),
+    repeating-linear-gradient(169deg, rgba(232,194,137,0.045) 0 1px, transparent 1px 15px);
+  --mystery-panel-border:rgba(224,163,68,0.24);
+  --mystery-panel-shadow:0 24px 54px rgba(0,0,0,0.3), inset 0 1px 0 rgba(245,214,163,0.08);
+  --mystery-answer-panel:
+    linear-gradient(180deg, rgba(63,38,23,0.96), rgba(18,13,9,0.98)),
+    radial-gradient(ellipse at 18% 0%, rgba(226,143,66,0.18), transparent 42%);
+  --mystery-answer-border:rgba(224,163,68,0.5);
+  --mystery-label-color:#e8bb72;
+  --mystery-label-border:rgba(224,163,68,0.56);
+  --mystery-label-bg:
+    linear-gradient(180deg, rgba(142,46,25,0.34), rgba(40,25,16,0.78));
+  --mystery-label-shadow:inset 0 0 0 1px rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.22);
+  --mystery-video-border:rgba(224,163,68,0.46);
+  --mystery-video-shadow:inset 0 0 0 1px rgba(0,0,0,0.48), 0 18px 42px rgba(0,0,0,0.26);
+  --mystery-play-border:rgba(224,163,68,0.74);
+  --mystery-timeline-line:linear-gradient(rgba(224,163,68,0.72), rgba(142,46,25,0.22), rgba(224,163,68,0));
+  --mystery-marker-border:rgba(232,187,114,0.9);
+  --mystery-marker-bg:rgba(142,46,25,0.28);
+  --mystery-comparison-panel:
+    linear-gradient(180deg, rgba(50,31,20,0.94), rgba(16,12,9,0.98)),
+    radial-gradient(ellipse at 100% 0%, rgba(142,46,25,0.2), transparent 42%);
+  --mystery-callout-panel:
+    linear-gradient(180deg, rgba(90,38,20,0.84), rgba(20,14,10,0.96)),
+    radial-gradient(ellipse at 12% 0%, rgba(224,163,68,0.18), transparent 42%);
+  --mystery-door-panel:
+    linear-gradient(180deg, rgba(45,28,18,0.76), rgba(9,7,6,0.96)),
+    radial-gradient(ellipse at 62% 0%, rgba(224,93,35,0.2), transparent 40%),
+    repeating-linear-gradient(165deg, rgba(232,194,137,0.038) 0 1px, transparent 1px 18px);
+  --mystery-faq-heading:#e2bd7a;
+  --mystery-hero-bg-color:#130b07;
+  --mystery-hero-position:center, center, right 8% center, center top;
+  --mystery-hero-size:cover, cover, auto 92%, cover;
+  --mystery-hero-shadow:inset 0 -52px 90px rgba(9,7,6,0.86);
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(21,8,3,0.04), rgba(18,9,5,0.2) 42%, rgba(9,7,6,0.92) 100%);
+  --mystery-hero-side-overlay:
+    linear-gradient(90deg, rgba(9,7,6,0.88) 0 40%, rgba(24,10,5,0.2) 58%, rgba(9,7,6,0.38) 100%);
+}
+
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{
   scroll-behavior:smooth;
@@ -313,6 +406,60 @@ body.rephaim-theme{
   background-position:center top, center top, center top, center;
   background-repeat:no-repeat;
   background-size:cover, cover, cover, auto;
+}
+body.sitecah-theme{
+  background-color:#090706;
+  background-position:center top, center top, center top, center;
+  background-repeat:no-repeat;
+  background-size:cover, cover, cover, auto;
+}
+body.sitecah-theme .mystery-hero.has-art{
+  background-image:
+    var(--mystery-hero-overlay),
+    var(--mystery-hero-side-overlay),
+    var(--hero-image),
+    url('/mysteries/si-te-cah/sitecah-environment.png');
+  background-position:center, center, right 8% center, center top;
+  background-repeat:no-repeat;
+  background-size:cover, cover, auto 92%, cover;
+  background-color:var(--mystery-hero-bg-color);
+  box-shadow:var(--mystery-hero-shadow);
+}
+body.sitecah-theme .mystery-hero h1,
+body.sitecah-theme .section h2,
+body.sitecah-theme .question-title h2{
+  color:transparent;
+  background:url('/mysteries/si-te-cah/sitecah-ochre-texture.png') 50% 48% / 620px 420px;
+  background-repeat:no-repeat;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-stroke:0.36px rgba(70,34,15,0.48);
+  -webkit-text-fill-color:transparent;
+}
+body.sitecah-theme .section h3,
+body.sitecah-theme .timeline-date,
+body.sitecah-theme .faq summary,
+body.sitecah-theme .callout h3,
+body.sitecah-theme .source-kicker,
+body.sitecah-theme .related-card h3{
+  color:#e2bd7a;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:var(--mystery-heading-level-3-shadow);
+}
+body.sitecah-theme .timeline-item h3,
+body.sitecah-theme .callout h3{
+  color:#f0c078;
+}
+body.sitecah-theme .door-beyond .question{
+  color:#f0e2c3;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:0 5px 16px rgba(0,0,0,0.72);
 }
 body::before{
   content:"";
@@ -1068,6 +1215,11 @@ footer{
     background-size:cover, cover, auto 62%, cover;
     box-shadow:inset 0 -44px 74px rgba(7,8,6,0.82);
   }
+  body.sitecah-theme .mystery-hero.has-art{
+    background-position:center, center, right 4% center, center top;
+    background-size:cover, cover, auto 72%, cover;
+    box-shadow:inset 0 -44px 74px rgba(9,7,6,0.82);
+  }
 }
 @media (max-width:640px){
   .wrap{ padding:0 20px; }
@@ -1084,7 +1236,12 @@ footer{
     padding-top:46px;
     padding-bottom:390px;
   }
-  .rephaim-hero{
+  .sitecah-hero .hero-inner{
+    padding-top:46px;
+    padding-bottom:410px;
+  }
+  .rephaim-hero,
+  .sitecah-hero{
     align-items:start;
   }
   .question-title{ padding:34px 0 18px; }
@@ -1112,6 +1269,10 @@ footer{
     --mystery-heading-texture-size:540px 360px, auto;
     background-size:cover, cover, auto 140vh, auto;
   }
+  body.sitecah-theme{
+    --mystery-heading-texture-size:520px 350px, auto;
+    background-size:cover, cover, auto 140vh, auto;
+  }
   body.kandahar-theme .mystery-hero h1,
   body.kandahar-theme .section h2,
   body.kandahar-theme .question-title h2{
@@ -1133,12 +1294,19 @@ footer{
   body.rephaim-theme .mystery-hero.has-art{
     background-size:cover, cover, auto 60%, cover;
   }
+  body.sitecah-theme .mystery-hero.has-art{
+    background-size:cover, cover, auto 58%, cover;
+  }
   .kandahar-hero .hero-inner{
     padding-top:324px;
   }
   .rephaim-hero .hero-inner{
     padding-top:40px;
     padding-bottom:348px;
+  }
+  .sitecah-hero .hero-inner{
+    padding-top:40px;
+    padding-bottom:360px;
   }
   .video-frame{ max-height:540px; }
   .video-frame.portrait{ max-height:none; }

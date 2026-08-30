@@ -661,6 +661,15 @@
     --investigation-muted:#aa8238;
     --investigation-text:#f1dfaa;
   }
+  .sitecah-investigation-card{
+    --investigation-primary:#b76528;
+    --investigation-secondary:#5b2414;
+    --investigation-accent:#e0a344;
+    --investigation-panel:#2a1710;
+    --investigation-shadow:#090504;
+    --investigation-muted:#a95625;
+    --investigation-text:#f0dfbd;
+  }
   .discussion-link{
     display:inline-block;
     margin-top:12px;
@@ -936,15 +945,20 @@
       </div>
     </article>
 
-    <a class="reel-card featured" href="https://www.facebook.com/share/r/1BoHoauQW2/" target="_blank" rel="noopener">
+    <article class="reel-card featured has-investigation sitecah-investigation-card">
+      <a class="thumb-link" href="https://www.facebook.com/share/r/1BoHoauQW2/" target="_blank" rel="noopener" aria-label="Watch Red-Haired Giants Reel on Facebook">
       <div class="thumb" style="background-image:url('REd%20Haired%20Giants%20Poster.png')">
         <div class="play"><span>&#9654;</span></div>
       </div>
+      </a>
       <div class="meta">
         <div class="tag">Featured Reel</div>
-        <h3>Red-Haired Giants</h3>
+        <h3><a class="title-link" href="https://www.facebook.com/share/r/1BoHoauQW2/" target="_blank" rel="noopener">Red-Haired Giants</a></h3>
+        <a class="investigation-cta" href="mysteries/si-te-cah/" aria-label="Investigate the Si-Te-Cah mystery">
+          <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
-    </a>
+    </article>
 
     <article class="reel-card featured has-investigation">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1Cr9ReFzQf/" target="_blank" rel="noopener" aria-label="Watch The Rephaim Reel on Facebook">
