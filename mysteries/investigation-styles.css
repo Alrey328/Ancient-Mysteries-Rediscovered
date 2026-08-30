@@ -199,6 +199,96 @@ body.kandahar-theme{
     url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
 }
 
+body.rephaim-theme{
+  --mystery-primary:#c7a85f;
+  --mystery-secondary:#8fa45b;
+  --mystery-accent:#5d6f38;
+  --mystery-heading:#d6bd7b;
+  --mystery-muted:#d2c7aa;
+  --mystery-border:rgba(199,168,95,0.24);
+  --mystery-border-strong:rgba(199,168,95,0.48);
+  --mystery-background:
+    linear-gradient(180deg, rgba(5,7,5,0.48), rgba(7,8,6,0.82) 58%, #050605 100%),
+    linear-gradient(90deg, rgba(3,4,3,0.74), rgba(18,15,10,0.18) 45%, rgba(3,4,3,0.72)),
+    url('/mysteries/rephaim/rephaim-background.png'),
+    #070806;
+  --mystery-atmosphere:
+    radial-gradient(ellipse at 17% 0%, rgba(255,228,154,0.18), transparent 34%),
+    radial-gradient(ellipse at 72% 16%, rgba(145,157,87,0.13), transparent 30%),
+    linear-gradient(180deg, rgba(5,6,4,0.04), rgba(5,6,4,0.7) 100%);
+  --mystery-texture:
+    radial-gradient(circle at 18% 26%, rgba(222,198,126,0.09) 0 1px, transparent 2.6px),
+    radial-gradient(circle at 72% 54%, rgba(2,3,2,0.36) 0 1.8px, transparent 4.2px),
+    radial-gradient(circle at 46% 76%, rgba(117,134,70,0.08) 0 1px, transparent 2.8px),
+    repeating-linear-gradient(112deg, transparent 0 42px, rgba(226,205,150,0.028) 43px 44px, transparent 45px 82px);
+  --mystery-heading-gradient:
+    url('/mysteries/rephaim/rephaim-caption-texture.png'),
+    linear-gradient(180deg, rgba(224,202,142,0.9), rgba(131,110,66,0.84) 42%, rgba(70,67,42,0.92) 100%);
+  --mystery-heading-text-fill:transparent;
+  --mystery-heading-filter:drop-shadow(0 1px 0 rgba(8,7,4,0.9)) brightness(1.72) contrast(1.04) saturate(0.84);
+  --mystery-heading-shadow:
+    0 1px 0 rgba(231,209,147,0.16),
+    0 5px 0 rgba(29,24,13,0.74),
+    0 16px 24px rgba(0,0,0,0.82);
+  --mystery-heading-level-1-shadow:
+    0 6px 0 rgba(18,15,8,0.7),
+    0 19px 30px rgba(0,0,0,0.9);
+  --mystery-heading-level-2-shadow:
+    0 4px 0 rgba(21,18,10,0.64),
+    0 12px 22px rgba(0,0,0,0.8);
+  --mystery-heading-level-3-shadow:
+    0 1px 0 rgba(5,6,4,0.8),
+    0 5px 12px rgba(0,0,0,0.62);
+  --mystery-heading-texture-size:cover, auto;
+  --mystery-heading-divider-detail:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(32,27,15,0.62) 18px 21px, transparent 21px 31px);
+  --mystery-divider:
+    linear-gradient(90deg, rgba(199,168,95,0), rgba(99,114,59,0.58) 18%, rgba(214,183,102,0.88) 50%, rgba(99,114,59,0.58) 82%, rgba(199,168,95,0));
+  --mystery-divider-glow:0 0 15px rgba(199,168,95,0.2), 0 1px 0 rgba(0,0,0,0.58);
+  --mystery-panel:
+    linear-gradient(180deg, rgba(47,43,31,0.92), rgba(18,20,15,0.96)),
+    radial-gradient(ellipse at 0% 0%, rgba(218,186,109,0.14), transparent 42%),
+    radial-gradient(ellipse at 100% 30%, rgba(87,106,54,0.16), transparent 38%),
+    repeating-linear-gradient(169deg, rgba(230,208,152,0.045) 0 1px, transparent 1px 15px);
+  --mystery-panel-border:rgba(199,168,95,0.25);
+  --mystery-panel-shadow:0 24px 54px rgba(0,0,0,0.28), inset 0 1px 0 rgba(245,224,163,0.08);
+  --mystery-answer-panel:
+    linear-gradient(180deg, rgba(61,55,39,0.94), rgba(21,24,17,0.98)),
+    radial-gradient(ellipse at 18% 0%, rgba(232,203,130,0.2), transparent 42%),
+    radial-gradient(ellipse at 82% 75%, rgba(80,98,49,0.14), transparent 36%);
+  --mystery-answer-border:rgba(199,168,95,0.52);
+  --mystery-label-color:#d8be78;
+  --mystery-label-border:rgba(199,168,95,0.56);
+  --mystery-label-bg:
+    linear-gradient(180deg, rgba(86,94,49,0.3), rgba(42,37,22,0.78));
+  --mystery-label-shadow:inset 0 0 0 1px rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.22);
+  --mystery-video-border:rgba(199,168,95,0.46);
+  --mystery-video-shadow:inset 0 0 0 1px rgba(0,0,0,0.48), 0 18px 42px rgba(0,0,0,0.26);
+  --mystery-play-border:rgba(216,190,120,0.7);
+  --mystery-timeline-line:linear-gradient(rgba(199,168,95,0.72), rgba(93,111,56,0.2), rgba(199,168,95,0));
+  --mystery-marker-border:rgba(216,190,120,0.9);
+  --mystery-marker-bg:rgba(93,111,56,0.28);
+  --mystery-comparison-panel:
+    linear-gradient(180deg, rgba(50,46,33,0.94), rgba(17,19,14,0.98)),
+    radial-gradient(ellipse at 100% 0%, rgba(86,106,55,0.2), transparent 42%);
+  --mystery-callout-panel:
+    linear-gradient(180deg, rgba(71,68,41,0.84), rgba(20,22,15,0.96)),
+    radial-gradient(ellipse at 12% 0%, rgba(214,183,102,0.18), transparent 42%);
+  --mystery-door-panel:
+    linear-gradient(180deg, rgba(43,38,27,0.72), rgba(10,11,8,0.96)),
+    radial-gradient(ellipse at 62% 0%, rgba(216,190,120,0.18), transparent 40%),
+    radial-gradient(ellipse at 20% 20%, rgba(93,111,56,0.16), transparent 42%),
+    repeating-linear-gradient(165deg, rgba(230,208,152,0.038) 0 1px, transparent 1px 18px);
+  --mystery-faq-heading:#d9c27e;
+  --mystery-hero-bg-color:#0a0b08;
+  --mystery-hero-position:center, center, right 7% center, center top;
+  --mystery-hero-size:cover, cover, auto 94%, cover;
+  --mystery-hero-shadow:inset 0 -52px 90px rgba(7,8,6,0.82);
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(4,5,4,0.04), rgba(6,7,5,0.16) 42%, rgba(5,6,4,0.9) 100%);
+  --mystery-hero-side-overlay:
+    linear-gradient(90deg, rgba(5,6,4,0.86) 0 38%, rgba(8,8,5,0.22) 58%, rgba(5,6,4,0.18) 100%);
+}
+
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{
   scroll-behavior:smooth;
@@ -214,6 +304,12 @@ body{
 }
 body.kandahar-theme{
   background-color:#100b06;
+  background-position:center top, center top, center top, center;
+  background-repeat:no-repeat;
+  background-size:cover, cover, cover, auto;
+}
+body.rephaim-theme{
+  background-color:#070806;
   background-position:center top, center top, center top, center;
   background-repeat:no-repeat;
   background-size:cover, cover, cover, auto;
@@ -327,6 +423,13 @@ header{ padding:30px 0 0; }
   background-size:var(--mystery-hero-size);
   box-shadow:var(--mystery-hero-shadow);
 }
+.mystery-hero.rephaim-hero{
+  background-repeat:no-repeat;
+  background-color:var(--mystery-hero-bg-color);
+  background-position:var(--mystery-hero-position);
+  background-size:var(--mystery-hero-size);
+  box-shadow:var(--mystery-hero-shadow);
+}
 body.kandahar-theme .mystery-hero.has-art{
   background-image:
     var(--mystery-hero-overlay),
@@ -335,6 +438,19 @@ body.kandahar-theme .mystery-hero.has-art{
     url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
   background-position:center, center, right -1% center, left center;
   background-size:cover, cover, auto 108%, cover;
+}
+body.rephaim-theme .mystery-hero.has-art{
+  background-image:
+    var(--mystery-hero-overlay),
+    var(--mystery-hero-side-overlay),
+    var(--hero-image),
+    url('/mysteries/rephaim/rephaim-background.png');
+  background-position:center, center, right 7% center, center top;
+  background-size:cover, cover, auto 94%, cover;
+}
+body.rephaim-theme .mystery-hero h1{
+  max-width:680px;
+  font-size:clamp(2.4rem, 7vw, 5.25rem);
 }
 .mystery-hero::before{
   content:"";
@@ -431,6 +547,15 @@ body.kandahar-theme .section h2,
 body.kandahar-theme .question-title h2{
   color:transparent;
   -webkit-text-stroke:0.55px rgba(78,42,17,0.48);
+  -webkit-text-fill-color:transparent;
+}
+body.rephaim-theme .mystery-hero h1,
+body.rephaim-theme .section h2,
+body.rephaim-theme .question-title h2{
+  color:transparent;
+  background-repeat:no-repeat;
+  background-position:center;
+  -webkit-text-stroke:0.42px rgba(30,27,16,0.55);
   -webkit-text-fill-color:transparent;
 }
 body.kandahar-theme .mystery-hero h1{
@@ -607,6 +732,31 @@ body.kandahar-theme .timeline-item h3{
   text-shadow:
     0 1px 0 rgba(58,31,12,0.58),
     0 4px 10px rgba(0,0,0,0.5);
+}
+body.rephaim-theme .section h3,
+body.rephaim-theme .timeline-date,
+body.rephaim-theme .faq summary,
+body.rephaim-theme .callout h3,
+body.rephaim-theme .source-kicker,
+body.rephaim-theme .related-card h3{
+  color:#d7bf78;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:var(--mystery-heading-level-3-shadow);
+}
+body.rephaim-theme .timeline-item h3,
+body.rephaim-theme .callout h3{
+  color:#c6d07f;
+}
+body.rephaim-theme .door-beyond .question{
+  color:#e0d6b9;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:0 5px 16px rgba(0,0,0,0.72);
 }
 p{ color:var(--bone-dim); margin:0 0 16px; }
 strong{ color:var(--bone); }
@@ -913,6 +1063,11 @@ footer{
     background-size:cover, cover, auto 70%, cover;
     box-shadow:inset 0 -42px 72px rgba(25,18,11,0.72);
   }
+  body.rephaim-theme .mystery-hero.has-art{
+    background-position:center, center, center top, center top;
+    background-size:cover, cover, auto 72%, cover;
+    box-shadow:inset 0 -44px 74px rgba(7,8,6,0.82);
+  }
 }
 @media (max-width:640px){
   .wrap{ padding:0 20px; }
@@ -923,6 +1078,10 @@ footer{
   .hero-inner{ padding:54px 20px 48px; }
   .kandahar-hero .hero-inner{
     padding-top:352px;
+    padding-bottom:48px;
+  }
+  .rephaim-hero .hero-inner{
+    padding-top:368px;
     padding-bottom:48px;
   }
   .question-title{ padding:34px 0 18px; }
@@ -946,6 +1105,10 @@ footer{
     --mystery-heading-texture-size:58px 48px, 80px 64px, 70px 58px, 34px 30px, 46px 39px, 58px 49px, 76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 80px 54px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 180px 180px, 150px 104px, 164px 114px, 116px 82px, auto, 560px 390px;
     background-size:cover, cover, auto 140vh, auto;
   }
+  body.rephaim-theme{
+    --mystery-heading-texture-size:540px 360px, auto;
+    background-size:cover, cover, auto 140vh, auto;
+  }
   body.kandahar-theme .mystery-hero h1,
   body.kandahar-theme .section h2,
   body.kandahar-theme .question-title h2{
@@ -964,8 +1127,14 @@ footer{
   body.kandahar-theme .mystery-hero.has-art{
     background-size:cover, cover, auto 62%, cover;
   }
+  body.rephaim-theme .mystery-hero.has-art{
+    background-size:cover, cover, auto 66%, cover;
+  }
   .kandahar-hero .hero-inner{
     padding-top:324px;
+  }
+  .rephaim-hero .hero-inner{
+    padding-top:330px;
   }
   .video-frame{ max-height:540px; }
   .video-frame.portrait{ max-height:none; }
