@@ -1064,8 +1064,8 @@ footer{
     box-shadow:inset 0 -42px 72px rgba(25,18,11,0.72);
   }
   body.rephaim-theme .mystery-hero.has-art{
-    background-position:center, center, center top, center top;
-    background-size:cover, cover, auto 72%, cover;
+    background-position:center, center, center bottom 28px, center top;
+    background-size:cover, cover, auto 62%, cover;
     box-shadow:inset 0 -44px 74px rgba(7,8,6,0.82);
   }
 }
@@ -1081,8 +1081,11 @@ footer{
     padding-bottom:48px;
   }
   .rephaim-hero .hero-inner{
-    padding-top:368px;
-    padding-bottom:48px;
+    padding-top:46px;
+    padding-bottom:390px;
+  }
+  .rephaim-hero{
+    align-items:start;
   }
   .question-title{ padding:34px 0 18px; }
   .section{ padding:44px 0; }
@@ -1128,13 +1131,14 @@ footer{
     background-size:cover, cover, auto 62%, cover;
   }
   body.rephaim-theme .mystery-hero.has-art{
-    background-size:cover, cover, auto 66%, cover;
+    background-size:cover, cover, auto 60%, cover;
   }
   .kandahar-hero .hero-inner{
     padding-top:324px;
   }
   .rephaim-hero .hero-inner{
-    padding-top:330px;
+    padding-top:40px;
+    padding-bottom:348px;
   }
   .video-frame{ max-height:540px; }
   .video-frame.portrait{ max-height:none; }
