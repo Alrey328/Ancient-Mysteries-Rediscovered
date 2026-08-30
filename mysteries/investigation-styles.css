@@ -433,22 +433,33 @@ body.sitecah-theme .mystery-hero.has-art{
 body.sitecah-theme .mystery-hero h1,
 body.sitecah-theme .section h2,
 body.sitecah-theme .question-title h2{
+  color:#d9b173;
+  background:none;
+  -webkit-text-stroke:0.36px rgba(70,34,15,0.48);
+  -webkit-text-fill-color:currentColor;
+}
+body.sitecah-theme .mystery-hero h1::after,
+body.sitecah-theme .section h2::after,
+body.sitecah-theme .question-title h2::after{
+  content:attr(data-heading);
+  display:block;
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  margin:0;
+  pointer-events:none;
   color:transparent;
-  background:
-    radial-gradient(circle at 14% 28%, rgba(80,35,16,0.5) 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 76% 58%, rgba(244,209,154,0.48) 0 1.4px, transparent 2.4px),
-    repeating-linear-gradient(112deg, transparent 0 23px, rgba(85,38,17,0.34) 24px 25px, transparent 26px 52px),
-    linear-gradient(130deg, rgba(149,51,27,0.38), transparent 34%, rgba(201,95,45,0.28) 58%, transparent 78%),
-    url('/mysteries/si-te-cah/sitecah-ochre-texture.png') 50% 48% / 620px 420px,
-    linear-gradient(180deg, rgba(245,219,172,0.78), rgba(224,167,92,0.58) 48%, rgba(236,198,136,0.72) 100%),
-    linear-gradient(180deg, #e7c99b 0%, #d3a061 44%, #ad6135 64%, #dfbb82 100%);
-  background-size:92px 74px, 118px 92px, 170px 130px, 760px 440px, 620px 420px, auto, auto;
-  background-blend-mode:multiply, screen, multiply, multiply, soft-light, screen, normal;
-  background-repeat:no-repeat;
+  background:url('/mysteries/si-te-cah/sitecah-heading-stone.png') 50% 47% / 620px 413px repeat;
+  box-shadow:none;
+  opacity:1;
   -webkit-background-clip:text;
   background-clip:text;
-  -webkit-text-stroke:0.36px rgba(70,34,15,0.48);
   -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:0.22px rgba(85,42,18,0.38);
+  filter:contrast(1.08) saturate(1.04);
+  text-shadow:none;
 }
 body.sitecah-theme .section h3,
 body.sitecah-theme .timeline-date,
