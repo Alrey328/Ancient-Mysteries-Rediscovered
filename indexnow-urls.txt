@@ -3,5 +3,6 @@
 # Example:
 # https://ancientmysteriesrediscovered.com/mysteries/giant-of-kandahar/
 https://ancientmysteriesrediscovered.com/
+https://ancientmysteriesrediscovered.com/mysteries/giant-of-kandahar/
 https://ancientmysteriesrediscovered.com/mysteries/rephaim/
 https://ancientmysteriesrediscovered.com/mysteries/si-te-cah/
