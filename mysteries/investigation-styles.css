@@ -590,28 +590,23 @@ body.kandahar-theme .related-card h3{
 }
 body.kandahar-theme .section h3,
 body.kandahar-theme .callout h3{
-  color:transparent;
-  background:
-    linear-gradient(180deg, rgba(226,184,99,0.76), rgba(123,73,29,0.64) 54%, rgba(215,151,66,0.7)),
-    url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg') 42% 48% / 620px 620px;
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-  filter:var(--mystery-heading-filter) brightness(1.12) contrast(1.04) saturate(0.84);
+  color:#e2b760;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  text-shadow:
+    0 1px 0 rgba(60,32,12,0.68),
+    0 4px 12px rgba(0,0,0,0.58);
+  filter:none;
 }
 body.kandahar-theme .timeline-item h3{
-  color:transparent;
-  background:
-    linear-gradient(180deg, rgba(247,213,139,0.94), rgba(198,127,57,0.88) 50%, rgba(236,177,88,0.92)),
-    url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg') 55% 42% / 920px 920px;
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-  -webkit-text-stroke:0.18px rgba(64,33,12,0.28);
-  filter:drop-shadow(0 1px 0 rgba(24,15,7,0.66)) brightness(1.32) contrast(1.02) saturate(0.84);
+  color:#edc978;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
   text-shadow:
-    0 1px 0 rgba(48,24,8,0.52),
-    0 5px 12px rgba(0,0,0,0.54);
+    0 1px 0 rgba(58,31,12,0.58),
+    0 4px 10px rgba(0,0,0,0.5);
 }
 p{ color:var(--bone-dim); margin:0 0 16px; }
 strong{ color:var(--bone); }
