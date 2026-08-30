@@ -318,8 +318,12 @@ body.sitecah-theme{
     radial-gradient(circle at 70% 52%, rgba(4,3,2,0.38) 0 1.8px, transparent 4.2px),
     repeating-linear-gradient(117deg, transparent 0 38px, rgba(222,154,82,0.035) 39px 40px, transparent 41px 78px);
   --mystery-heading-gradient:
-    linear-gradient(180deg, rgba(245,219,172,0.72), rgba(224,167,92,0.52) 48%, rgba(236,198,136,0.66) 100%),
+    radial-gradient(circle at 14% 28%, rgba(80,35,16,0.5) 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 76% 58%, rgba(244,209,154,0.48) 0 1.4px, transparent 2.4px),
+    repeating-linear-gradient(112deg, transparent 0 23px, rgba(85,38,17,0.34) 24px 25px, transparent 26px 52px),
+    linear-gradient(130deg, rgba(149,51,27,0.38), transparent 34%, rgba(201,95,45,0.28) 58%, transparent 78%),
     url('/mysteries/si-te-cah/sitecah-ochre-texture.png'),
+    linear-gradient(180deg, rgba(245,219,172,0.78), rgba(224,167,92,0.58) 48%, rgba(236,198,136,0.72) 100%),
     linear-gradient(180deg, #e7c99b 0%, #d3a061 44%, #ad6135 64%, #dfbb82 100%);
   --mystery-heading-text-fill:transparent;
   --mystery-heading-filter:drop-shadow(0 1px 0 rgba(18,9,4,0.9)) brightness(1.2) contrast(1.12) saturate(0.86);
@@ -336,7 +340,7 @@ body.sitecah-theme{
   --mystery-heading-level-3-shadow:
     0 1px 0 rgba(31,13,6,0.78),
     0 5px 12px rgba(0,0,0,0.62);
-  --mystery-heading-texture-size:auto, 620px 420px, auto;
+  --mystery-heading-texture-size:92px 74px, 118px 92px, 170px 130px, 760px 440px, 620px 420px, auto, auto;
   --mystery-heading-divider-detail:
     repeating-linear-gradient(90deg, transparent 0 18px, rgba(70,34,15,0.66) 18px 21px, transparent 21px 31px);
   --mystery-divider:
@@ -431,10 +435,15 @@ body.sitecah-theme .section h2,
 body.sitecah-theme .question-title h2{
   color:transparent;
   background:
-    linear-gradient(180deg, rgba(245,219,172,0.72), rgba(224,167,92,0.52) 48%, rgba(236,198,136,0.66) 100%),
+    radial-gradient(circle at 14% 28%, rgba(80,35,16,0.5) 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 76% 58%, rgba(244,209,154,0.48) 0 1.4px, transparent 2.4px),
+    repeating-linear-gradient(112deg, transparent 0 23px, rgba(85,38,17,0.34) 24px 25px, transparent 26px 52px),
+    linear-gradient(130deg, rgba(149,51,27,0.38), transparent 34%, rgba(201,95,45,0.28) 58%, transparent 78%),
     url('/mysteries/si-te-cah/sitecah-ochre-texture.png') 50% 48% / 620px 420px,
+    linear-gradient(180deg, rgba(245,219,172,0.78), rgba(224,167,92,0.58) 48%, rgba(236,198,136,0.72) 100%),
     linear-gradient(180deg, #e7c99b 0%, #d3a061 44%, #ad6135 64%, #dfbb82 100%);
-  background-blend-mode:screen, multiply, normal;
+  background-size:92px 74px, 118px 92px, 170px 130px, 760px 440px, 620px 420px, auto, auto;
+  background-blend-mode:multiply, screen, multiply, multiply, soft-light, screen, normal;
   background-repeat:no-repeat;
   -webkit-background-clip:text;
   background-clip:text;
