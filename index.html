@@ -145,6 +145,51 @@
     font-size:1rem;
   }
 
+  .youtube-subsection{
+    margin-top:34px;
+  }
+  .youtube-subsection + .youtube-subsection{
+    margin-top:54px;
+  }
+  .youtube-subhead{
+    margin:0 0 22px 40px;
+    max-width:720px;
+  }
+  .youtube-subhead h3{
+    font-family:'Cinzel', serif;
+    font-size:clamp(1.05rem, 2vw, 1.35rem);
+    font-weight:600;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--bone);
+  }
+  .youtube-subhead p{
+    margin-top:8px;
+    color:var(--bone-dim);
+    font-size:0.95rem;
+  }
+  .current-investigations-grid{
+    grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+    gap:22px;
+  }
+  .current-investigation-card{
+    position:relative;
+  }
+  .investigation-badge{
+    position:absolute;
+    top:12px;
+    right:12px;
+    z-index:1;
+    background:rgba(15,16,22,0.82);
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:5px 8px;
+  }
+
   /* ---------- Video grid ---------- */
   .grid{
     display:grid;
@@ -662,6 +707,11 @@
     .section-head{ gap:10px 14px; margin-bottom:28px; }
     .section-head .sub{ width:100%; margin-left:40px; }
     .section-intro{ margin:-14px 0 24px 40px; font-size:0.92rem; }
+    .youtube-subsection{ margin-top:26px; }
+    .youtube-subsection + .youtube-subsection{ margin-top:38px; }
+    .youtube-subhead{ margin:0 0 16px 40px; }
+    .youtube-subhead p{ font-size:0.86rem; }
+    .current-investigations-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px; }
 
     .grid,
     .featured-grid,
@@ -727,6 +777,12 @@
       padding:4px 6px;
       font-size:0.54rem;
     }
+    .investigation-badge{
+      top:8px;
+      right:8px;
+      padding:4px 6px;
+      font-size:0.54rem;
+    }
     .reel-card .thumb .play span{
       width:38px;
       height:38px;
@@ -747,6 +803,7 @@
     .fan-favorites-grid{
       gap:10px;
     }
+    .current-investigations-grid{ gap:10px; }
     .card .meta,
     .reel-card .meta,
     .reel-card.featured .meta{
@@ -1202,112 +1259,126 @@
 <section class="section wrap" id="archives">
   <div class="section-head">
     <span class="section-num">03</span>
-    <h2>From the Archives</h2>
-    <span class="sub">YouTube foundation</span>
+    <h2>YouTube Investigations</h2>
+    <span class="sub">current investigations + archive</span>
   </div>
-  <p class="section-intro">Explore where the journey began. These earlier investigations laid the foundation for Ancient Mysteries Rediscovered.</p>
-  <div class="grid" id="youtube-grid">
-    <!-- Repeat this card block for each video. Replace VIDEO_ID with the YouTube video ID
-         (the part after v= in the URL, e.g. https://youtube.com/watch?v=VIDEO_ID) -->
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/rNd376ucCNE" title="What Secret Did Odysseus Discover in the Land of the Dead" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-      <div class="meta">
-        <div class="tag">YouTube Short</div>
-        <h3>What Secret Did Odysseus Discover in the Land of the Dead</h3>
-      </div>
-    </div>
+  <p class="section-intro">Explore the questions, contradictions, and ancient mysteries behind our YouTube investigations.</p>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/I0_43C7jah0" title="What Would Circe Have Turned Odysseus Into" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-      <div class="meta">
-        <div class="tag">YouTube Short</div>
-        <h3>What Would Circe Have Turned Odysseus Into</h3>
-      </div>
+  <div class="youtube-subsection" aria-labelledby="current-investigations-title">
+    <div class="youtube-subhead">
+      <h3 id="current-investigations-title">Current Investigations</h3>
+      <p>New mysteries built around a question, contradiction, or unresolved idea.</p>
     </div>
+    <div class="grid current-investigations-grid">
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <span class="investigation-badge">Newest</span>
+          <iframe src="https://www.youtube.com/embed/rNd376ucCNE" title="What Secret Did Odysseus Discover in the Land of the Dead" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">YouTube Short</div>
+          <h3>What Secret Did Odysseus Discover in the Land of the Dead</h3>
+        </div>
+      </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/sA7HucWCf6Y" title="What If Poseidon Wasn’t the Villain of The Odyssey?" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/I0_43C7jah0" title="What Would Circe Have Turned Odysseus Into" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">YouTube Short</div>
+          <h3>What Would Circe Have Turned Odysseus Into</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">YouTube Short</div>
-        <h3>What If Poseidon Wasn’t the Villain of The Odyssey?</h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/P5NDnCriTc0" title="Poseidon Didn’t Want Odysseus Dead. He Wanted Him Broken" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/P5NDnCriTc0" title="Poseidon Didn’t Want Odysseus Dead. He Wanted Him Broken" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">YouTube Short</div>
+          <h3>Poseidon Didn’t Want Odysseus Dead. He Wanted Him Broken</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">YouTube Short</div>
-        <h3>Poseidon Didn’t Want Odysseus Dead. He Wanted Him Broken</h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/wwg-DXerxkI" title="The Story Homer Never Told About the Cyclops" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/d-VEQBxECtk" title="Odysseus Outsmarted the Cyclops With One Word" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">YouTube Short</div>
+          <h3>Odysseus Outsmarted the Cyclops With One Word</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">YouTube Short</div>
-        <h3>The Story Homer Never Told About the Cyclops</h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/d-VEQBxECtk" title="Odysseus Outsmarted the Cyclops With One Word" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/sA7HucWCf6Y" title="What If Poseidon Wasn’t the Villain of The Odyssey?" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">YouTube Short</div>
+          <h3>What If Poseidon Wasn’t the Villain of The Odyssey?</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">YouTube Short</div>
-        <h3>Odysseus Outsmarted the Cyclops With One Word</h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/ncKRWrn0kf4" title="The Trojan Horse Was the Lie That Destroyed Troy" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/wwg-DXerxkI" title="The Story Homer Never Told About the Cyclops" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">YouTube Short</div>
+          <h3>The Story Homer Never Told About the Cyclops</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">Ancient Mysteries Rediscovered</div>
-        <h3>The Trojan Horse Was the Lie That Destroyed Troy</h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/pNYNo71Qel8" title="The Tower of Babel Was Humanity’s First Rebellion" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/ncKRWrn0kf4" title="The Trojan Horse Was the Lie That Destroyed Troy" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">Ancient Mysteries Rediscovered</div>
+          <h3>The Trojan Horse Was the Lie That Destroyed Troy</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">Ancient Mysteries Rediscovered</div>
-        <h3>The Tower of Babel Was Humanity’s First Rebellion</h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/RM7oONPXUq4" title="Noah’s Ark May Not Mean What You Think" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/pNYNo71Qel8" title="The Tower of Babel Was Humanity’s First Rebellion" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">Ancient Mysteries Rediscovered</div>
+          <h3>The Tower of Babel Was Humanity’s First Rebellion</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">Ancient Mysteries Rediscovered</div>
-        <h3>Noah’s Ark May Not Mean What You Think</h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="frame">
-        <iframe src="https://www.youtube.com/embed/BEGe9jN-bR8" title="The Garden of Eden May Be Underwater" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/RM7oONPXUq4" title="Noah’s Ark May Not Mean What You Think" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">Ancient Mysteries Rediscovered</div>
+          <h3>Noah’s Ark May Not Mean What You Think</h3>
+        </div>
       </div>
-      <div class="meta">
-        <div class="tag">Ancient Mysteries Rediscovered</div>
-        <h3>The Garden of Eden May Be Underwater</h3>
+
+      <div class="card current-investigation-card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/BEGe9jN-bR8" title="The Garden of Eden May Be Underwater" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="meta">
+          <div class="tag">Ancient Mysteries Rediscovered</div>
+          <h3>The Garden of Eden May Be Underwater</h3>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="youtube-subsection" aria-labelledby="archive-investigations-title">
+    <div class="youtube-subhead">
+      <h3 id="archive-investigations-title">From the Archives</h3>
+      <p>Explore where the journey began. These earlier investigations laid the foundation for Ancient Mysteries Rediscovered.</p>
+    </div>
+    <div class="grid" id="youtube-grid">
 
     <div class="card">
       <div class="frame">
@@ -1439,6 +1510,7 @@
       </div>
     </div>
 
+  </div>
   </div>
 </section>
 
