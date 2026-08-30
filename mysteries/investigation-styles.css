@@ -1263,11 +1263,33 @@ footer{
   }
   .sitecah-hero .hero-inner{
     padding-top:46px;
-    padding-bottom:410px;
+    padding-bottom:0;
   }
   .rephaim-hero,
   .sitecah-hero{
     align-items:start;
+  }
+  body.sitecah-theme .mystery-hero.has-art{
+    background-image:
+      var(--mystery-hero-overlay),
+      var(--mystery-hero-side-overlay),
+      url('/mysteries/si-te-cah/sitecah-environment.png');
+    background-position:center, center, center top;
+    background-size:cover, cover, cover;
+  }
+  body.sitecah-theme .mystery-hero.has-art::after{
+    display:block;
+    content:"";
+    position:relative;
+    inset:auto;
+    z-index:1;
+    width:min(calc(100% - 40px), 430px);
+    height:auto;
+    aspect-ratio:2 / 3;
+    margin:28px auto 42px;
+    clip-path:none;
+    opacity:1;
+    background:var(--hero-image) center top / contain no-repeat;
   }
   .question-title{ padding:34px 0 18px; }
   .section{ padding:44px 0; }
@@ -1331,7 +1353,6 @@ footer{
   }
   .sitecah-hero .hero-inner{
     padding-top:40px;
-    padding-bottom:360px;
   }
   .video-frame{ max-height:540px; }
   .video-frame.portrait{ max-height:none; }
