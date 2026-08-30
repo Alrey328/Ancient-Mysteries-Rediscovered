@@ -92,6 +92,7 @@ body.kandahar-theme{
     radial-gradient(circle at 81% 68%, rgba(234,179,88,0.1) 0 1.2px, transparent 2.9px),
     radial-gradient(circle at 36% 58%, rgba(7,4,2,0.32) 0 2.4px, transparent 5.4px);
   --mystery-heading-gradient:
+    url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg'),
     radial-gradient(ellipse at 18% 28%, rgba(222,187,116,0.76) 0 10%, transparent 22%),
     radial-gradient(ellipse at 74% 56%, rgba(13,6,2,0.98) 0 16%, transparent 31%),
     linear-gradient(101deg, rgba(21,10,4,0.96) 0 9%, transparent 10% 16%, rgba(211,166,94,0.48) 17% 22%, rgba(60,28,10,0.78) 23% 31%, transparent 32% 44%, rgba(18,8,3,0.94) 45% 53%, transparent 54% 100%),
@@ -105,6 +106,9 @@ body.kandahar-theme{
     0 0 28px rgba(245,178,70,0.24);
   --mystery-heading-filter:drop-shadow(0 1px 0 rgba(24,15,7,0.8));
   --mystery-heading-weathering:
+    radial-gradient(circle at 33% 39%, rgba(0,0,0,1) 0 4.2px, transparent 6.6px),
+    radial-gradient(circle at 78% 72%, rgba(0,0,0,0.96) 0 5.4px, transparent 8.2px),
+    radial-gradient(circle at 47% 18%, rgba(246,205,118,0.58) 0 2px, transparent 3.2px),
     radial-gradient(circle at 18% 26%, rgba(3,1,0,1) 0 2.2px, transparent 3.4px),
     radial-gradient(circle at 62% 58%, rgba(235,195,117,0.54) 0 1.2px, transparent 2.4px),
     radial-gradient(circle at 74% 31%, rgba(5,2,1,0.92) 0 1.8px, transparent 3px),
@@ -121,7 +125,7 @@ body.kandahar-theme{
     repeating-linear-gradient(101deg, rgba(6,2,1,0.88) 0 1.8px, transparent 1.8px 6.2px),
     repeating-linear-gradient(7deg, rgba(214,160,82,0.28) 0 1px, transparent 1px 6px),
     repeating-linear-gradient(174deg, transparent 0 4px, rgba(5,2,1,0.8) 5px 13px, transparent 14px 20px);
-  --mystery-heading-texture-size:42px 38px, 57px 49px, 73px 61px, 136px 104px, 150px 112px, 144px 110px, 132px 98px, 152px 112px, 118px 92px, 128px 86px, 180px 94px, 210px 132px, 190px 118px, 88px 66px, 78px 58px, 136px 88px, 220px 150px, 260px 178px, 172px 120px, auto, 900px 620px;
+  --mystery-heading-texture-size:74px 62px, 108px 86px, 92px 78px, 42px 38px, 57px 49px, 73px 61px, 136px 104px, 150px 112px, 144px 110px, 132px 98px, 152px 112px, 118px 92px, 128px 86px, 180px 94px, 210px 132px, 190px 118px, 88px 66px, 78px 58px, 136px 88px, 260px 260px, 220px 150px, 260px 178px, 172px 120px, auto, 900px 620px;
   --mystery-heading-ambient:
     radial-gradient(ellipse at 28% 50%, rgba(245,188,74,0.2), transparent 58%),
     radial-gradient(ellipse at 6% 68%, rgba(27,17,8,0.42), transparent 44%),
@@ -130,17 +134,11 @@ body.kandahar-theme{
   --mystery-heading-divider-detail:
     repeating-linear-gradient(90deg, transparent 0 18px, rgba(48,28,11,0.72) 18px 21px, transparent 21px 30px);
   --mystery-heading-level-1-shadow:
-    0 1px 0 rgba(225,177,91,0.28),
-    0 3px 0 rgba(103,53,20,0.98),
-    0 7px 0 rgba(35,20,9,0.86),
-    0 16px 24px rgba(0,0,0,0.76),
-    0 0 26px rgba(242,181,74,0.18),
-    0 -1px 8px rgba(214,160,78,0.1);
+    0 7px 0 rgba(18,9,3,0.78),
+    0 18px 28px rgba(0,0,0,0.86);
   --mystery-heading-level-2-shadow:
-    0 1px 0 rgba(214,164,78,0.28),
-    0 2px 0 rgba(94,48,18,0.92),
-    0 8px 18px rgba(0,0,0,0.68),
-    0 0 28px rgba(217,148,53,0.24);
+    0 5px 0 rgba(20,10,4,0.72),
+    0 12px 20px rgba(0,0,0,0.78);
   --mystery-heading-level-3-shadow:
     0 1px 0 rgba(212,157,74,0.2),
     0 2px 10px rgba(0,0,0,0.64);
@@ -431,10 +429,24 @@ body.kandahar-theme .mystery-hero::before{
 body.kandahar-theme .mystery-hero h1,
 body.kandahar-theme .section h2,
 body.kandahar-theme .question-title h2{
+  color:transparent;
   -webkit-text-stroke:0.55px rgba(78,42,17,0.48);
+  -webkit-text-fill-color:transparent;
 }
 body.kandahar-theme .mystery-hero h1{
-  filter:var(--mystery-heading-filter) contrast(1.18);
+  background:url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg') 50% 50% / 700px 700px;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:var(--mystery-heading-filter) brightness(1.78) contrast(1.08) saturate(0.82);
+}
+body.kandahar-theme .section h2,
+body.kandahar-theme .question-title h2{
+  background:url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg') 50% 45% / 520px 520px;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:var(--mystery-heading-filter) brightness(1.42) contrast(1.06) saturate(0.82);
 }
 body.kandahar-theme .mystery-hero h1::before,
 body.kandahar-theme .section h2::before,
@@ -578,14 +590,12 @@ body.kandahar-theme .related-card h3{
 }
 body.kandahar-theme .section h3,
 body.kandahar-theme .callout h3{
-  background:
-    radial-gradient(circle at 14% 45%, rgba(41,23,9,0.5) 0 1.2px, transparent 2.4px),
-    repeating-linear-gradient(94deg, rgba(45,26,10,0.24) 0 1px, transparent 1px 14px),
-    linear-gradient(180deg, #ffe7ab, #a96529 54%, #f2c875);
-  background-size:82px 58px, 130px 90px, auto;
+  color:transparent;
+  background:url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg') 39% 52% / 360px 360px;
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
+  filter:var(--mystery-heading-filter) brightness(1.18) contrast(1.08) saturate(0.86);
 }
 p{ color:var(--bone-dim); margin:0 0 16px; }
 strong{ color:var(--bone); }
@@ -922,7 +932,7 @@ footer{
   .video-frame.portrait{ max-height:none; }
   .faq details{ padding:16px 18px; }
   body.kandahar-theme{
-    --mystery-heading-texture-size:34px 30px, 46px 39px, 58px 49px, 76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 80px 54px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 150px 104px, 164px 114px, 116px 82px, auto, 560px 390px;
+    --mystery-heading-texture-size:58px 48px, 80px 64px, 70px 58px, 34px 30px, 46px 39px, 58px 49px, 76px 58px, 86px 66px, 92px 70px, 78px 60px, 96px 72px, 72px 56px, 80px 54px, 112px 62px, 136px 84px, 122px 76px, 58px 44px, 52px 40px, 92px 60px, 180px 180px, 150px 104px, 164px 114px, 116px 82px, auto, 560px 390px;
     background-size:cover, cover, auto 140vh, auto;
   }
   body.kandahar-theme .mystery-hero h1,
