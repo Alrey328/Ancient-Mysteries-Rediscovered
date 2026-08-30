@@ -318,8 +318,9 @@ body.sitecah-theme{
     radial-gradient(circle at 70% 52%, rgba(4,3,2,0.38) 0 1.8px, transparent 4.2px),
     repeating-linear-gradient(117deg, transparent 0 38px, rgba(222,154,82,0.035) 39px 40px, transparent 41px 78px);
   --mystery-heading-gradient:
+    linear-gradient(180deg, rgba(245,219,172,0.72), rgba(224,167,92,0.52) 48%, rgba(236,198,136,0.66) 100%),
     url('/mysteries/si-te-cah/sitecah-ochre-texture.png'),
-    linear-gradient(180deg, rgba(226,198,152,0.96), rgba(178,99,42,0.74) 48%, rgba(72,38,20,0.9) 100%);
+    linear-gradient(180deg, #e7c99b 0%, #d3a061 44%, #ad6135 64%, #dfbb82 100%);
   --mystery-heading-text-fill:transparent;
   --mystery-heading-filter:drop-shadow(0 1px 0 rgba(18,9,4,0.9)) brightness(1.2) contrast(1.12) saturate(0.86);
   --mystery-heading-shadow:
@@ -335,7 +336,7 @@ body.sitecah-theme{
   --mystery-heading-level-3-shadow:
     0 1px 0 rgba(31,13,6,0.78),
     0 5px 12px rgba(0,0,0,0.62);
-  --mystery-heading-texture-size:620px 420px, auto;
+  --mystery-heading-texture-size:auto, 620px 420px, auto;
   --mystery-heading-divider-detail:
     repeating-linear-gradient(90deg, transparent 0 18px, rgba(70,34,15,0.66) 18px 21px, transparent 21px 31px);
   --mystery-divider:
@@ -429,7 +430,11 @@ body.sitecah-theme .mystery-hero h1,
 body.sitecah-theme .section h2,
 body.sitecah-theme .question-title h2{
   color:transparent;
-  background:url('/mysteries/si-te-cah/sitecah-ochre-texture.png') 50% 48% / 620px 420px;
+  background:
+    linear-gradient(180deg, rgba(245,219,172,0.72), rgba(224,167,92,0.52) 48%, rgba(236,198,136,0.66) 100%),
+    url('/mysteries/si-te-cah/sitecah-ochre-texture.png') 50% 48% / 620px 420px,
+    linear-gradient(180deg, #e7c99b 0%, #d3a061 44%, #ad6135 64%, #dfbb82 100%);
+  background-blend-mode:screen, multiply, normal;
   background-repeat:no-repeat;
   -webkit-background-clip:text;
   background-clip:text;
