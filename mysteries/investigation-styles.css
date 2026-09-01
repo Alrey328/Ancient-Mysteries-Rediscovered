@@ -965,6 +965,48 @@ body.diomedes-theme .mystery-hero.has-art::after{
   background:var(--hero-image) center top / contain no-repeat;
   filter:drop-shadow(0 22px 42px rgba(0,0,0,0.64));
 }
+body.diomedes-theme .mystery-hero h1[data-heading],
+body.diomedes-theme .section h2[data-heading]{
+  color:#d1a052;
+  background:none;
+  -webkit-background-clip:border-box;
+  background-clip:border-box;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0.38px rgba(47,26,9,0.56);
+  filter:none;
+  text-shadow:
+    0 1px 0 rgba(242,211,137,0.12),
+    0 4px 0 rgba(34,18,7,0.74),
+    0 16px 26px rgba(0,0,0,0.88);
+}
+body.diomedes-theme .mystery-hero h1[data-heading]::before,
+body.diomedes-theme .section h2[data-heading]::before{
+  content:attr(data-heading);
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  color:transparent;
+  background-color:#b67d3b;
+  background-image:url('/mysteries/the-man-who-made-a-god-bleed/diomedes-bronze-material.png');
+  background-position:0 0;
+  background-size:220px 146px;
+  background-repeat:repeat;
+  background-blend-mode:screen;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:0.18px rgba(70,42,17,0.36);
+  filter:brightness(1.32) contrast(1.05) saturate(0.84);
+  opacity:0.78;
+  text-shadow:none;
+}
+body.diomedes-theme .mystery-hero h1[data-heading]::before{
+  background-position:0 0;
+  background-size:250px 166px;
+  filter:brightness(1.3) contrast(1.04) saturate(0.84);
+  opacity:0.8;
+}
 .mystery-hero h1::after,
 .section h2::after,
 .question-title h2::after{
@@ -1584,4 +1626,25 @@ footer{
   }
   .video-frame{ max-height:540px; }
   .video-frame.portrait{ max-height:none; }
+}
+
+@media (min-width:641px){
+  body.diomedes-theme .mystery-hero.has-art::after{
+    display:block;
+    content:"";
+    position:absolute;
+    inset:44px clamp(28px, 7vw, 112px) 34px auto;
+    z-index:1;
+    width:min(34vw, 430px);
+    min-width:300px;
+    height:auto;
+    clip-path:none;
+    opacity:1;
+    pointer-events:none;
+    background-image:var(--hero-image);
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-size:contain;
+    filter:drop-shadow(0 22px 42px rgba(0,0,0,0.64));
+  }
 }
