@@ -387,6 +387,177 @@ body.sitecah-theme{
     linear-gradient(90deg, rgba(9,7,6,0.88) 0 40%, rgba(24,10,5,0.2) 58%, rgba(9,7,6,0.38) 100%);
 }
 
+body.diomedes-theme{
+  --diomedes-charcoal:#07080d;
+  --diomedes-storm:#0f2d58;
+  --diomedes-lightning:#70b8ff;
+  --diomedes-fire:#d96825;
+  --diomedes-bronze:#c99442;
+  --diomedes-gold:#e5bf66;
+  --diomedes-crimson:#7d2019;
+  --mystery-primary:var(--diomedes-gold);
+  --mystery-secondary:var(--diomedes-fire);
+  --mystery-accent:var(--diomedes-lightning);
+  --mystery-heading:#ddb45c;
+  --mystery-muted:#d2c5ad;
+  --mystery-border:rgba(229,191,102,0.22);
+  --mystery-border-strong:rgba(229,191,102,0.48);
+  --mystery-background:
+    linear-gradient(180deg, rgba(5,7,12,0.18), rgba(8,8,10,0.76) 42%, #07080d 100%),
+    linear-gradient(90deg, rgba(6,8,13,0.76), rgba(22,34,48,0.1) 45%, rgba(7,7,10,0.78)),
+    url('/mysteries/the-man-who-made-a-god-bleed/diomedes-environment.png'),
+    linear-gradient(180deg, #0d1728, #07080d);
+  --mystery-atmosphere:
+    radial-gradient(ellipse at 21% 0%, rgba(112,184,255,0.18), transparent 34%),
+    radial-gradient(ellipse at 82% 10%, rgba(217,104,37,0.15), transparent 34%),
+    linear-gradient(180deg, rgba(112,184,255,0.05), rgba(7,8,13,0.74) 100%);
+  --mystery-texture:
+    radial-gradient(circle at 18% 22%, rgba(235,206,133,0.08) 0 1.2px, transparent 2.8px),
+    radial-gradient(circle at 72% 52%, rgba(2,3,5,0.42) 0 2px, transparent 4.8px),
+    repeating-linear-gradient(116deg, transparent 0 40px, rgba(229,191,102,0.035) 41px 42px, transparent 43px 80px);
+  --mystery-heading-gradient:
+    linear-gradient(180deg, rgba(246,216,139,0.68), rgba(198,137,57,0.52) 46%, rgba(236,190,93,0.64) 100%),
+    url('/mysteries/the-man-who-made-a-god-bleed/diomedes-bronze-material.png'),
+    linear-gradient(180deg, #f0d489 0%, #c99442 44%, #8f5a25 72%, #e2bd65 100%);
+  --mystery-heading-text-fill:transparent;
+  --mystery-heading-filter:drop-shadow(0 1px 0 rgba(10,7,4,0.92)) brightness(1.18) contrast(1.16) saturate(0.9);
+  --mystery-heading-shadow:
+    0 1px 0 rgba(247,220,145,0.16),
+    0 4px 0 rgba(47,25,9,0.78),
+    0 16px 26px rgba(0,0,0,0.9),
+    0 0 24px rgba(112,184,255,0.14);
+  --mystery-heading-level-1-shadow:
+    0 6px 0 rgba(39,20,7,0.76),
+    0 20px 32px rgba(0,0,0,0.92),
+    0 0 30px rgba(112,184,255,0.16);
+  --mystery-heading-level-2-shadow:
+    0 4px 0 rgba(39,20,8,0.7),
+    0 13px 23px rgba(0,0,0,0.84);
+  --mystery-heading-level-3-shadow:
+    0 1px 0 rgba(12,8,4,0.82),
+    0 5px 12px rgba(0,0,0,0.64);
+  --mystery-heading-texture-size:auto, 820px 540px, auto;
+  --mystery-heading-divider-detail:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(54,31,13,0.7) 18px 21px, transparent 21px 30px);
+  --mystery-divider:
+    linear-gradient(90deg, rgba(229,191,102,0), rgba(112,184,255,0.46) 18%, rgba(235,204,120,0.95) 48%, rgba(217,104,37,0.62) 68%, rgba(229,191,102,0));
+  --mystery-divider-glow:0 0 18px rgba(112,184,255,0.2), 0 1px 0 rgba(0,0,0,0.58);
+  --mystery-panel:
+    linear-gradient(180deg, rgba(35,32,29,0.94), rgba(9,11,15,0.98)),
+    radial-gradient(ellipse at 0% 0%, rgba(229,191,102,0.13), transparent 40%),
+    radial-gradient(ellipse at 100% 20%, rgba(112,184,255,0.11), transparent 38%),
+    repeating-linear-gradient(166deg, rgba(235,216,168,0.04) 0 1px, transparent 1px 18px);
+  --mystery-panel-border:rgba(229,191,102,0.24);
+  --mystery-panel-shadow:0 24px 56px rgba(0,0,0,0.32), inset 0 1px 0 rgba(247,220,145,0.08);
+  --mystery-answer-panel:
+    linear-gradient(180deg, rgba(49,39,28,0.94), rgba(10,12,17,0.98)),
+    radial-gradient(ellipse at 18% 0%, rgba(229,191,102,0.2), transparent 42%),
+    radial-gradient(ellipse at 82% 76%, rgba(112,184,255,0.13), transparent 36%);
+  --mystery-answer-border:rgba(229,191,102,0.54);
+  --mystery-label-color:#f0cf83;
+  --mystery-label-border:rgba(229,191,102,0.58);
+  --mystery-label-bg:
+    linear-gradient(180deg, rgba(79,53,25,0.48), rgba(19,19,18,0.78));
+  --mystery-label-shadow:inset 0 0 0 1px rgba(0,0,0,0.28), 0 10px 24px rgba(0,0,0,0.22);
+  --mystery-video-border:rgba(229,191,102,0.48);
+  --mystery-play-border:rgba(240,207,131,0.72);
+  --mystery-timeline-line:linear-gradient(rgba(229,191,102,0.72), rgba(112,184,255,0.22), rgba(217,104,37,0));
+  --mystery-marker-border:rgba(240,207,131,0.92);
+  --mystery-marker-bg:rgba(112,184,255,0.2);
+  --mystery-comparison-panel:
+    linear-gradient(180deg, rgba(39,34,29,0.94), rgba(10,12,16,0.98)),
+    radial-gradient(ellipse at 100% 0%, rgba(112,184,255,0.14), transparent 42%);
+  --mystery-callout-panel:
+    linear-gradient(180deg, rgba(55,38,25,0.88), rgba(11,12,15,0.97)),
+    radial-gradient(ellipse at 12% 0%, rgba(217,104,37,0.2), transparent 42%);
+  --mystery-door-panel:
+    linear-gradient(180deg, rgba(38,31,25,0.74), rgba(5,6,10,0.98)),
+    radial-gradient(ellipse at 70% 0%, rgba(112,184,255,0.2), transparent 40%),
+    radial-gradient(ellipse at 22% 20%, rgba(217,104,37,0.16), transparent 42%),
+    repeating-linear-gradient(165deg, rgba(235,216,168,0.04) 0 1px, transparent 1px 18px);
+  --mystery-faq-heading:#e7c475;
+  --mystery-hero-bg-color:#090c13;
+  --mystery-hero-position:center, center, right 5% center, center;
+  --mystery-hero-size:cover, cover, auto 94%, cover;
+  --mystery-hero-shadow:inset 0 -54px 92px rgba(7,8,13,0.88);
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(6,8,13,0.02), rgba(7,8,13,0.2) 50%, rgba(7,8,13,0.92) 100%);
+  --mystery-hero-side-overlay:
+    linear-gradient(90deg, rgba(7,8,13,0.9) 0 34%, rgba(7,8,13,0.2) 58%, rgba(7,8,13,0.12) 100%);
+}
+
+body.diomedes-theme .mystery-hero.has-art{
+  background-image:
+    var(--mystery-hero-overlay),
+    var(--mystery-hero-side-overlay),
+    url('/mysteries/the-man-who-made-a-god-bleed/diomedes-environment.png');
+  background-position:center, center, center;
+  background-size:cover, cover, cover;
+}
+
+body.diomedes-theme .mystery-hero.has-art::after{
+  display:block;
+  content:"";
+  position:absolute;
+  z-index:1;
+  right:clamp(28px, 7vw, 112px);
+  top:44px;
+  bottom:34px;
+  width:min(34vw, 430px);
+  min-width:300px;
+  height:auto;
+  opacity:1;
+  pointer-events:none;
+  background:var(--hero-image) center top / contain no-repeat;
+  filter:drop-shadow(0 22px 42px rgba(0,0,0,0.64));
+}
+
+body.diomedes-theme .diomedes-hero .hero-inner{
+  padding-right:min(46vw, 560px);
+}
+
+body.diomedes-theme .diomedes-hero .mystery-hero h1,
+body.diomedes-theme .diomedes-hero h1{
+  max-width:620px;
+}
+
+body.diomedes-theme .mystery-hero h1,
+body.diomedes-theme .section h2,
+body.diomedes-theme .question-title h2{
+  color:#d9ad55;
+  background-repeat:no-repeat;
+  background-position:center;
+  -webkit-text-stroke:0.34px rgba(42,25,10,0.42);
+  filter:var(--mystery-heading-filter) brightness(1.28);
+}
+
+body.diomedes-theme .section h3,
+body.diomedes-theme .timeline-date,
+body.diomedes-theme .faq summary,
+body.diomedes-theme .callout h3,
+body.diomedes-theme .source-kicker,
+body.diomedes-theme .related-card h3{
+  color:#e3c274;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:var(--mystery-heading-level-3-shadow);
+}
+
+body.diomedes-theme .callout h3,
+body.diomedes-theme .timeline-item h3{
+  color:#8ec7ff;
+}
+
+body.diomedes-theme .door-beyond .question{
+  color:#f0d896;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:0 5px 16px rgba(0,0,0,0.76);
+}
+
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{
   scroll-behavior:smooth;
@@ -778,6 +949,21 @@ body.kandahar-theme .mystery-hero.has-art::after{
     linear-gradient(90deg, transparent 0 55%, rgba(7,4,2,0.74) 64%, rgba(7,4,2,0.1) 76%, transparent 100%),
     linear-gradient(180deg, rgba(7,4,2,0.56), transparent 24%, transparent 68%, rgba(7,4,2,0.76));
   opacity:0.66;
+}
+body.diomedes-theme .mystery-hero.has-art::after{
+  display:block;
+  content:"";
+  position:absolute;
+  inset:44px clamp(28px, 7vw, 112px) 34px auto;
+  z-index:1;
+  width:min(34vw, 430px);
+  min-width:300px;
+  height:auto;
+  clip-path:none;
+  opacity:1;
+  pointer-events:none;
+  background:var(--hero-image) center top / contain no-repeat;
+  filter:drop-shadow(0 22px 42px rgba(0,0,0,0.64));
 }
 .mystery-hero h1::after,
 .section h2::after,
@@ -1245,6 +1431,11 @@ footer{
     background-size:cover, cover, auto 72%, cover;
     box-shadow:inset 0 -44px 74px rgba(9,7,6,0.82);
   }
+  body.diomedes-theme .mystery-hero.has-art{
+    background-position:center, center, right 4% center, center top;
+    background-size:cover, cover, auto 72%, cover;
+    box-shadow:inset 0 -44px 74px rgba(7,8,13,0.86);
+  }
 }
 @media (max-width:640px){
   .wrap{ padding:0 20px; }
@@ -1265,8 +1456,13 @@ footer{
     padding-top:46px;
     padding-bottom:0;
   }
+  .diomedes-hero .hero-inner{
+    padding-top:46px;
+    padding-bottom:0;
+  }
   .rephaim-hero,
-  .sitecah-hero{
+  .sitecah-hero,
+  .diomedes-hero{
     align-items:start;
   }
   body.sitecah-theme .mystery-hero.has-art{
@@ -1278,6 +1474,28 @@ footer{
     background-size:cover, cover, cover;
   }
   body.sitecah-theme .mystery-hero.has-art::after{
+    display:block;
+    content:"";
+    position:relative;
+    inset:auto;
+    z-index:1;
+    width:min(calc(100% - 40px), 430px);
+    height:auto;
+    aspect-ratio:2 / 3;
+    margin:28px auto 42px;
+    clip-path:none;
+    opacity:1;
+    background:var(--hero-image) center top / contain no-repeat;
+  }
+  body.diomedes-theme .mystery-hero.has-art{
+    background-image:
+      var(--mystery-hero-overlay),
+      var(--mystery-hero-side-overlay),
+      url('/mysteries/the-man-who-made-a-god-bleed/diomedes-environment.png');
+    background-position:center, center, center top;
+    background-size:cover, cover, cover;
+  }
+  body.diomedes-theme .mystery-hero.has-art::after{
     display:block;
     content:"";
     position:relative;
@@ -1320,6 +1538,10 @@ footer{
     --mystery-heading-texture-size:520px 350px, auto;
     background-size:cover, cover, auto 140vh, auto;
   }
+  body.diomedes-theme{
+    --mystery-heading-texture-size:auto, 540px 360px, auto;
+    background-size:cover, cover, auto 140vh, auto;
+  }
   body.kandahar-theme .mystery-hero h1,
   body.kandahar-theme .section h2,
   body.kandahar-theme .question-title h2{
@@ -1344,6 +1566,9 @@ footer{
   body.sitecah-theme .mystery-hero.has-art{
     background-size:cover, cover, auto 58%, cover;
   }
+  body.diomedes-theme .mystery-hero.has-art{
+    background-size:cover, cover, auto 58%, cover;
+  }
   .kandahar-hero .hero-inner{
     padding-top:324px;
   }
@@ -1352,6 +1577,9 @@ footer{
     padding-bottom:348px;
   }
   .sitecah-hero .hero-inner{
+    padding-top:40px;
+  }
+  .diomedes-hero .hero-inner{
     padding-top:40px;
   }
   .video-frame{ max-height:540px; }
