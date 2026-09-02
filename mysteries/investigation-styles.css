@@ -558,6 +558,211 @@ body.diomedes-theme .door-beyond .question{
   text-shadow:0 5px 16px rgba(0,0,0,0.76);
 }
 
+body.og-theme{
+  --og-basalt:#070706;
+  --og-iron:#171612;
+  --og-amber:#b06b25;
+  --og-mineral:#c8953f;
+  --og-stone:#d0b17d;
+  --og-ivory:#efe4ca;
+  --mystery-primary:var(--og-mineral);
+  --mystery-secondary:var(--og-amber);
+  --mystery-accent:#83673e;
+  --mystery-heading:#b98735;
+  --mystery-muted:#cabca3;
+  --mystery-border:rgba(200,149,63,0.2);
+  --mystery-border-strong:rgba(200,149,63,0.45);
+  --mystery-background:
+    linear-gradient(180deg, rgba(7,7,6,0.12), rgba(10,9,7,0.78) 44%, #070706 100%),
+    linear-gradient(90deg, rgba(5,5,4,0.8), rgba(41,29,16,0.1) 48%, rgba(7,7,6,0.84)),
+    url('/mysteries/og-of-bashan/og-environment.png'),
+    linear-gradient(180deg, #211911, #070706);
+  --mystery-atmosphere:
+    radial-gradient(ellipse at 78% 0%, rgba(176,107,37,0.17), transparent 34%),
+    radial-gradient(ellipse at 17% 4%, rgba(208,177,125,0.08), transparent 30%),
+    linear-gradient(180deg, rgba(93,62,27,0.05), rgba(7,7,6,0.74) 100%);
+  --mystery-texture:
+    radial-gradient(circle at 16% 28%, rgba(208,177,125,0.06) 0 1.2px, transparent 2.8px),
+    radial-gradient(circle at 68% 50%, rgba(0,0,0,0.4) 0 2px, transparent 4.6px),
+    repeating-linear-gradient(114deg, transparent 0 42px, rgba(200,149,63,0.032) 43px 44px, transparent 45px 86px);
+  --mystery-heading-divider-detail:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(36,28,18,0.74) 18px 21px, transparent 21px 31px);
+  --mystery-divider:
+    linear-gradient(90deg, rgba(200,149,63,0), rgba(80,61,38,0.78) 18%, rgba(211,168,91,0.88) 50%, rgba(133,85,35,0.58) 72%, rgba(200,149,63,0));
+  --mystery-divider-glow:0 0 16px rgba(176,107,37,0.18), 0 1px 0 rgba(0,0,0,0.62);
+  --mystery-panel:
+    linear-gradient(180deg, rgba(38,34,27,0.95), rgba(12,12,10,0.98)),
+    radial-gradient(ellipse at 0% 0%, rgba(200,149,63,0.1), transparent 40%),
+    radial-gradient(ellipse at 100% 26%, rgba(74,61,45,0.14), transparent 38%),
+    repeating-linear-gradient(166deg, rgba(220,193,145,0.035) 0 1px, transparent 1px 18px);
+  --mystery-panel-border:rgba(200,149,63,0.22);
+  --mystery-panel-shadow:0 24px 56px rgba(0,0,0,0.34), inset 0 1px 0 rgba(229,207,164,0.06);
+  --mystery-answer-panel:
+    linear-gradient(180deg, rgba(45,38,28,0.94), rgba(13,13,11,0.98)),
+    radial-gradient(ellipse at 18% 0%, rgba(200,149,63,0.18), transparent 42%);
+  --mystery-answer-border:rgba(200,149,63,0.52);
+  --mystery-label-color:#d8b26d;
+  --mystery-label-border:rgba(200,149,63,0.56);
+  --mystery-label-bg:linear-gradient(180deg, rgba(82,55,28,0.48), rgba(18,17,14,0.8));
+  --mystery-label-shadow:inset 0 0 0 1px rgba(0,0,0,0.32), 0 10px 24px rgba(0,0,0,0.24);
+  --mystery-video-border:rgba(200,149,63,0.46);
+  --mystery-play-border:rgba(216,178,109,0.72);
+  --mystery-timeline-line:linear-gradient(rgba(200,149,63,0.74), rgba(111,78,41,0.22), rgba(200,149,63,0));
+  --mystery-marker-border:rgba(216,178,109,0.9);
+  --mystery-marker-bg:rgba(111,78,41,0.28);
+  --mystery-comparison-panel:
+    linear-gradient(180deg, rgba(35,31,25,0.95), rgba(12,12,10,0.98)),
+    radial-gradient(ellipse at 100% 0%, rgba(176,107,37,0.13), transparent 42%);
+  --mystery-callout-panel:
+    linear-gradient(180deg, rgba(55,39,24,0.88), rgba(12,12,10,0.97)),
+    radial-gradient(ellipse at 12% 0%, rgba(176,107,37,0.16), transparent 42%);
+  --mystery-door-panel:
+    linear-gradient(180deg, rgba(35,29,22,0.76), rgba(6,6,5,0.98)),
+    radial-gradient(ellipse at 70% 0%, rgba(176,107,37,0.18), transparent 40%),
+    repeating-linear-gradient(165deg, rgba(220,193,145,0.036) 0 1px, transparent 1px 18px);
+  --mystery-faq-heading:#d8b26d;
+  --mystery-hero-bg-color:#090806;
+  --mystery-hero-overlay:linear-gradient(180deg, rgba(8,7,5,0.02), rgba(9,8,6,0.22) 48%, rgba(7,7,6,0.94) 100%);
+  --mystery-hero-side-overlay:
+    linear-gradient(90deg, rgba(7,7,6,0.92) 0 36%, rgba(22,17,11,0.28) 58%, rgba(7,7,6,0.18) 100%);
+}
+
+body.og-theme .mystery-hero.has-art{
+  background-image:
+    var(--mystery-hero-overlay),
+    var(--mystery-hero-side-overlay),
+    url('/mysteries/og-of-bashan/og-environment.png');
+  background-position:center, center, center;
+  background-repeat:no-repeat;
+  background-size:cover, cover, cover;
+  background-color:var(--mystery-hero-bg-color);
+  box-shadow:inset 0 -54px 94px rgba(7,7,6,0.9);
+}
+
+body.og-theme .mystery-hero.has-art::after{
+  display:block;
+  content:"";
+  position:absolute;
+  z-index:1;
+  right:clamp(24px, 6vw, 96px);
+  top:38px;
+  bottom:32px;
+  width:min(36vw, 460px);
+  min-width:320px;
+  height:auto;
+  opacity:1;
+  pointer-events:none;
+  background:var(--hero-image) center top / contain no-repeat;
+  filter:drop-shadow(0 24px 44px rgba(0,0,0,0.68));
+}
+
+body.og-theme .og-hero .hero-inner{
+  padding-right:min(47vw, 590px);
+}
+
+body.og-theme .og-hero h1{
+  max-width:620px;
+}
+
+body.og-theme .mystery-hero h1[data-heading],
+body.og-theme .section h2[data-heading]{
+  color:#bd8d45;
+  background:none;
+  -webkit-background-clip:border-box;
+  background-clip:border-box;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0.38px rgba(17,14,10,0.7);
+  filter:none;
+  text-shadow:
+    0 1px 0 rgba(221,184,108,0.1),
+    0 4px 0 rgba(17,13,8,0.78),
+    0 15px 26px rgba(0,0,0,0.9);
+}
+
+body.og-theme .mystery-hero h1[data-heading]::before,
+body.og-theme .section h2[data-heading]::before{
+  content:attr(data-heading);
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  color:transparent;
+  background-color:#c09656;
+  background-image:url('/mysteries/og-of-bashan/og-heading-material.png');
+  background-position:34px 18px;
+  background-size:245px 163px;
+  background-repeat:repeat;
+  background-blend-mode:screen;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:0.2px rgba(28,23,16,0.5);
+  filter:brightness(1.58) contrast(1.01) saturate(0.7);
+  opacity:0.82;
+  text-shadow:none;
+}
+
+body.og-theme .mystery-hero h1[data-heading]::before{
+  background-position:42px 28px;
+  background-size:285px 190px;
+  filter:brightness(1.58) contrast(1.01) saturate(0.7);
+  opacity:0.84;
+}
+
+body.og-theme .section h3,
+body.og-theme .timeline-date,
+body.og-theme .faq summary,
+body.og-theme .callout h3,
+body.og-theme .source-kicker,
+body.og-theme .related-card h3{
+  color:#d4b071;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:var(--mystery-heading-level-3-shadow);
+}
+
+body.og-theme .timeline-item h3,
+body.og-theme .callout h3{
+  color:#c8953f;
+}
+
+body.og-theme .door-beyond .question{
+  color:#efe4ca;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:0 5px 16px rgba(0,0,0,0.76);
+}
+
+body.og-theme .dimension-box{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:18px;
+  margin:24px 0;
+}
+
+body.og-theme .dimension-box .comparison-card{
+  text-align:center;
+}
+
+body.og-theme .dimension-number{
+  display:block;
+  color:#efe4ca;
+  font-family:'Cinzel', serif;
+  font-size:clamp(2rem, 5vw, 3.4rem);
+  line-height:1;
+  margin-bottom:8px;
+}
+
+body.og-theme .video-card .note{
+  max-width:640px;
+  margin:18px auto 0;
+  text-align:center;
+}
+
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{
   scroll-behavior:smooth;
@@ -1457,6 +1662,7 @@ footer{
   .page-grid{ grid-template-columns:1fr; }
   .comparison-grid,
   .related-grid{ grid-template-columns:1fr; }
+  body.og-theme .dimension-box{ grid-template-columns:1fr; }
   .mystery-hero::after{ width:52vw; opacity:0.42; }
   body.kandahar-theme .mystery-hero.has-art{
     background-position:center, center, center top, left center;
@@ -1477,6 +1683,11 @@ footer{
     background-position:center, center, right 4% center, center top;
     background-size:cover, cover, auto 72%, cover;
     box-shadow:inset 0 -44px 74px rgba(7,8,13,0.86);
+  }
+  body.og-theme .mystery-hero.has-art{
+    background-position:center, center, center top;
+    background-size:cover, cover, cover;
+    box-shadow:inset 0 -44px 74px rgba(7,7,6,0.88);
   }
 }
 @media (max-width:640px){
@@ -1502,9 +1713,14 @@ footer{
     padding-top:46px;
     padding-bottom:0;
   }
+  .og-hero .hero-inner{
+    padding-top:46px;
+    padding-bottom:0;
+  }
   .rephaim-hero,
   .sitecah-hero,
-  .diomedes-hero{
+  .diomedes-hero,
+  .og-hero{
     align-items:start;
   }
   body.sitecah-theme .mystery-hero.has-art{
@@ -1551,6 +1767,32 @@ footer{
     opacity:1;
     background:var(--hero-image) center top / contain no-repeat;
   }
+  body.og-theme .mystery-hero.has-art{
+    background-image:
+      var(--mystery-hero-overlay),
+      var(--mystery-hero-side-overlay),
+      url('/mysteries/og-of-bashan/og-environment.png');
+    background-position:center, center, center top;
+    background-size:cover, cover, cover;
+  }
+  body.og-theme .mystery-hero.has-art::after{
+    display:block;
+    content:"";
+    position:relative;
+    inset:auto;
+    z-index:1;
+    width:min(calc(100% - 40px), 430px);
+    min-width:0;
+    height:auto;
+    aspect-ratio:2 / 3;
+    margin:30px auto 42px;
+    clip-path:none;
+    opacity:1;
+    background:var(--hero-image) center top / contain no-repeat;
+  }
+  body.og-theme .og-hero .hero-inner{
+    padding-right:20px;
+  }
   .question-title{ padding:34px 0 18px; }
   .section{ padding:44px 0; }
   .answer-box,
@@ -1584,6 +1826,9 @@ footer{
     --mystery-heading-texture-size:auto, 540px 360px, auto;
     background-size:cover, cover, auto 140vh, auto;
   }
+  body.og-theme{
+    background-size:cover, cover, auto 140vh, auto;
+  }
   body.kandahar-theme .mystery-hero h1,
   body.kandahar-theme .section h2,
   body.kandahar-theme .question-title h2{
@@ -1611,6 +1856,9 @@ footer{
   body.diomedes-theme .mystery-hero.has-art{
     background-size:cover, cover, auto 58%, cover;
   }
+  body.og-theme .mystery-hero.has-art{
+    background-size:cover, cover, cover;
+  }
   .kandahar-hero .hero-inner{
     padding-top:324px;
   }
@@ -1622,6 +1870,9 @@ footer{
     padding-top:40px;
   }
   .diomedes-hero .hero-inner{
+    padding-top:40px;
+  }
+  .og-hero .hero-inner{
     padding-top:40px;
   }
   .video-frame{ max-height:540px; }
@@ -1646,5 +1897,23 @@ footer{
     background-repeat:no-repeat;
     background-size:contain;
     filter:drop-shadow(0 22px 42px rgba(0,0,0,0.64));
+  }
+  body.og-theme .mystery-hero.has-art::after{
+    display:block;
+    content:"";
+    position:absolute;
+    inset:38px clamp(24px, 6vw, 96px) 32px auto;
+    z-index:1;
+    width:min(36vw, 460px);
+    min-width:320px;
+    height:auto;
+    clip-path:none;
+    opacity:1;
+    pointer-events:none;
+    background-image:var(--hero-image);
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-size:contain;
+    filter:drop-shadow(0 24px 44px rgba(0,0,0,0.68));
   }
 }
