@@ -2206,3 +2206,297 @@ footer{
     filter:drop-shadow(0 24px 44px rgba(0,0,0,0.68));
   }
 }
+
+body.maximinus-theme .proposition-strip{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:1px;
+  margin-top:18px;
+  border:1px solid var(--mystery-border-strong);
+  background:var(--mystery-border-strong);
+}
+body.maximinus-theme .proposition-strip strong{
+  display:block;
+  padding:18px;
+  background:rgba(20,18,17,0.94);
+  color:#eee4d0;
+  font-family:'Cinzel', serif;
+  font-size:clamp(1rem, 2.2vw, 1.35rem);
+  letter-spacing:0.04em;
+  text-align:center;
+  text-transform:uppercase;
+}
+body.maximinus-theme .evidence-legend{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+body.maximinus-theme .status-label{ margin:10px 8px 18px 0; }
+body.maximinus-theme .status-established{ --mystery-label-color:#dce9ba; --mystery-label-border:rgba(130,165,77,0.7); --mystery-label-bg:linear-gradient(180deg, rgba(66,94,39,0.55), rgba(30,35,26,0.88)); }
+body.maximinus-theme .status-strong{ --mystery-label-color:#f0d59e; --mystery-label-border:rgba(209,168,90,0.72); }
+body.maximinus-theme .status-later{ --mystery-label-color:#efc886; --mystery-label-border:rgba(181,118,43,0.72); --mystery-label-bg:linear-gradient(180deg, rgba(120,73,26,0.55), rgba(42,31,23,0.88)); }
+body.maximinus-theme .status-hypothesis{ --mystery-label-color:#d9dce2; --mystery-label-border:rgba(156,162,173,0.7); --mystery-label-bg:linear-gradient(180deg, rgba(86,91,101,0.5), rgba(34,35,39,0.88)); }
+body.maximinus-theme .status-unproven{ --mystery-label-color:#f2b0a5; --mystery-label-border:rgba(168,60,45,0.76); --mystery-label-bg:linear-gradient(180deg, rgba(118,31,24,0.64), rgba(47,24,22,0.9)); }
+body.maximinus-theme .growth-grid{ display:grid; grid-template-columns:minmax(0, 1fr) 70px minmax(0, 1fr); align-items:stretch; gap:0; margin-top:26px; }
+body.maximinus-theme .growth-card{ position:relative; overflow:hidden; padding:30px; border:1px solid var(--mystery-panel-border); background:var(--mystery-comparison-panel); box-shadow:var(--mystery-panel-shadow); }
+body.maximinus-theme .growth-card.later{ border-color:rgba(168,60,45,0.54); background:linear-gradient(180deg, rgba(96,40,31,0.86), rgba(22,18,18,0.98)), radial-gradient(ellipse at 100% 0%, rgba(209,168,90,0.16), transparent 42%); }
+body.maximinus-theme .growth-card .source-era{ color:#c99a51; font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.13em; text-transform:uppercase; }
+body.maximinus-theme .growth-card h3{ margin:8px 0 16px; font-size:clamp(1.45rem, 3vw, 2rem); }
+body.maximinus-theme .growth-card ul{ padding-left:20px; color:var(--bone-dim); }
+body.maximinus-theme .growth-card li{ margin:9px 0; }
+body.maximinus-theme .growth-arrow{ display:grid; place-items:center; color:#d1a85a; font-family:'Cinzel', serif; font-size:2rem; background:linear-gradient(180deg, rgba(118,31,24,0.2), rgba(209,168,90,0.08)); border-top:1px solid var(--mystery-border); border-bottom:1px solid var(--mystery-border); }
+body.maximinus-theme .height-file{ display:grid; grid-template-columns:minmax(0, 0.9fr) minmax(260px, 1.1fr); gap:24px; align-items:center; margin-top:24px; }
+body.maximinus-theme .height-chart{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); align-items:end; gap:22px; min-height:350px; padding:28px 28px 22px; border:1px solid var(--mystery-panel-border); background:repeating-linear-gradient(to top, rgba(238,229,211,0.1) 0 1px, transparent 1px 42px), linear-gradient(180deg, rgba(76,68,59,0.9), rgba(17,18,19,0.98)); }
+body.maximinus-theme .height-column{ display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:10px; min-width:0; color:#e9dfcc; font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.06em; text-align:center; text-transform:uppercase; }
+body.maximinus-theme .height-bar{ width:min(88px, 68%); height:238px; border:1px solid rgba(231,214,179,0.5); background:linear-gradient(180deg, #8f8b83, #292b2d); box-shadow:0 12px 24px rgba(0,0,0,0.38); }
+body.maximinus-theme .height-column.claim .height-bar{ height:322px; background:linear-gradient(180deg, #a33b2d, #4c1b17); }
+body.maximinus-theme .claim-grid{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; margin-top:24px; }
+body.maximinus-theme .claim-card{ padding:22px; border:1px solid var(--mystery-panel-border); background:var(--mystery-comparison-panel); box-shadow:var(--mystery-panel-shadow); }
+body.maximinus-theme .claim-card h3{ margin-top:0; }
+body.maximinus-theme .artifact-layout{ display:grid; grid-template-columns:minmax(280px, 0.9fr) minmax(0, 1.1fr); gap:26px; align-items:stretch; margin-top:24px; }
+body.maximinus-theme .artifact-crop{ min-height:420px; border:1px solid var(--mystery-border-strong); background-image:linear-gradient(180deg, transparent 55%, rgba(11,12,13,0.92)), url('/mysteries/maximinus-thrax/maximinus-thrax-poster.png'); background-repeat:no-repeat; background-size:cover, 315%; box-shadow:var(--mystery-panel-shadow); }
+body.maximinus-theme .artifact-crop.bust-crop{ background-position:center, 3% 78%; }
+body.maximinus-theme .artifact-crop.coin-crop{ background-position:center, 3% 57%; }
+body.maximinus-theme .artifact-copy{ padding:28px; border:1px solid var(--mystery-panel-border); background:var(--mystery-panel); box-shadow:var(--mystery-panel-shadow); }
+body.maximinus-theme .evidence-board{ border:1px solid var(--mystery-border-strong); background:rgba(15,15,16,0.9); box-shadow:var(--mystery-panel-shadow); }
+body.maximinus-theme .evidence-row{ display:grid; grid-template-columns:minmax(0, 1fr) minmax(190px, 0.42fr); align-items:center; gap:20px; padding:16px 20px; border-bottom:1px solid var(--mystery-border); }
+body.maximinus-theme .evidence-row:last-child{ border-bottom:0; }
+body.maximinus-theme .evidence-row p{ margin:0; color:#e4dac7; }
+body.maximinus-theme .evidence-row .status-label{ justify-self:start; margin:0; }
+body.maximinus-theme .verdict-lockup{ text-align:center; }
+body.maximinus-theme .verdict-lockup h2::after{ margin-left:auto; margin-right:auto; }
+body.maximinus-theme .verdict-equation{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr; align-items:center; gap:10px; margin:30px 0; color:#e5d9c3; font-family:'Cinzel', serif; font-size:clamp(0.78rem, 1.8vw, 1rem); letter-spacing:0.04em; text-transform:uppercase; }
+body.maximinus-theme .equation-mark{ color:#c9994d; font-size:1.6rem; }
+body.maximinus-theme .reel-placeholder{ display:grid; grid-template-columns:minmax(230px, 0.7fr) minmax(0, 1.3fr); gap:26px; align-items:center; }
+body.maximinus-theme .reel-poster{ width:100%; aspect-ratio:2 / 3; object-fit:cover; border:1px solid var(--mystery-video-border); box-shadow:var(--mystery-video-shadow); }
+body.maximinus-theme .reel-cta{ display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 18px; border:1px solid rgba(209,168,90,0.58); color:#f1e4ca; background:linear-gradient(135deg, rgba(101,23,20,0.92), rgba(55,36,25,0.92)); box-shadow:0 10px 24px rgba(0,0,0,0.24); font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-decoration:none; text-transform:uppercase; transition:transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease; }
+body.maximinus-theme .reel-cta:hover,
+body.maximinus-theme .reel-cta:focus-visible{ transform:translateY(-2px); border-color:#d1a85a; box-shadow:0 14px 30px rgba(0,0,0,0.34), 0 0 0 3px rgba(209,168,90,0.14); outline:none; }
+@media (max-width:900px){
+  body.maximinus-theme .claim-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  body.maximinus-theme .artifact-layout{ grid-template-columns:1fr; }
+  body.maximinus-theme .artifact-crop{ min-height:520px; background-size:cover, 250%; }
+}
+@media (max-width:640px){
+  body.maximinus-theme .proposition-strip,
+  body.maximinus-theme .height-file,
+  body.maximinus-theme .claim-grid,
+  body.maximinus-theme .reel-placeholder{ grid-template-columns:1fr; }
+  body.maximinus-theme .growth-grid{ grid-template-columns:1fr; }
+  body.maximinus-theme .growth-arrow{ min-height:58px; transform:rotate(90deg); }
+  body.maximinus-theme .height-chart{ min-height:310px; padding:22px 16px 18px; }
+  body.maximinus-theme .height-bar{ height:200px; }
+  body.maximinus-theme .height-column.claim .height-bar{ height:268px; }
+  body.maximinus-theme .artifact-crop{ min-height:420px; background-size:cover, 290%; }
+  body.maximinus-theme .evidence-row{ grid-template-columns:1fr; gap:10px; }
+  body.maximinus-theme .verdict-equation{ grid-template-columns:1fr; }
+  body.maximinus-theme .equation-mark{ transform:rotate(90deg); }
+}
+
+/* Maximinus Thrax — Imperial Roman investigation */
+body.maximinus-theme{
+  --roman-ivory:#eee5d3;
+  --roman-marble:#d9d0bd;
+  --roman-red:#761f18;
+  --roman-red-bright:#a83c2d;
+  --roman-bronze:#ad8244;
+  --roman-gold:#d1a85a;
+  --roman-iron:#17191b;
+  --roman-storm:#62646a;
+  --mystery-primary:var(--roman-gold);
+  --mystery-secondary:var(--roman-red-bright);
+  --mystery-accent:var(--roman-bronze);
+  --mystery-heading:var(--roman-ivory);
+  --mystery-muted:#d1c7b5;
+  --mystery-border:rgba(209,168,90,0.23);
+  --mystery-border-strong:rgba(209,168,90,0.5);
+  --mystery-background:
+    linear-gradient(180deg, rgba(14,15,16,0.2), rgba(17,15,14,0.82) 45%, #0d0d0e 100%),
+    linear-gradient(90deg, rgba(12,13,14,0.78), rgba(81,66,49,0.08) 48%, rgba(11,12,13,0.8)),
+    url('/mysteries/maximinus-thrax/rome-environment.png'),
+    #17191b;
+  --mystery-atmosphere:
+    radial-gradient(ellipse at 18% 2%, rgba(239,225,190,0.18), transparent 34%),
+    radial-gradient(ellipse at 82% 16%, rgba(118,31,24,0.2), transparent 34%),
+    linear-gradient(180deg, rgba(94,98,104,0.05), rgba(11,12,13,0.74) 100%);
+  --mystery-texture:
+    repeating-linear-gradient(104deg, transparent 0 54px, rgba(244,234,210,0.025) 55px 56px, transparent 57px 104px),
+    radial-gradient(circle at 14% 26%, rgba(238,229,211,0.08) 0 1.2px, transparent 2.6px),
+    radial-gradient(circle at 78% 66%, rgba(112,31,24,0.13) 0 1.8px, transparent 4px);
+  --mystery-panel:
+    linear-gradient(180deg, rgba(55,48,42,0.94), rgba(18,18,19,0.98)),
+    radial-gradient(ellipse at 0% 0%, rgba(238,229,211,0.13), transparent 40%),
+    radial-gradient(ellipse at 100% 18%, rgba(118,31,24,0.18), transparent 40%);
+  --mystery-answer-panel:
+    linear-gradient(180deg, rgba(80,66,52,0.96), rgba(22,20,19,0.99)),
+    radial-gradient(ellipse at 12% 0%, rgba(239,224,190,0.18), transparent 42%),
+    radial-gradient(ellipse at 86% 78%, rgba(118,31,24,0.2), transparent 36%);
+  --mystery-comparison-panel:
+    linear-gradient(180deg, rgba(62,53,45,0.95), rgba(18,18,19,0.98)),
+    radial-gradient(ellipse at 100% 0%, rgba(132,39,29,0.16), transparent 42%);
+  --mystery-callout-panel:
+    linear-gradient(180deg, rgba(104,48,36,0.88), rgba(22,20,19,0.98)),
+    radial-gradient(ellipse at 12% 0%, rgba(225,193,128,0.2), transparent 42%);
+  --mystery-door-panel:
+    linear-gradient(180deg, rgba(64,52,43,0.82), rgba(10,11,12,0.98)),
+    radial-gradient(ellipse at 68% 0%, rgba(209,168,90,0.2), transparent 40%),
+    radial-gradient(ellipse at 20% 18%, rgba(118,31,24,0.18), transparent 42%);
+  --mystery-panel-border:rgba(209,168,90,0.27);
+  --mystery-panel-shadow:0 24px 56px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,245,220,0.08);
+  --mystery-answer-border:rgba(225,193,128,0.52);
+  --mystery-label-color:#f0d59e;
+  --mystery-label-border:rgba(209,168,90,0.6);
+  --mystery-label-bg:linear-gradient(180deg, rgba(118,31,24,0.46), rgba(40,31,26,0.84));
+  --mystery-divider:linear-gradient(90deg, rgba(209,168,90,0), rgba(118,31,24,0.66) 18%, rgba(237,213,160,0.96) 50%, rgba(118,31,24,0.66) 82%, rgba(209,168,90,0));
+  --mystery-divider-glow:0 0 18px rgba(209,168,90,0.2), 0 1px 0 rgba(0,0,0,0.62);
+  --mystery-timeline-line:linear-gradient(rgba(209,168,90,0.76), rgba(118,31,24,0.28), rgba(209,168,90,0));
+  --mystery-marker-border:rgba(238,213,158,0.92);
+  --mystery-marker-bg:rgba(118,31,24,0.38);
+  --mystery-faq-heading:#ead09a;
+  background-color:#111214;
+  background-position:center top, center top, center top, center top;
+  background-repeat:no-repeat;
+  background-size:cover, cover, cover, auto;
+  background-attachment:scroll, scroll, fixed, scroll;
+}
+
+body.maximinus-theme .mystery-hero.has-art{
+  background-image:
+    linear-gradient(180deg, rgba(12,13,14,0.05), rgba(12,13,14,0.25) 50%, rgba(12,13,14,0.94) 100%),
+    linear-gradient(90deg, rgba(12,13,14,0.94) 0 38%, rgba(16,15,14,0.22) 62%, rgba(10,11,12,0.16) 100%),
+    url('/mysteries/maximinus-thrax/rome-environment.png');
+  background-position:center, center, center 42%;
+  background-size:cover, cover, cover;
+  background-repeat:no-repeat;
+  background-color:#111214;
+  box-shadow:inset 0 -56px 96px rgba(10,11,12,0.92);
+}
+
+body.maximinus-theme .mystery-hero.has-art::after{
+  display:block;
+  content:"";
+  position:absolute;
+  inset:38px clamp(24px, 6vw, 96px) 34px auto;
+  z-index:1;
+  width:min(35vw, 450px);
+  min-width:310px;
+  height:auto;
+  clip-path:none;
+  opacity:1;
+  pointer-events:none;
+  background:var(--hero-image) center top / contain no-repeat;
+  filter:drop-shadow(0 24px 44px rgba(0,0,0,0.72));
+}
+
+body.maximinus-theme .maximinus-hero .hero-inner{
+  padding-right:min(47vw, 570px);
+}
+
+body.maximinus-theme .maximinus-hero h1{
+  max-width:660px;
+  font-size:clamp(2.35rem, 6.9vw, 5.3rem);
+}
+
+body.maximinus-theme .mystery-hero h1[data-heading],
+body.maximinus-theme .section h2[data-heading],
+body.maximinus-theme .question-title h2[data-heading]{
+  color:#e9dfcc;
+  background:none;
+  -webkit-background-clip:border-box;
+  background-clip:border-box;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0.35px rgba(61,48,35,0.72);
+  filter:none;
+  text-shadow:0 2px 0 rgba(57,43,30,0.9), 0 9px 22px rgba(0,0,0,0.84);
+}
+
+body.maximinus-theme .mystery-hero h1[data-heading]::before,
+body.maximinus-theme .section h2[data-heading]::before,
+body.maximinus-theme .question-title h2[data-heading]::before{
+  content:attr(data-heading);
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  color:transparent;
+  background-color:#ded3bf;
+  background-image:url('/mysteries/maximinus-thrax/roman-marble-heading.png');
+  background-position:50% 42%;
+  background-size:620px 413px;
+  background-repeat:repeat;
+  background-blend-mode:multiply;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:0.16px rgba(88,65,43,0.52);
+  filter:brightness(1.18) contrast(1.14) saturate(0.76);
+  opacity:0.92;
+  text-shadow:none;
+}
+
+body.maximinus-theme .mystery-hero h1[data-heading]::before{
+  background-size:760px 506px;
+  opacity:0.96;
+}
+
+body.maximinus-theme .section h3,
+body.maximinus-theme .timeline-date,
+body.maximinus-theme .faq summary,
+body.maximinus-theme .callout h3,
+body.maximinus-theme .source-kicker,
+body.maximinus-theme .related-card h3{
+  color:#e5bf75;
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:0 3px 10px rgba(0,0,0,0.72);
+}
+
+body.maximinus-theme .section-kicker{
+  display:block;
+  margin-bottom:10px;
+  color:#c89850;
+  font-family:'JetBrains Mono', monospace;
+  font-size:0.7rem;
+  letter-spacing:0.13em;
+  text-transform:uppercase;
+}
+
+@media (max-width:900px){
+  body.maximinus-theme .mystery-hero.has-art{
+    background-position:center, center, center top;
+    background-size:cover, cover, cover;
+  }
+}
+
+@media (max-width:640px){
+  body.maximinus-theme{
+    background-size:cover, cover, auto 140vh, auto;
+    background-attachment:scroll;
+  }
+  .maximinus-hero{
+    align-items:start;
+  }
+  body.maximinus-theme .maximinus-hero .hero-inner{
+    padding:44px 20px 0;
+  }
+  body.maximinus-theme .mystery-hero.has-art{
+    min-height:auto;
+    background-image:
+      linear-gradient(180deg, rgba(12,13,14,0.14), rgba(12,13,14,0.5) 48%, rgba(12,13,14,0.94) 100%),
+      linear-gradient(90deg, rgba(12,13,14,0.72), rgba(12,13,14,0.16)),
+      url('/mysteries/maximinus-thrax/rome-environment.png');
+    background-position:center, center, center top;
+    background-size:cover, cover, cover;
+  }
+  body.maximinus-theme .mystery-hero.has-art::after{
+    position:relative;
+    inset:auto;
+    width:min(calc(100% - 40px), 430px);
+    min-width:0;
+    height:auto;
+    aspect-ratio:2 / 3;
+    margin:28px auto 42px;
+    background:var(--hero-image) center top / contain no-repeat;
+  }
+  body.maximinus-theme .mystery-hero h1{
+    font-size:clamp(2.05rem, 11.5vw, 3.4rem);
+  }
+}
