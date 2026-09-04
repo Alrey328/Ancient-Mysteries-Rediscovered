@@ -555,7 +555,8 @@
   .reel-card .title-link:focus-visible{
     color:var(--gold);
   }
-  .reel-card.has-investigation{
+  .reel-card.has-investigation,
+  .current-investigation-card.has-investigation{
     --investigation-primary:var(--gold);
     --investigation-secondary:#7b5c23;
     --investigation-accent:#d8b45a;
@@ -1342,7 +1343,7 @@
       <p>New mysteries built around a question, contradiction, or unresolved idea.</p>
     </div>
     <div class="grid current-investigations-grid">
-      <div class="card current-investigation-card">
+      <div class="card current-investigation-card has-investigation">
         <div class="frame">
           <span class="investigation-badge">Newest</span>
           <iframe src="https://www.youtube.com/embed/rNd376ucCNE" title="What Secret Did Odysseus Discover in the Land of the Dead" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -1350,6 +1351,9 @@
         <div class="meta">
           <div class="tag">YouTube Short</div>
           <h3>What Secret Did Odysseus Discover in the Land of the Dead</h3>
+          <a class="investigation-cta" href="mysteries/land-of-the-dead/" aria-label="Investigate the Land of the Dead mystery">
+            <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
 
