@@ -219,6 +219,17 @@
   .card iframe, .card .fb-video, .card .fb-post{
     position:absolute; inset:0; width:100%; height:100%; border:0;
   }
+  .current-investigation-card .investigation-poster-link{
+    position:absolute;
+    inset:0;
+    display:block;
+  }
+  .current-investigation-card .investigation-poster{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+  }
   .card .meta{
     padding:16px 18px 18px;
     border-top:1px solid var(--line);
@@ -780,6 +791,11 @@
       font-size:0.82rem;
       line-height:1.25;
       margin-top:3px;
+    }
+    .hundred-handed-investigation-card .meta h3{
+      display:block;
+      -webkit-line-clamp:initial;
+      overflow:visible;
     }
     .fan-favorites-grid .reel-card .meta h3,
     .featured-grid .reel-card .meta h3{
@@ -1352,6 +1368,21 @@
           <div class="tag">YouTube Short</div>
           <h3>What Secret Did Odysseus Discover in the Land of the Dead</h3>
           <a class="investigation-cta" href="mysteries/land-of-the-dead/" aria-label="Investigate the Land of the Dead mystery">
+            <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card current-investigation-card has-investigation hundred-handed-investigation-card">
+        <div class="frame">
+          <a class="investigation-poster-link" href="mysteries/hundred-handed-giants/" aria-label="Open the Hundred-Handed Giants Investigation">
+            <img class="investigation-poster" src="mysteries/hundred-handed-giants/hecatoncheires-poster.png" alt="Zeus faces the Hundred-Handed Giants at the gates of Tartarus" loading="lazy">
+          </a>
+        </div>
+        <div class="meta">
+          <div class="tag">Current Investigation</div>
+          <h3>WHY DID ZEUS UNLEASH THE HUNDRED-HANDED GIANTS?</h3>
+          <a class="investigation-cta" href="mysteries/hundred-handed-giants/" aria-label="Investigate the Hundred-Handed Giants mystery">
             <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
         </div>
