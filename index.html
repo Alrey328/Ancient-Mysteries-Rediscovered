@@ -175,6 +175,13 @@
   .current-investigation-card{
     position:relative;
   }
+  .reel-investigation-slot{
+    width:min(360px, 100%);
+    margin:0 0 42px 40px;
+  }
+  .reel-investigation-slot .youtube-subhead{
+    margin:0 0 18px;
+  }
   .investigation-badge{
     position:absolute;
     top:12px;
@@ -749,6 +756,8 @@
     .youtube-subsection{ margin-top:26px; }
     .youtube-subsection + .youtube-subsection{ margin-top:38px; }
     .youtube-subhead{ margin:0 0 16px 40px; }
+    .reel-investigation-slot{ width:auto; margin:0 0 28px 40px; }
+    .reel-investigation-slot .youtube-subhead{ margin-left:0; }
     .youtube-subhead p{ font-size:0.86rem; }
     .current-investigations-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px; }
 
@@ -840,6 +849,7 @@
   }
 
   @media (max-width:340px){
+    .reel-investigation-slot{ margin-left:0; }
     .wrap{ padding:0 14px; }
     .nav-links{ gap:12px 14px; }
     .grid,
@@ -962,6 +972,26 @@
     <span class="section-num">02</span>
     <h2>Featured Reels</h2>
     <span class="sub">newest cinematic work</span>
+  </div>
+  <div class="reel-investigation-slot" aria-labelledby="current-reel-investigation-title">
+    <div class="youtube-subhead">
+      <h3 id="current-reel-investigation-title">Current Reel Investigations</h3>
+    </div>
+    <div class="card current-investigation-card has-investigation talos-investigation-card">
+      <div class="frame">
+        <span class="investigation-badge">Newest</span>
+        <a class="investigation-poster-link" href="mysteries/talos/" aria-label="Open the Talos Investigation">
+          <img class="investigation-poster" src="mysteries/talos/talos-poster.png" alt="Talos investigation poster" loading="lazy">
+        </a>
+      </div>
+      <div class="meta">
+        <div class="tag">Current Investigation</div>
+        <h3>WAS TALOS THE WORLD’S FIRST ROBOT?</h3>
+        <a class="investigation-cta" href="mysteries/talos/" aria-label="Investigate the Talos mystery">
+          <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
   </div>
   <div class="featured-grid">
     <!-- Insert future newest releases at the beginning of this featured row. -->
@@ -1370,22 +1400,6 @@
       <p>New mysteries built around a question, contradiction, or unresolved idea.</p>
     </div>
     <div class="grid current-investigations-grid">
-      <div class="card current-investigation-card has-investigation talos-investigation-card">
-        <div class="frame">
-          <span class="investigation-badge">Newest</span>
-          <a class="investigation-poster-link" href="mysteries/talos/" aria-label="Open the Talos Investigation">
-            <img class="investigation-poster" src="mysteries/talos/talos-poster.png" alt="Talos investigation poster" loading="lazy">
-          </a>
-        </div>
-        <div class="meta">
-          <div class="tag">Current Investigation</div>
-          <h3>WAS TALOS THE WORLD’S FIRST ROBOT?</h3>
-          <a class="investigation-cta" href="mysteries/talos/" aria-label="Investigate the Talos mystery">
-            <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div>
-
       <div class="card current-investigation-card has-investigation anakim-investigation-card">
         <div class="frame">
           <a class="investigation-poster-link" href="mysteries/anakim/" aria-label="Open the Anakim Investigation">
