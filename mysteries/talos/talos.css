@@ -68,12 +68,48 @@ a { color: inherit; }
 .sequence { display: grid; min-height: 92svh; grid-template-columns: minmax(300px,.82fr) minmax(0,1.18fr); align-items: stretch; gap: 0; border-top: 1px solid rgb(191 129 66 / 20%); }
 .sequence-reverse { grid-template-columns: minmax(0,1.18fr) minmax(300px,.82fr); }
 .sequence-reverse .sequence-visual { order: 2; }
+.sequence-reverse .investigation-plate { order: 2; }
 .sequence-visual { position: relative; min-height: 68svh; margin: 0; overflow: hidden; background: #071318; box-shadow: inset 0 0 0 1px rgb(215 147 78 / 28%); }
 .sequence-visual img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.95) contrast(1.04); }
 .sequence-visual::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 55%, rgb(4 13 17 / 82%)); pointer-events: none; }
 .sequence-visual::after { content: 'CINEMATIC RECONSTRUCTION'; position: absolute; z-index: 2; right: 1rem; bottom: 1rem; padding: .55rem .7rem; background: rgb(4 14 18 / 82%); color: #d8bd94; font-size: .66rem; font-weight: 800; letter-spacing: .14em; }
 .sequence-visual.interpretive-visual::after { content: 'CINEMATIC · INTERPRETIVE RECONSTRUCTION'; }
 .sequence-visual > span { position: absolute; z-index: 2; top: 1rem; left: 1rem; width: 3.4rem; border: 1px solid #bc773c; background: rgb(5 14 18 / 78%); color: #e2ad70; font: 2rem/3.4rem var(--font-display); text-align: center; }
+.investigation-plate { position: relative; min-height: 68svh; margin: 0; overflow: hidden; border: 1px solid rgb(204 137 69 / 34%); background: linear-gradient(145deg,rgb(4 14 18 / 90%),rgb(9 32 34 / 72%)); box-shadow: inset 0 0 80px rgb(0 0 0 / 42%); }
+.investigation-plate::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg,transparent 0 44%,rgb(95 187 174 / 7%) 58%,transparent 75%),repeating-linear-gradient(0deg,rgb(223 163 92 / 4%) 0 1px,transparent 1px 34px); }
+.investigation-plate::after { content: ''; position: absolute; inset: 1.2rem; border: 1px solid rgb(206 139 71 / 22%); pointer-events: none; }
+.investigation-plate figcaption { position: absolute; z-index: 4; right: 1.8rem; bottom: 1.5rem; color: #d8bd94; font-size: .63rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+.plate-index { position: absolute; z-index: 5; top: 1.8rem; left: 1.8rem; width: 3.4rem; border: 1px solid #bc773c; background: rgb(5 14 18 / 86%); color: #e2ad70; font: 2rem/3.4rem var(--font-display); text-align: center; }
+.source-fragment { position: absolute; z-index: 2; inset: 13% 10% 15%; display: flex; flex-direction: column; justify-content: center; border: 1px solid rgb(204 136 67 / 42%); padding: clamp(2rem,5vw,5rem); background: linear-gradient(135deg,rgb(28 22 16 / 94%),rgb(7 24 27 / 88%)),url('./talos-bronze-texture.png'); background-blend-mode: hard-light; box-shadow: 0 30px 80px rgb(0 0 0 / 36%); transform: rotate(-1deg); }
+.source-fragment::before { content: ''; position: absolute; inset: 1rem; border: 1px solid rgb(224 165 95 / 23%); }
+.source-fragment small { position: relative; color: #7fc3bb; font-weight: 800; letter-spacing: .18em; }
+.source-fragment p { position: relative; margin: 1.5rem 0 0; color: #e8bd84; font: clamp(2.2rem,4.2vw,5rem)/.92 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.coast-trace { position: relative; height: 105px; margin: 2rem 0 .5rem; border-bottom: 1px solid rgb(228 166 96 / 54%); }
+.coast-trace::before { content: ''; position: absolute; right: 8%; bottom: -1px; width: 76%; height: 75px; border-top: 3px solid #b9793f; border-radius: 47% 58% 0 0; transform: rotate(-4deg); box-shadow: 0 -9px 0 rgb(76 165 155 / 42%),0 -18px 0 rgb(76 165 155 / 18%); }
+.coast-trace i { position: absolute; z-index: 1; bottom: 10px; width: clamp(18px,4vw,46px); aspect-ratio: 1; border: 1px solid #ca8243; background: radial-gradient(circle at 34% 31%,#c4874d,#281a12 66%); border-radius: 44% 56% 48% 52%; box-shadow: 0 8px 18px rgb(0 0 0 / 48%); }
+.coast-trace i:nth-child(1) { left: 15%; bottom: 14px; }.coast-trace i:nth-child(2) { left: 37%; bottom: 35px; transform: scale(.72); }.coast-trace i:nth-child(3) { right: 27%; bottom: 18px; transform: scale(1.2); }.coast-trace i:nth-child(4) { right: 8%; bottom: 34px; transform: scale(.65); }
+.evidence-line { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin-top: 2.2rem; color: #8fd3ca; font-size: .68rem; font-weight: 800; letter-spacing: .13em; }
+.evidence-line b { color: #d08a48; }
+.map-plate { display: grid; place-items: center; background: radial-gradient(circle at 50% 48%,rgb(16 58 59 / 86%),rgb(3 14 18 / 96%) 68%),url('./talos-bronze-texture.png'); background-blend-mode: multiply; }
+.crete-map { position: relative; z-index: 2; width: min(88%,760px); filter: drop-shadow(0 18px 24px rgb(0 0 0 / 48%)); }
+.map-grid { fill: none; stroke: rgb(221 158 88 / 10%); stroke-width: 1; }
+.route { fill: none; stroke: #58a99f; stroke-width: 2; stroke-dasharray: 9 12; }
+.route-two { stroke: #c18043; stroke-dasharray: 4 10; }.route-three { stroke: #78bfb6; stroke-dasharray: 2 8; }
+.island { fill: rgb(45 104 97 / 34%); stroke: #e2ad70; stroke-width: 4; filter: drop-shadow(0 0 8px rgb(218 145 71 / 44%)); }
+.route-node { fill: #d18a49; stroke: #071318; stroke-width: 3; }
+.map-key { position: absolute; z-index: 3; right: 9%; bottom: 15%; display: flex; align-items: center; gap: .75rem; color: #8ccfc7; font: 700 .65rem/1 var(--font-body); letter-spacing: .13em; }
+.map-key span { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid rgb(109 193 182 / 60%); border-radius: 50%; }
+.map-key b { color: #dbac71; }
+.material-plate { display: grid; place-items: center; background: radial-gradient(circle at 50% 42%,rgb(25 47 43 / 64%),rgb(3 12 15 / 96%) 70%); }
+.fragment-field { position: relative; z-index: 2; width: min(76%,620px); aspect-ratio: 1.25; }
+.fragment-field i { position: absolute; display: block; background: linear-gradient(rgb(164 103 49 / 22%),rgb(25 106 99 / 20%)),url('./talos-bronze-texture.png') center / 620px auto; border: 1px solid rgb(232 167 95 / 52%); box-shadow: 0 22px 38px rgb(0 0 0 / 56%),inset 0 0 18px rgb(4 12 13 / 45%); }
+.fragment-field i:nth-child(1) { inset: 8% 45% 48% 6%; clip-path: polygon(7% 10%,88% 0,100% 68%,61% 100%,0 74%); transform: rotate(-7deg); }
+.fragment-field i:nth-child(2) { inset: 4% 8% 52% 55%; clip-path: polygon(17% 0,100% 23%,87% 100%,0 78%); transform: rotate(9deg); }
+.fragment-field i:nth-child(3) { inset: 50% 49% 3% 2%; clip-path: polygon(10% 0,100% 14%,83% 89%,24% 100%,0 50%); transform: rotate(4deg); }
+.fragment-field i:nth-child(4) { inset: 48% 4% 7% 53%; clip-path: polygon(27% 4%,100% 0,87% 78%,53% 100%,0 76%); transform: rotate(-6deg); }
+.fragment-field i:nth-child(5) { inset: 29% 31% 28% 33%; clip-path: polygon(16% 0,91% 8%,100% 80%,52% 100%,0 70%); transform: rotate(2deg); }
+.archive-stamp { position: absolute; z-index: 3; right: 10%; bottom: 11%; border: 1px solid #69b6ac; padding: .9rem 1.1rem; background: rgb(4 15 18 / 88%); color: #83c9c0; font-size: .59rem; font-weight: 800; letter-spacing: .16em; text-align: center; transform: rotate(-2deg); }
+.archive-stamp span,.archive-stamp strong { display: block; }.archive-stamp strong { margin-top: .4rem; color: #dfa66b; font-size: .72rem; }
 .sequence-copy { position: relative; z-index: 1; display: flex; min-width: 0; flex-direction: column; justify-content: center; max-width: 850px; padding: clamp(3rem,7vw,8rem); background: linear-gradient(90deg, rgb(5 16 20 / 78%), rgb(5 16 20 / 52%)); backdrop-filter: blur(2px); }
 .sequence-copy .eyebrow { margin: 2rem 0 .7rem; }
 .sequence-copy .material-heading { font-size: clamp(2.75rem,5.2vw,5.4rem); }
@@ -148,12 +184,11 @@ a { color: inherit; }
 .film-frame strong { margin-top: 1.6rem; color: #8ccfc7; font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; }
 
 .door { display: grid; min-height: 100svh; place-items: center; padding: 9rem 7vw; background-image: linear-gradient(180deg,rgb(3 12 16 / 16%),rgb(3 12 16 / 80%) 84%),url('./talos-crete.png'); background-position: center; background-repeat: no-repeat; background-size: cover; text-align: center; }
-.door::before { content: ''; position: absolute; inset: 0; z-index: 0; background: url('./talos-highlight-crete.png') center / auto 100% no-repeat; opacity: .96; -webkit-mask-image: linear-gradient(90deg,transparent 3%,#000 24%,#000 76%,transparent 97%); mask-image: linear-gradient(90deg,transparent 3%,#000 24%,#000 76%,transparent 97%); pointer-events: none; }
+.door::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse at 50% 48%,rgb(3 13 17 / 22%) 0 34%,rgb(3 13 17 / 54%) 68%,rgb(3 13 17 / 80%) 100%),linear-gradient(90deg,rgb(16 64 62 / 16%),transparent 36% 64%,rgb(126 76 35 / 14%)); pointer-events: none; }
 .door > div { position: relative; z-index: 1; max-width: 1450px; }
-.door-highlight-label { position: absolute; z-index: 2; top: 6.3rem; right: 2rem; padding: .55rem .75rem; border: 1px solid rgb(83 174 161 / 42%); background: rgb(4 14 18 / 72%); color: #9bd6ce; font-size: .65rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .door-lead { margin: 2rem 0 .7rem; color: #ecd7b6; font: 1.5rem/1.3 var(--font-display); }
 .door .material-heading { margin: 0 auto; font-size: clamp(3.5rem,9vw,10rem); }
-.door-lead, .door-close { text-shadow: 0 2px 2px rgb(0 0 0 / 96%),0 5px 8px rgb(0 0 0 / 78%); }
+.door-lead, .door-close { position: relative; z-index: 2; text-shadow: 0 2px 2px rgb(0 0 0 / 96%),0 5px 8px rgb(0 0 0 / 78%); }
 .door-close { max-width: 780px; margin: 3rem auto 0; color: #efe5d4; font: 1.12rem/1.8 var(--font-display); }
 
 .faq { padding: 8rem 7vw; background-position: 28% 62%; }
@@ -217,7 +252,9 @@ footer small { font-size: .7rem; }
   .hero-poster img { object-position: center; }
   .sequence, .sequence-reverse { grid-template-columns: 1fr; min-height: auto; }
   .sequence-reverse .sequence-visual { order: 0; }
+  .sequence-reverse .investigation-plate { order: 0; }
   .sequence-visual { min-height: 74svh; }
+  .investigation-plate { min-height: 70svh; }
   .sequence-copy { padding: 4rem 1.35rem 5rem; }
   .evidence-only { min-height: auto; padding: 5rem 1.35rem; }
   .evidence-only .sequence-copy { padding: 3rem 1.35rem 4rem; }
@@ -248,7 +285,12 @@ footer small { font-size: .7rem; }
   .hero-poster { min-height: 0; aspect-ratio: 2 / 3; }
   .sequence-visual { min-height: 58svh; }
   .sequence-visual::after { font-size: .58rem; }
-  .door-highlight-label { top: 5.2rem; right: 1rem; left: 1rem; text-align: center; }
+  .source-fragment { inset: 11% 6% 14%; padding: 2rem 1.25rem; }
+  .source-fragment p { font-size: 2rem; }
+  .evidence-line { gap: .38rem; letter-spacing: .08em; }
+  .map-key { right: 7%; bottom: 12%; flex-wrap: wrap; max-width: 76%; }
+  .map-key b { flex-basis: 100%; text-align: right; }
+  .archive-stamp { right: 7%; bottom: 9%; }
   .verdict .material-heading { font-size: 2rem; }
   .film-frame .material-heading { font-size: 1.9rem; }
   .prologue-inner .material-heading, .witness-copy .material-heading { font-size: 2.5rem; }
