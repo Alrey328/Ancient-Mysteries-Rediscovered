@@ -151,11 +151,13 @@
   .youtube-subsection + .youtube-subsection{
     margin-top:54px;
   }
-  .youtube-subhead{
+  .youtube-subhead,
+  .reel-investigation-subhead{
     margin:0 0 22px 40px;
     max-width:720px;
   }
-  .youtube-subhead h3{
+  .youtube-subhead h3,
+  .reel-investigation-subhead h3{
     font-family:'Cinzel', serif;
     font-size:clamp(1.05rem, 2vw, 1.35rem);
     font-weight:600;
@@ -163,7 +165,8 @@
     text-transform:uppercase;
     color:var(--bone);
   }
-  .youtube-subhead p{
+  .youtube-subhead p,
+  .reel-investigation-subhead p{
     margin-top:8px;
     color:var(--bone-dim);
     font-size:0.95rem;
@@ -172,14 +175,15 @@
     grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
     gap:22px;
   }
-  .current-investigation-card{
+  .current-investigation-card,
+  .reel-investigation-card{
     position:relative;
   }
   .reel-investigation-slot{
     width:min(360px, 100%);
     margin:0 0 42px 40px;
   }
-  .reel-investigation-slot .youtube-subhead{
+  .reel-investigation-slot .reel-investigation-subhead{
     margin:0 0 18px;
   }
   .investigation-badge{
@@ -203,7 +207,8 @@
     grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
     gap:26px;
   }
-  .card{
+  .card,
+  .reel-investigation-card{
     background:linear-gradient(180deg, rgba(23,25,35,0.98), rgba(17,19,27,0.98));
     border:1px solid var(--line);
     border-radius:2px;
@@ -211,12 +216,14 @@
     box-shadow:0 16px 36px rgba(0,0,0,0.18);
     transition:border-color .28s ease, transform .28s ease, box-shadow .28s ease;
   }
-  .card:hover{
+  .card:hover,
+  .reel-investigation-card:hover{
     border-color:var(--line-strong);
     transform:translateY(-5px);
     box-shadow:0 24px 52px rgba(0,0,0,0.26);
   }
-  .card .frame{
+  .card .frame,
+  .reel-investigation-card .frame{
     position:relative;
     width:100%;
     aspect-ratio:9/16;
@@ -226,29 +233,34 @@
   .card iframe, .card .fb-video, .card .fb-post{
     position:absolute; inset:0; width:100%; height:100%; border:0;
   }
-  .current-investigation-card .investigation-poster-link{
+  .current-investigation-card .investigation-poster-link,
+  .reel-investigation-card .investigation-poster-link{
     position:absolute;
     inset:0;
     display:block;
   }
-  .current-investigation-card .investigation-poster{
+  .current-investigation-card .investigation-poster,
+  .reel-investigation-card .investigation-poster{
     width:100%;
     height:100%;
     display:block;
     object-fit:cover;
   }
-  .card .meta{
+  .card .meta,
+  .reel-investigation-card .meta{
     padding:16px 18px 18px;
     border-top:1px solid var(--line);
   }
-  .card .meta .tag{
+  .card .meta .tag,
+  .reel-investigation-card .meta .tag{
     font-family:'JetBrains Mono', monospace;
     font-size:0.66rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
     color:var(--gold-dim);
   }
-  .card .meta h3{
+  .card .meta h3,
+  .reel-investigation-card .meta h3{
     font-family:'Spectral', serif;
     font-weight:500;
     font-size:0.98rem;
@@ -574,7 +586,8 @@
     color:var(--gold);
   }
   .reel-card.has-investigation,
-  .current-investigation-card.has-investigation{
+  .current-investigation-card.has-investigation,
+  .reel-investigation-card.has-investigation{
     --investigation-primary:var(--gold);
     --investigation-secondary:#7b5c23;
     --investigation-accent:#d8b45a;
@@ -733,7 +746,7 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .card, .playlist-card, .reel-card, .reel-card .thumb .play, .discussion-link, .investigation-cta{ transition:none; }
+    .card, .reel-investigation-card, .playlist-card, .reel-card, .reel-card .thumb .play, .discussion-link, .investigation-cta{ transition:none; }
     html{ scroll-behavior:auto; }
   }
 
@@ -755,10 +768,12 @@
     .section-intro{ margin:-14px 0 24px 40px; font-size:0.92rem; }
     .youtube-subsection{ margin-top:26px; }
     .youtube-subsection + .youtube-subsection{ margin-top:38px; }
-    .youtube-subhead{ margin:0 0 16px 40px; }
+    .youtube-subhead,
+    .reel-investigation-subhead{ margin:0 0 16px 40px; }
     .reel-investigation-slot{ width:auto; margin:0 0 28px 40px; }
-    .reel-investigation-slot .youtube-subhead{ margin-left:0; }
-    .youtube-subhead p{ font-size:0.86rem; }
+    .reel-investigation-slot .reel-investigation-subhead{ margin-left:0; }
+    .youtube-subhead p,
+    .reel-investigation-subhead p{ font-size:0.86rem; }
     .current-investigations-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px; }
 
     .grid,
@@ -771,25 +786,30 @@
     .featured-grid{ margin-bottom:22px; }
 
     .card,
+    .reel-investigation-card,
     .reel-card{
       box-shadow:0 12px 28px rgba(0,0,0,0.2);
     }
     .card:hover,
+    .reel-investigation-card:hover,
     .reel-card:hover{
       transform:none;
       box-shadow:0 12px 28px rgba(0,0,0,0.2);
     }
     .card .meta,
+    .reel-investigation-card .meta,
     .reel-card .meta,
     .reel-card.featured .meta{
       padding:10px 10px 12px;
     }
     .card .meta .tag,
+    .reel-investigation-card .meta .tag,
     .reel-card .meta .tag{
       font-size:0.56rem;
       letter-spacing:0.05em;
     }
     .card .meta h3,
+    .reel-investigation-card .meta h3,
     .reel-card .meta h3,
     .reel-card.featured .meta h3{
       display:-webkit-box;
@@ -860,11 +880,13 @@
     }
     .current-investigations-grid{ gap:10px; }
     .card .meta,
+    .reel-investigation-card .meta,
     .reel-card .meta,
     .reel-card.featured .meta{
       padding:9px 8px 10px;
     }
     .card .meta h3,
+    .reel-investigation-card .meta h3,
     .reel-card .meta h3,
     .reel-card.featured .meta h3{
       font-size:0.76rem;
@@ -974,10 +996,10 @@
     <span class="sub">newest cinematic work</span>
   </div>
   <div class="reel-investigation-slot" aria-labelledby="current-reel-investigation-title">
-    <div class="youtube-subhead">
+    <div class="reel-investigation-subhead">
       <h3 id="current-reel-investigation-title">Current Reel Investigations</h3>
     </div>
-    <div class="card current-investigation-card has-investigation talos-investigation-card">
+    <article class="reel-investigation-card has-investigation talos-investigation-card" data-content-type="meta-reel-investigation" data-platform="facebook">
       <div class="frame">
         <span class="investigation-badge">Newest</span>
         <a class="investigation-poster-link" href="mysteries/talos/" aria-label="Open the Talos Investigation">
@@ -991,7 +1013,7 @@
           <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
-    </div>
+    </article>
   </div>
   <div class="featured-grid">
     <!-- Insert future newest releases at the beginning of this featured row. -->
