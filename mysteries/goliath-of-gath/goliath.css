@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@800;900&display=swap');
+
+:root{
+  --storm:#06121c;
+  --storm-mid:#0b1d2a;
+  --storm-soft:#173040;
+  --limestone:#d9c098;
+  --limestone-light:#f1dfbd;
+  --sand:#b78b55;
+  --ochre:#b46b27;
+  --pigment:#87301e;
+  --pigment-bright:#b44b2b;
+  --iron:#171411;
+  --bronze:#9b6c35;
+  --gold:#d4ae6a;
+  --ink:#0c0b09;
+  --body:#e8dcc6;
+  --muted:#bcae97;
+  --line:rgba(213,174,105,.28);
+  --max:1240px;
+}
+
+*{box-sizing:border-box}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+html{scroll-behavior:smooth;background:var(--storm)}
+body{margin:0;color:var(--body);background:var(--storm);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(5,16,25,.94),rgba(6,18,28,.82)),
+    url('./philistine-pottery.jpg') center/cover;
+  filter:saturate(.65) contrast(1.08);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.14;
+  background-image:radial-gradient(rgba(240,210,160,.28) .7px,transparent .8px),radial-gradient(rgba(0,0,0,.5) .7px,transparent .8px);
+  background-size:9px 9px,13px 13px;background-position:0 0,4px 5px;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{font-size:clamp(1rem,.9rem + .22vw,1.12rem);line-height:1.72}
+h1,h2,h3,p{margin-top:0}
+.world-section{position:relative;isolation:isolate;overflow:hidden}
+.world-section::before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none}
+.world-section::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(4,13,21,.85),rgba(9,24,34,.55),rgba(4,13,21,.84))}
+.eyebrow{margin:0 0 18px;color:var(--gold);font-family:Cinzel,Georgia,serif;font-size:.76rem;font-weight:700;letter-spacing:.23em;text-transform:uppercase}
+.chapter-marker{display:flex;align-items:center;gap:12px;margin-bottom:34px;color:var(--gold);font-family:Cinzel,Georgia,serif;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem}
+.chapter-marker::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
+.chapter-marker span{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;font-family:Inter,sans-serif;font-size:.68rem}
+
+.site-nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px clamp(22px,4vw,64px);border-bottom:1px solid rgba(218,178,105,.2);background:linear-gradient(180deg,rgba(5,13,20,.86),transparent)}
+.site-nav a{text-decoration:none}
+.site-nav .brand{font-family:Cinzel,Georgia,serif;font-size:.78rem;letter-spacing:.13em;color:var(--limestone-light)}
+.site-nav .brand span{color:var(--gold)}
+.site-nav div{display:flex;gap:24px}
+.site-nav div a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.site-nav div a:hover,.source-link:hover,.enter-link:hover{color:#fff}
+
+.hero{min-height:100svh;display:grid;grid-template-columns:minmax(0,.82fr) minmax(440px,.72fr);background:linear-gradient(90deg,#06121c 0%,rgba(6,18,28,.97) 43%,rgba(6,18,28,.3) 64%,#06121c 100%)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:130px clamp(34px,6vw,104px) 80px;min-width:0}
+.hero-copy::before{background:linear-gradient(120deg,rgba(7,22,33,.96),rgba(8,24,35,.72)),url('./tell-es-safi-map.jpg') center/cover;opacity:.48;filter:sepia(.3) saturate(.65) contrast(1.1)}
+.hero-copy::after{background:linear-gradient(90deg,rgba(4,14,22,.94),rgba(6,19,28,.72),rgba(6,18,28,.2))}
+.opening-beat{font-family:Cinzel,Georgia,serif;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(1.2rem,2.2vw,2.15rem);line-height:1.4;color:var(--muted);margin-bottom:12px}
+.opening-beat strong{color:var(--limestone-light);font-weight:700}
+.opening-turn{font-family:Cinzel,Georgia,serif;text-transform:uppercase;letter-spacing:.09em;color:var(--gold);font-size:clamp(.95rem,1.4vw,1.2rem);margin-bottom:28px}
+.hero h1{font-family:Cinzel,Georgia,serif;text-transform:uppercase;font-size:clamp(2.75rem,5vw,6.5rem);line-height:.9;letter-spacing:-.055em;color:var(--limestone-light);text-shadow:0 4px 0 #120f0b,0 10px 28px #000;margin-bottom:28px}
+.hero h1 span{display:block;color:var(--gold);font-size:.62em;line-height:1.07;letter-spacing:-.02em;margin-top:12px}
+.hero-deck{max-width:650px;font-family:Cinzel,Georgia,serif;font-size:clamp(1.05rem,1.5vw,1.35rem);color:var(--limestone-light);line-height:1.55}
+.search-question{max-width:650px;padding:18px 0 18px 22px;border-left:2px solid var(--pigment-bright);color:var(--muted);font-size:.98rem}
+.enter-link,.source-link{display:inline-flex;width:max-content;max-width:100%;align-items:center;margin-top:16px;color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(212,174,106,.45);padding-bottom:7px}
+.hero-poster{position:relative;margin:0;min-height:100svh;background:#03080d;box-shadow:-24px 0 80px rgba(0,0,0,.42);display:flex;align-items:center;justify-content:center}
+.hero-poster img{width:100%;height:100svh;object-fit:contain;object-position:center;background:#03080d}
+.hero-poster::after{content:"";position:absolute;inset:0;box-shadow:inset 18px 0 40px rgba(3,10,15,.6),inset 0 -60px 70px rgba(0,0,0,.55);pointer-events:none}
+.hero-poster figcaption{position:absolute;left:24px;bottom:20px;z-index:1;font-size:.62rem;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,245,222,.76)}
+
+.chapter-heading{margin:0 0 32px;font-family:Cinzel,Georgia,serif;font-weight:700;text-transform:uppercase;font-size:clamp(2.15rem,4.7vw,5.4rem);line-height:.96;letter-spacing:-.035em;color:var(--limestone-light)}
+
+.proposition{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(34px,6vw,90px);padding:clamp(90px,11vw,160px) max(5vw,calc((100vw - var(--max))/2));background:linear-gradient(135deg,#112a39,#07141f 70%)}
+.proposition::before{background:url('./goliath-investigation-poster.png') 16% 74%/1500px auto no-repeat;opacity:.25;filter:saturate(.65)}
+.proposition .chapter-marker{grid-column:1/-1}
+.proposition-copy>p:not(.eyebrow){max-width:700px;font-size:clamp(1.12rem,1.5vw,1.35rem)}
+.evidence-chain{display:flex;flex-wrap:wrap;align-items:center;gap:11px;margin-top:32px;color:var(--limestone-light);font-family:Cinzel,Georgia,serif;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase}
+.evidence-chain span{padding:10px 13px;border:1px solid var(--line);background:rgba(4,13,20,.58)}
+.evidence-chain b{color:var(--pigment-bright)}
+
+.tablet{position:relative;background:linear-gradient(145deg,#ddc79f,#a9875c 52%,#c6a979);color:#1a140e;border:1px solid rgba(255,239,206,.35);box-shadow:0 28px 70px rgba(0,0,0,.48),inset 0 0 48px rgba(74,46,24,.28);clip-path:polygon(4% 2%,96% 0,100% 11%,97% 32%,100% 57%,95% 100%,53% 96%,33% 100%,2% 94%,4% 70%,0 46%);overflow:hidden}
+.tablet::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.28;background:radial-gradient(circle at 12% 18%,#27150b 0 1px,transparent 2px),radial-gradient(circle at 77% 42%,#2c190c 0 1px,transparent 2px),linear-gradient(75deg,transparent 49%,rgba(42,26,15,.58) 50%,transparent 50.5%);background-size:17px 19px,23px 29px,100% 100%}
+.tablet-gath{align-self:center;padding:54px 42px;text-align:center;transform:rotate(1.5deg)}
+.tablet span,.tablet small{display:block;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase}
+.tablet strong{display:block;margin:14px 0;font-family:Cinzel,Georgia,serif;font-size:1rem;letter-spacing:.08em}
+.tablet-gath p{font-family:Cinzel,Georgia,serif;font-weight:900;font-size:clamp(2.1rem,4vw,4.5rem);line-height:.92;text-shadow:0 1px rgba(255,255,255,.4);margin:26px 0}
+
+.gath-clue{min-height:85svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.55fr);gap:clamp(40px,7vw,100px);align-items:center;padding:110px max(5vw,calc((100vw - var(--max))/2));background:#0b1d29}
+.gath-clue::before{background:linear-gradient(90deg,rgba(4,13,20,.96),rgba(7,19,28,.48)),url('./goliath-investigation-poster.png') center 62%/cover;opacity:.55}
+.gath-clue .chapter-marker{position:absolute;top:70px;left:max(5vw,calc((100vw - var(--max))/2));right:max(5vw,calc((100vw - var(--max))/2))}
+.clue-copy{padding-top:70px}
+.clue-copy .chapter-heading{font-size:clamp(2.7rem,6.2vw,7.2rem)}
+.clue-copy>p:not(.eyebrow){max-width:680px}
+.gate-scale{position:relative;min-height:470px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(4,12,18,.1),rgba(4,12,18,.78));box-shadow:inset 0 0 70px rgba(0,0,0,.7)}
+.gate-drawing{position:absolute;inset:52px 34px 70px;border:18px solid rgba(192,158,109,.48);border-bottom:0;box-shadow:inset 0 0 0 4px rgba(14,11,8,.75),0 16px 36px #000}
+.gate-drawing i{position:absolute;top:-36px;width:17%;height:44px;background:rgba(192,158,109,.48)}
+.gate-drawing i:nth-child(1){left:-18px}.gate-drawing i:nth-child(2){left:41%}.gate-drawing i:nth-child(3){right:-18px}
+.gate-drawing span{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:44%;height:68%;border:11px solid rgba(192,158,109,.4);border-bottom:0;border-radius:46% 46% 0 0}
+.human-scale{position:absolute;bottom:70px;left:50%;z-index:2;width:32px;height:110px;transform:translateX(-50%)}
+.human-scale::before{content:"";position:absolute;top:0;left:8px;width:17px;height:17px;border-radius:50%;background:var(--limestone-light)}
+.human-scale::after{content:"";position:absolute;top:16px;left:5px;width:23px;height:58px;background:var(--limestone-light);clip-path:polygon(30% 0,70% 0,100% 100%,0 100%)}
+.human-scale i::before,.human-scale i::after{content:"";position:absolute;top:70px;width:7px;height:40px;background:var(--limestone-light)}
+.human-scale i::before{left:7px;transform:rotate(5deg)}.human-scale i::after{right:7px;transform:rotate(-5deg)}
+.gate-scale>p{position:absolute;left:24px;bottom:16px;margin:0;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+.survivors{padding:130px max(5vw,calc((100vw - 1480px)/2));background:#07141d}
+.survivors::before{background:linear-gradient(rgba(5,15,23,.4),rgba(5,15,23,.78)),url('./goliath-investigation-poster.png') center 58%/cover;opacity:.52;filter:saturate(.75)}
+.survivors::after{background:linear-gradient(180deg,rgba(5,16,24,.45),rgba(5,15,22,.78) 58%,rgba(5,15,22,.95))}
+.survivors-heading{max-width:1480px;margin:0 auto 70px;text-align:center}
+.approved-caption-art{width:100%;margin:0 auto 34px;background:transparent}
+.approved-caption-art img{width:100%;height:auto;object-fit:contain;filter:none}
+.survivors-heading>p:last-child{max-width:760px;margin:30px auto 0;color:var(--limestone-light);font-size:1.2rem}
+.coastal-evidence{display:grid;grid-template-columns:1.4fr .6fr;gap:34px;align-items:stretch;max-width:1240px;margin:auto}
+.map-fragment{margin:0;min-height:480px;color:var(--ink)}
+.map-fragment img{width:100%;height:100%;object-fit:cover;filter:sepia(.26) saturate(.72) contrast(1.08)}
+.map-fragment::before{content:"";position:absolute;inset:0;z-index:1;box-shadow:inset 0 0 70px rgba(46,28,12,.5)}
+.map-route{position:absolute;left:8%;right:8%;bottom:54px;z-index:2;display:flex;align-items:center;justify-content:center;gap:12px;font-family:Cinzel,Georgia,serif;font-size:.75rem;font-weight:800}
+.map-route span{padding:9px 12px;background:rgba(224,204,166,.88);border:1px solid #704822}.map-route .active{background:var(--pigment);color:#f7e8ca}.map-route i{width:10%;height:2px;background:#302015}
+.map-fragment figcaption{position:absolute;z-index:2;left:22px;top:20px;padding:8px 11px;background:rgba(220,196,152,.86);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase}
+.verse-tablet{padding:58px 38px;text-align:center}
+.verse-tablet p{font-family:Cinzel,Georgia,serif;font-size:clamp(2.2rem,4.2vw,4rem);font-weight:900;line-height:1.05;margin:28px 0}
+.verse-tablet p::first-line{color:var(--pigment)}
+.verse-tablet .source-link{color:#3f210e;border-color:rgba(63,33,14,.4);margin:28px auto 0}
+
+.boundary{padding:120px max(5vw,calc((100vw - var(--max))/2));background:linear-gradient(120deg,#1a2c35,#0b1720)}
+.boundary::before{background:url('./philistine-pottery.jpg') center/cover;opacity:.2;filter:saturate(.55) contrast(1.2)}
+.boundary>h2{font-family:Cinzel,Georgia,serif;font-size:clamp(2.5rem,5.2vw,6rem);line-height:.98;text-transform:uppercase;color:var(--limestone-light);max-width:1100px;margin-bottom:54px}
+.boundary>h2 strong{color:var(--pigment-bright)}
+.boundary-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.boundary-grid article{padding:clamp(28px,4vw,54px);border:1px solid var(--line);background:rgba(5,14,20,.72)}
+.boundary-grid article>span{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.boundary-grid h3{font-family:Cinzel,Georgia,serif;font-size:clamp(1.6rem,3vw,3rem);line-height:1.08;margin:22px 0 16px;color:var(--limestone-light)}
+.boundary-grid p{color:var(--muted);margin:0}
+.boundary-grid .not-says{border-color:rgba(180,75,43,.5);box-shadow:inset 0 5px 0 var(--pigment)}
+
+.warriors{padding:130px max(5vw,calc((100vw - var(--max))/2));background:#071621}
+.warriors::before{background:linear-gradient(100deg,rgba(5,15,23,.95),rgba(5,15,23,.45)),url('./goliath-investigation-poster.png') 18% 58%/cover;opacity:.42}
+.warrior-intro{max-width:960px}
+.warrior-intro>p:last-child{max-width:760px;color:var(--muted)}
+.warrior-ledger{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:54px 0 28px}
+.warrior-ledger article{min-height:310px;padding:32px 26px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(13,31,42,.88),rgba(6,16,23,.94));box-shadow:0 20px 40px rgba(0,0,0,.28)}
+.warrior-ledger article>span{font-size:.61rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.warrior-ledger h3{font-family:Cinzel,Georgia,serif;font-size:1.45rem;margin:26px 0 14px;color:var(--limestone-light)}
+.warrior-ledger p{font-size:.95rem;color:var(--muted)}
+.digit-mark{margin-top:24px;padding:12px 6px;border-top:1px solid rgba(180,75,43,.5);border-bottom:1px solid rgba(180,75,43,.5);color:var(--pigment-bright);font-family:Cinzel,serif;font-size:1.25rem;letter-spacing:.16em;text-align:center}
+.discipline-note{max-width:850px;padding:18px 22px;border-left:3px solid var(--pigment);background:rgba(5,14,20,.58);color:var(--muted);font-size:.92rem}
+
+.rapha{padding:130px max(5vw,calc((100vw - 1460px)/2));text-align:center;background:#111c21}
+.rapha::before{background:url('./tell-es-safi-map.jpg') center/cover;opacity:.2;filter:sepia(.6) saturate(.45) contrast(1.2)}
+.rapha .chapter-heading{text-align:center}
+.trail{display:grid;grid-template-columns:repeat(9,auto);align-items:center;justify-content:center;gap:12px;margin:60px auto 44px}
+.trail article{width:190px;min-height:150px;padding:26px 20px;border:1px solid var(--line);background:rgba(4,14,20,.76)}
+.trail article span{display:block;color:var(--limestone-light);font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.05rem;text-transform:uppercase}
+.trail article p{margin:12px 0 0;font-size:.8rem;line-height:1.45;color:var(--muted)}
+.trail>b{color:var(--pigment-bright)}
+.trail .question{border-color:rgba(180,75,43,.58)}
+.rapha>h3{font-family:Cinzel,Georgia,serif;font-size:clamp(1.6rem,3vw,3rem);text-transform:uppercase;color:var(--gold)}
+.rapha>p:last-child{max-width:840px;margin:auto;color:var(--muted)}
+
+.archaeology{display:grid;grid-template-columns:minmax(420px,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,90px);padding:130px max(5vw,calc((100vw - var(--max))/2));background:#14222a}
+.archaeology::before{background:url('./tell-es-safi-2024-a.jpg') center/cover;opacity:.15;filter:saturate(.5)}
+.archaeology .chapter-marker{grid-column:1/-1}
+.archaeology-copy,.inscription-copy{min-width:0}
+.site-photo{margin:0;align-self:start;border:1px solid var(--line);background:#08121a;box-shadow:0 28px 70px rgba(0,0,0,.42)}
+.site-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.72) sepia(.18) contrast(1.1)}
+.site-photo figcaption,.material-culture figcaption{padding:13px 16px;font-size:.68rem;line-height:1.55;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.site-photo figcaption a,.material-culture figcaption a{color:var(--gold);text-decoration:none}
+.archaeology-copy .chapter-heading{font-size:clamp(2.5rem,4.8vw,5.6rem)}
+.archaeology-copy>p:not(.eyebrow){color:var(--muted)}
+.evidence-types{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:34px 0;background:var(--line);border:1px solid var(--line)}
+.evidence-types div{padding:22px;background:rgba(5,15,22,.9)}
+.evidence-types b{display:block;margin-bottom:10px;color:var(--gold);font-family:Cinzel,serif;font-size:.74rem;letter-spacing:.09em;text-transform:uppercase}
+.evidence-types span{display:block;color:var(--muted);font-size:.84rem;line-height:1.55}
+
+.material-culture{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:clamp(36px,6vw,80px);padding:100px max(5vw,calc((100vw - var(--max))/2));background:linear-gradient(90deg,#26170f,#0f1b22)}
+.material-culture::before{background:url('./philistine-pottery.jpg') center/cover;opacity:.22;filter:saturate(.72) contrast(1.1)}
+.material-culture figure{margin:0;border:1px solid rgba(227,196,145,.3);background:#140d08;box-shadow:0 28px 65px rgba(0,0,0,.45)}
+.material-culture figure img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:saturate(.78) sepia(.12) contrast(1.08)}
+.material-culture h2{font-family:Cinzel,serif;font-size:clamp(2.2rem,4.5vw,5.2rem);line-height:.95;text-transform:uppercase;color:var(--limestone-light)}
+.material-culture p:not(.eyebrow){color:var(--muted)}
+
+.inscription{display:grid;grid-template-columns:1.15fr .75fr;gap:clamp(38px,7vw,100px);align-items:center;padding:130px max(5vw,calc((100vw - var(--max))/2));background:#101b21}
+.inscription::before{background:url('./tell-es-safi-map.jpg') center/cover;opacity:.16;filter:sepia(.6) contrast(1.2)}
+.inscription .chapter-marker{grid-column:1/-1}
+.inscription-copy .chapter-heading{font-size:clamp(2.6rem,5vw,5.8rem)}
+.inscription-copy>p:not(.eyebrow,.no){color:var(--muted);max-width:760px}
+.inscription-copy .no{font-family:Cinzel,serif;font-weight:900;text-transform:uppercase;font-size:clamp(4rem,10vw,9rem);line-height:.85;color:var(--pigment-bright);margin:0 0 26px;text-shadow:0 4px 0 #2c120d,0 12px 30px #000}
+.ostracon{padding:70px 38px;text-align:center;transform:rotate(-1.7deg)}
+.ostracon .ancient-script{font-size:clamp(2.6rem,5vw,5rem);line-height:1.1;margin:38px 0 20px;color:#432311}
+.ostracon strong{font-size:clamp(1.2rem,2vw,2rem);letter-spacing:.16em}
+
+.height{padding:130px max(5vw,calc((100vw - var(--max))/2));background:#0a1821}
+.height::before{background:linear-gradient(rgba(5,14,21,.78),rgba(5,14,21,.78)),url('./goliath-investigation-poster.png') center 38%/cover;opacity:.38}
+.height>.chapter-heading{max-width:1180px}
+.height-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:22px;margin:54px 0 34px}
+.height-card{padding:clamp(28px,4vw,50px);border:1px solid var(--line);background:rgba(5,15,22,.82);text-align:center}
+.height-card>span{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.height-card>strong{display:block;font-family:Cinzel,serif;font-size:clamp(5rem,11vw,10rem);line-height:.9;color:var(--limestone-light);text-shadow:0 5px 0 #3d2c1b,0 15px 30px #000}
+.height-card h3{font-family:Cinzel,serif;text-transform:uppercase;font-size:clamp(1.1rem,2vw,1.65rem);color:var(--gold)}
+.height-card p{font-size:.9rem;color:var(--muted)}
+.height-card.six{border-color:rgba(180,75,43,.45)}
+.versus{align-self:center;color:var(--pigment-bright);font-size:3rem;font-weight:800}
+.height-boundary{display:grid;grid-template-columns:auto 1fr auto auto 1fr;align-items:center;gap:14px;padding:20px 24px;border:1px solid var(--line);background:rgba(5,15,22,.75);font-size:.83rem;color:var(--muted)}
+.height-boundary b{font-family:Cinzel,serif;color:var(--limestone-light);text-transform:uppercase}.height-boundary i{font-style:normal;color:var(--pigment-bright);font-size:1.4rem}
+
+.trial{padding:130px max(5vw,calc((100vw - var(--max))/2));background:#132029}
+.trial::before{background:url('./philistine-pottery.jpg') center/cover;opacity:.14;filter:saturate(.5)}
+.trial>.chapter-heading{max-width:1100px}
+.trial-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:52px}
+.trial-grid article{padding:clamp(30px,4vw,52px);border:1px solid var(--line);background:rgba(5,15,22,.82)}
+.trial-grid article>span{display:block;margin-bottom:30px;font-family:Cinzel,serif;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--gold)}
+.trial-grid ul{margin:0;padding:0;list-style:none}
+.trial-grid li{position:relative;padding:16px 0 16px 30px;border-top:1px solid rgba(215,177,110,.16);line-height:1.55;color:var(--muted)}
+.trial-grid li::before{content:"";position:absolute;left:1px;top:23px;width:10px;height:10px;background:var(--gold);transform:rotate(45deg)}
+.case-against{box-shadow:inset 0 5px 0 var(--pigment)}.case-against li::before{background:var(--pigment-bright)}
+
+.verdict{padding:150px max(5vw,calc((100vw - 1480px)/2));text-align:center;background:#07131c}
+.verdict::before{background:linear-gradient(rgba(5,14,21,.32),rgba(5,14,21,.72)),url('./goliath-investigation-poster.png') center 54%/cover;opacity:.6}
+.verdict::after{background:radial-gradient(circle at center,rgba(11,28,39,.28),rgba(4,12,18,.92) 76%)}
+.verdict-heading{font-size:clamp(3rem,8.1vw,9.5rem);line-height:.82;justify-content:center}
+.verdict-copy{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1040px;margin:58px auto 42px;text-align:left}
+.verdict-copy p{padding:24px;border-top:1px solid var(--line);background:rgba(5,14,21,.55);color:var(--limestone-light)}
+.verdict-seal{display:inline-flex;gap:16px;align-items:center;padding:15px 22px;border:1px solid var(--gold);background:rgba(5,14,21,.75);font-family:Cinzel,serif;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+.verdict-seal b{color:var(--pigment-bright);font-size:1.2rem}
+
+.connected{padding:110px max(5vw,calc((100vw - var(--max))/2));background:#16252d}
+.connected::before{background:url('./tell-es-safi-map.jpg') center/cover;opacity:.2;filter:sepia(.5) saturate(.4)}
+.connected>h2{font-family:Cinzel,serif;text-transform:uppercase;font-size:clamp(2.2rem,4.5vw,5rem);line-height:.98;color:var(--limestone-light);max-width:930px}
+.connected-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:46px}
+.connected-grid a{display:block;min-height:280px;padding:clamp(28px,4vw,50px);border:1px solid var(--line);background:linear-gradient(135deg,rgba(7,20,28,.9),rgba(20,37,45,.74));text-decoration:none;transition:transform .25s,border-color .25s,background .25s}
+.connected-grid a:hover{transform:translateY(-5px);border-color:var(--gold);background:rgba(7,20,28,.92)}
+.connected-grid span{display:block;color:var(--muted);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
+.connected-grid strong{display:block;margin:34px 0 22px;color:var(--gold);font-family:Cinzel,serif;font-size:clamp(1.3rem,2.5vw,2.25rem);text-transform:uppercase}
+.connected-grid p{font-size:.9rem;color:var(--muted);max-width:470px}
+
+.companion{padding:110px max(5vw,calc((100vw - 900px)/2));text-align:center;background:linear-gradient(135deg,#23170f,#0d1d27)}
+.companion::before{background:url('./philistine-pottery.jpg') center/cover;opacity:.2;filter:saturate(.5)}
+.film-mark{display:grid;place-items:center;width:74px;height:74px;border:1px solid var(--line);border-radius:50%;margin:0 auto 24px;color:var(--gold);font-size:2rem;padding-left:5px}
+.companion h2{font-family:Cinzel,serif;font-size:clamp(2.8rem,6vw,6rem);text-transform:uppercase;color:var(--limestone-light);margin-bottom:20px}
+.coming-soon{display:inline-block;padding:10px 18px;border:1px solid var(--pigment-bright);color:var(--pigment-bright);font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.companion>p:last-child{max-width:650px;margin:28px auto 0;color:var(--muted)}
+
+.door{min-height:88svh;display:flex;align-items:center;justify-content:center;padding:130px max(5vw,calc((100vw - 1100px)/2));text-align:center;background:#08151d}
+.door::before{background:linear-gradient(rgba(4,13,19,.18),rgba(4,13,19,.72)),url('./tell-es-safi-2024-a.jpg') center/cover;opacity:.72;filter:saturate(.58) sepia(.18) contrast(1.08)}
+.door::after{background:radial-gradient(circle at center,rgba(9,24,32,.22),rgba(4,12,18,.88) 85%)}
+.door-copy{max-width:1100px}
+.door .memory{font-family:Cinzel,serif;text-transform:uppercase;font-size:clamp(1.1rem,2vw,1.7rem);line-height:1.55;color:var(--limestone-light);margin-bottom:42px}
+.door .memory strong{color:var(--gold)}
+.door .chapter-heading{font-size:clamp(2.6rem,6.3vw,7.4rem);line-height:.94;text-align:center}
+.door-copy>p:last-child{max-width:720px;margin:36px auto 0;color:var(--muted)}
+
+.faq,.sources{padding:110px max(5vw,calc((100vw - var(--max))/2));background:#0b1922}
+.faq::before,.sources::before{background:url('./tell-es-safi-map.jpg') center/cover;opacity:.12;filter:sepia(.5)}
+.faq>h2,.sources>h2{font-family:Cinzel,serif;font-size:clamp(2rem,4vw,4.3rem);text-transform:uppercase;color:var(--limestone-light)}
+.faq-list{max-width:940px;margin-top:42px;border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line);background:rgba(4,14,20,.38)}
+.faq-list summary{cursor:pointer;list-style:none;padding:24px 44px 24px 0;font-family:Cinzel,serif;font-weight:700;color:var(--limestone-light);position:relative}
+.faq-list summary::-webkit-details-marker{display:none}.faq-list summary::after{content:"+";position:absolute;right:12px;color:var(--gold);font-size:1.4rem}.faq-list details[open] summary::after{content:"–"}
+.faq-list details p{margin:0;padding:0 44px 24px 0;color:var(--muted);font-size:.95rem}
+.source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
+.source-grid article{padding:28px;border:1px solid var(--line);background:rgba(5,15,22,.75)}
+.source-grid b{display:block;margin-bottom:16px;color:var(--gold);font-family:Cinzel,serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.source-grid a{color:var(--limestone-light);font-family:Cinzel,serif;font-size:.92rem;line-height:1.45;text-decoration:none}
+.source-grid p{color:var(--muted);font-size:.82rem;line-height:1.55;margin:14px 0 0}
+.method-note{margin:34px 0 0;padding:20px 24px;border-left:3px solid var(--pigment);background:rgba(5,15,22,.68);color:var(--muted);font-size:.87rem}
+
+footer{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;padding:36px max(5vw,calc((100vw - var(--max))/2));border-top:1px solid var(--line);background:#050e14;color:var(--muted);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+footer a{color:var(--gold);text-decoration:none}footer span{font-family:Cinzel,serif;color:var(--limestone-light);text-align:center}footer small{text-align:right}
+
+@media (max-width:1100px){
+  .hero{grid-template-columns:1fr 46vw}.hero-copy{padding-left:5vw;padding-right:5vw}
+  .warrior-ledger{grid-template-columns:1fr 1fr}.trail{grid-template-columns:repeat(5,1fr);gap:10px}.trail article{width:auto}.trail>b{display:none}
+  .source-grid{grid-template-columns:1fr 1fr}
+}
+
+@media (max-width:820px){
+  .site-nav{position:relative;flex-direction:column;align-items:flex-start;background:#06121c}.site-nav div{width:100%;gap:16px;overflow-x:auto;padding-bottom:4px}
+  .hero{min-height:auto;display:flex;flex-direction:column}.hero-copy{padding:76px 24px 70px;min-height:78svh}.hero h1{font-size:clamp(2.75rem,13vw,5.8rem)}
+  .hero-poster{min-height:0;padding:24px 14px 42px}.hero-poster img{height:auto;max-height:none}.hero-poster figcaption{bottom:16px}
+  .proposition,.gath-clue,.archaeology,.material-culture,.inscription{grid-template-columns:1fr}
+  .proposition,.gath-clue,.survivors,.boundary,.warriors,.rapha,.archaeology,.material-culture,.inscription,.height,.trial,.verdict,.connected,.companion,.door,.faq,.sources{padding:88px 24px}
+  .gath-clue .chapter-marker{position:static}.clue-copy{padding-top:0}.gate-scale{min-height:400px}
+  .coastal-evidence,.boundary-grid,.trial-grid,.connected-grid,.verdict-copy{grid-template-columns:1fr}
+  .map-fragment{min-height:390px}.trail{grid-template-columns:1fr 1fr}.trail article:last-of-type{grid-column:1/-1}
+  .archaeology .chapter-marker,.inscription .chapter-marker{grid-column:auto}.material-culture figure{order:2}
+  .height-grid{grid-template-columns:1fr}.versus{justify-self:center;transform:rotate(90deg)}
+  .height-boundary{grid-template-columns:1fr;text-align:center}.height-boundary i{transform:rotate(90deg)}
+  .source-grid{grid-template-columns:1fr}footer{grid-template-columns:1fr;text-align:center}footer small{text-align:center}
+}
+
+@media (max-width:520px){
+  p{font-size:1rem}.site-nav{padding:20px}.site-nav .brand{font-size:.68rem}.site-nav div a{font-size:.62rem}
+  .hero-copy{padding:66px 20px 60px}.opening-beat{font-size:1.18rem}.hero h1{font-size:clamp(2.45rem,14vw,4.4rem);letter-spacing:-.06em}.hero h1 span{font-size:.58em}
+  .hero-deck{font-size:1.05rem}.hero-poster{padding:16px 8px 40px}
+  .proposition,.gath-clue,.survivors,.boundary,.warriors,.rapha,.archaeology,.material-culture,.inscription,.height,.trial,.verdict,.connected,.companion,.door,.faq,.sources{padding:72px 18px}
+  .chapter-heading{font-size:clamp(2rem,11vw,3.7rem);line-height:1;letter-spacing:-.04em}.verdict-heading{font-size:clamp(2.6rem,14vw,5.4rem)}
+  .archaeology-copy .chapter-heading{font-size:clamp(1.7rem,9.4vw,2.3rem);letter-spacing:-.05em}
+  .tablet-gath,.verse-tablet,.ostracon{padding:48px 25px}.coastal-evidence{gap:22px}.map-fragment{min-height:320px}.map-route{left:4%;right:4%;gap:5px}.map-route span{padding:7px 6px;font-size:.58rem}.map-route i{width:5%}
+  .boundary>h2{font-size:clamp(2.2rem,12vw,4rem)}.boundary-grid article{padding:28px 22px}
+  .warrior-ledger{grid-template-columns:1fr}.warrior-ledger article{min-height:0}.trail{grid-template-columns:1fr}.trail article:last-of-type{grid-column:auto}
+  .evidence-types{grid-template-columns:1fr}.height-card{padding:34px 20px}.trial-grid article{padding:30px 22px}.trial-grid li{padding-left:26px}
+  .verdict-copy{gap:14px}.verdict-copy p{padding:20px}.verdict-seal{display:flex;flex-direction:column;gap:8px}
+  .connected-grid a{min-height:0;padding:28px 22px}.source-grid article{padding:24px 20px}
+}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.connected-grid a{transition:none}}
+
+@media print{
+  .site-nav{position:static}.world-section::before,.world-section::after,body::before,body::after{display:none!important}.hero{display:block}.hero-poster img{height:auto}.hero-poster{min-height:0}.world-section{break-inside:avoid}.enter-link{display:none}
+}
