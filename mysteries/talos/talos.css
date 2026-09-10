@@ -182,6 +182,10 @@ a { color: inherit; }
 .film-frame .material-heading { max-width: 900px; margin-top: 1.7rem; font-size: clamp(2.8rem,6vw,6rem); }
 .film-frame p { color: #ddd0ba; font: 1.15rem/1.7 var(--font-display); }
 .film-frame strong { margin-top: 1.6rem; color: #8ccfc7; font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; }
+.companion-entry { min-height: auto; padding-block: clamp(3rem,6vw,5rem); }
+.companion-entry .film-frame { min-height: 0; padding-block: clamp(3rem,6vw,5rem); }
+.companion-entry .film-frame .material-heading { font-size: clamp(2.35rem,5vw,4.75rem); }
+.companion-entry .enter-link { margin-top: 1.6rem; }
 
 .door { display: grid; min-height: 100svh; place-items: center; padding: 9rem 7vw; background-image: linear-gradient(180deg,rgb(3 12 16 / 16%),rgb(3 12 16 / 80%) 84%),url('./talos-crete.png'); background-position: center; background-repeat: no-repeat; background-size: cover; text-align: center; }
 .door::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse at 50% 48%,rgb(3 13 17 / 22%) 0 34%,rgb(3 13 17 / 54%) 68%,rgb(3 13 17 / 80%) 100%),linear-gradient(90deg,rgb(16 64 62 / 16%),transparent 36% 64%,rgb(126 76 35 / 14%)); pointer-events: none; }
