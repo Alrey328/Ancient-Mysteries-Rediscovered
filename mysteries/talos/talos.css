@@ -182,6 +182,10 @@ a { color: inherit; }
 .film-frame .material-heading { max-width: 900px; margin-top: 1.7rem; font-size: clamp(2.8rem,6vw,6rem); }
 .film-frame p { color: #ddd0ba; font: 1.15rem/1.7 var(--font-display); }
 .film-frame strong { margin-top: 1.6rem; color: #8ccfc7; font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; }
+.film-cta { display: inline-flex; align-items: center; gap: 1.15rem; margin-top: 1.6rem; color: #8ccfc7; text-decoration: none; }
+.film-cta .play-mark { flex: 0 0 4.5rem; margin: 0; }
+.film-cta-label { font-size: .78rem; font-weight: 800; letter-spacing: .18em; line-height: 1.5; text-transform: uppercase; }
+.film-cta:hover .film-cta-label, .film-cta:focus-visible .film-cta-label { color: #b8eee7; }
 .companion-entry { min-height: auto; padding-block: clamp(3rem,6vw,5rem); }
 .companion-entry .film-frame { min-height: 0; padding-block: clamp(3rem,6vw,5rem); }
 .companion-entry .film-frame .material-heading { font-size: clamp(2.35rem,5vw,4.75rem); }
@@ -297,6 +301,7 @@ footer small { font-size: .7rem; }
   .archive-stamp { right: 7%; bottom: 9%; }
   .verdict .material-heading { font-size: 2rem; }
   .film-frame .material-heading { font-size: 1.9rem; }
+  .film-cta { flex-direction: column; gap: .85rem; }
   .prologue-inner .material-heading, .witness-copy .material-heading { font-size: 2.5rem; }
   .verdict .material-heading > span, .film-frame .material-heading > span { overflow-wrap: normal; }
   .evidence-chain { flex-direction: column; }
