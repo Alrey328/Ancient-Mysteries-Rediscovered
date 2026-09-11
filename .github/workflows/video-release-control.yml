@@ -1,0 +1,113 @@
+name: Video Release Control
+
+on:
+  workflow_dispatch:
+    inputs:
+      state:
+        description: "Goliath companion film"
+        required: true
+        default: off
+        type: choice
+        options:
+          - off
+          - on
+      video_url:
+        description: "Facebook Reel or YouTube URL (paste once; leave blank on later ON/OFF changes)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: video-release-control
+  cancel-in-progress: false
+
+jobs:
+  goliath-pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update Goliath release state
+        env:
+          STATE: ${{ inputs.state }}
+          VIDEO_URL_INPUT: ${{ inputs.video_url }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          from html import escape
+
+          config_path = Path('data/video-releases.json')
+          page_path = Path('mysteries/goliath-of-gath/index.html')
+          data = json.loads(config_path.read_text())
+          releases = data.setdefault('releases', {})
+          current = releases.get('goliath-of-gath', {})
+
+          state = os.environ['STATE'].strip().lower()
+          entered_url = os.environ.get('VIDEO_URL_INPUT', '').strip()
+          saved_url = current.get('videoUrl', '').strip()
+          url = entered_url or saved_url
+
+          if state not in {'off', 'on'}:
+              raise SystemExit('State must be off or on')
+
+          if entered_url and not (
+              entered_url.startswith('https://www.facebook.com/') or
+              entered_url.startswith('https://facebook.com/') or
+              entered_url.startswith('https://youtu.be/') or
+              entered_url.startswith('https://www.youtube.com/')
+          ):
+              raise SystemExit('URL must be a Facebook Reel or YouTube HTTPS URL')
+
+          if state == 'on' and not url:
+              raise SystemExit('No saved video URL. Paste the URL once before turning ON.')
+
+          releases['goliath-of-gath'] = {
+              'title': 'Goliath of Gath',
+              'state': state,
+              'videoUrl': url
+          }
+          config_path.write_text(json.dumps(data, indent=2) + '\n')
+
+          page = page_path.read_text()
+          pattern = re.compile(
+              r'<section class="companion world-section" aria-labelledby="companion-title">.*?</section>',
+              re.S
+          )
+
+          if state == 'on':
+              safe_url = escape(url, quote=True)
+              replacement = f'''<section class="companion world-section" aria-labelledby="companion-title">
+    <div class="film-mark" aria-hidden="true">▷</div>
+    <p class="eyebrow">Companion film</p>
+    <h2 id="companion-title">Goliath of Gath</h2>
+    <a class="source-link" href="{safe_url}" target="_blank" rel="noopener noreferrer" aria-label="Watch Goliath of Gath">▶ WATCH THE STORY ↗</a>
+    <p>The companion Reel is now live. Continue the story on Facebook or YouTube.</p>
+  </section>'''
+          else:
+              replacement = '''<section class="companion world-section" aria-labelledby="companion-title">
+    <div class="film-mark" aria-hidden="true">▷</div>
+    <p class="eyebrow">Companion film</p>
+    <h2 id="companion-title">Goliath of Gath</h2>
+    <span class="coming-soon">Coming soon</span>
+    <p>The companion film has been prepared and will be revealed when it goes live.</p>
+  </section>'''
+
+          updated, count = pattern.subn(replacement, page, count=1)
+          if count != 1:
+              raise SystemExit('Safety stop: could not uniquely locate the Goliath companion section.')
+          page_path.write_text(updated)
+          PY
+
+      - name: Commit Goliath switch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/video-releases.json mysteries/goliath-of-gath/index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Goliath video: ${{ inputs.state }}"
+          git push origin main
