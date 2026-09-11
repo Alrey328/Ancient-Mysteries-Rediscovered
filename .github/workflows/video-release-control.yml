@@ -1,0 +1,120 @@
+name: Video Release Control
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_id:
+        description: "Video ID (example: goliath-of-gath)"
+        required: true
+        type: string
+      title:
+        description: "Public video title"
+        required: true
+        type: string
+      state:
+        description: "Public release state"
+        required: true
+        default: coming-soon
+        type: choice
+        options:
+          - off
+          - coming-soon
+          - live
+          - scheduled
+      video_url:
+        description: "Facebook/YouTube URL — enter only for LIVE or SCHEDULED"
+        required: false
+        type: string
+      poster:
+        description: "Site-relative poster path (example: /mysteries/goliath-of-gath/poster.png)"
+        required: false
+        type: string
+      release_at:
+        description: "Schedule time with offset, e.g. 2026-09-13T09:00:00-05:00"
+        required: false
+        type: string
+      release_label:
+        description: "Optional public label, e.g. Sunday · 9:00 AM CT"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: video-release-control
+  cancel-in-progress: false
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Validate and update release state
+        env:
+          RELEASE_ID: ${{ inputs.release_id }}
+          TITLE: ${{ inputs.title }}
+          STATE: ${{ inputs.state }}
+          VIDEO_URL: ${{ inputs.video_url }}
+          POSTER: ${{ inputs.poster }}
+          RELEASE_AT: ${{ inputs.release_at }}
+          RELEASE_LABEL: ${{ inputs.release_label }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          from datetime import datetime
+          from pathlib import Path
+
+          path = Path('data/video-releases.json')
+          data = json.loads(path.read_text())
+          rid = os.environ['RELEASE_ID'].strip()
+          state = os.environ['STATE'].strip()
+          title = os.environ['TITLE'].strip()
+          url = os.environ.get('VIDEO_URL', '').strip()
+          poster = os.environ.get('POSTER', '').strip()
+          release_at = os.environ.get('RELEASE_AT', '').strip()
+          release_label = os.environ.get('RELEASE_LABEL', '').strip()
+
+          if not re.fullmatch(r'[a-z0-9][a-z0-9-]{1,79}', rid):
+              raise SystemExit('release_id must be lowercase letters/numbers/hyphens')
+          if state in {'live', 'scheduled'} and not url:
+              raise SystemExit('video_url is required for live or scheduled')
+          if url and not (url.startswith('https://www.facebook.com/') or url.startswith('https://youtu.be/') or url.startswith('https://www.youtube.com/')):
+              raise SystemExit('video_url must be a Facebook or YouTube HTTPS URL')
+          if state == 'scheduled':
+              if not release_at:
+                  raise SystemExit('release_at is required for scheduled')
+              try:
+                  parsed = datetime.fromisoformat(release_at)
+              except ValueError:
+                  raise SystemExit('release_at must be ISO 8601, e.g. 2026-09-13T09:00:00-05:00')
+              if parsed.tzinfo is None:
+                  raise SystemExit('release_at must include a UTC offset such as -05:00')
+
+          # Never retain a hidden URL in OFF/COMING SOON states in this public repo.
+          if state in {'off', 'coming-soon'}:
+              url = ''
+              release_at = ''
+
+          data.setdefault('releases', {})[rid] = {
+              'title': title,
+              'state': state,
+              'videoUrl': url,
+              'poster': poster,
+              'releaseAt': release_at,
+              'releaseLabel': release_label
+          }
+          path.write_text(json.dumps(data, indent=2) + '\n')
+          PY
+
+      - name: Commit public state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/video-releases.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Set video release: ${{ inputs.release_id }} → ${{ inputs.state }}"
+          git push origin main
