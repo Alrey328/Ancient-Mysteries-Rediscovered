@@ -1,49 +1,38 @@
-# Ancient Mysteries Rediscovered — Video Release Control
+# Ancient Mysteries Rediscovered — Video Release Control Pilot
 
-This system lets the site owner change a companion video's public state without editing HTML.
+This pilot lets the site owner prepare the Goliath companion Reel/YouTube link before release and flip it OFF/ON from GitHub without editing HTML.
 
 ## Owner workflow
 
 Open **GitHub → Ancient-Mysteries-Rediscovered → Actions → Video Release Control → Run workflow**.
 
-Choose a state:
+The pilot has only two states:
 
-- **off** — no public video module.
-- **coming-soon** — public Coming Soon treatment; no unreleased URL is stored in the public release registry.
-- **live** — public Watch the Story treatment links to the supplied Facebook/YouTube URL.
-- **scheduled** — Coming Soon until the supplied ISO-8601 release time, then the public browser renders the Live treatment automatically.
+- **off** — Goliath's Investigation shows the existing Coming Soon companion-film block. The saved Reel/YouTube URL remains stored for later use.
+- **on** — the same companion-film block becomes an active **WATCH THE STORY** link using the saved URL.
 
-## Security boundary
+The first time, paste the Reel/YouTube URL and choose **off**. On release day, choose **on** and leave the URL field blank; the workflow reuses the saved URL.
 
-This repository is public. A URL or media file committed here is public even when HTML/JavaScript hides it. For that reason, OFF and COMING SOON explicitly remove `videoUrl` from the public registry.
+## Safety behavior
 
-**Preview is intentionally not implemented as a public-repository state.** Secure preview requires the unreleased media/URL to live behind authentication (for example a private storage service or private repository with an authenticated preview surface). Do not add a `preview` state that merely hides a public URL with CSS or JavaScript.
+- This pilot touches only `mysteries/goliath-of-gath/index.html` and `data/video-releases.json`.
+- Every other Reel, YouTube video, and Investigation remains unchanged and effectively ON by default.
+- The workflow requires a uniquely identifiable Goliath companion section. If it cannot find exactly one, it stops without making the release change.
+- Turning ON is blocked if there is no saved URL.
+- There is no site-side release JavaScript or external backend in this pilot.
 
-## Page integration
+## Public-repository note
 
-A page opts in by loading:
+The repository is public, so a technically advanced visitor could inspect the repository and discover a preloaded URL while the public page is OFF. The OFF state is intended to prevent normal site visitors from accessing the video through the Investigation page before release.
 
-```html
-<link rel="stylesheet" href="/assets/video-release.css">
-<script defer src="/assets/video-release.js"></script>
-```
+## Pilot goal
 
-and placing a release host where the video card belongs:
+Use Goliath for one real release. Confirm:
 
-```html
-<div class="amr-video-release"
-     data-video-release-id="goliath-of-gath"
-     data-video-title="Goliath of Gath"
-     data-video-poster="/mysteries/goliath-of-gath/goliath-investigation-poster.png"
-     hidden></div>
-```
+1. URL can be entered ahead of time while OFF.
+2. Public Investigation remains non-clickable while OFF.
+3. ON activates the correct Reel/YouTube link.
+4. OFF can restore the Coming Soon state if needed.
+5. No other page or video is affected.
 
-The ID must match the ID entered in the workflow.
-
-## Scheduling
-
-Use an explicit offset. Chicago daylight time example:
-
-`2026-09-13T09:00:00-05:00`
-
-The public module evaluates the scheduled timestamp when the page loads. No manual release-day edit is required.
+If the pilot is successful, the same pattern can be extended to future Investigation companion videos.
