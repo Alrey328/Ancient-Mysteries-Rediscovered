@@ -6,11 +6,11 @@ on:
       state:
         description: "Goliath companion film"
         required: true
-        default: off
+        default: "off"
         type: choice
         options:
-          - off
-          - on
+          - "off"
+          - "on"
       video_url:
         description: "Facebook Reel or YouTube URL (paste once; leave blank on later ON/OFF changes)"
         required: false
