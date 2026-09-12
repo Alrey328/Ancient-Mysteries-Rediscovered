@@ -609,6 +609,28 @@
   .reel-card.has-investigation .title-link{
     display:inline-block;
   }
+  .reel-watch{
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    margin-top:13px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    font-weight:700;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+  }
+  a.reel-watch{
+    color:var(--gold);
+    text-decoration:none;
+  }
+  a.reel-watch:hover,
+  a.reel-watch:focus-visible{
+    color:#f6dc87;
+  }
+  .reel-watch.disabled{
+    color:var(--muted);
+  }
   .investigation-cta{
     position:relative;
     display:flex;
@@ -1004,16 +1026,30 @@
   </div>
   <div class="featured-grid">
     <!-- Insert future newest releases at the beginning of this featured row. -->
+    <article class="reel-card featured has-investigation goliath-reel-card pending" data-video-release="goliath-of-gath" data-release-state="off">
+      <div class="thumb">
+        <img src="goliath-of-gath-reel-poster.png" alt="Official Goliath of Gath Reel poster, showing Goliath entering the city of Gath" loading="eager">
+        <div class="badge">Newest</div>
+      </div>
+      <div class="meta">
+        <div class="tag">Newest Reel</div>
+        <h3>GOLIATH OF GATH</h3>
+        <span class="reel-watch disabled" aria-label="Goliath of Gath Reel coming soon">Coming Soon</span>
+        <a class="investigation-cta" href="mysteries/goliath-of-gath/" aria-label="Investigate the Goliath of Gath mystery">
+          <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </article>
+
     <article class="reel-card featured has-investigation talos-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1Dk1cL6aix/" target="_blank" rel="noopener" aria-label="Watch Talos: The Bronze Giant of Crete on Facebook">
       <div class="thumb">
         <img src="talos-reel-poster.webp" alt="Official Reel poster for Talos: The Bronze Giant of Crete, showing the colossal bronze guardian lifting a boulder above ships approaching Crete" loading="eager">
-        <div class="badge">Newest</div>
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
       <div class="meta">
-        <div class="tag">Newest Release</div>
+        <div class="tag">Featured Reel</div>
         <h3><a class="title-link" href="https://www.facebook.com/share/r/1Dk1cL6aix/" target="_blank" rel="noopener">Talos: The Bronze Giant of Crete</a></h3>
         <a class="investigation-cta" href="mysteries/talos/" aria-label="Investigate the Talos mystery">
           <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
