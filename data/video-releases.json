@@ -1,5 +1,11 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "releases": {}
+  "releases": {
+    "goliath-of-gath": {
+      "title": "Goliath of Gath",
+      "state": "off",
+      "videoUrl": "https://www.facebook.com/share/r/1Dx8R77kca/"
+    }
+  }
 }
