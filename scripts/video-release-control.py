@@ -69,7 +69,7 @@ if state == "on":
         <div class="tag">Newest Reel</div>
         <h3><a class="title-link" href="{safe_url}" target="_blank" rel="noopener">GOLIATH OF GATH</a></h3>
         <a class="reel-watch" href="{safe_url}" target="_blank" rel="noopener" aria-label="Watch Goliath of Gath on Facebook">▶ Watch the Story ↗</a>
-        <a class="investigation-cta" href="mysteries/goliath-of-gath/" aria-label="Investigate the Goliath of Gath mystery">
+        <a class="investigation-cta" href="/mysteries/goliath-of-gath/" aria-label="Investigate the Goliath of Gath mystery">
           <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -91,7 +91,7 @@ else:
         <div class="tag">Newest Reel</div>
         <h3>GOLIATH OF GATH</h3>
         <span class="reel-watch disabled" aria-label="Goliath of Gath Reel coming soon">Coming Soon</span>
-        <a class="investigation-cta" href="mysteries/goliath-of-gath/" aria-label="Investigate the Goliath of Gath mystery">
+        <a class="investigation-cta" href="/mysteries/goliath-of-gath/" aria-label="Investigate the Goliath of Gath mystery">
           <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
