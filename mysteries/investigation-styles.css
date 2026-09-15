@@ -3059,3 +3059,15 @@ body.kandahar-theme .answer-box .has-rendered-heading .rendered-heading-art{
       url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
   }
 }
+
+/* Final Kandahar readability exception: this is a live-text question, not heading art. */
+body.kandahar-theme .door-beyond .question{
+  color:#f0e2c3;
+  background:none;
+  -webkit-background-clip:border-box;
+  background-clip:border-box;
+  -webkit-text-fill-color:currentColor;
+  -webkit-text-stroke:0;
+  filter:none;
+  text-shadow:0 3px 12px rgba(0,0,0,0.72);
+}
