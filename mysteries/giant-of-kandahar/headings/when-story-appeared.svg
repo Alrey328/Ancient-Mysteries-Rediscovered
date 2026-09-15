@@ -25,10 +25,10 @@
     </style>
     <mask id="letters">
       <rect width="100%" height="100%" fill="#000"/>
-      <text x="500" y="106" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff">WHEN DID THE</text><text x="500" y="224" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff">STORY APPEAR?</text>
+      <text x="500" y="106" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff" textLength="720" lengthAdjust="spacingAndGlyphs">WHEN DID THE</text><text x="500" y="224" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff" textLength="820" lengthAdjust="spacingAndGlyphs">STORY APPEAR?</text>
     </mask>
   </defs>
-  <text x="500" y="106" text-anchor="middle" class="title">WHEN DID THE</text>
-  <text x="500" y="224" text-anchor="middle" class="title">STORY APPEAR?</text>
+  <text x="500" y="106" text-anchor="middle" class="title" textLength="720" lengthAdjust="spacingAndGlyphs">WHEN DID THE</text>
+  <text x="500" y="224" text-anchor="middle" class="title" textLength="820" lengthAdjust="spacingAndGlyphs">STORY APPEAR?</text>
   <rect class="weather" width="100%" height="100%" mask="url(#letters)"/>
 </svg>
