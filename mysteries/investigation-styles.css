@@ -2968,3 +2968,55 @@ body[class*="-theme"] .section h2{
        var(--mystery-heading-level-2-shadow);
   }
 }
+
+/* Kandahar mobile hero and caption readability correction */
+body.kandahar-theme .mystery-hero h1{
+  background:
+    linear-gradient(180deg, rgba(255,226,153,0.82), rgba(204,145,63,0.78)),
+    url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg') 50% 50% / 700px 700px;
+  background-blend-mode:screen, normal;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:0.65px rgba(26,13,5,0.9);
+  filter:brightness(1.18) contrast(1.08) saturate(0.9);
+}
+
+body.kandahar-theme .section h2,
+body.kandahar-theme .question-title h2{
+  background:
+    linear-gradient(180deg, rgba(248,213,135,0.8), rgba(190,127,48,0.76)),
+    url('/mysteries/giant-of-kandahar/kandahar-caption-material.jpg') 50% 45% / 520px 520px;
+  background-blend-mode:screen, normal;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:0.6px rgba(28,14,5,0.88);
+  filter:brightness(1.16) contrast(1.07) saturate(0.9);
+}
+
+@media (max-width:640px){
+  body.kandahar-theme{
+    --mystery-hero-overlay:
+      linear-gradient(180deg, rgba(7,5,3,0.01), rgba(9,6,3,0.05) 56%, rgba(7,4,2,0.54) 100%);
+    --mystery-hero-side-overlay:
+      linear-gradient(90deg, rgba(6,4,2,0.12) 0 42%, rgba(9,6,3,0.02) 62%, rgba(7,4,2,0.18) 100%),
+      url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
+  }
+
+  body.kandahar-theme .mystery-hero.has-art::after{
+    opacity:0.2;
+    background:
+      linear-gradient(90deg, transparent 0 62%, rgba(7,4,2,0.28) 76%, transparent 100%),
+      linear-gradient(180deg, rgba(7,4,2,0.12), transparent 30%, transparent 76%, rgba(7,4,2,0.38));
+  }
+
+  body.kandahar-theme .mystery-hero h1{
+    -webkit-text-stroke:0.5px rgba(26,13,5,0.88);
+  }
+
+  body.kandahar-theme .section h2,
+  body.kandahar-theme .question-title h2{
+    -webkit-text-stroke:0.48px rgba(28,14,5,0.86);
+  }
+}
