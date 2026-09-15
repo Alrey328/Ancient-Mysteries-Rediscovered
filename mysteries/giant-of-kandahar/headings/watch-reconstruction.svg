@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 238" role="img" aria-label="WATCH THE CINEMATIC RECONSTRUCTION">
+  <defs>
+    <linearGradient id="bronze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff1ca"/><stop offset="0.18" stop-color="#e7cf96"/><stop offset="0.48" stop-color="#b58d4e"/><stop offset="0.72" stop-color="#805a31"/><stop offset="1" stop-color="#ddbd78"/>
+    </linearGradient>
+    <pattern id="grain" width="86" height="54" patternUnits="userSpaceOnUse">
+      <path d="M4 10L31 7M45 18L80 13M12 39L53 34M61 47L83 44" stroke="#5f3f23" stroke-width="2" opacity=".3"/>
+      <circle cx="19" cy="21" r="2.6" fill="#fff0c7" opacity=".42"/><circle cx="67" cy="31" r="3.2" fill="#3f2918" opacity=".42"/>
+    </pattern>
+    <filter id="depth" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/><feOffset in="blur" dx="0" dy="4" result="offset"/><feFlood flood-color="#130b05" flood-opacity=".92" result="shade"/><feComposite in="shade" in2="offset" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <style>.title{font-family:Cinzel,Georgia,serif;font-size:82px;font-weight:700;letter-spacing:.025em;fill:url(#bronze);stroke:#211208;stroke-width:3;paint-order:stroke fill;filter:url(#depth)}.weather{fill:url(#grain);mix-blend-mode:multiply;opacity:.42}</style>
+    <mask id="letters"><rect width="100%" height="100%" fill="#000"/><g transform="translate(500 0) scale(0.940 1) translate(-500 0)"><text x="500" y="98" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="82px" font-weight="700" letter-spacing=".025em" fill="#fff">WATCH THE CINEMATIC</text></g><g transform="translate(500 0) scale(0.940 1) translate(-500 0)"><text x="500" y="208" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="82px" font-weight="700" letter-spacing=".025em" fill="#fff">RECONSTRUCTION</text></g></mask>
+  </defs>
+  <g transform="translate(500 0) scale(0.940 1) translate(-500 0)"><text x="500" y="98" text-anchor="middle" class="title">WATCH THE CINEMATIC</text></g><g transform="translate(500 0) scale(0.940 1) translate(-500 0)"><text x="500" y="208" text-anchor="middle" class="title">RECONSTRUCTION</text></g>
+  <rect class="weather" width="100%" height="100%" mask="url(#letters)"/>
+</svg>
