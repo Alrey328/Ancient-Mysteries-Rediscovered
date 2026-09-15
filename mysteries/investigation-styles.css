@@ -2923,3 +2923,48 @@ body.maximinus-theme .section-kicker{
     font-size:clamp(2.05rem, 11.5vw, 3.4rem);
   }
 }
+
+/* Site-wide large cinematic heading readability pass */
+body[class*="-theme"] .mystery-hero h1{
+  text-shadow:
+    -1.5px -1.5px 0 rgba(5,4,3,0.94),
+     1.5px -1.5px 0 rgba(5,4,3,0.94),
+    -1.5px  1.5px 0 rgba(5,4,3,0.94),
+     1.5px  1.5px 0 rgba(5,4,3,0.94),
+     0 3px 0 rgba(5,4,3,0.9),
+     var(--mystery-heading-level-1-shadow);
+}
+
+body[class*="-theme"] .question-title h2,
+body[class*="-theme"] .section h2{
+  text-shadow:
+    -1.25px -1.25px 0 rgba(5,4,3,0.92),
+     1.25px -1.25px 0 rgba(5,4,3,0.92),
+    -1.25px  1.25px 0 rgba(5,4,3,0.92),
+     1.25px  1.25px 0 rgba(5,4,3,0.92),
+     0 2px 0 rgba(5,4,3,0.88),
+     var(--mystery-heading-level-2-shadow);
+}
+
+@media (max-width:640px){
+  body[class*="-theme"] .mystery-hero h1{
+    text-shadow:
+      -1px -1px 0 rgba(5,4,3,0.96),
+       1px -1px 0 rgba(5,4,3,0.96),
+      -1px  1px 0 rgba(5,4,3,0.96),
+       1px  1px 0 rgba(5,4,3,0.96),
+       0 2px 0 rgba(5,4,3,0.9),
+       var(--mystery-heading-level-1-shadow);
+  }
+
+  body[class*="-theme"] .question-title h2,
+  body[class*="-theme"] .section h2{
+    text-shadow:
+      -0.8px -0.8px 0 rgba(5,4,3,0.94),
+       0.8px -0.8px 0 rgba(5,4,3,0.94),
+      -0.8px  0.8px 0 rgba(5,4,3,0.94),
+       0.8px  0.8px 0 rgba(5,4,3,0.94),
+       0 1.5px 0 rgba(5,4,3,0.88),
+       var(--mystery-heading-level-2-shadow);
+  }
+}
