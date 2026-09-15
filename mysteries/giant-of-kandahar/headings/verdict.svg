@@ -25,10 +25,10 @@
     </style>
     <mask id="letters">
       <rect width="100%" height="100%" fill="#000"/>
-      <text x="500" y="106" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff">SO WAS THE GIANT</text><text x="500" y="224" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff">OF KANDAHAR REAL?</text>
+      <text x="500" y="106" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff" textLength="900" lengthAdjust="spacingAndGlyphs">SO WAS THE GIANT</text><text x="500" y="224" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff" textLength="900" lengthAdjust="spacingAndGlyphs">OF KANDAHAR REAL?</text>
     </mask>
   </defs>
-  <text x="500" y="106" text-anchor="middle" class="title">SO WAS THE GIANT</text>
-  <text x="500" y="224" text-anchor="middle" class="title">OF KANDAHAR REAL?</text>
+  <text x="500" y="106" text-anchor="middle" class="title" textLength="900" lengthAdjust="spacingAndGlyphs">SO WAS THE GIANT</text>
+  <text x="500" y="224" text-anchor="middle" class="title" textLength="900" lengthAdjust="spacingAndGlyphs">OF KANDAHAR REAL?</text>
   <rect class="weather" width="100%" height="100%" mask="url(#letters)"/>
 </svg>
