@@ -3048,3 +3048,14 @@ body.kandahar-theme .answer-box .has-rendered-heading .rendered-heading-art{
     width:100%;
   }
 }
+
+/* Kandahar mobile hero: replace the desktop left-side veil across the full poster. */
+@media (max-width:640px){
+  body.kandahar-theme .mystery-hero.has-art{
+    background-image:
+      var(--mystery-hero-overlay),
+      linear-gradient(90deg, rgba(6,4,2,0.035), rgba(9,6,3,0.015) 52%, rgba(7,4,2,0.045)),
+      var(--hero-image),
+      url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
+  }
+}
