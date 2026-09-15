@@ -3037,3 +3037,14 @@ body.kandahar-theme .answer-box .has-rendered-heading .rendered-heading-art{
       linear-gradient(180deg, rgba(7,4,2,0.12), transparent 30%, transparent 76%, rgba(7,4,2,0.38));
   }
 }
+
+/* Kandahar medium chapter captions: rendered artwork, not CSS text effects. */
+.rendered-heading-medium{
+  width:min(100%, 780px);
+}
+
+@media (max-width:640px){
+  .rendered-heading-medium{
+    width:100%;
+  }
+}
