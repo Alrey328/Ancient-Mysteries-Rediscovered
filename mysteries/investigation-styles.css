@@ -2968,3 +2968,21 @@ body[class*="-theme"] .section h2{
        var(--mystery-heading-level-2-shadow);
   }
 }
+
+/* Kandahar investigation hero: preserve poster detail on phone screens. */
+@media (max-width:640px){
+  body.kandahar-theme{
+    --mystery-hero-overlay:
+      linear-gradient(180deg, rgba(7,5,3,0.01), rgba(9,6,3,0.05) 56%, rgba(7,4,2,0.54) 100%);
+    --mystery-hero-side-overlay:
+      linear-gradient(90deg, rgba(6,4,2,0.12) 0 42%, rgba(9,6,3,0.02) 62%, rgba(7,4,2,0.18) 100%),
+      url('/mysteries/giant-of-kandahar/giant-of-kandahar-rock-background.jpg');
+  }
+
+  body.kandahar-theme .mystery-hero.has-art::after{
+    opacity:0.2;
+    background:
+      linear-gradient(90deg, transparent 0 62%, rgba(7,4,2,0.28) 76%, transparent 100%),
+      linear-gradient(180deg, rgba(7,4,2,0.12), transparent 30%, transparent 76%, rgba(7,4,2,0.38));
+  }
+}
