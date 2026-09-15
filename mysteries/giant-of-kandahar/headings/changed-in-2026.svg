@@ -25,10 +25,10 @@
     </style>
     <mask id="letters">
       <rect width="100%" height="100%" fill="#000"/>
-      <text x="500" y="106" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff">WHAT ACTUALLY</text><text x="500" y="224" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff">CHANGED IN 2026?</text>
+      <text x="500" y="106" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff" textLength="820" lengthAdjust="spacingAndGlyphs">WHAT ACTUALLY</text><text x="500" y="224" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="98px" font-weight="700" letter-spacing=".025em" fill="#fff" textLength="900" lengthAdjust="spacingAndGlyphs">CHANGED IN 2026?</text>
     </mask>
   </defs>
-  <text x="500" y="106" text-anchor="middle" class="title">WHAT ACTUALLY</text>
-  <text x="500" y="224" text-anchor="middle" class="title">CHANGED IN 2026?</text>
+  <text x="500" y="106" text-anchor="middle" class="title" textLength="820" lengthAdjust="spacingAndGlyphs">WHAT ACTUALLY</text>
+  <text x="500" y="224" text-anchor="middle" class="title" textLength="900" lengthAdjust="spacingAndGlyphs">CHANGED IN 2026?</text>
   <rect class="weather" width="100%" height="100%" mask="url(#letters)"/>
 </svg>
