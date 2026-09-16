@@ -4,7 +4,7 @@ name: Video Release Control
   workflow_dispatch:
     inputs:
       state:
-        description: Goliath companion film
+        description: Kandahar Giant 2.0 companion film
         required: true
         default: 'off'
         type: choice
@@ -12,7 +12,7 @@ name: Video Release Control
           - 'off'
           - 'on'
       video_url:
-        description: Facebook Reel or YouTube URL - paste once, then leave blank
+        description: Facebook Reel or YouTube URL - already saved; leave blank unless replacing it
         required: false
         type: string
 
@@ -20,7 +20,7 @@ permissions:
   contents: write
 
 jobs:
-  goliath-pilot:
+  kandahar-release:
     runs-on: ubuntu-latest
     steps:
       - name: Check out site
@@ -28,17 +28,17 @@ jobs:
         with:
           ref: main
 
-      - name: Update Goliath release state
+      - name: Update Kandahar 2.0 release state
         env:
           STATE: ${{ inputs.state }}
           VIDEO_URL_INPUT: ${{ inputs.video_url }}
         run: python3 scripts/video-release-control.py
 
-      - name: Commit Goliath switch
+      - name: Commit Kandahar 2.0 switch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/video-releases.json index.html mysteries/goliath-of-gath/index.html
+          git add data/video-releases.json index.html mysteries/giant-of-kandahar/index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Goliath video: ${{ inputs.state }}"
+          git commit -m "Kandahar Giant 2.0 video: ${{ inputs.state }}"
           git push origin main
