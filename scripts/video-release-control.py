@@ -5,11 +5,11 @@ from html import escape
 from pathlib import Path
 
 config_path = Path("data/video-releases.json")
-investigation_page_path = Path("mysteries/goliath-of-gath/index.html")
+investigation_page_path = Path("mysteries/giant-of-kandahar/index.html")
 homepage_path = Path("index.html")
 data = json.loads(config_path.read_text(encoding="utf-8"))
 releases = data.setdefault("releases", {})
-current = releases.get("goliath-of-gath", {})
+current = releases.get("giant-of-kandahar-2", {})
 
 state = os.environ["STATE"].strip().lower()
 entered_url = os.environ.get("VIDEO_URL_INPUT", "").strip()
@@ -30,85 +30,93 @@ if entered_url and not (
 if state == "on" and not url:
     raise SystemExit("No saved video URL. Paste the URL once before turning ON.")
 
-releases["goliath-of-gath"] = {
-    "title": "Goliath of Gath",
+releases["giant-of-kandahar-2"] = {
+    "title": "The Kandahar Giant: The Story Didn't End There",
     "state": state,
     "videoUrl": url,
 }
 
+homepage = homepage_path.read_text(encoding="utf-8")
 investigation_page = investigation_page_path.read_text(encoding="utf-8")
-companion_pattern = re.compile(
-    r'<section class="companion world-section" aria-labelledby="companion-title">.*?</section>',
+
+# The current Kandahar card is the uniquely registered legacy card. During the
+# 2.0 pilot it becomes the release-controlled Featured Reel card. The original
+# Reel URL is preserved on the Investigation page as a legacy link after launch.
+homepage_card_pattern = re.compile(
+    r'<article class="reel-card featured has-investigation kandahar-investigation-card(?: pending)?"(?: data-video-release="giant-of-kandahar-2" data-release-state="(?:off|on)")?>.*?</article>',
     re.S,
 )
 
-homepage = homepage_path.read_text(encoding="utf-8")
-homepage_card_pattern = re.compile(
-    r'<article class="[^"]*goliath-reel-card[^"]*" data-video-release="goliath-of-gath" data-release-state="(?:off|on)">.*?</article>',
-    re.S,
-)
+poster_style = "background-image:url('Final%20Khandajarposter.png')"
 
 if state == "on":
     safe_url = escape(url, quote=True)
-    companion_replacement = f'''<section class="companion world-section" aria-labelledby="companion-title">
-    <div class="film-mark" aria-hidden="true">▷</div>
-    <p class="eyebrow">Companion film</p>
-    <h2 id="companion-title">Goliath of Gath</h2>
-    <a class="source-link" href="{safe_url}" target="_blank" rel="noopener noreferrer" aria-label="Watch Goliath of Gath">▶ WATCH THE STORY ↗</a>
-    <p>The companion Reel is now live. Continue the story on Facebook or YouTube.</p>
-  </section>'''
-    homepage_card_replacement = f'''<article class="reel-card featured has-investigation goliath-reel-card" data-video-release="goliath-of-gath" data-release-state="on">
-      <a class="thumb-link" href="{safe_url}" target="_blank" rel="noopener" aria-label="Watch Goliath of Gath on Facebook">
-        <div class="thumb">
-          <img src="goliath-of-gath-reel-poster.png" alt="Official Goliath of Gath Reel poster, showing Goliath entering the city of Gath" loading="eager">
+    homepage_card_replacement = f'''<article class="reel-card featured has-investigation kandahar-investigation-card" data-video-release="giant-of-kandahar-2" data-release-state="on">
+      <a class="thumb-link" href="{safe_url}" target="_blank" rel="noopener" aria-label="Watch The Kandahar Giant: The Story Didn't End There on Facebook">
+        <div class="thumb" style="{poster_style}">
           <div class="badge">Newest</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
       </a>
       <div class="meta">
         <div class="tag">Newest Reel</div>
-        <h3><a class="title-link" href="{safe_url}" target="_blank" rel="noopener">GOLIATH OF GATH</a></h3>
-        <a class="reel-watch" href="{safe_url}" target="_blank" rel="noopener" aria-label="Watch Goliath of Gath on Facebook">▶ Watch the Story ↗</a>
-        <a class="investigation-cta" href="/mysteries/goliath-of-gath/" aria-label="Investigate the Goliath of Gath mystery">
+        <h3><a class="title-link" href="{safe_url}" target="_blank" rel="noopener">THE KANDAHAR GIANT: THE STORY DIDN'T END THERE</a></h3>
+        <a class="reel-watch" href="{safe_url}" target="_blank" rel="noopener" aria-label="Watch Kandahar Giant 2.0 on Facebook">▶ Watch the Story ↗</a>
+        <a class="investigation-cta" href="mysteries/giant-of-kandahar/" aria-label="Investigate the Giant of Kandahar mystery">
           <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </article>'''
 else:
-    companion_replacement = '''<section class="companion world-section" aria-labelledby="companion-title">
-    <div class="film-mark" aria-hidden="true">▷</div>
-    <p class="eyebrow">Companion film</p>
-    <h2 id="companion-title">Goliath of Gath</h2>
-    <span class="coming-soon">Coming soon</span>
-    <p>The companion film has been prepared and will be revealed when it goes live.</p>
-  </section>'''
-    homepage_card_replacement = '''<article class="reel-card featured has-investigation goliath-reel-card pending" data-video-release="goliath-of-gath" data-release-state="off">
-      <div class="thumb">
-        <img src="goliath-of-gath-reel-poster.png" alt="Official Goliath of Gath Reel poster, showing Goliath entering the city of Gath" loading="eager">
+    homepage_card_replacement = f'''<article class="reel-card featured has-investigation kandahar-investigation-card pending" data-video-release="giant-of-kandahar-2" data-release-state="off">
+      <div class="thumb" style="{poster_style}">
         <div class="badge">Newest</div>
       </div>
       <div class="meta">
         <div class="tag">Newest Reel</div>
-        <h3>GOLIATH OF GATH</h3>
-        <span class="reel-watch disabled" aria-label="Goliath of Gath Reel coming soon">Coming Soon</span>
-        <a class="investigation-cta" href="/mysteries/goliath-of-gath/" aria-label="Investigate the Goliath of Gath mystery">
+        <h3>THE KANDAHAR GIANT: THE STORY DIDN'T END THERE</h3>
+        <span class="reel-watch disabled" aria-label="Kandahar Giant 2.0 Reel coming soon">Coming Soon</span>
+        <a class="investigation-cta" href="mysteries/giant-of-kandahar/" aria-label="Investigate the Giant of Kandahar mystery">
           <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </article>'''
 
-updated_investigation, companion_count = companion_pattern.subn(
-    companion_replacement, investigation_page, count=1
-)
-if companion_count != 1:
-    raise SystemExit("Safety stop: could not uniquely locate the Goliath companion section.")
-
-updated_homepage, homepage_card_count = homepage_card_pattern.subn(
+updated_homepage, homepage_count = homepage_card_pattern.subn(
     homepage_card_replacement, homepage, count=1
 )
-if homepage_card_count != 1:
-    raise SystemExit("Safety stop: could not uniquely locate the Goliath homepage Reel card.")
+if homepage_count != 1:
+    raise SystemExit("Safety stop: could not uniquely locate the Kandahar homepage Reel card.")
+
+# OFF intentionally leaves the currently live original Kandahar Reel on the
+# Investigation page. ON promotes 2.0 to the primary Watch the Story link and
+# preserves the original as a subordinate legacy link.
+updated_investigation = investigation_page
+if state == "on":
+    safe_url = escape(url, quote=True)
+    watch_section_pattern = re.compile(
+        r'(<section class="section" aria-labelledby="watch-reconstruction">.*?<div class="video-card">)(.*?)(</div>\s*</section>)',
+        re.S,
+    )
+    match = watch_section_pattern.search(investigation_page)
+    if not match:
+        raise SystemExit("Safety stop: could not uniquely locate the Kandahar Watch section.")
+    new_video = f'''
+      <a class="video-frame portrait poster-link" href="{safe_url}" target="_blank" rel="noopener" style="background-image:url('giant-of-kandahar-reel-image.png')" aria-label="Open Kandahar Giant 2.0 on Facebook">
+        <span class="poster-play">&#9654;</span>
+        <span class="poster-label">Open New Reel on Facebook</span>
+      </a>
+      <p class="note"><strong>This video is a cinematic reconstruction of an unverified account. It is not documentary footage of the alleged event.</strong></p>
+      <p class="note legacy-reel"><a class="text-link" href="https://www.facebook.com/share/r/1DNeJrgAUu/" target="_blank" rel="noopener">Watch the Original Kandahar Reel ↗</a></p>
+    '''
+    updated_investigation = (
+        investigation_page[:match.start()]
+        + match.group(1)
+        + new_video
+        + match.group(3)
+        + investigation_page[match.end():]
+    )
 
 config_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
-investigation_page_path.write_text(updated_investigation, encoding="utf-8")
 homepage_path.write_text(updated_homepage, encoding="utf-8")
+investigation_page_path.write_text(updated_investigation, encoding="utf-8")
