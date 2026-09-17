@@ -3071,3 +3071,29 @@ body.kandahar-theme .door-beyond .question{
   filter:none;
   text-shadow:0 3px 12px rgba(0,0,0,0.72);
 }
+
+/* Kandahar responsive containment: keep live copy and heading art inside the wrap. */
+body.kandahar-theme .question-title,
+body.kandahar-theme .section{
+  min-width:0;
+  max-width:100%;
+}
+
+body.kandahar-theme .has-rendered-heading{
+  min-width:0;
+  max-width:100%;
+}
+
+body.kandahar-theme .rendered-heading-art{
+  max-width:100%;
+}
+
+body.kandahar-theme p,
+body.kandahar-theme li,
+body.kandahar-theme summary,
+body.kandahar-theme .status-label,
+body.kandahar-theme .text-link{
+  max-width:100%;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
