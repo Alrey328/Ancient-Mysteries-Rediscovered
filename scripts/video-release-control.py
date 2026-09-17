@@ -39,9 +39,6 @@ releases["giant-of-kandahar-2"] = {
 homepage = homepage_path.read_text(encoding="utf-8")
 investigation_page = investigation_page_path.read_text(encoding="utf-8")
 
-# The current Kandahar card is the uniquely registered legacy card. During the
-# 2.0 pilot it becomes the release-controlled Featured Reel card. The original
-# Reel URL is preserved on the Investigation page as a legacy link after launch.
 homepage_card_pattern = re.compile(
     r'<article class="reel-card featured has-investigation kandahar-investigation-card(?: pending)?"(?: data-video-release="giant-of-kandahar-2" data-release-state="(?:off|on)")?>.*?</article>',
     re.S,
@@ -88,9 +85,27 @@ updated_homepage, homepage_count = homepage_card_pattern.subn(
 if homepage_count != 1:
     raise SystemExit("Safety stop: could not uniquely locate the Kandahar homepage Reel card.")
 
-# OFF intentionally leaves the currently live original Kandahar Reel on the
-# Investigation page. ON promotes 2.0 to the primary Watch the Story link and
-# preserves the original as a subordinate legacy link.
+# ON means newest: remove the Kandahar card from its historical slot, demote the
+# previous Newest marker, then insert Kandahar first in the Featured Reels grid.
+if state == "on":
+    active_match = homepage_card_pattern.search(updated_homepage)
+    if not active_match:
+        raise SystemExit("Safety stop: could not locate the activated Kandahar card.")
+    active_card = active_match.group(0)
+    without_active = updated_homepage[:active_match.start()] + updated_homepage[active_match.end():]
+    without_active = without_active.replace('<div class="badge">Newest</div>', '', 1)
+    without_active = without_active.replace('<div class="tag">Newest Reel</div>', '<div class="tag">Featured Reel</div>', 1)
+    featured_marker = '<!-- Insert future newest releases at the beginning of this featured row. -->'
+    if featured_marker not in without_active:
+        raise SystemExit("Safety stop: Featured Reels insertion marker is missing.")
+    updated_homepage = without_active.replace(
+        featured_marker,
+        featured_marker + "\n    " + active_card,
+        1,
+    )
+
+# ON promotes 2.0 to the primary Watch the Story presentation. The exact approved
+# hybrid poster is used here; the original Reel remains available as a legacy link.
 updated_investigation = investigation_page
 if state == "on":
     safe_url = escape(url, quote=True)
@@ -102,7 +117,7 @@ if state == "on":
     if not match:
         raise SystemExit("Safety stop: could not uniquely locate the Kandahar Watch section.")
     new_video = f'''
-      <a class="video-frame portrait poster-link" href="{safe_url}" target="_blank" rel="noopener" style="background-image:url('giant-of-kandahar-reel-image.png')" aria-label="Open Kandahar Giant 2.0 on Facebook">
+      <a class="video-frame portrait poster-link" href="{safe_url}" target="_blank" rel="noopener" style="background-image:url('../../kandahar-giant-2-poster.png')" aria-label="Open Kandahar Giant 2.0 on Facebook">
         <span class="poster-play">&#9654;</span>
         <span class="poster-label">Open New Reel on Facebook</span>
       </a>
@@ -115,6 +130,21 @@ if state == "on":
         + new_video
         + match.group(3)
         + investigation_page[match.end():]
+    )
+
+    # Keep VideoObject structured data aligned with the primary 2.0 Reel.
+    old_url_json = '"url": "https://www.facebook.com/share/r/1DNeJrgAUu/"'
+    new_url_json = f'"url": "{url}"'
+    updated_investigation = updated_investigation.replace(old_url_json, new_url_json, 1)
+    updated_investigation = updated_investigation.replace(
+        "https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1DNeJrgAUu%2F",
+        "https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F18S9WSg7iD%2F",
+        1,
+    )
+    updated_investigation = updated_investigation.replace(
+        '"https://ancientmysteriesrediscovered.com/mysteries/giant-of-kandahar/giant-of-kandahar-poster.png"\n      ],\n      "uploadDate"',
+        '"https://ancientmysteriesrediscovered.com/kandahar-giant-2-poster.png"\n      ],\n      "uploadDate"',
+        1,
     )
 
 config_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
