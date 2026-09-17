@@ -47,7 +47,7 @@ homepage_card_pattern = re.compile(
     re.S,
 )
 
-poster_style = "background-image:url('Final%20Khandajarposter.png')"
+poster_style = "background-image:url('kandahar-giant-2-poster.png')"
 
 if state == "on":
     safe_url = escape(url, quote=True)
