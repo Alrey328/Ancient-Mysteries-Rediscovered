@@ -35,26 +35,102 @@
     font-family:'Spectral', serif;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
 
   a{ color:inherit; }
 
   .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
 
-  /* ---------- Header ---------- */
-  header{ padding:30px 0 0; }
+  .visually-hidden{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0, 0, 0, 0);
+    white-space:nowrap;
+    border:0;
+  }
+
+  /* ---------- Cinematic masthead + hero ---------- */
+  .hero-stage{
+    position:relative;
+    isolation:isolate;
+    min-height:clamp(820px, 64vw, 980px);
+    overflow:hidden;
+    background:#101922;
+    border-bottom:1px solid rgba(211,168,72,0.42);
+  }
+  .hero-stage::before,
+  .hero-stage::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  .hero-stage::before{
+    z-index:-2;
+    background:linear-gradient(180deg, rgba(6,12,18,0.34) 0%, rgba(7,15,23,0.06) 37%, rgba(8,13,18,0.18) 70%, rgba(12,14,18,0.8) 100%);
+  }
+  .hero-stage::after{
+    z-index:-1;
+    inset:auto 0 0;
+    height:24%;
+    background:linear-gradient(180deg, transparent, #15171e 98%);
+  }
+  .hero-art{
+    position:absolute;
+    inset:0;
+    z-index:-3;
+  }
+  .hero-art img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center 57%;
+  }
+  header{
+    position:relative;
+    z-index:4;
+    padding-top:24px;
+  }
   .nav{
     display:flex; justify-content:space-between; align-items:center;
     gap:28px;
-    padding-bottom:22px;
-    border-bottom:1px solid var(--line);
+    padding:0 0 20px;
+    border-bottom:1px solid rgba(233,227,208,0.42);
   }
+  .brand-lockup{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width:max-content;
+  }
+  .brand-copy{ display:grid; gap:1px; }
   .brand{
     font-family:'Cinzel', serif;
-    font-weight:600;
-    letter-spacing:0.12em;
-    font-size:1.1rem;
-    color:var(--gold);
+    font-weight:700;
+    letter-spacing:0.09em;
+    font-size:clamp(1.2rem, 2.3vw, 2rem);
+    line-height:1.1;
+    color:#e1ac49;
+    text-shadow:0 2px 14px rgba(0,0,0,0.8);
+  }
+  .brand-subtitle{
+    font-family:'Cinzel', serif;
+    font-size:clamp(0.55rem, 0.9vw, 0.76rem);
+    letter-spacing:0.13em;
+    color:#f0eadb;
+    text-transform:uppercase;
+    text-shadow:0 2px 12px rgba(0,0,0,0.85);
+  }
+  .brand-mark{
+    width:42px;
+    color:#dcaa4c;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,0.65));
   }
   .nav-links{ display:flex; gap:30px; list-style:none; flex-wrap:wrap; justify-content:flex-end; }
   .nav-links a{
@@ -70,45 +146,81 @@
     color:var(--gold);
     text-shadow:0 0 22px rgba(201,162,39,0.22);
   }
-
-  /* ---------- Hero ---------- */
+  .menu-toggle{
+    display:none;
+    width:46px;
+    height:42px;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(218,172,81,0.48);
+    background:rgba(7,14,20,0.6);
+    color:#e3b45b;
+    cursor:pointer;
+  }
+  .menu-toggle svg{ width:26px; height:26px; }
   .hero{
-    padding:104px 0 76px;
+    min-height:700px;
+    padding:102px 0 218px;
     text-align:center;
     position:relative;
-  }
-  .hero::before{
-    content:"";
-    position:absolute; left:50%; top:0; transform:translateX(-50%);
-    width:1px; height:56px; background:linear-gradient(var(--gold-dim), transparent);
+    z-index:2;
   }
   .eyebrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
     font-family:'JetBrains Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.25em;
+    font-size:clamp(0.66rem, 1.2vw, 0.8rem);
+    letter-spacing:0.28em;
     text-transform:uppercase;
-    color:var(--ember);
-    margin-bottom:18px;
+    color:#e1b258;
+    margin-bottom:12px;
+    text-shadow:0 2px 12px rgba(0,0,0,0.9);
   }
-  .hero h1{
-    font-family:'Cinzel', serif;
-    font-weight:700;
-    font-size:clamp(2.65rem, 6vw, 4.85rem);
-    letter-spacing:0.03em;
-    color:var(--bone);
-    line-height:1.1;
-    text-shadow:0 0 46px rgba(201,162,39,0.18);
+  .eyebrow::before,
+  .eyebrow::after{
+    content:"";
+    width:clamp(38px, 7vw, 92px);
+    height:1px;
+    background:linear-gradient(90deg, transparent, #d1a046);
   }
-  .hero h1 em{
-    font-style:normal;
-    color:var(--gold);
+  .eyebrow::after{ transform:scaleX(-1); }
+  .hero-title{
+    margin:0 auto;
+    line-height:0;
+  }
+  .hero-title img{
+    display:block;
+    width:min(72vw, 680px);
+    height:auto;
+    margin:0 auto;
   }
   .hero p{
     max-width:620px;
-    margin:26px auto 0;
-    color:var(--bone-dim);
-    font-size:1.08rem;
+    margin:2px auto 0;
+    color:#f1ead9;
+    font-size:clamp(1rem, 1.45vw, 1.18rem);
+    line-height:1.72;
+    text-shadow:0 2px 14px rgba(0,0,0,0.95), 0 0 24px rgba(4,10,15,0.72);
   }
+  .hero-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    width:min(360px, 66vw);
+    margin:24px auto 0;
+    color:#d9a444;
+  }
+  .hero-divider::before,
+  .hero-divider::after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:linear-gradient(90deg, transparent, currentColor);
+  }
+  .hero-divider::after{ transform:scaleX(-1); }
 
   /* ---------- Section headers ---------- */
   .section{
@@ -477,6 +589,8 @@
   }
   .fan-favorites{
     position:relative;
+    padding:72px 28px 88px;
+    background:linear-gradient(180deg, rgba(15,18,23,0.96), transparent 310px);
   }
   .fan-favorites::before{
     content:"";
@@ -486,6 +600,28 @@
     top:-1px;
     height:1px;
     background:linear-gradient(90deg, transparent, rgba(201,162,39,0.46), transparent);
+  }
+  .fan-favorites .section-head{
+    align-items:center;
+    gap:20px;
+    margin-bottom:38px;
+  }
+  .fan-favorites .section-num{
+    padding-right:18px;
+    border-right:2px solid rgba(211,168,72,0.74);
+    font-family:'Cinzel', serif;
+    font-size:clamp(1.45rem, 3vw, 2.15rem);
+    line-height:1.25;
+    color:#d9a43d;
+  }
+  .fan-favorites .section-head h2{
+    font-size:clamp(1.8rem, 4vw, 2.85rem);
+    letter-spacing:0.045em;
+  }
+  .fan-favorites .section-head .sub{
+    color:#d3a650;
+    text-transform:uppercase;
+    letter-spacing:0.13em;
   }
   .fan-favorites-grid{
     display:grid;
@@ -778,20 +914,72 @@
   }
 
   @media (max-width:900px){
+    .hero-title img{ width:min(82vw, 660px); }
     .featured-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .fan-favorites-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width:640px){
     .wrap{ padding:0 20px; }
-    .nav{ align-items:flex-start; flex-direction:column; }
-    .nav-links{ gap:14px 18px; justify-content:flex-start; }
-    .hero{ padding:60px 0 46px; }
-    .hero p{ font-size:0.98rem; margin-top:20px; }
+    .hero-stage{ min-height:clamp(820px, 142vw, 1040px); }
+    .hero-stage::before{
+      background:linear-gradient(180deg, rgba(6,12,18,0.28) 0%, rgba(7,15,23,0.13) 43%, rgba(8,13,18,0.16) 72%, rgba(12,14,18,0.84) 100%);
+    }
+    .hero-art img{ object-position:center 50%; }
+    header{ padding-top:14px; }
+    .nav{
+      position:relative;
+      align-items:center;
+      flex-direction:row;
+      flex-wrap:wrap;
+      gap:12px;
+      padding-bottom:13px;
+    }
+    .brand-lockup{ gap:9px; min-width:0; }
+    .brand-mark{ width:31px; flex:0 0 auto; }
+    .brand{ font-size:clamp(1.1rem, 6vw, 1.45rem); }
+    .brand-subtitle{ font-size:clamp(0.48rem, 2.4vw, 0.62rem); letter-spacing:0.1em; }
+    .menu-toggle{ display:flex; margin-left:auto; }
+    .nav-links{
+      display:none;
+      width:100%;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:0;
+      padding:8px 0 2px;
+      border-top:1px solid rgba(233,227,208,0.22);
+      background:rgba(5,12,18,0.88);
+    }
+    .nav-links[data-open="true"]{ display:grid; }
+    .nav-links li{ min-width:0; }
+    .nav-links a{
+      display:block;
+      padding:9px 6px;
+      font-size:0.64rem;
+      text-align:center;
+    }
+    .hero{
+      min-height:720px;
+      padding:clamp(116px, 26vw, 170px) 0 clamp(218px, 36vw, 290px);
+    }
+    .eyebrow{ gap:8px; font-size:clamp(0.57rem, 2.4vw, 0.7rem); letter-spacing:0.2em; }
+    .eyebrow::before,
+    .eyebrow::after{ width:clamp(22px, 8vw, 48px); }
+    .hero-title img{ width:min(96vw, 570px); }
+    .hero p{
+      width:min(100%, 540px);
+      padding:0 4px;
+      font-size:clamp(1rem, 4.2vw, 1.12rem);
+      line-height:1.62;
+    }
+    .hero-divider{ margin-top:20px; }
     .section{ padding:44px 0; }
     .section-head{ flex-wrap:wrap; }
     .section-head{ gap:10px 14px; margin-bottom:28px; }
     .section-head .sub{ width:100%; margin-left:40px; }
+    .fan-favorites{ padding:54px 20px 44px; }
+    .fan-favorites .section-head{ gap:12px; margin-bottom:30px; }
+    .fan-favorites .section-num{ padding-right:12px; }
+    .fan-favorites .section-head .sub{ margin:0; padding-left:53px; }
     .section-intro{ margin:-14px 0 24px 40px; font-size:0.92rem; }
     .youtube-subsection{ margin-top:26px; }
     .youtube-subsection + .youtube-subsection{ margin-top:38px; }
@@ -900,7 +1088,10 @@
     .reel-investigation-slot{ margin-left:0; }
     .current-investigation-feature-grid{ grid-template-columns:1fr; }
     .wrap{ padding:0 14px; }
-    .nav-links{ gap:12px 14px; }
+    .brand-mark{ display:none; }
+    .menu-toggle{ width:42px; }
+    .hero{ padding-top:112px; }
+    .hero-title img{ width:100vw; margin-left:-14px; }
     .grid,
     .featured-grid,
     .reel-gallery,
@@ -933,25 +1124,48 @@
 </head>
 <body>
 
-<header class="wrap">
-  <div class="nav">
-    <div class="brand">CHRONICLE</div>
-    <ul class="nav-links">
-      <li><a href="#fan-favorites">Fan Favorites</a></li>
-      <li><a href="#featured-reels">Featured Reels</a></li>
-      <li><a href="#archives">Archives</a></li>
-      <li><a href="#series">Series</a></li>
-      <li><a href="discussions/">Discussions</a></li>
-      <li><a href="#relics">Relics</a></li>
-    </ul>
-  </div>
-</header>
+<div class="hero-stage">
+  <picture class="hero-art" aria-hidden="true">
+    <source media="(min-width: 760px)" type="image/webp" srcset="assets/hero/hero-desktop-1200.webp 1200w, assets/hero/hero-desktop-1672.webp 1672w" sizes="100vw">
+    <source type="image/webp" srcset="assets/hero/hero-mobile-640.webp 640w, assets/hero/hero-mobile-941.webp 941w" sizes="100vw">
+    <img src="assets/hero/hero-mobile-941.webp" width="941" height="1672" alt="" fetchpriority="high" decoding="async">
+  </picture>
 
-<section class="hero wrap">
-  <div class="eyebrow">Myth, retold in motion</div>
-  <h1>The Myth<br><em>Behind the Myth</em></h1>
-  <p>Every myth carries a memory. Ancient Greek giants, forgotten heroes, and the mysteries historians still can't explain — examined for what they might actually be telling us.</p>
-</section>
+  <header class="wrap">
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="brand-lockup">
+        <div class="brand-copy">
+          <div class="brand">CHRONICLE</div>
+          <div class="brand-subtitle">Ancient Mysteries Rediscovered</div>
+        </div>
+        <svg class="brand-mark" viewBox="0 0 64 54" aria-hidden="true">
+          <path d="M5 17h54L32 3 5 17Zm6 5h7v22h-7V22Zm12 0h7v22h-7V22Zm12 0h7v22h-7V22Zm12 0h7v22h-7V22ZM6 48h52v4H6v-4Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="hero-navigation" aria-label="Open navigation">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24M4 16h24M4 24h24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav-links" id="hero-navigation" data-open="false">
+        <li><a href="#fan-favorites">Fan Favorites</a></li>
+        <li><a href="#featured-reels">Featured Reels</a></li>
+        <li><a href="#archives">Archives</a></li>
+        <li><a href="#series">Series</a></li>
+        <li><a href="discussions/">Discussions</a></li>
+        <li><a href="#relics">Relics</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="eyebrow">Myth, retold in motion</div>
+    <h1 class="hero-title" id="hero-title">
+      <span class="visually-hidden">The Truth Behind the Myth</span>
+      <img src="assets/hero/hero-title.webp" width="1536" height="1024" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+    </h1>
+    <p>Every myth carries a memory. Ancient Greek giants, forgotten heroes, and the mysteries historians still can't explain — examined for what they might actually be telling us.</p>
+    <div class="hero-divider" aria-hidden="true">✦</div>
+  </section>
+</div>
 
 <section class="section wrap fan-favorites" id="fan-favorites">
   <div class="section-head">
@@ -1842,6 +2056,17 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const menuToggle = document.querySelector('.menu-toggle');
+  const heroNavigation = document.getElementById('hero-navigation');
+  if (menuToggle && heroNavigation) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+      heroNavigation.dataset.open = String(!isOpen);
+    });
+  }
 
   /* ---------------------------------------------------------------------
      RELICS (MERCH) SETUP — this is the part that needs your own accounts.
