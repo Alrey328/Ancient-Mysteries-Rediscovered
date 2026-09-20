@@ -38,6 +38,9 @@ releases["giant-of-kandahar-2"] = {
 
 homepage = homepage_path.read_text(encoding="utf-8")
 investigation_page = investigation_page_path.read_text(encoding="utf-8")
+sa_nakht_is_newest = 'sa-nakht-reel-card' in homepage
+kandahar_badge = "Featured" if sa_nakht_is_newest else "Newest"
+kandahar_tag = "Featured Reel" if sa_nakht_is_newest else "Newest Reel"
 
 homepage_card_pattern = re.compile(
     r'<article class="reel-card featured has-investigation kandahar-investigation-card(?: pending)?"(?: data-video-release="giant-of-kandahar-2" data-release-state="(?:off|on)")?>.*?</article>',
@@ -51,12 +54,12 @@ if state == "on":
     homepage_card_replacement = f'''<article class="reel-card featured has-investigation kandahar-investigation-card" data-video-release="giant-of-kandahar-2" data-release-state="on">
       <a class="thumb-link" href="{safe_url}" target="_blank" rel="noopener" aria-label="Watch The Kandahar Giant: The Story Didn't End There on Facebook">
         <div class="thumb" style="{poster_style}">
-          <div class="badge">Newest</div>
+          <div class="badge">{kandahar_badge}</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
       </a>
       <div class="meta">
-        <div class="tag">Newest Reel</div>
+        <div class="tag">{kandahar_tag}</div>
         <h3><a class="title-link" href="{safe_url}" target="_blank" rel="noopener">THE KANDAHAR GIANT: THE STORY DIDN'T END THERE</a></h3>
         <a class="reel-watch" href="{safe_url}" target="_blank" rel="noopener" aria-label="Watch Kandahar Giant 2.0 on Facebook">▶ Watch the Story ↗</a>
         <a class="investigation-cta" href="mysteries/giant-of-kandahar/" aria-label="Investigate the Giant of Kandahar mystery">
@@ -67,10 +70,10 @@ if state == "on":
 else:
     homepage_card_replacement = f'''<article class="reel-card featured has-investigation kandahar-investigation-card pending" data-video-release="giant-of-kandahar-2" data-release-state="off">
       <div class="thumb" style="{poster_style}">
-        <div class="badge">Newest</div>
+        <div class="badge">{kandahar_badge}</div>
       </div>
       <div class="meta">
-        <div class="tag">Newest Reel</div>
+        <div class="tag">{kandahar_tag}</div>
         <h3>THE KANDAHAR GIANT: THE STORY DIDN'T END THERE</h3>
         <span class="reel-watch disabled" aria-label="Kandahar Giant 2.0 Reel coming soon">Coming Soon</span>
         <a class="investigation-cta" href="mysteries/giant-of-kandahar/" aria-label="Investigate the Giant of Kandahar mystery">
@@ -85,9 +88,8 @@ updated_homepage, homepage_count = homepage_card_pattern.subn(
 if homepage_count != 1:
     raise SystemExit("Safety stop: could not uniquely locate the Kandahar homepage Reel card.")
 
-# ON means newest: remove the Kandahar card from its historical slot, demote the
-# previous Newest marker, then insert Kandahar first in the Featured Reels grid.
-if state == "on":
+# Without a newer Sa-Nakht Reel, ON promotes Kandahar to the first slot.
+if state == "on" and not sa_nakht_is_newest:
     active_match = homepage_card_pattern.search(updated_homepage)
     if not active_match:
         raise SystemExit("Safety stop: could not locate the activated Kandahar card.")

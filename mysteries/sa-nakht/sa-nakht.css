@@ -178,3 +178,41 @@
 @media(max-width:760px){.cinematic-heading-king{margin-bottom:55px}.cinematic-heading-science{margin-bottom:28px}.cinematic-heading-three-facts{margin-bottom:55px}.cinematic-heading-same-man{margin-top:70px}.cinematic-heading-timeline{margin-bottom:65px}.cinematic-heading-verdict{margin-top:65px}.door .cinematic-heading-door{margin:42px auto 28px}}
 @media(max-width:430px){.cinematic-heading-seal{margin-bottom:22px}.cold-case-steps .cinematic-heading-where{margin:12px 0 15px}}
 
+/* The companion Reel is cinematic artwork, separate from the evidence cards. */
+.story-band{grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:clamp(34px,5vw,85px)}
+.story-poster{display:block;position:relative;width:100%;max-width:270px;justify-self:center;border:1px solid var(--gold-dark);box-shadow:0 25px 55px #0009;overflow:hidden}
+.story-poster img{display:block;width:100%;height:auto;aspect-ratio:941/1672;object-fit:contain}
+.story-play{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:62px;height:62px;transform:translate(-50%,-50%);border:1px solid var(--gold-light);border-radius:50%;background:#060808c9;color:var(--gold-light);font:700 22px/1 Inter,Arial,sans-serif}
+.story-poster:hover .story-play,.story-poster:focus-visible .story-play{background:var(--gold-light);color:#080a0a}
+.story-status{max-width:690px}
+.story-band .story-status h2{font-size:clamp(44px,5vw,72px);line-height:.96;text-transform:uppercase}
+.story-band .story-status h2 em{display:block;margin-top:9px;font-size:.75em}
+.story-status .story-deck{margin:25px 0 0;color:var(--bone);font-size:clamp(17px,1.4vw,21px);line-height:1.4}
+.story-status .reel-watch{margin-top:28px;padding:14px 20px;min-height:50px;border:1px solid var(--gold);background:#3c2a15;color:#fff;gap:30px}
+.story-status .reel-watch:hover,.story-status .reel-watch:focus-visible{background:var(--gold-light);color:#090b0c;text-decoration:none}
+.story-disclosure{margin-top:32px;padding-top:18px;border-top:1px solid var(--gold-dark)}
+.story-disclosure strong{display:block;color:var(--gold-light);font:700 11px/1.4 Inter,Arial,sans-serif;letter-spacing:.18em}
+.story-status .story-disclosure p{max-width:620px;margin:9px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+
+/* Sa-Nakht's exit leads to existing investigations without changing their pages. */
+.continue-investigation{max-width:none;background:linear-gradient(180deg,#080c0d,#101719 48%,#080b0c);border-top:1px solid var(--line);text-align:center}
+.continue-investigation>.eyebrow,.continue-investigation>h2,.continue-intro,.continue-grid,.continue-all{max-width:1268px;margin-inline:auto}
+.continue-investigation h2{color:var(--bone);font-size:clamp(53px,7vw,104px);line-height:.95;text-transform:uppercase}
+.continue-intro{margin-top:25px;color:var(--muted);font-size:clamp(16px,1.5vw,21px)}
+.continue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.5vw,32px);margin-top:clamp(45px,6vw,85px);text-align:left}
+.continue-card{min-width:0;background:#12191b;border:1px solid var(--gold-dark);box-shadow:0 24px 50px #0007;overflow:hidden}
+.continue-image{display:block;aspect-ratio:4/5;overflow:hidden;background:#080b0c}
+.continue-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.continue-copy{padding:clamp(22px,2.5vw,32px)}
+.continue-copy h3{margin:0;color:var(--bone);font-size:clamp(33px,3vw,47px);line-height:1;text-transform:uppercase}
+.continue-copy h3 a{color:inherit;text-decoration:none}
+.continue-copy h3 a:hover,.continue-copy h3 a:focus-visible{color:var(--gold-light)}
+.continue-copy p{min-height:4.7em;margin:19px 0 18px;color:#d1d1cb;font-size:15px;line-height:1.55}
+.continue-cta,.continue-all{display:inline-flex;align-items:center;gap:13px;min-height:44px;color:var(--gold-light);font:700 11px/1.4 Inter,Arial,sans-serif;letter-spacing:.14em;text-decoration:none}
+.continue-cta:hover,.continue-all:hover,.continue-cta:focus-visible,.continue-all:focus-visible{color:#fff;text-decoration:underline}
+.continue-all{margin-top:clamp(40px,5vw,70px);padding:14px 24px;border:1px solid var(--gold-dark)}
+@media(max-width:900px){.continue-grid{grid-template-columns:1fr 1fr}.continue-card:last-child{grid-column:1/-1;max-width:410px;justify-self:center}}
+@media(max-width:760px){.story-band{grid-template-columns:1fr;gap:30px}.story-poster{max-width:240px}.story-status{width:100%;max-width:620px;margin-inline:auto}.continue-investigation h2{font-size:clamp(48px,10vw,72px)}}
+@media(max-width:600px){.continue-grid{grid-template-columns:1fr}.continue-card:last-child{grid-column:auto;max-width:none}.continue-image{aspect-ratio:4/4}.continue-copy p{min-height:0}.story-band .story-status h2{font-size:clamp(43px,10vw,60px)}}
+@media(max-width:430px){.story-poster{max-width:205px}.story-status{padding-left:20px}.story-band .story-status h2{font-size:clamp(40px,11vw,51px)}.story-status .reel-watch{width:100%;justify-content:space-between}.continue-investigation h2{font-size:clamp(46px,12vw,59px)}.continue-copy h3{font-size:38px}}
+
