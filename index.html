@@ -300,7 +300,7 @@
   }
   .current-investigation-feature-grid{
     display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(3, minmax(0, 1fr));
     gap:22px;
   }
   .investigation-badge{
@@ -1664,9 +1664,25 @@
       <p>New evidence-led cases, whether or not a companion Reel has been released.</p>
     </div>
     <div class="current-investigation-feature-grid">
-      <article class="reel-investigation-card has-investigation goliath-investigation-card" data-content-type="investigation">
+      <article class="reel-investigation-card has-investigation sa-nakht-investigation-card" data-content-type="investigation" data-companion-state="released">
         <div class="frame">
           <span class="investigation-badge">Newest</span>
+          <a class="investigation-poster-link" href="mysteries/sa-nakht/" aria-label="Open the Sa-Nakht Investigation">
+            <img class="investigation-poster" src="mysteries/sa-nakht/sa-nakht-investigation-poster.png" alt="Sa-Nakht investigation poster" loading="lazy" width="1024" height="1536">
+          </a>
+        </div>
+        <div class="meta">
+          <div class="tag">Current Investigation</div>
+          <h3>WAS EGYPT’S GIANT PHARAOH REALLY SA-NAKHT?</h3>
+          <a class="investigation-cta" href="mysteries/sa-nakht/" aria-label="Investigate the Sa-Nakht mystery">
+            <span>Investigate the Mystery</span><span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="reel-investigation-card has-investigation goliath-investigation-card" data-content-type="investigation">
+        <div class="frame">
+          <span class="investigation-badge">Investigation</span>
           <a class="investigation-poster-link" href="mysteries/goliath-of-gath/" aria-label="Open the Goliath of Gath Investigation">
             <img class="investigation-poster" src="mysteries/goliath-of-gath/goliath-investigation-poster.png" alt="Goliath of Gath investigation poster" loading="lazy">
           </a>

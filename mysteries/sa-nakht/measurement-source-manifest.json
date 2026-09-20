@@ -1,0 +1,80 @@
+{
+  "sources": {
+    "19": {
+      "original": "C:\\Users\\User\\Downloads\\garstang_hennekht_measurements-19.jpg",
+      "archival_copy": "C:\\Users\\User\\Documents\\Codex\\2026-09-19\\files-mentioned-by-the-user-saknath\\work\\measurement-card\\archive\\garstang_hennekht_measurements-19.jpg",
+      "size": [
+        5555,
+        7396
+      ],
+      "sha256": "8c66f8627012e44842dc24bdf0dc433e4f885a3c2ba2ea7a880409ac6ba6b144"
+    },
+    "20": {
+      "original": "C:\\Users\\User\\Downloads\\garstang_hennekht_measurements-20.jpg",
+      "archival_copy": "C:\\Users\\User\\Documents\\Codex\\2026-09-19\\files-mentioned-by-the-user-saknath\\work\\measurement-card\\archive\\garstang_hennekht_measurements-20.jpg",
+      "size": [
+        5555,
+        7396
+      ],
+      "sha256": "b7334e1f7bcb9052de47f1572f817d5300caa41ac99179ed2b190a83341d5aab"
+    }
+  },
+  "crops": {
+    "page13_long_bones_text.png": {
+      "source": "garstang_hennekht_measurements-19.jpg",
+      "box_xyxy": [
+        2670,
+        1845,
+        4520,
+        2400
+      ],
+      "size": [
+        1850,
+        555
+      ],
+      "pixel_only": true
+    },
+    "page13_long_bones_table_and_caveat.png": {
+      "source": "garstang_hennekht_measurements-19.jpg",
+      "box_xyxy": [
+        2660,
+        5030,
+        4510,
+        5790
+      ],
+      "size": [
+        1850,
+        760
+      ],
+      "pixel_only": true
+    },
+    "page14_long_bones_continued.png": {
+      "source": "garstang_hennekht_measurements-20.jpg",
+      "box_xyxy": [
+        1180,
+        1130,
+        2970,
+        2280
+      ],
+      "size": [
+        1790,
+        1150
+      ],
+      "pixel_only": true
+    },
+    "page14_stature_estimate.png": {
+      "source": "garstang_hennekht_measurements-20.jpg",
+      "box_xyxy": [
+        2960,
+        1080,
+        4800,
+        1860
+      ],
+      "size": [
+        1840,
+        780
+      ],
+      "pixel_only": true
+    }
+  }
+}

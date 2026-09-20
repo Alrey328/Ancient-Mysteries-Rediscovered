@@ -1,0 +1,268 @@
+{
+  "archival_master": {
+    "filename": "Saknath Final Captions INv.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "sha256": "ca002bd9d3029d29349b69c6dc9f047d64238cad09eff3f991e39219d7ad64bf",
+    "note": "Byte-identical copy of the user-supplied approved artwork. No AI alteration."
+  },
+  "derivatives": [
+    {
+      "filename": "sanakht-heading-01-giant-real.png",
+      "heading": "THE GIANT WAS REAL. BUT WAS HE REALLY THE PHARAOH?",
+      "placement": "Not inserted: the approved hero and poster already display this proposition.",
+      "variant": "standard",
+      "crop_xyxy": [
+        20,
+        50,
+        758,
+        200
+      ],
+      "dimensions": [
+        738,
+        150
+      ],
+      "sha256": "4a251d667eb85137d8ff14703856461747457374016f32bf5e7b680a4701e8c8"
+    },
+    {
+      "filename": "sanakht-heading-02-before-the-giant.png",
+      "heading": "BEFORE THE GIANT, THERE WAS A KING.",
+      "placement": "King section, before the Wadi Maghara evidence card.",
+      "variant": "standard",
+      "crop_xyxy": [
+        779,
+        50,
+        1516,
+        200
+      ],
+      "dimensions": [
+        737,
+        150
+      ],
+      "sha256": "ac6579a1c541f140d884d4125b96552c14de21da1010d515fc9013d69cdc9df2"
+    },
+    {
+      "filename": "sanakht-heading-03-kings-seal.png",
+      "heading": "A KING’S SEAL IS NOT A KING’S BODY.",
+      "placement": "Identity Break, identification problem.",
+      "variant": "standard",
+      "crop_xyxy": [
+        20,
+        218,
+        758,
+        384
+      ],
+      "dimensions": [
+        738,
+        166
+      ],
+      "sha256": "959d295d062cd1b8b8b7f20c84012da636ae649193284b9bfabe2c1abe005f1a"
+    },
+    {
+      "filename": "sanakht-heading-04-scientists-reopened-case.png",
+      "heading": "MORE THAN A CENTURY LATER, SCIENTISTS REOPENED THE CASE.",
+      "placement": "2017 scientific reassessment.",
+      "variant": "standard",
+      "crop_xyxy": [
+        779,
+        218,
+        1516,
+        384
+      ],
+      "dimensions": [
+        737,
+        166
+      ],
+      "sha256": "a4cbddbe359d7993b31b395e675a77ccc5ee5b9df641db117c40b977e5b61539"
+    },
+    {
+      "filename": "sanakht-heading-05-three-facts.png",
+      "heading": "THREE FACTS BECAME ONE STORY.",
+      "placement": "Identity Break, Three Facts reveal.",
+      "variant": "standard",
+      "crop_xyxy": [
+        20,
+        402,
+        758,
+        568
+      ],
+      "dimensions": [
+        738,
+        166
+      ],
+      "sha256": "2deb85b97a9c52c4e82df5ab6182a87158f0794f35d18b9f49a598c1d730d7e5"
+    },
+    {
+      "filename": "sanakht-heading-06-same-man.png",
+      "heading": "BUT DO THEY BELONG TO THE SAME MAN?",
+      "placement": "Identity Break, question after the three facts.",
+      "variant": "standard",
+      "crop_xyxy": [
+        779,
+        402,
+        1516,
+        568
+      ],
+      "dimensions": [
+        737,
+        166
+      ],
+      "sha256": "12787ed4d2f3a7cc7a47fb6de10ba0db9f704e7cc0823ab2768cd90bde922dd3"
+    },
+    {
+      "filename": "sanakht-heading-07-body-disappears.png",
+      "heading": "AND THEN THE BODY DISAPPEARS FROM THE STORY.",
+      "placement": "Missing Remains section opening.",
+      "variant": "standard",
+      "crop_xyxy": [
+        20,
+        585,
+        758,
+        740
+      ],
+      "dimensions": [
+        738,
+        155
+      ],
+      "sha256": "5c500bede2e9201bc9541f34c383c08f5c23837a3598a8be84375a07784557b6"
+    },
+    {
+      "filename": "sanakht-heading-08-where-are-bones.png",
+      "heading": "WHERE ARE THE BONES?",
+      "placement": "Missing Remains timeline, Today entry.",
+      "variant": "standard",
+      "crop_xyxy": [
+        779,
+        585,
+        1516,
+        740
+      ],
+      "dimensions": [
+        737,
+        155
+      ],
+      "sha256": "abf963b2cecdfb1b0f50c1b9ee4ed56c4605b9bb34e58e5aa6a389dedea8bb2a"
+    },
+    {
+      "filename": "sanakht-heading-09-verdict.png",
+      "heading": "THE EVIDENCE SUPPORTS THE GIANT MAN. IT DOES NOT YET PROVE THE GIANT PHARAOH.",
+      "placement": "Verdict conclusion.",
+      "variant": "standard",
+      "crop_xyxy": [
+        20,
+        757,
+        758,
+        943
+      ],
+      "dimensions": [
+        738,
+        186
+      ],
+      "sha256": "d3c33f58904a2cf3e418bbefc02c5ded58320ebbc4e1d9d5cf4de70cd1984e02"
+    },
+    {
+      "filename": "sanakht-heading-10-found-again.png",
+      "heading": "WHAT IF THE BONES WERE FOUND AGAIN?",
+      "placement": "Door Beyond heading.",
+      "variant": "standard",
+      "crop_xyxy": [
+        779,
+        757,
+        1516,
+        943
+      ],
+      "dimensions": [
+        737,
+        186
+      ],
+      "sha256": "8ffe30e533441635790306a1f9c06f0c00ce0d4286da03460561f0bb28eba1d4"
+    },
+    {
+      "filename": "sanakht-heading-03-kings-seal-mobile.png",
+      "heading": "A KING’S SEAL IS NOT A KING’S BODY.",
+      "placement": "Identity Break, identification problem.",
+      "variant": "mobile",
+      "crop_xyxy": [
+        220,
+        235,
+        705,
+        378
+      ],
+      "dimensions": [
+        485,
+        143
+      ],
+      "sha256": "631662b6122e89f21245cfc4be1916954ae5a977278ed0aeaf0abe419d5ca6ea"
+    },
+    {
+      "filename": "sanakht-heading-04-scientists-reopened-case-mobile.png",
+      "heading": "MORE THAN A CENTURY LATER, SCIENTISTS REOPENED THE CASE.",
+      "placement": "2017 scientific reassessment.",
+      "variant": "mobile",
+      "crop_xyxy": [
+        845,
+        232,
+        1440,
+        370
+      ],
+      "dimensions": [
+        595,
+        138
+      ],
+      "sha256": "d327d9402df92c3a7a63660217954961c544438b3e34704164d68336af56bbfa"
+    },
+    {
+      "filename": "sanakht-heading-07-body-disappears-mobile.png",
+      "heading": "AND THEN THE BODY DISAPPEARS FROM THE STORY.",
+      "placement": "Missing Remains section opening.",
+      "variant": "mobile",
+      "crop_xyxy": [
+        170,
+        600,
+        702,
+        722
+      ],
+      "dimensions": [
+        532,
+        122
+      ],
+      "sha256": "d80204cc48a5999560713d4a1e00f9eab279e7dc08b17cd722bf6ef410eba0a4"
+    },
+    {
+      "filename": "sanakht-heading-08-where-are-bones-mobile.png",
+      "heading": "WHERE ARE THE BONES?",
+      "placement": "Missing Remains timeline, Today entry.",
+      "variant": "mobile",
+      "crop_xyxy": [
+        885,
+        602,
+        1430,
+        730
+      ],
+      "dimensions": [
+        545,
+        128
+      ],
+      "sha256": "86c7b7d39131051c6fa811f7d76393ee45d03cabd2874f231324d948be2db94a"
+    },
+    {
+      "filename": "sanakht-heading-09-verdict-mobile.png",
+      "heading": "THE EVIDENCE SUPPORTS THE GIANT MAN. IT DOES NOT YET PROVE THE GIANT PHARAOH.",
+      "placement": "Verdict conclusion.",
+      "variant": "mobile",
+      "crop_xyxy": [
+        120,
+        773,
+        690,
+        939
+      ],
+      "dimensions": [
+        570,
+        166
+      ],
+      "sha256": "ccbb96ad6da4e67f08cbef8d96e9db66a6a23da9c17a9861bfae3e288f980eee"
+    }
+  ]
+}
