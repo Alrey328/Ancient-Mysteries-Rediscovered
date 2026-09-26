@@ -1,0 +1,26 @@
+{
+  "page": "/mysteries/book-of-giants/",
+  "reviewed": "2026-09-26",
+  "approved_visuals": [
+    {"file": "book-of-giants-investigation-hero.png", "source_file": "Book of Giant Main.png", "classification": "artist reconstruction"},
+    {"file": "book-of-giants-receipt.png", "source_file": "Book of Giant Receipt.png", "classification": "design treatment; manuscript placeholder masked in HTML"},
+    {"file": "book-of-giants-evidence-method.png", "source_file": "Boo of giant Receipt 2.png", "classification": "evidence-method design treatment"},
+    {"file": "book-of-giants-chapter-1-ohyah.png", "source_file": "BOG Chap 1 Invest.png", "classification": "artist reconstruction"},
+    {"file": "book-of-giants-ohyah-column-ii-design.png", "source_file": "Bog Column  2, B.png", "classification": "approved forensic design treatment; embedded text is not a critical transcription"},
+    {"file": "book-of-giants-qumran-discovery.png", "source_file": "Bog Discovery.png", "classification": "cinematic context artwork; embedded labels require independent verification"},
+    {"file": "../../ohyah-reel-poster.png", "classification": "artist reconstruction; existing repository asset"}
+  ],
+  "physical_evidence": {
+    "manuscript": "4Q530 — 4Q EnGiants b",
+    "official_record": "https://www.deadseascrolls.org.il/explore-the-archive/image/B-284596",
+    "record_id": "B-284596",
+    "plate": "437",
+    "image_type": "Scanned Infrared Negative",
+    "side": "Recto",
+    "photographer": "Najib Anton Albina",
+    "image_date": "June 1960",
+    "rights_status": "link-only pending express public-display permission from the Israel Antiquities Authority",
+    "rights_reference": "https://www.deadseascrolls.org.il/terms"
+  },
+  "excluded_alternates": ["Ohyah Dreams Column  2.png", "BoG Column 2.png", "BoG actual Manuscript.png", "BOG actual Manuscript 2.png", "OHYah Invesigation 1.png", "New 45 image yes.jpg"]
+}
