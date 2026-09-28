@@ -1,26 +1,65 @@
 {
   "page": "/mysteries/book-of-giants/",
-  "reviewed": "2026-09-26",
+  "reviewed": "2026-09-27",
+  "source_classes": {
+    "primary_source_record": "Genuine external archive metadata or manuscript image record; linked, not reproduced.",
+    "scholarly_textual_source": "Academic edition, handbook, or methodological study used to interpret fragmentary readings.",
+    "amr_artist_reconstruction": "Ancient Mysteries Rediscovered visual reconstruction; never manuscript evidence.",
+    "location_visualization": "Generated environmental visualization; never documentary photography.",
+    "companion_reel": "Cinematic narrative reconstruction linked separately from the evidence analysis."
+  },
   "approved_visuals": [
-    {"file": "book-of-giants-investigation-hero.png", "source_file": "Book of Giant Main.png", "classification": "artist reconstruction"},
-    {"file": "book-of-giants-receipt.png", "source_file": "Book of Giant Receipt.png", "classification": "design treatment; manuscript placeholder masked in HTML"},
-    {"file": "book-of-giants-evidence-method.png", "source_file": "Boo of giant Receipt 2.png", "classification": "evidence-method design treatment"},
-    {"file": "book-of-giants-chapter-1-ohyah.png", "source_file": "BOG Chap 1 Invest.png", "classification": "artist reconstruction"},
-    {"file": "book-of-giants-ohyah-column-ii-design.png", "source_file": "Bog Column  2, B.png", "classification": "approved forensic design treatment; embedded text is not a critical transcription"},
-    {"file": "book-of-giants-qumran-discovery.png", "source_file": "Bog Discovery.png", "classification": "cinematic context artwork; embedded labels require independent verification"},
-    {"file": "../../ohyah-reel-poster.png", "classification": "artist reconstruction; existing repository asset"}
+    {"file": "book-of-giants-investigation-hero.png", "source_file": "Book of Giant Main.png", "source_type": "amr_artist_reconstruction"},
+    {"file": "book-of-giants-receipt.png", "source_file": "Book of Giant Receipt.png", "source_type": "amr_artist_reconstruction", "note": "Generated manuscript placeholder masked in HTML."},
+    {"file": "book-of-giants-evidence-method.png", "source_file": "Boo of giant Receipt 2.png", "source_type": "amr_artist_reconstruction", "note": "Evidence-method design treatment."},
+    {"file": "book-of-giants-chapter-1-ohyah.png", "source_file": "BOG Chap 1 Invest.png", "source_type": "amr_artist_reconstruction"},
+    {"file": "book-of-giants-ohyah-column-ii-design.png", "source_file": "Bog Column  2, B.png", "source_type": "amr_artist_reconstruction", "note": "Embedded text is not a critical transcription."},
+    {"file": "book-of-giants-qumran-discovery.png", "source_file": "Bog Discovery.png", "source_type": "location_visualization", "note": "Cinematic context artwork; embedded labels require independent verification."},
+    {"file": "../../ohyah-reel-poster.png", "source_type": "amr_artist_reconstruction"},
+    {"file": "book-of-giants-chapter-2-gateway.png", "source_file": "Chapter 11 Gateway BOG 2.png", "source_type": "amr_artist_reconstruction"},
+    {"file": "book-of-giants-chapter-2-investigation-poster-enoch-answer.png", "source_file": "BOG INV Chapter 2 Final Poster.png", "source_type": "amr_artist_reconstruction", "note": "All glowing inscriptions and text-like markings are generated visual elements, not manuscript text, transcription, or translation."},
+    {"file": "book-of-giants-chapter-2-journey-receipt-4q530.png", "source_file": "Asset 2 Chapter II Journey Receipt ‘They Sent Mahaway to Enoch’ — 4Q530.png", "source_type": "amr_artist_reconstruction", "note": "Contains no genuine manuscript photograph."},
+    {"file": "book-of-giants-chapter-2-enoch-answer-4q203-fragment-8.png", "source_file": "Asset #3 — Enoch's Answer Receipt ‘Part of His Answer Survived’ — 4Q203 Fragment 8.png", "source_type": "amr_artist_reconstruction", "additional_source_type": "location_visualization", "note": "Enoch, giants, Cave 4, scrolls, writing scene, and environment are generated."},
+    {"file": "book-of-giants-chapter-2-door-beyond.png", "source_file": "Asset #4 — Chapter II Door Beyond ‘What Did the Giants Do After Enoch Warned Them’.png", "source_type": "amr_artist_reconstruction", "note": "Unresolved continuation teaser; not a Chapter III investigation gateway."}
   ],
-  "physical_evidence": {
-    "manuscript": "4Q530 — 4Q EnGiants b",
-    "official_record": "https://www.deadseascrolls.org.il/explore-the-archive/image/B-284596",
-    "record_id": "B-284596",
-    "plate": "437",
-    "image_type": "Scanned Infrared Negative",
-    "side": "Recto",
-    "photographer": "Najib Anton Albina",
-    "image_date": "June 1960",
-    "rights_status": "link-only pending express public-display permission from the Israel Antiquities Authority",
-    "rights_reference": "https://www.deadseascrolls.org.il/terms"
+  "primary_source_records": [
+    {
+      "manuscript": "4Q530 — 4Q EnGiants b",
+      "official_record": "https://www.deadseascrolls.org.il/explore-the-archive/image/B-284596",
+      "record_id": "B-284596",
+      "plate": "437",
+      "image_type": "Scanned Infrared Negative",
+      "side": "Recto",
+      "photographer": "Najib Anton Albina",
+      "image_date": "June 1960",
+      "source_type": "primary_source_record"
+    },
+    {
+      "manuscript": "4Q203 — 4Q EnGiants a, manuscript fragment 8",
+      "official_record": "https://www.deadseascrolls.org.il/explore-the-archive/image/B-295415",
+      "record_id": "B-295415",
+      "archive_label": "Plate 906, Frag 4",
+      "image_type": "Full Spectrum Color Image",
+      "side": "Recto",
+      "photographer": "Shai Halevi",
+      "image_date": "March 2012",
+      "scholarly_mapping": "Iñaki Marro's critical edition maps IAA image B-295415, Plate 906 Frag 4, to 4Q203 manuscript fragment 8.",
+      "source_type": "primary_source_record"
+    }
+  ],
+  "scholarly_sources": [
+    {"author": "Iñaki Marro", "title": "The Book of Giants: A Critical Edition of the Aramaic Fragments", "url": "https://edoc.ub.uni-muenchen.de/36601/1/Marro_Inaki.pdf", "source_type": "scholarly_textual_source"},
+    {"author": "Daniel A. Machiela", "title": "A Handbook of the Aramaic Scrolls from the Qumran Caves", "url": "https://admin.library.oapen.org/bitstream/handle/20.500.12657/86447/9789004513815.pdf?isAllowed=y&sequence=1", "source_type": "scholarly_textual_source"},
+    {"author": "Andrew B. Perrin", "title": "Dream narratives in the Aramaic Dead Sea Scrolls", "url": "https://www.sbl-site.org/wp-content/uploads/2024/12/9780884142874_OA.pdf", "source_type": "scholarly_textual_source"},
+    {"author": "George J. Brooke", "title": "Reading the Dead Sea Scrolls: Essays in Method", "url": "https://www.sbl-site.org/wp-content/uploads/2024/12/ReadingDSS_Brooke_SBL.pdf", "source_type": "scholarly_textual_source"}
+  ],
+  "companion_reels": [
+    {"chapter": 1, "title": "Ohyah — The Giant Who Was Put on Trial", "url": "https://www.facebook.com/share/r/1Dea2cmui7/", "source_type": "companion_reel"},
+    {"chapter": 2, "title": "The Giants Needed a Human's Help", "url": "https://www.facebook.com/share/r/1JS5yroMzR/", "source_type": "companion_reel", "upload_date": null, "note": "No publication timestamp asserted without authoritative evidence."}
+  ],
+  "rights": {
+    "status": "link-only pending express public-display permission from the Israel Antiquities Authority",
+    "reference": "https://www.deadseascrolls.org.il/terms"
   },
   "excluded_alternates": ["Ohyah Dreams Column  2.png", "BoG Column 2.png", "BoG actual Manuscript.png", "BOG actual Manuscript 2.png", "OHYah Invesigation 1.png", "New 45 image yes.jpg"]
 }
