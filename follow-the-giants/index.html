@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Follow the Giants | Ancient Mysteries Rediscovered</title>
+<meta name="description" content="Follow ancient giant traditions across real locations. The map does not prove the stories; it shows where the stories pointed.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3yn5p4JkMZr2T2t4pGZQ0+0i3r2Xk=" crossorigin="">
+<style>
+:root{--bg:#080b0d;--panel:#10161a;--ink:#f2ead8;--muted:#a8b0ad;--gold:#caa86a;--line:#293238}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#182027 0,#080b0d 45%);color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+a{color:inherit}.shell{max-width:1200px;margin:auto;padding:24px}.brand{font:700 12px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+.hero{padding:52px 0 26px}.eyebrow,.kicker{font:700 11px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(48px,9vw,110px);line-height:.85;margin:14px 0 16px;letter-spacing:-.055em}.deck{max-width:760px;font-size:20px;line-height:1.55;color:#d9d2c5}
+.rule{border-left:3px solid var(--gold);padding:14px 18px;margin:28px 0;background:#11171a;font:700 13px Arial,sans-serif;letter-spacing:.08em}
+.status{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.status span{border:1px solid var(--line);padding:9px 12px;font:700 10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.mapwrap{border:1px solid #39434a;background:#0b1013;box-shadow:0 24px 80px #0008}.maphead{display:flex;justify-content:space-between;gap:20px;align-items:end;padding:18px}.maphead h2{margin:4px 0 0;font-size:26px}.coords{font:12px monospace;color:var(--muted)}#map{height:min(64vh,650px);min-height:430px}
+.leaflet-container{background:#10171a;font-family:Arial,sans-serif}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#10161a;color:#f2ead8}.leaflet-popup-content{line-height:1.4}.leaflet-popup-content strong{color:#d9b878}
+.node{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:34px 0;border-bottom:1px solid var(--line)}.num{font-size:52px;color:#526069}.node h2{font-size:38px;margin:0 0 6px}.node p{color:#c9c3b8;line-height:1.65}.cta{display:inline-block;margin-top:8px;padding:12px 15px;border:1px solid var(--gold);text-decoration:none;font:700 11px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.guide{padding:34px 0 60px;max-width:780px}.guide h2{font-size:34px}.guide p{line-height:1.7;color:#c9c3b8}
+@media(max-width:650px){.shell{padding:18px}.hero{padding-top:34px}.node{grid-template-columns:1fr}.num{font-size:30px}#map{min-height:480px}}
+</style>
+</head>
+<body>
+<main class="shell">
+<a class="brand" href="/">Ancient Mysteries Rediscovered</a>
+<header class="hero">
+<p class="eyebrow">Geographic Evidence Graph · Location 001</p>
+<p class="kicker">A field guide to ancient claims</p>
+<h1>FOLLOW THE<br>GIANTS</h1>
+<p class="deck">The stories left a map. Ancient texts placed giants in specific cities, kingdoms and regions. Explore those locations on a modern map—and see what survives there today.</p>
+<p class="rule">THE MAP DOESN'T PROVE THE STORIES. IT SHOWS WHERE THE STORIES POINTED.</p>
+<div class="status"><span>Textual tradition</span><span>Archaeological site</span><span>Evidence file available</span></div>
+</header>
+<section class="mapwrap" aria-labelledby="map-title">
+<div class="maphead"><div><p class="kicker">Start here</p><h2 id="map-title">Tell es-Safi / Tel Zafit — Gath</h2></div><div class="coords">31.6998 N · 34.8469 E</div></div>
+<div id="map" aria-label="Interactive map showing Location 001, ancient Gath at Tell es-Safi / Tel Zafit"></div>
+</section>
+<section class="node">
+<div class="num">001</div><div><p class="kicker">Gath · Ancient Philistia</p><h2>Tell es-Safi / Tel Zafit</h2><p>Location is the anchor. Evidence is the branch. Gath is identified with Tell es-Safi / Tel Zafit today, connecting the ancient textual tradition with a real archaeological site and a modern evidence trail.</p><a class="cta" href="/mysteries/goliath-of-gath/">Enter the Gath evidence node →</a></div>
+</section>
+<section class="guide"><p class="kicker">How to read the map</p><h2>Real places. Ancient claims. Evidence kept separate.</h2><p>Each qualified location connects an ancient textual tradition with its best-supported modern identification, documentary photography, archaeology, sources, and an explicit record of what the evidence does—and does not—establish.</p><p><strong>Modern orientation:</strong> the eastern Mediterranean, including Israel, Jordan and Egypt. <strong>Ancient orientation:</strong> period-specific geography such as Canaan and Philistia will be layered into the evidence graph as the map expands.</p></section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+const gath=[31.6998,34.8469];
+const map=L.map('map',{scrollWheelZoom:false}).setView(gath,7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+L.circleMarker(gath,{radius:10,color:'#e3c07b',weight:3,fillColor:'#10161a',fillOpacity:1}).addTo(map).bindPopup('<strong>LOCATION 001 — GATH</strong><br>Tell es-Safi / Tel Zafit<br>Ancient Philistia<br><br><a href="/mysteries/goliath-of-gath/">Enter the evidence node →</a>').openPopup();
+L.control.scale({imperial:true,metric:true}).addTo(map);
+</script>
+</body></html>
