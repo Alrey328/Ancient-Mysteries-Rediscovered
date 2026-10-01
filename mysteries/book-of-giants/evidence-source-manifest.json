@@ -1,6 +1,6 @@
 {
   "page": "/mysteries/book-of-giants/",
-  "reviewed": "2026-09-27",
+  "reviewed": "2026-10-01",
   "source_classes": {
     "primary_source_record": "Genuine external archive metadata or manuscript image record; linked, not reproduced.",
     "scholarly_textual_source": "Academic edition, handbook, or methodological study used to interpret fragmentary readings.",
@@ -20,7 +20,14 @@
     {"file": "book-of-giants-chapter-2-investigation-poster-enoch-answer.png", "source_file": "BOG INV Chapter 2 Final Poster.png", "source_type": "amr_artist_reconstruction", "note": "All glowing inscriptions and text-like markings are generated visual elements, not manuscript text, transcription, or translation."},
     {"file": "book-of-giants-chapter-2-journey-receipt-4q530.png", "source_file": "Asset 2 Chapter II Journey Receipt ‘They Sent Mahaway to Enoch’ — 4Q530.png", "source_type": "amr_artist_reconstruction", "note": "Contains no genuine manuscript photograph."},
     {"file": "book-of-giants-chapter-2-enoch-answer-4q203-fragment-8.png", "source_file": "Asset #3 — Enoch's Answer Receipt ‘Part of His Answer Survived’ — 4Q203 Fragment 8.png", "source_type": "amr_artist_reconstruction", "additional_source_type": "location_visualization", "note": "Enoch, giants, Cave 4, scrolls, writing scene, and environment are generated."},
-    {"file": "book-of-giants-chapter-2-door-beyond.png", "source_file": "Asset #4 — Chapter II Door Beyond ‘What Did the Giants Do After Enoch Warned Them’.png", "source_type": "amr_artist_reconstruction", "note": "Unresolved continuation teaser; not a Chapter III investigation gateway."}
+    {"file": "book-of-giants-chapter-2-door-beyond.png", "source_file": "Asset #4 — Chapter II Door Beyond ‘What Did the Giants Do After Enoch Warned Them’.png", "source_type": "amr_artist_reconstruction", "note": "Chapter II continuation teaser linking to the Chapter III investigation."},
+    {"file": "book-of-giants-chapter-3-reel-poster.png", "source_type": "amr_artist_reconstruction", "note": "Existing approved Chapter III Reel poster; reused unchanged as the Chapter III investigation gateway."},
+    {"file": "book-of-giants-chapter-3-command-and-pray-4q203.png", "source_file": "Ancient Mysteries_ The Dead Sea Scroll.png", "source_type": "amr_artist_reconstruction", "note": "Transcription/reconstruction presentation; not a photograph of 4Q203 Fragment 8."},
+    {"file": "book-of-giants-chapter-3-watchers-and-giant-sons.png", "source_file": "Ancient Watchers and Giant Sons.png", "source_type": "amr_artist_reconstruction", "note": "Relationship visualization distinguishing Watchers from giant offspring."},
+    {"file": "book-of-giants-chapter-3-dreams-of-destruction-4q530.png", "source_file": "Giants Witness the Flooding Apocalypse.png", "source_type": "amr_artist_reconstruction", "note": "Cinematic visualization of the dream and judgment tradition; not manuscript imagery."},
+    {"file": "book-of-giants-chapter-3-limit-of-strength-4q531.png", "source_file": "Giant Beneath the Heavenly Light.png", "source_type": "amr_artist_reconstruction", "note": "The represented 4Q531 speaker is intentionally not identified as Ohyah."},
+    {"file": "book-of-giants-chapter-3-enoch-intercessor-1-enoch-13.png", "source_file": "The Watchers’ Appeal to Enoch.png", "source_type": "amr_artist_reconstruction", "note": "Related Book of Watchers tradition; not presented as the same scene as the Book of Giants messenger narrative."},
+    {"file": "book-of-giants-chapter-3-unsolved-prayer-4q203-fragments-9-10.png", "source_file": "A Prayer Survives_ Scrolls and Giants.png", "source_type": "amr_artist_reconstruction", "note": "Transcription/reconstruction presentation; speaker identification remains disputed."}
   ],
   "primary_source_records": [
     {
@@ -51,11 +58,15 @@
     {"author": "Iñaki Marro", "title": "The Book of Giants: A Critical Edition of the Aramaic Fragments", "url": "https://edoc.ub.uni-muenchen.de/36601/1/Marro_Inaki.pdf", "source_type": "scholarly_textual_source"},
     {"author": "Daniel A. Machiela", "title": "A Handbook of the Aramaic Scrolls from the Qumran Caves", "url": "https://admin.library.oapen.org/bitstream/handle/20.500.12657/86447/9789004513815.pdf?isAllowed=y&sequence=1", "source_type": "scholarly_textual_source"},
     {"author": "Andrew B. Perrin", "title": "Dream narratives in the Aramaic Dead Sea Scrolls", "url": "https://www.sbl-site.org/wp-content/uploads/2024/12/9780884142874_OA.pdf", "source_type": "scholarly_textual_source"},
-    {"author": "George J. Brooke", "title": "Reading the Dead Sea Scrolls: Essays in Method", "url": "https://www.sbl-site.org/wp-content/uploads/2024/12/ReadingDSS_Brooke_SBL.pdf", "source_type": "scholarly_textual_source"}
+    {"author": "George J. Brooke", "title": "Reading the Dead Sea Scrolls: Essays in Method", "url": "https://www.sbl-site.org/wp-content/uploads/2024/12/ReadingDSS_Brooke_SBL.pdf", "source_type": "scholarly_textual_source"},
+    {"author": "Loren T. Stuckenbruck", "title": "The Book of Giants from Qumran: Texts, Translation, and Commentary", "url": "https://www.mohrsiebeck.com/en/book/the-book-of-giants-from-qumran-9783161587887/", "source_type": "scholarly_textual_source"},
+    {"author": "Matthew Goff", "title": "Gilgamesh the Giant: The Qumran Book of Giants' Appropriation of Gilgamesh Motifs", "url": "https://doi.org/10.1163/156851709X395740", "source_type": "scholarly_textual_source"},
+    {"author": "George W. E. Nickelsburg and James C. VanderKam", "title": "1 Enoch: The Hermeneia Translation", "url": "https://ms.fortresspress.com/downloads/9780800699109Intro.pdf", "source_type": "scholarly_textual_source"}
   ],
   "companion_reels": [
     {"chapter": 1, "title": "Ohyah — The Giant Who Was Put on Trial", "url": "https://www.facebook.com/share/r/1Dea2cmui7/", "source_type": "companion_reel"},
-    {"chapter": 2, "title": "The Giants Needed a Human's Help", "url": "https://www.facebook.com/share/r/1EdqBu8rrN/", "source_type": "companion_reel", "upload_date": null, "note": "No publication timestamp asserted without authoritative evidence."}
+    {"chapter": 2, "title": "The Giants Needed a Human's Help", "url": "https://www.facebook.com/share/r/1EdqBu8rrN/", "source_type": "companion_reel", "upload_date": null, "note": "No publication timestamp asserted without authoritative evidence."},
+    {"chapter": 3, "title": "The Giants Believed Nothing Could Defeat Them", "url": "https://www.facebook.com/share/r/1Eo29Yu8Ye/", "source_type": "companion_reel", "upload_date": null, "note": "Newest Featured Reel. No publication timestamp asserted without authoritative evidence."}
   ],
   "rights": {
     "status": "link-only pending express public-display permission from the Israel Antiquities Authority",
