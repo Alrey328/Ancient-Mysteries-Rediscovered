@@ -1,6 +1,6 @@
 {
   "page": "/mysteries/book-of-giants/",
-  "reviewed": "2026-10-01",
+  "reviewed": "2026-10-07",
   "source_classes": {
     "primary_source_record": "Genuine external archive metadata or manuscript image record; linked, not reproduced.",
     "scholarly_textual_source": "Academic edition, handbook, or methodological study used to interpret fragmentary readings.",
@@ -9,6 +9,13 @@
     "companion_reel": "Cinematic narrative reconstruction linked separately from the evidence analysis."
   },
   "approved_visuals": [
+    {"file": "book-of-giants-chapter-4-investigation-hero.webp", "source_file": "ImG 1 INV Elder and the Fallen Giants.png", "source_type": "amr_artist_reconstruction", "note": "Chapter IV investigation entrance; not documentary evidence."},
+    {"file": "book-of-giants-chapter-4-4q201-manuscript.jpg", "source_file": "IMg 6 Map INV.jpg", "source_type": "primary_source_record", "note": "User-supplied authentic 4Q201 manuscript photograph preserved byte-for-byte; no missing parchment or lettering reconstructed."},
+    {"file": "book-of-giants-chapter-4-watchers-petition.webp", "source_file": "ImG 3 INV Prophet Among the Fallen Giants.png", "source_type": "amr_artist_reconstruction", "note": "Overhead visualization of the petition narrative in 1 Enoch 13."},
+    {"file": "book-of-giants-chapter-4-two-dreams.webp", "source_file": "Img 4 Chap 5 Garden of Fire and Flood.png", "source_type": "amr_artist_reconstruction", "note": "Composite visualization of fragmentary dream imagery; not a literal continuous event."},
+    {"file": "book-of-giants-chapter-4-mahaway-journey.webp", "source_file": "IMG 4 INV Winged Warrior Over Misty Wilderness.png", "source_type": "amr_artist_reconstruction", "note": "Interpretive visualization; wings, literal eagle escort, and landscape are not established by surviving text."},
+    {"file": "book-of-giants-chapter-4-ohyah-hahyah-bow.webp", "source_file": "IMg 5  INV Giants Bow Before the Prophet.png", "source_type": "amr_artist_reconstruction", "note": "Exactly two giants represent Ohyah and Hahyah; not all giants collectively repenting."},
+    {"file": "book-of-giants-chapter-4-investigation-poster.webp", "source_file": "IMG 7 INV Heaven Wouldn’t Hear Them.png", "source_type": "amr_artist_reconstruction", "note": "Dedicated Chapter IV Investigation poster; separate from the unchanged regular Chapter IV Reel poster."},
     {"file": "book-of-giants-investigation-hero.png", "source_file": "Book of Giant Main.png", "source_type": "amr_artist_reconstruction"},
     {"file": "book-of-giants-receipt.png", "source_file": "Book of Giant Receipt.png", "source_type": "amr_artist_reconstruction", "note": "Generated manuscript placeholder masked in HTML."},
     {"file": "book-of-giants-evidence-method.png", "source_file": "Boo of giant Receipt 2.png", "source_type": "amr_artist_reconstruction", "note": "Evidence-method design treatment."},
@@ -30,6 +37,14 @@
     {"file": "book-of-giants-chapter-3-unsolved-prayer-4q203-fragments-9-10.png", "source_file": "A Prayer Survives_ Scrolls and Giants.png", "source_type": "amr_artist_reconstruction", "note": "Transcription/reconstruction presentation; speaker identification remains disputed."}
   ],
   "primary_source_records": [
+    {
+      "manuscript": "4Q201 — 4Q Enoch a",
+      "official_record": "https://www.deadseascrolls.org.il/explore-the-archive/image/B-298328",
+      "record_id": "B-298328",
+      "date_range": "200–150 BCE",
+      "dating_source": "https://www.loc.gov/exhibits/scrolls/scr3.html",
+      "source_type": "primary_source_record"
+    },
     {
       "manuscript": "4Q530 — 4Q EnGiants b",
       "official_record": "https://www.deadseascrolls.org.il/explore-the-archive/image/B-284596",
@@ -55,6 +70,7 @@
     }
   ],
   "scholarly_sources": [
+    {"author": "R. H. Charles", "title": "The Book of Enoch", "url": "https://www.globalgreyebooks.com/online-ebooks/r-h-charles_book-of-enoch_complete-text.html", "source_type": "scholarly_textual_source", "note": "Public-domain translation identified beside direct quotations from 1 Enoch 15:2 and 15:9."},
     {"author": "Iñaki Marro", "title": "The Book of Giants: A Critical Edition of the Aramaic Fragments", "url": "https://edoc.ub.uni-muenchen.de/36601/1/Marro_Inaki.pdf", "source_type": "scholarly_textual_source"},
     {"author": "Daniel A. Machiela", "title": "A Handbook of the Aramaic Scrolls from the Qumran Caves", "url": "https://admin.library.oapen.org/bitstream/handle/20.500.12657/86447/9789004513815.pdf?isAllowed=y&sequence=1", "source_type": "scholarly_textual_source"},
     {"author": "Andrew B. Perrin", "title": "Dream narratives in the Aramaic Dead Sea Scrolls", "url": "https://www.sbl-site.org/wp-content/uploads/2024/12/9780884142874_OA.pdf", "source_type": "scholarly_textual_source"},
@@ -72,5 +88,5 @@
     "status": "link-only pending express public-display permission from the Israel Antiquities Authority",
     "reference": "https://www.deadseascrolls.org.il/terms"
   },
-  "excluded_alternates": ["Ohyah Dreams Column  2.png", "BoG Column 2.png", "BoG actual Manuscript.png", "BOG actual Manuscript 2.png", "OHYah Invesigation 1.png", "New 45 image yes.jpg"]
+  "excluded_alternates": ["Ohyah Dreams Column  2.png", "BoG Column 2.png", "BoG actual Manuscript.png", "BOG actual Manuscript 2.png", "OHYah Invesigation 1.png", "New 45 image yes.jpg", "IMg 5 Chap 5 Three Shoots After the Storm.png"]
 }
