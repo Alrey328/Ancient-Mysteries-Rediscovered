@@ -9,3 +9,34 @@
 @media(max-width:900px){.hero-shell,.chapter-grid,.chapter-grid.text-first{grid-template-columns:1fr}.hero-copy{text-align:center}.hero h1,.hero-premise{margin-inline:auto}.hero-actions{justify-content:center}.hero-poster{justify-self:center;max-width:420px}.text-first .chapter-copy{order:1}.text-first .boundary-stack,.text-first .portrait-figure{order:2}.chapter-copy h2{max-width:none}.archaeology-grid{grid-template-columns:1fr}.portrait-figure{max-width:430px}.sources-grid{grid-template-columns:1fr}}
 @media(max-width:650px){body{font-size:1rem}.page-shell,.narrow{width:min(100% - 2rem,1220px)}.site-nav{align-items:flex-start;flex-direction:column;gap:.3rem;padding:.65rem 1rem}.nav-track{width:100%}.chapter{padding-block:4.5rem}.hero{padding-block:2.5rem}.hero-shell{gap:2rem}.hero-actions,.return-row{flex-direction:column}.primary-action,.secondary-action{width:100%;margin-top:.8rem}.hero-poster{max-width:360px}.index-grid,.ledger,.related-grid{grid-template-columns:1fr}.index-grid a{min-height:auto}.evidence-rail{grid-template-columns:1fr}.evidence-rail i{transform:rotate(90deg);text-align:center}.archaeology-grid{gap:1rem}.landscape-figure img{aspect-ratio:4/3}.site-footer .page-shell{flex-direction:column}.door-beyond{min-height:auto}.door-copy{padding-block:7rem}.door-media img{object-position:center}.sources-grid>div{padding:1rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+
+/* Task 3A: mobile-first hero and accessible chapter disclosure. Desktop remains unchanged. */
+.mobile-chapter-nav,.hero-mobile-scene,.mobile-title-break{display:none}
+@media(max-width:650px){
+  .site-nav{padding:max(.65rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-right)) .65rem max(1rem,env(safe-area-inset-left))}
+  .nav-track{display:none}
+  .mobile-chapter-nav{position:relative;display:block;width:100%;font-family:'JetBrains Mono',monospace}
+  .mobile-chapter-nav summary{display:flex;align-items:center;justify-content:space-between;min-height:2.75rem;padding:.62rem .75rem;border:1px solid var(--line);color:var(--gold-bright);cursor:pointer;font-size:.68rem;font-weight:600;letter-spacing:.1em;list-style:none;text-transform:uppercase}
+  .mobile-chapter-nav summary::-webkit-details-marker{display:none}
+  .mobile-chapter-nav summary::after{content:'+';font-size:1rem;line-height:1}
+  .mobile-chapter-nav[open] summary::after{content:'−'}
+  .mobile-chapter-nav summary:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+  .mobile-chapter-list{position:absolute;z-index:60;top:calc(100% + .35rem);inset-inline:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;border:1px solid var(--line);background:var(--line);box-shadow:var(--shadow)}
+  .mobile-chapter-list a{display:flex;align-items:center;min-height:2.9rem;padding:.65rem .75rem;background:rgba(5,7,7,.98);color:#ddd6c9;font-size:.65rem;letter-spacing:.06em;text-decoration:none;text-transform:uppercase}
+  .mobile-chapter-list a:hover,.mobile-chapter-list a:focus-visible{background:#172023;color:var(--gold-bright);outline:2px solid var(--gold-bright);outline-offset:-2px}
+  .hero{padding:1.8rem 0 3.6rem}
+  .hero-shell{gap:0}
+  .hero-copy{padding:0;text-align:center}
+  .hero .eyebrow{max-width:34ch;margin:0 auto .85rem;font-size:.63rem;line-height:1.6;letter-spacing:.16em}
+  .hero h1{width:100%;max-width:none;margin-inline:auto;color:var(--gold-bright);font-size:clamp(2.15rem,10.7vw,3rem);line-height:1.02;letter-spacing:-.045em}
+  .mobile-title-break{display:block}
+  .hero-mobile-scene{display:block;width:100%;margin:1.35rem auto 0;border-color:rgba(215,169,77,.42);box-shadow:0 22px 60px rgba(0,0,0,.55)}
+  .mobile-scene-window{height:clamp(320px,48svh,420px);overflow:hidden;background:#061014}
+  .hero-mobile-scene img{width:100%;height:100%;object-fit:cover;object-position:center 58%}
+  .hero-mobile-scene figcaption{padding:.72rem .78rem;text-align:left;font-size:.72rem;line-height:1.5}
+  .hero-mobile-scene figcaption .evidence-tag{margin:0 .35rem .3rem 0}
+  .hero-premise{margin:1.25rem auto 0;font-size:1.04rem;line-height:1.65}
+  .hero-actions{margin-top:.35rem}
+  .hero-actions .primary-action,.hero-actions .secondary-action{min-height:3.4rem}
+  .hero-poster{display:none}
+}
