@@ -42,3 +42,4 @@
   .hero-actions .primary-action,.hero-actions .secondary-action{min-height:3.4rem}
   .hero-poster{display:block;width:100%;max-width:360px;margin:2.25rem auto 0}
 }
+@media(max-width:350px){h2{font-size:2.15rem}}
