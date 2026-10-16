@@ -1,0 +1,18 @@
+{
+  "investigation": "Giants After the Flood — Investigation 001",
+  "title": "The Giant Who Escaped the Flood?",
+  "editorialStatus": "local preview; approved seven-chapter manuscript not located",
+  "route": "/mysteries/giants-after-flood-001/",
+  "assets": [
+    {"file":"investigation-001-hero.png","class":"AMR cinematic reconstruction","section":"Hero","rights":"Existing AMR production asset; rights record requires confirmation before publication"},
+    {"file":"investigation-001-og-bashan.png","class":"AMR cinematic reconstruction","section":"Chapter I","rights":"Existing AMR production asset; rights record requires confirmation before publication"},
+    {"file":"investigation-001-flood-tradition.png","class":"AMR cinematic reconstruction","section":"Chapter III","rights":"Existing AMR production asset; rights record requires confirmation before publication"},
+    {"file":"investigation-001-bashan-landscape.jpg","class":"modern landscape photograph","section":"Chapter IV","source":"https://commons.wikimedia.org/wiki/File:130476_views_of_the_northern_golan_heights_on_the_syrian_PikiWiki_Israel.jpg","creator":"Shlomo Roded / PikiWiki Israel","license":"CC BY 2.5","adaptation":"none"},
+    {"file":"investigation-001-rujm-el-hiri-authentic.jpg","class":"authentic archaeological photograph","section":"Chapter V and Door Beyond","source":"https://commons.wikimedia.org/wiki/File:Rujm-el-Hiri-729.jpg","creator":"Bukvoed","license":"CC BY 4.0","adaptation":"none; Door Beyond CSS is a separate overlay"},
+    {"file":"investigation-001-shamir-dolmen-authentic.jpg","class":"authentic archaeological photograph","section":"Chapter V","source":"https://commons.wikimedia.org/wiki/File:Giant_Dolmen-Shamir.jpg","creator":"שועל","license":"CC BY-SA 4.0","adaptation":"none"},
+    {"file":"investigation-001-rephaim-underworld.jpg","class":"artistic reconstruction","section":"Chapter VI","rights":"Existing AMR production asset; rights record requires confirmation before publication"}
+  ],
+  "evidenceClasses": ["biblical text","later Jewish tradition","archaeological finding","scholarly interpretation","AMR cinematic reconstruction","speculative question"],
+  "missing": ["approved seven-chapter manuscript and Door Beyond ending prose","approved dedicated Door Beyond artwork","exact file The Ancient Stones of Bashan(2).png"],
+  "futureAssetSlot": "investigation-002-door-beyond-approved-art"
+}
