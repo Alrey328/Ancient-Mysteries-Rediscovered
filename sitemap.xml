@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ancientmysteriesrediscovered.com/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://ancientmysteriesrediscovered.com/discussions/</loc>
@@ -74,5 +74,9 @@
   <url>
     <loc>https://ancientmysteriesrediscovered.com/mysteries/book-of-giants/</loc>
     <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://ancientmysteriesrediscovered.com/mysteries/giants-after-flood-001/</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
 </urlset>
