@@ -1,1 +1,8 @@
 body{margin:0;background:#15171e;color:#e9e3d0;font:18px/1.6 Georgia,serif}a{color:#e2bc54}header,main,footer{max-width:900px;margin:auto;padding:22px}nav{display:flex;gap:20px;flex-wrap:wrap}.eyebrow{color:#d2a84a;letter-spacing:.2em;text-transform:uppercase}h1{font-size:clamp(2rem,6vw,4rem);line-height:1.1}article{background:#20232e;padding:24px;border:1px solid #65552e;border-radius:14px}.player{width:min(100%,370px);aspect-ratio:9/16;background:#090b0e;display:block;margin:24px auto}button{padding:12px 20px;background:#d2a84a;border:0;border-radius:7px;cursor:pointer}small{color:#bbb5a2}
+/* Cinematic Enuk viewing stage: preserve 9:16, emphasize the film on wide and narrow screens. */
+article:has(.player){background:radial-gradient(ellipse at 50% 32%,#30313b 0%,#1b1d26 65%,#14161d 100%);border-color:#806637;box-shadow:0 18px 65px #0007;text-align:center;padding:clamp(16px,3vw,32px)}
+article:has(.player)>.player{width:min(100%,520px);height:auto;aspect-ratio:9/16;object-fit:contain;margin:18px auto 14px;border:1px solid #947444;border-radius:10px;box-shadow:0 12px 44px #000b}
+article:has(.player)>p:first-child{max-width:590px;margin:0 auto 10px}
+article:has(.player)>#video-status{margin:10px auto 16px}
+article:has(.player)>p:last-child{margin-bottom:0}
+@media(max-width:600px){header,main,footer{padding:16px}article:has(.player){padding:14px 10px}article:has(.player)>.player{width:min(100%,440px);margin:14px auto 12px}}
