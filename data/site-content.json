@@ -6,8 +6,16 @@
     "poster": "giants-after-flood-chapter-1-reel-poster.png",
     "videoUrl": "https://www.facebook.com/share/r/1EtfycqkWy/"
   },
-  "featuredYoutubeId": "odysseus-cattle-warning",
+  "featuredYoutubeId": "island-of-giants-immersive",
   "youtubeFilms": [
+    {
+      "id": "island-of-giants-immersive",
+      "title": "Island of Giants — Immersive Cinematic Film",
+      "description": "The new AMR immersive cinematic journey into the island of giants.",
+      "format": "YouTube Film",
+      "poster": "https://i.ytimg.com/vi/1GUlrFmPK3s/hqdefault.jpg",
+      "videoUrl": "https://www.youtube.com/shorts/1GUlrFmPK3s"
+    },
     {
       "id": "odysseus-cattle-warning",
       "title": "Odysseus Warned Them: Touch These Cattle and You Die",
