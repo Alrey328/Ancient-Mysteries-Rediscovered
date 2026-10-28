@@ -60,6 +60,12 @@ Follow an expedition as ancient Guardians uncover forgotten civilizations, myste
 - AI-assisted narration
 - Modern web technologies
 
+## 🎬 Premiere Content Updates
+
+The homepage's dual premiere stage and the dedicated YouTube film library are managed from one file: `data/site-content.json`.
+
+See [Dual Premiere Content Management](docs/dual-premiere-content-management.md) for the release workflow. Selecting a new featured YouTube film does not remove the previous production from the library.
+
 ---
 
 ## 📚 This Is Only The Beginning
