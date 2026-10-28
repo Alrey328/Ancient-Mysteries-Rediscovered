@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Film Library | Ancient Mysteries Rediscovered</title>
+  <meta name="description" content="Watch Ancient Mysteries Rediscovered cinematic YouTube films and explore the complete AMR film archive.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ancientmysteriesrediscovered.com/youtube/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ancient Mysteries Rediscovered">
+  <meta property="og:title" content="YouTube Film Library | Ancient Mysteries Rediscovered">
+  <meta property="og:description" content="The newest immersive AMR film and the complete YouTube cinematic archive.">
+  <meta property="og:url" content="https://ancientmysteriesrediscovered.com/youtube/">
+  <meta property="og:image" content="https://ancientmysteriesrediscovered.com/assets/hero/hero-desktop-1200.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/amr-premieres.css">
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ac656576ef4549fc8e5b94478abe7503"}'></script>
+</head>
+<body class="youtube-library-page">
+  <header class="library-masthead">
+    <picture class="library-hero-art" aria-hidden="true">
+      <source media="(min-width: 760px)" type="image/webp" srcset="../assets/hero/hero-desktop-1200.webp 1200w, ../assets/hero/hero-desktop-1672.webp 1672w" sizes="100vw">
+      <source type="image/webp" srcset="../assets/hero/hero-mobile-640.webp 640w, ../assets/hero/hero-mobile-941.webp 941w" sizes="100vw">
+      <img src="../assets/hero/hero-mobile-941.webp" width="941" height="1672" alt="" fetchpriority="high" decoding="async">
+    </picture>
+
+    <div class="library-wrap">
+      <nav class="library-nav" aria-label="Primary navigation">
+        <a class="library-brand" href="../" aria-label="Ancient Mysteries Rediscovered homepage">
+          <span>
+            <span class="library-brand-name">CHRONICLE</span>
+            <span class="library-brand-subtitle">Ancient Mysteries Rediscovered</span>
+          </span>
+          <svg class="library-brand-mark" viewBox="0 0 64 54" aria-hidden="true">
+            <path d="M5 17h54L32 3 5 17Zm6 5h7v22h-7V22Zm12 0h7v22h-7V22Zm12 0h7v22h-7V22Zm12 0h7v22h-7V22ZM6 48h52v4H6v-4Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <button class="library-menu-toggle" type="button" aria-expanded="false" aria-controls="library-navigation" aria-label="Open navigation">
+          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24M4 16h24M4 24h24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </button>
+        <ul class="library-nav-links" id="library-navigation" data-open="false">
+          <li><a href="../">Home</a></li>
+          <li><a href="../#premieres">Premieres</a></li>
+          <li><a href="../#featured-reels">Facebook Reels</a></li>
+          <li><a href="../#archives">Investigations</a></li>
+          <li><a href="../exclusives/">AMR Exclusives</a></li>
+          <li><a href="../discussions/">Discussions</a></li>
+        </ul>
+      </nav>
+
+      <div class="library-hero-copy">
+        <div class="library-kicker">Ancient Mysteries Rediscovered · YouTube</div>
+        <h1 class="library-title">Cinematic Film Library</h1>
+        <p class="library-deck">Immersive myths, ancient contradictions, and evidence-led investigations—every AMR YouTube production in one archive.</p>
+        <a class="library-home-link" href="../">&#8592; Return to Homepage</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="library-main library-wrap" data-amr-youtube-library data-content-url="../data/site-content.json" data-asset-prefix="../">
+    <section aria-labelledby="newest-film-title">
+      <div class="library-section-heading">
+        <span>01</span>
+        <h2 id="newest-film-title">Featured Premiere</h2>
+      </div>
+      <div data-youtube-feature aria-live="polite">
+        <p class="premiere-status">Loading the newest film…</p>
+      </div>
+    </section>
+
+    <section class="library-archive" aria-labelledby="film-archive-title">
+      <div class="library-section-heading">
+        <span>02</span>
+        <h2 id="film-archive-title">Previous Productions</h2>
+      </div>
+      <div class="film-grid" data-youtube-grid aria-live="polite"></div>
+    </section>
+
+    <noscript>
+      <p class="premiere-status">JavaScript is required to load the AMR YouTube film library.</p>
+    </noscript>
+  </main>
+
+  <footer class="library-footer">
+    &copy; <span data-current-year></span> Chronicle. Handmade, not automated. · <a href="../">Return Home</a>
+  </footer>
+
+  <script defer src="../assets/js/amr-premieres.js"></script>
+</body>
+</html>

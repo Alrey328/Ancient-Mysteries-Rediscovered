@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "featuredReel": {
+    "title": "The Giant Who Survived Noah's Flood?",
+    "description": "The first chapter of Giants After the Flood follows the ancient traditions that remembered one giant surviving the deluge.",
+    "poster": "giants-after-flood-chapter-1-reel-poster.png",
+    "videoUrl": "https://www.facebook.com/share/r/1EtfycqkWy/"
+  },
+  "featuredYoutubeId": "island-of-giants-immersive",
+  "youtubeFilms": [
+    {
+      "id": "island-of-giants-immersive",
+      "title": "Island of Giants — Immersive Cinematic Film",
+      "description": "The new AMR immersive cinematic journey into the island of giants.",
+      "format": "YouTube Film",
+      "poster": "https://i.ytimg.com/vi/1GUlrFmPK3s/hqdefault.jpg",
+      "videoUrl": "https://www.youtube.com/shorts/1GUlrFmPK3s"
+    },
+    {
+      "id": "odysseus-cattle-warning",
+      "title": "Odysseus Warned Them: Touch These Cattle and You Die",
+      "description": "A cinematic descent into the final warning on Thrinacia—and the choice that sealed the crew's fate.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/tfF-A7QH_CE.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=tfF-A7QH_CE"
+    },
+    {
+      "id": "scylla-six-men",
+      "title": "Odysseus Knew Six of His Men Would Die",
+      "description": "Odysseus enters the strait knowing the cost of survival—and keeps the terrible truth from his crew.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/GifDoyXXh8A.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=GifDoyXXh8A"
+    },
+    {
+      "id": "odysseus-sirens",
+      "title": "Why Did Odysseus Choose to Hear the Sirens?",
+      "description": "The Odyssey's most dangerous song becomes a test of knowledge, restraint, and the hero's own hunger to know.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/QyTlPck4GG8.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=QyTlPck4GG8"
+    },
+    {
+      "id": "land-of-the-dead",
+      "title": "What Secret Did Odysseus Discover in the Land of the Dead?",
+      "description": "Odysseus crosses the boundary of the living to ask how he can return home—and learns why returning matters.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/rNd376ucCNE.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=rNd376ucCNE"
+    },
+    {
+      "id": "circe-transformation",
+      "title": "What Would Circe Have Turned Odysseus Into?",
+      "description": "Circe's island reveals what transformation in The Odyssey may have said about appetite, identity, and control.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/I0_43C7jah0.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=I0_43C7jah0"
+    },
+    {
+      "id": "poseidon-broken",
+      "title": "Poseidon Didn't Want Odysseus Dead. He Wanted Him Broken",
+      "description": "A god's vengeance turns the long voyage home into a campaign against Odysseus's will to endure.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/P5NDnCriTc0.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=P5NDnCriTc0"
+    },
+    {
+      "id": "cyclops-nobody",
+      "title": "Odysseus Outsmarted the Cyclops With One Word",
+      "description": "One carefully chosen name becomes the weapon that defeats Polyphemus before pride changes everything.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/d-VEQBxECtk.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=d-VEQBxECtk"
+    },
+    {
+      "id": "poseidon-villain",
+      "title": "What If Poseidon Wasn't the Villain of The Odyssey?",
+      "description": "A familiar antagonist is reconsidered through the ancient logic of oath, consequence, and divine justice.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/sA7HucWCf6Y.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=sA7HucWCf6Y"
+    },
+    {
+      "id": "cyclops-untold",
+      "title": "The Story Homer Never Told About the Cyclops",
+      "description": "Beyond Polyphemus, the wider Cyclops tradition preserves a stranger and more complicated ancient memory.",
+      "format": "YouTube Film",
+      "poster": "assets/youtube/wwg-DXerxkI.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=wwg-DXerxkI"
+    },
+    {
+      "id": "trojan-horse",
+      "title": "The Trojan Horse Was the Lie That Destroyed Troy",
+      "description": "The most famous deception in ancient warfare is rebuilt as the final weapon against a city that could not be taken by force.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/ncKRWrn0kf4.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=ncKRWrn0kf4"
+    },
+    {
+      "id": "tower-of-babel",
+      "title": "The Tower of Babel Was Humanity's First Rebellion",
+      "description": "The ancient tower rises as a monument to unity, ambition, and the rebellion remembered in Genesis.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/pNYNo71Qel8.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=pNYNo71Qel8"
+    },
+    {
+      "id": "noahs-ark-meaning",
+      "title": "Noah's Ark May Not Mean What You Think",
+      "description": "The flood account is revisited through the ancient world that preserved it and the meanings later retellings can miss.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/RM7oONPXUq4.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=RM7oONPXUq4"
+    },
+    {
+      "id": "garden-of-eden",
+      "title": "The Garden of Eden May Be Underwater",
+      "description": "Ancient geography and flood memory meet in a search for the landscape behind humanity's first garden.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/BEGe9jN-bR8.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=BEGe9jN-bR8"
+    },
+    {
+      "id": "sodom-gomorrah",
+      "title": "Did Fire From the Sky Destroy Sodom and Gomorrah?",
+      "description": "The destruction tradition is examined against the natural forces that may have inspired its unforgettable imagery.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/_tjAyV52sfQ.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=_tjAyV52sfQ"
+    },
+    {
+      "id": "ark-mount-ararat",
+      "title": "Did Scientists Find Noah's Ark Buried on Mount Ararat?",
+      "description": "A celebrated mountain formation is put beside the evidence, the claims, and the questions that remain unresolved.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/bTcMN5i91mM.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=bTcMN5i91mM"
+    },
+    {
+      "id": "piri-reis-map",
+      "title": "Ancient Maps Showed Lands That Shouldn't Exist",
+      "description": "The Piri Reis map enters the evidence room: remarkable cartography, disputed interpretations, and enduring mystery.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/n2qflpKMA-c.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=n2qflpKMA-c"
+    },
+    {
+      "id": "global-flood",
+      "title": "Every Ancient Civilization Remembered a Great Flood. Why?",
+      "description": "Flood traditions from distant cultures are compared without smoothing away what makes each account distinct.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/IRHtDuqlW6A.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=IRHtDuqlW6A"
+    },
+    {
+      "id": "shared-symbols",
+      "title": "Why Do Humans Keep Drawing the Same Symbols?",
+      "description": "Recurring forms across cultures raise a careful question: shared inheritance, shared minds, or repeated discovery?",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/7k1BR088L7g.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=7k1BR088L7g"
+    },
+    {
+      "id": "ancient-stars",
+      "title": "Ancient Builders Knew the Stars Better Than We Thought",
+      "description": "Monuments aligned to the sky reveal how closely ancient builders watched the rhythms above them.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/HRFbo9umXn4.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=HRFbo9umXn4"
+    },
+    {
+      "id": "longyou-caves",
+      "title": "China's Underground Secret That Has No Records",
+      "description": "The vast carved caverns of Longyou invite a closer look at their engineering and the silence of the written record.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/ccXX5zaLK5M.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=ccXX5zaLK5M"
+    },
+    {
+      "id": "impossible-stones",
+      "title": "These Ancient Stones Weigh More Than Jets",
+      "description": "The heaviest stones of the ancient world turn engineering scale into a mystery of labor, planning, and precision.",
+      "format": "Cinematic Investigation",
+      "poster": "assets/youtube/a1xxkyI8JIA.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=a1xxkyI8JIA"
+    },
+    {
+      "id": "ancient-artifacts",
+      "title": "Ancient Humans Made These Without Modern Tools",
+      "description": "A rapid tour through artifacts whose precision still challenges easy assumptions about ancient craft.",
+      "format": "YouTube Short",
+      "poster": "assets/youtube/MKVJQjkmueo.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=MKVJQjkmueo"
+    },
+    {
+      "id": "ancient-plane",
+      "title": "This 2,000-Year-Old Object Looks Like a Plane. Why?",
+      "description": "A small ancient object becomes a test of resemblance, interpretation, and what the surviving evidence can support.",
+      "format": "YouTube Short",
+      "poster": "assets/youtube/wGlZ8mqYonY.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=wGlZ8mqYonY"
+    },
+    {
+      "id": "moai-explained",
+      "title": "Scientists Say the Moai Are Explained—But Something Doesn't Add Up",
+      "description": "Rapa Nui's stone figures are placed back into their landscape, construction evidence, and unresolved questions.",
+      "format": "YouTube Short",
+      "poster": "assets/youtube/zzQ0N3xpiJI.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=zzQ0N3xpiJI"
+    },
+    {
+      "id": "encased-in-stone",
+      "title": "Found Encased in Stone Older Than Humans",
+      "description": "An extraordinary discovery claim is separated from the geological context needed to understand it.",
+      "format": "YouTube Short",
+      "poster": "assets/youtube/vhEkiN87iJ4.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=vhEkiN87iJ4"
+    },
+    {
+      "id": "impossible-statues",
+      "title": "The Statues That Shouldn't Be Possible",
+      "description": "Monumental stonework becomes a window into lost process, patient labor, and ancient technical imagination.",
+      "format": "YouTube Short",
+      "poster": "assets/youtube/KvDYA25gzFQ.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=KvDYA25gzFQ"
+    }
+  ]
+}
