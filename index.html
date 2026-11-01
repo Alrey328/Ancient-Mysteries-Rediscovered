@@ -6,7 +6,8 @@
 <title>The AI Revolution</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --night: #15171e;
@@ -85,12 +86,20 @@
     inset:0;
     z-index:-3;
   }
-  .hero-art img{
+  .hero-art img,
+  .hero-video{
     width:100%;
     height:100%;
     display:block;
     object-fit:cover;
     object-position:center 57%;
+  }
+  .hero-video{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    opacity:1;
+    transition:opacity .7s ease;
   }
   header{
     position:relative;
@@ -160,7 +169,7 @@
   .menu-toggle svg{ width:26px; height:26px; }
   .hero{
     min-height:700px;
-    padding:102px 0 218px;
+    padding:clamp(54px, 7vh, 84px) 0 clamp(84px, 11vh, 132px);
     text-align:center;
     position:relative;
     z-index:2;
@@ -192,7 +201,7 @@
   }
   .hero-title img{
     display:block;
-    width:min(72vw, 680px);
+    width:min(72vw, 680px, 64vh);
     height:auto;
     margin:0 auto;
   }
@@ -221,6 +230,81 @@
     background:linear-gradient(90deg, transparent, currentColor);
   }
   .hero-divider::after{ transform:scaleX(-1); }
+  .hero-actions{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:28px;
+  }
+  .hero-cta,
+  .hero-sound-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:48px;
+    border:1px solid rgba(222,176,79,0.66);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    font-weight:500;
+    letter-spacing:0.09em;
+    line-height:1.2;
+    text-transform:uppercase;
+  }
+  .hero-cta{
+    gap:10px;
+    padding:13px 20px;
+    color:#fff1c2;
+    background:linear-gradient(180deg, rgba(138,93,30,0.96), rgba(69,42,17,0.98));
+    box-shadow:inset 0 1px 0 rgba(255,232,161,0.35), 0 12px 28px rgba(0,0,0,0.34);
+    text-decoration:none;
+    transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .hero-cta:hover,
+  .hero-cta:focus-visible{
+    border-color:#edc36a;
+    transform:translateY(-2px);
+    box-shadow:inset 0 1px 0 rgba(255,232,161,0.45), 0 16px 34px rgba(0,0,0,0.42);
+  }
+  .hero-sound-toggle{
+    gap:9px;
+    padding:12px 15px;
+    color:var(--bone);
+    background:rgba(5,12,18,0.76);
+    cursor:pointer;
+    backdrop-filter:blur(8px);
+    transition:color .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .hero-sound-toggle:hover,
+  .hero-sound-toggle:focus-visible,
+  .hero-sound-toggle[aria-pressed="true"]{
+    color:#f2c96c;
+    border-color:#e0b554;
+    background:rgba(12,19,25,0.9);
+  }
+  .hero-sound-toggle:disabled{
+    cursor:not-allowed;
+    opacity:0.58;
+  }
+  .hero-cta:focus-visible,
+  .hero-sound-toggle:focus-visible{
+    outline:2px solid #f2cf7a;
+    outline-offset:4px;
+  }
+  .hero-sound-icon{
+    width:17px;
+    height:17px;
+    flex:0 0 auto;
+  }
+  .hero .hero-media-status{
+    min-height:1.4em;
+    margin:12px auto 0;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.04em;
+    color:#d4c9ad;
+  }
 
   /* ---------- Section headers ---------- */
   .section{
@@ -657,6 +741,9 @@
     background-size:contain;
     background-repeat:no-repeat;
   }
+  .reel-card .thumb[data-bg]{
+    background-image:linear-gradient(145deg, rgba(201,162,39,0.08), rgba(10,13,18,0.16));
+  }
   .reel-card .thumb img{
     display:block;
     width:100%;
@@ -914,8 +1001,20 @@
     letter-spacing:0.05em;
   }
 
+  @supports (content-visibility:auto){
+    .card,
+    .reel-card,
+    .reel-investigation-card,
+    .playlist-card,
+    .series-card,
+    .product{
+      content-visibility:auto;
+      contain-intrinsic-size:auto 680px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce){
-    .card, .reel-investigation-card, .playlist-card, .reel-card, .reel-card .thumb .play, .discussion-link, .investigation-cta{ transition:none; }
+    .card, .reel-investigation-card, .playlist-card, .reel-card, .reel-card .thumb .play, .discussion-link, .investigation-cta, .hero-video, .hero-cta, .hero-sound-toggle{ transition:none; }
     html{ scroll-behavior:auto; }
   }
 
@@ -965,12 +1064,12 @@
     }
     .hero{
       min-height:720px;
-      padding:clamp(116px, 26vw, 170px) 0 clamp(218px, 36vw, 290px);
+      padding:clamp(72px, 14vw, 110px) 0 clamp(90px, 20vw, 140px);
     }
     .eyebrow{ gap:8px; font-size:clamp(0.57rem, 2.4vw, 0.7rem); letter-spacing:0.2em; }
     .eyebrow::before,
     .eyebrow::after{ width:clamp(22px, 8vw, 48px); }
-    .hero-title img{ width:min(96vw, 570px); }
+    .hero-title img{ width:min(96vw, 570px, 60vh); }
     .hero p{
       width:min(100%, 540px);
       padding:0 4px;
@@ -978,6 +1077,9 @@
       line-height:1.62;
     }
     .hero-divider{ margin-top:20px; }
+    .hero-actions{ margin-top:22px; }
+    .hero-cta,
+    .hero-sound-toggle{ width:min(100%, 320px); }
     .section{ padding:44px 0; }
     .section-head{ flex-wrap:wrap; }
     .section-head{ gap:10px 14px; margin-bottom:28px; }
@@ -1124,7 +1226,8 @@
     }
   }
 </style>
-<link rel="stylesheet" href="assets/css/amr-premieres.css">
+<link rel="stylesheet" href="assets/css/amr-premieres.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="assets/css/amr-premieres.css"></noscript>
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ac656576ef4549fc8e5b94478abe7503"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -1137,6 +1240,27 @@
     <source type="image/webp" srcset="assets/hero/hero-mobile-640.webp 640w, assets/hero/hero-mobile-941.webp 941w" sizes="100vw">
     <img src="assets/hero/hero-mobile-941.webp" width="941" height="1672" alt="" fetchpriority="high" decoding="async">
   </picture>
+  <video
+    class="hero-video"
+    id="amr-hero-video"
+    muted
+    autoplay
+    playsinline
+    loop
+    preload="none"
+    poster="assets/hero/amr-hero-poster.jpg"
+    data-muted-src="assets/hero/amr-hero-web.mp4"
+    data-ready="false"
+    tabindex="-1"
+    aria-hidden="true"
+  ></video>
+  <audio
+    id="amr-hero-audio"
+    preload="none"
+    loop
+    data-src="media/amr-cinematic/amr-hero-soundtrack.m4a"
+    aria-hidden="true"
+  ></audio>
 
   <header class="wrap">
     <nav class="nav" aria-label="Primary navigation">
@@ -1170,10 +1294,33 @@
     <div class="eyebrow">Myth, retold in motion</div>
     <h1 class="hero-title" id="hero-title">
       <span class="visually-hidden">The Truth Behind the Myth</span>
-      <img src="assets/hero/hero-title.webp" width="1536" height="1024" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+      <img
+        src="assets/hero/hero-title-680.webp"
+        srcset="assets/hero/hero-title-680.webp 680w, assets/hero/hero-title-1024.webp 1024w, assets/hero/hero-title.webp 1536w"
+        sizes="(max-width:640px) 96vw, 680px"
+        width="1536"
+        height="1024"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+        decoding="sync"
+      >
     </h1>
     <p>Every myth carries a memory. Ancient Greek giants, forgotten heroes, and the mysteries historians still can't explain — examined for what they might actually be telling us.</p>
     <div class="hero-divider" aria-hidden="true">✦</div>
+    <div class="hero-actions">
+      <a class="hero-cta" href="#current-investigations" data-hero-action="explore">
+        <span>Explore the Mysteries</span><span aria-hidden="true">→</span>
+      </a>
+      <button class="hero-sound-toggle" type="button" aria-label="Sound off — play cinematic soundtrack" aria-pressed="false" aria-controls="amr-hero-video amr-hero-audio" disabled data-hero-action="sound">
+        <svg class="hero-sound-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 9v6h4l5 4V5L8 9H4Zm12.5-.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="hero-sound-muted-mark" d="m16.5 9 4 6m0-6-4 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span class="hero-sound-label">Sound off</span>
+      </button>
+    </div>
+    <p class="hero-media-status" id="hero-media-status" role="status" aria-live="polite"></p>
   </section>
 </div>
 
@@ -1201,7 +1348,7 @@
     <article class="reel-card featured">
       <a class="title-link" href="https://www.facebook.com/share/r/1EbujMyKbt/" target="_blank" rel="noopener" aria-label="Watch What Fell From the Sky in Ancient Mesopotamia? on Facebook">
         <div class="thumb">
-        <img src="What%20Fell%20from%20the%20Sky%20Poster.png" alt="Ancient Mysteries Rediscovered poster - What Fell From the Sky in Ancient Mesopotamia?" loading="lazy">
+        <img data-src="What%20Fell%20from%20the%20Sky%20Poster.png" alt="Ancient Mysteries Rediscovered poster - What Fell From the Sky in Ancient Mesopotamia?" loading="lazy" decoding="async">
         <div class="play"><span>&#9654;</span></div>
         </div>
       </a>
@@ -1215,7 +1362,7 @@
     <article class="reel-card featured">
       <a class="title-link" href="https://www.facebook.com/share/r/19Hxr3cqc2/" target="_blank" rel="noopener" aria-label="Watch Why Did They Fear Balor's Eye? on Facebook">
         <div class="thumb">
-        <img src="Balor%20Why%20did%20they%20fear%20Balors%20Eye%20Poster.png" alt="Ancient Mysteries Rediscovered poster - Why Did They Fear Balor's Eye?" loading="lazy">
+        <img data-src="Balor%20Why%20did%20they%20fear%20Balors%20Eye%20Poster.png" alt="Ancient Mysteries Rediscovered poster - Why Did They Fear Balor's Eye?" loading="lazy" decoding="async">
         <div class="play"><span>&#9654;</span></div>
         </div>
       </a>
@@ -1229,7 +1376,7 @@
     <article class="reel-card featured">
       <a class="title-link" href="https://www.facebook.com/share/r/1AYnoo7ArJ/" target="_blank" rel="noopener" aria-label="Watch The Norse Thought Winter Was a Giant on Facebook">
         <div class="thumb">
-        <img src="The%20Norse%20thought%20Winter%20was%20Alive%20Poster.png" alt="Ancient Mysteries Rediscovered poster - The Norse Thought Winter Was a Giant" loading="lazy">
+        <img data-src="The%20Norse%20thought%20Winter%20was%20Alive%20Poster.png" alt="Ancient Mysteries Rediscovered poster - The Norse Thought Winter Was a Giant" loading="lazy" decoding="async">
         <div class="play"><span>&#9654;</span></div>
         </div>
       </a>
@@ -1243,7 +1390,7 @@
     <article class="reel-card featured">
       <a class="title-link" href="https://www.facebook.com/share/r/1EuVG4QyPF/" target="_blank" rel="noopener" aria-label="Watch Did Giants Really Walk the Earth? on Facebook">
         <div class="thumb">
-        <img src="Did%20Giants%20really%20walk%20%20the%20%20earth%20Poster.png" alt="Ancient Mysteries Rediscovered poster - Did Giants Really Walk the Earth?" loading="lazy">
+        <img data-src="Did%20Giants%20really%20walk%20%20the%20%20earth%20Poster.png" alt="Ancient Mysteries Rediscovered poster - Did Giants Really Walk the Earth?" loading="lazy" decoding="async">
         <div class="play"><span>&#9654;</span></div>
         </div>
       </a>
@@ -1267,7 +1414,16 @@
     <article class="reel-card featured has-investigation giants-after-flood-chapter-1-reel-card" data-video-release="giants-after-flood-chapter-1" data-release-state="on">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1EtfycqkWy/" target="_blank" rel="noopener noreferrer" aria-label="Watch The Giant Who Survived Noah's Flood? on Facebook">
         <div class="thumb">
-          <img src="giants-after-flood-chapter-1-reel-poster.png" alt="Official Giants After the Flood Chapter I Reel poster for The Giant Who Survived Noah's Flood?" loading="eager" width="941" height="1672">
+          <img
+            data-src="assets/posters/giants-after-flood-chapter-1-480.webp"
+            data-srcset="assets/posters/giants-after-flood-chapter-1-480.webp 480w, assets/posters/giants-after-flood-chapter-1-720.webp 720w"
+            sizes="(max-width:640px) calc(100vw - 40px), 320px"
+            alt="Official Giants After the Flood Chapter I Reel poster for The Giant Who Survived Noah's Flood?"
+            loading="lazy"
+            decoding="async"
+            width="941"
+            height="1672"
+          >
           <div class="badge">Newest</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1285,7 +1441,7 @@
     <article class="reel-card featured has-investigation book-of-giants-chapter-4-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/19fgeptEhP/" target="_blank" rel="noopener noreferrer" aria-label="Watch Fallen Angels Needed a Human's Help, Book of Giants Chapter IV, on Facebook">
         <div class="thumb">
-          <img src="mysteries/book-of-giants/book-of-giants-chapter-4-reel-poster.png" alt="Official Book of Giants Chapter IV Reel poster for Fallen Angels Needed a Human's Help" loading="eager" width="1024" height="1536">
+          <img data-src="mysteries/book-of-giants/book-of-giants-chapter-4-reel-poster.png" alt="Official Book of Giants Chapter IV Reel poster for Fallen Angels Needed a Human's Help" loading="lazy" decoding="async" width="1024" height="1536">
           <div class="badge">Featured</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1303,7 +1459,7 @@
     <article class="reel-card featured has-investigation book-of-giants-chapter-3-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1Eo29Yu8Ye/" target="_blank" rel="noopener noreferrer" aria-label="Watch The Giants Believed Nothing Could Defeat Them, Book of Giants Chapter III, on Facebook">
         <div class="thumb">
-          <img src="mysteries/book-of-giants/book-of-giants-chapter-3-reel-poster.png" alt="Official Book of Giants Chapter III Reel poster for The Giants Believed Nothing Could Defeat Them" loading="eager" width="1024" height="1536">
+          <img data-src="mysteries/book-of-giants/book-of-giants-chapter-3-reel-poster.png" alt="Official Book of Giants Chapter III Reel poster for The Giants Believed Nothing Could Defeat Them" loading="lazy" decoding="async" width="1024" height="1536">
           <div class="badge">Featured</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1321,7 +1477,7 @@
     <article class="reel-card featured has-investigation book-of-giants-chapter-2-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1EdqBu8rrN/" target="_blank" rel="noopener noreferrer" aria-label="Watch The Giants Needed a Human's Help, Book of Giants Chapter II, on Facebook">
         <div class="thumb">
-          <img src="mysteries/book-of-giants/book-of-giants-chapter-2-reel-poster.png" alt="Official Book of Giants Chapter II Reel poster for The Giants Needed a Human's Help" loading="eager" width="941" height="1672">
+          <img data-src="mysteries/book-of-giants/book-of-giants-chapter-2-reel-poster.png" alt="Official Book of Giants Chapter II Reel poster for The Giants Needed a Human's Help" loading="lazy" decoding="async" width="941" height="1672">
           <div class="badge">Featured</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1339,7 +1495,7 @@
     <article class="reel-card featured has-investigation ohyah-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1Dea2cmui7/" target="_blank" rel="noopener noreferrer" aria-label="Watch Ohyah: The Giant Who Was Put on Trial on Facebook">
         <div class="thumb">
-          <img src="ohyah-reel-poster.png" alt="Official Ohyah Reel poster for The Book of Giants, showing Ohyah facing trial before a heavenly court" loading="eager" width="1024" height="1536">
+          <img data-src="ohyah-reel-poster.png" alt="Official Ohyah Reel poster for The Book of Giants, showing Ohyah facing trial before a heavenly court" loading="lazy" decoding="async" width="1024" height="1536">
           <div class="badge">Featured</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1357,7 +1513,7 @@
     <article class="reel-card featured has-investigation sa-nakht-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1FtVqw4vu8/" target="_blank" rel="noopener noreferrer" aria-label="Watch Sa-Nakht: Egypt's Giant Pharaoh on Facebook">
         <div class="thumb">
-          <img src="mysteries/sa-nakht/sa-nakht-reel-poster.png" alt="Official Sa-Nakht Reel poster showing a cinematic imagined giant pharaoh seated in an Egyptian temple" loading="eager" width="941" height="1672">
+          <img data-src="mysteries/sa-nakht/sa-nakht-reel-poster.png" alt="Official Sa-Nakht Reel poster showing a cinematic imagined giant pharaoh seated in an Egyptian temple" loading="lazy" decoding="async" width="941" height="1672">
           <div class="badge">Featured</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1375,7 +1531,7 @@
     <article class="reel-card featured minotaur-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1F52FKWjU3/" target="_blank" rel="noopener noreferrer" aria-label="Watch The Monster of the Maze: The Minotaur on Facebook">
         <div class="thumb">
-          <img src="minotaur-reel-poster.png" alt="Official Reel poster for The Monster of the Maze: The Minotaur, showing the Minotaur, Theseus, and the labyrinth" loading="eager" width="941" height="1672">
+          <img data-src="minotaur-reel-poster.png" alt="Official Reel poster for The Monster of the Maze: The Minotaur, showing the Minotaur, Theseus, and the labyrinth" loading="lazy" decoding="async" width="941" height="1672">
           <div class="badge">Featured</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1388,7 +1544,7 @@
     </article>
     <article class="reel-card featured has-investigation kandahar-investigation-card" data-video-release="giant-of-kandahar-2" data-release-state="on">
       <a class="thumb-link" href="https://www.facebook.com/share/r/18S9WSg7iD/" target="_blank" rel="noopener" aria-label="Watch The Kandahar Giant: The Story Didn't End There on Facebook">
-        <div class="thumb" style="background-image:url('kandahar-giant-2-poster.png')">
+        <div class="thumb" data-bg="kandahar-giant-2-poster.png">
           <div class="badge">Featured</div>
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1405,7 +1561,7 @@
     <article class="reel-card featured has-investigation goliath-reel-card" data-video-release="goliath-of-gath" data-release-state="on">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1Dx8R77kca/" target="_blank" rel="noopener" aria-label="Watch Goliath of Gath on Facebook">
         <div class="thumb">
-          <img src="goliath-of-gath-reel-poster.png" alt="Official Goliath of Gath Reel poster, showing Goliath entering the city of Gath" loading="eager">
+          <img data-src="goliath-of-gath-reel-poster.png" alt="Official Goliath of Gath Reel poster, showing Goliath entering the city of Gath" loading="lazy" decoding="async">
           
           <div class="play"><span>&#9654;</span></div>
         </div>
@@ -1423,7 +1579,7 @@
     <article class="reel-card featured has-investigation talos-reel-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1Dk1cL6aix/" target="_blank" rel="noopener" aria-label="Watch Talos: The Bronze Giant of Crete on Facebook">
       <div class="thumb">
-        <img src="talos-reel-poster.webp" alt="Official Reel poster for Talos: The Bronze Giant of Crete, showing the colossal bronze guardian lifting a boulder above ships approaching Crete" loading="eager">
+        <img data-src="talos-reel-poster.webp" alt="Official Reel poster for Talos: The Bronze Giant of Crete, showing the colossal bronze guardian lifting a boulder above ships approaching Crete" loading="lazy" decoding="async">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1438,7 +1594,7 @@
 
     <article class="reel-card featured has-investigation">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1VQvV4Zatm/" target="_blank" rel="noopener" aria-label="Watch Why Were Giants Living Among Them? The Anakim on Facebook">
-      <div class="thumb" style="background-image:url('The%20Anakim%20Final%20Poster.png')">
+      <div class="thumb" data-bg="The%20Anakim%20Final%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1453,7 +1609,7 @@
 
     <article class="reel-card featured has-investigation">
       <a class="thumb-link" href="https://www.facebook.com/share/r/19FgHddA43/" target="_blank" rel="noopener" aria-label="Watch Was Rome Really Ruled by a Giant? Maximinus Thrax on Facebook">
-      <div class="thumb" style="background-image:url('Max%20Poster.png')">
+      <div class="thumb" data-bg="Max%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1468,7 +1624,7 @@
 
     <article class="reel-card featured has-investigation og-investigation-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/19cVGad6sT/" target="_blank" rel="noopener" aria-label="Watch Og of Bashan Reel on Facebook">
-      <div class="thumb" style="background-image:url('mysteries/og-of-bashan/og-of-bashan-poster.png')">
+      <div class="thumb" data-bg="mysteries/og-of-bashan/og-of-bashan-poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1485,7 +1641,7 @@
 
     <article class="reel-card featured has-investigation sitecah-investigation-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1BoHoauQW2/" target="_blank" rel="noopener" aria-label="Watch Red-Haired Giants Reel on Facebook">
-      <div class="thumb" style="background-image:url('REd%20Haired%20Giants%20Poster.png')">
+      <div class="thumb" data-bg="REd%20Haired%20Giants%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1500,7 +1656,7 @@
 
     <article class="reel-card featured has-investigation">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1Cr9ReFzQf/" target="_blank" rel="noopener" aria-label="Watch The Rephaim Reel on Facebook">
-      <div class="thumb" style="background-image:url('The%20Rephaim%20Poster.png')">
+      <div class="thumb" data-bg="The%20Rephaim%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1515,7 +1671,7 @@
 
     <article class="reel-card featured has-investigation">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1S2xfmSBRo/" target="_blank" rel="noopener" aria-label="Watch The Man Who Made a God Bleed Reel on Facebook">
-      <div class="thumb" style="background-image:url('The%20man%20who%20made%20a%20god%20bleed.png')">
+      <div class="thumb" data-bg="The%20man%20who%20made%20a%20god%20bleed.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1530,7 +1686,7 @@
 
     <article class="reel-card featured has-investigation gilgamesh-investigation-card">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1BcwiNBcyi/" target="_blank" rel="noopener" aria-label="Watch the Gilgamesh immortality Reel on Facebook">
-      <div class="thumb" style="background-image:url('Gilgamesh%20the%20searrch%20for%20immortality%20Poster.png')">
+      <div class="thumb" data-bg="Gilgamesh%20the%20searrch%20for%20immortality%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1545,7 +1701,7 @@
 
     <article class="reel-card featured has-investigation">
       <a class="thumb-link" href="https://www.facebook.com/share/r/1HKAyzHtY7/" target="_blank" rel="noopener" aria-label="Watch Why Did Zeus Unleash the Hundred-Handed Giants? on Facebook">
-      <div class="thumb" style="background-image:url('Hech%20giant%20Poster.png')">
+      <div class="thumb" data-bg="Hech%20giant%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       </a>
@@ -1559,7 +1715,7 @@
     </article>
 
     <a class="reel-card featured" href="https://www.facebook.com/share/r/1JfoT7w8rP/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('David%20%20and%20Goliath%20Final%20Poster.png')">
+      <div class="thumb" data-bg="David%20%20and%20Goliath%20Final%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1572,7 +1728,7 @@
 
   <div class="reel-gallery">
     <a class="reel-card" href="https://www.facebook.com/share/r/1TNzwt5oq5/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('What%20If%20Odysseus%20Was%20Remembering%20a%20Real%20Kingdom%20of%20Giants%20(2).png')">
+      <div class="thumb" data-bg="What%20If%20Odysseus%20Was%20Remembering%20a%20Real%20Kingdom%20of%20Giants%20(2).png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1582,7 +1738,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1HpvPVzkTU/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Atlas%20Poster.png')">
+      <div class="thumb" data-bg="Atlas%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1592,7 +1748,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/18DUqmce8C/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Cabrakan.png')">
+      <div class="thumb" data-bg="Cabrakan.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1602,7 +1758,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/19PLKiFZfF/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Kraken%20Poster.png')">
+      <div class="thumb" data-bg="Kraken%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1612,7 +1768,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1PjpoRdKWh/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Enkidu%20Poster.png')">
+      <div class="thumb" data-bg="Enkidu%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1622,7 +1778,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1ar9yWVN2e/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('SURTR%20Poster%20Final.png')">
+      <div class="thumb" data-bg="SURTR%20Poster%20Final.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1632,7 +1788,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/reel/1403543861595882" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Nephilim%20Poster.png')">
+      <div class="thumb" data-bg="The%20Nephilim%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1642,7 +1798,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1EgUwBszM8/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('WE%20FINALLY%20FOUND%20WHERE%20THE%20GIANTS%20WENT%20Ep.1%20Poster.png')">
+      <div class="thumb" data-bg="WE%20FINALLY%20FOUND%20WHERE%20THE%20GIANTS%20WENT%20Ep.1%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1652,7 +1808,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1DMh99udRC/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Final%20Exodus%20of%20the%20Giants%20Changed%20Everything%20Ep.2%20Pster.png')">
+      <div class="thumb" data-bg="The%20Final%20Exodus%20of%20the%20Giants%20Changed%20Everything%20Ep.2%20Pster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1662,7 +1818,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/14gdzjhEhEE/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Guardian%20That%20Protected%20Hyperborea%20Ep3%20poster.png')">
+      <div class="thumb" data-bg="The%20Guardian%20That%20Protected%20Hyperborea%20Ep3%20poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1672,7 +1828,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/197krT2CQ4/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Why%20Apollo%20Left%20Olympus%20Every%20Winter%20Ep.4%20Poster.png')">
+      <div class="thumb" data-bg="Why%20Apollo%20Left%20Olympus%20Every%20Winter%20Ep.4%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1682,7 +1838,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1M5tAZYsbA/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('What%20Was%20Hyperborea%20Really%20Protecting%20EP.5%20Poster.png')">
+      <div class="thumb" data-bg="What%20Was%20Hyperborea%20Really%20Protecting%20EP.5%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1692,7 +1848,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1BbtZjjrB5/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Last%20Witness%20Ep%206%20Poster.png')">
+      <div class="thumb" data-bg="The%20Last%20Witness%20Ep%206%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1702,7 +1858,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1EtMx2v7ja/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Kumbhak%20Poster.png')">
+      <div class="thumb" data-bg="Kumbhak%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1712,7 +1868,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1DMvefKEir/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Why%20did%20Gaia%20%20summon%20the%20Gigantes%20Poster.png')">
+      <div class="thumb" data-bg="Why%20did%20Gaia%20%20summon%20the%20Gigantes%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1722,7 +1878,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/18s1pksjjU/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Humbaba%20Poster%20Final.png')">
+      <div class="thumb" data-bg="Humbaba%20Poster%20Final.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1732,7 +1888,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/199EJND8UQ/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Cycolps%20Poster%20final.png')">
+      <div class="thumb" data-bg="Cycolps%20Poster%20final.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1742,7 +1898,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1FHqzixMjK/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('What%20if%20the%20Greeks%20Were%20sRemembering%20Something%20Real%20Poster.png')">
+      <div class="thumb" data-bg="What%20if%20the%20Greeks%20Were%20sRemembering%20Something%20Real%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1752,7 +1908,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/19Pa7o5srP/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Last%20Winter%20Poster.png')">
+      <div class="thumb" data-bg="The%20Last%20Winter%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1762,7 +1918,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1EP1buhjzE/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Keep%20Climbing%20Poster.png')">
+      <div class="thumb" data-bg="Keep%20Climbing%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1772,7 +1928,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/195JNuF6ry/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('What%20if%20%20Hyperborea%20was%20the%20Giants%20Lost%20Paradise%20Poster.png')">
+      <div class="thumb" data-bg="What%20if%20%20Hyperborea%20was%20the%20Giants%20Lost%20Paradise%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1782,7 +1938,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1EAtsb25N4/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('The%20Finally%20found%20the%20Breached%20Guardian%20Site.png')">
+      <div class="thumb" data-bg="The%20Finally%20found%20the%20Breached%20Guardian%20Site.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1792,7 +1948,7 @@
     </a>
 
     <a class="reel-card" href="https://www.facebook.com/share/r/1DzWdijfqp/" target="_blank" rel="noopener">
-      <div class="thumb" style="background-image:url('Medusa%20Poster.png')">
+      <div class="thumb" data-bg="Medusa%20Poster.png">
         <div class="play"><span>&#9654;</span></div>
       </div>
       <div class="meta">
@@ -1814,7 +1970,7 @@
         <div class="frame">
           <span class="investigation-badge">Newest</span>
           <a class="investigation-poster-link" href="/mysteries/giants-after-flood-001/" aria-label="Open The Giant Who Escaped the Flood Investigation">
-            <img class="investigation-poster" src="mysteries/giants-after-flood-001/investigation-001-official-cover.png" alt="Official cover for The Giant Who Escaped the Flood, Giants After the Flood Investigation 001" loading="lazy" width="1024" height="1536">
+            <img class="investigation-poster" data-src="mysteries/giants-after-flood-001/investigation-001-official-cover.png" alt="Official cover for The Giant Who Escaped the Flood, Giants After the Flood Investigation 001" loading="lazy" decoding="async" width="1024" height="1536">
           </a>
         </div>
         <div class="meta">
@@ -1830,7 +1986,7 @@
         <div class="frame">
           <span class="investigation-badge">Investigation</span>
           <a class="investigation-poster-link" href="/mysteries/book-of-giants/#chapter-4-sins-of-the-father" aria-label="Open Sins of the Father, The Book of Giants Chapter IV Investigation">
-            <img class="investigation-poster" src="mysteries/book-of-giants/book-of-giants-chapter-4-investigation-poster.webp" alt="Dedicated Book of Giants Chapter IV Investigation poster for Sins of the Father" loading="lazy" width="941" height="1672">
+            <img class="investigation-poster" data-src="mysteries/book-of-giants/book-of-giants-chapter-4-investigation-poster.webp" alt="Dedicated Book of Giants Chapter IV Investigation poster for Sins of the Father" loading="lazy" decoding="async" width="941" height="1672">
           </a>
         </div>
         <div class="meta">
@@ -1845,7 +2001,7 @@
       <article class="reel-investigation-card has-investigation sa-nakht-investigation-card" data-content-type="investigation" data-companion-state="released">
         <div class="frame">
           <a class="investigation-poster-link" href="mysteries/sa-nakht/" aria-label="Open the Sa-Nakht Investigation">
-            <img class="investigation-poster" src="mysteries/sa-nakht/sa-nakht-investigation-poster.png" alt="Sa-Nakht investigation poster" loading="lazy" width="1024" height="1536">
+            <img class="investigation-poster" data-src="mysteries/sa-nakht/sa-nakht-investigation-poster.png" alt="Sa-Nakht investigation poster" loading="lazy" decoding="async" width="1024" height="1536">
           </a>
         </div>
         <div class="meta">
@@ -1861,7 +2017,7 @@
         <div class="frame">
           <span class="investigation-badge">Investigation</span>
           <a class="investigation-poster-link" href="mysteries/goliath-of-gath/" aria-label="Open the Goliath of Gath Investigation">
-            <img class="investigation-poster" src="mysteries/goliath-of-gath/goliath-investigation-poster.png" alt="Goliath of Gath investigation poster" loading="lazy">
+            <img class="investigation-poster" data-src="mysteries/goliath-of-gath/goliath-investigation-poster.png" alt="Goliath of Gath investigation poster" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="meta">
@@ -1877,7 +2033,7 @@
         <div class="frame">
           <span class="investigation-badge">Reel connected</span>
           <a class="investigation-poster-link" href="mysteries/talos/" aria-label="Open the Talos Investigation">
-            <img class="investigation-poster" src="mysteries/talos/talos-poster.png" alt="Talos investigation poster" loading="lazy">
+            <img class="investigation-poster" data-src="mysteries/talos/talos-poster.png" alt="Talos investigation poster" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="meta">
@@ -2272,6 +2428,170 @@
     });
   }
 
+  const heroVideo = document.getElementById('amr-hero-video');
+  const heroAudio = document.getElementById('amr-hero-audio');
+  const heroSoundToggle = document.querySelector('.hero-sound-toggle');
+  const heroSoundLabel = document.querySelector('.hero-sound-label');
+  const heroSoundMutedMark = document.querySelector('.hero-sound-muted-mark');
+  const heroMediaStatus = document.getElementById('hero-media-status');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const constrainedConnection = Boolean(connection && (
+    connection.saveData || ['slow-2g', '2g'].includes(connection.effectiveType)
+  ));
+  let heroSoundRequested = false;
+
+  const setHeroStatus = (message = '') => {
+    if (heroMediaStatus) heroMediaStatus.textContent = message;
+  };
+
+  const setSoundControl = (isOn) => {
+    if (!heroSoundToggle || !heroSoundLabel) return;
+    heroSoundToggle.setAttribute('aria-pressed', String(isOn));
+    heroSoundToggle.setAttribute('aria-label', isOn
+      ? 'Sound on — mute cinematic soundtrack'
+      : 'Sound off — play cinematic soundtrack');
+    heroSoundLabel.textContent = isOn ? 'Sound on' : 'Sound off';
+    if (heroSoundMutedMark) heroSoundMutedMark.style.display = isOn ? 'none' : '';
+  };
+
+  const soundIsEnabled = () => heroSoundToggle?.getAttribute('aria-pressed') === 'true';
+
+  const handleSoundPlaybackFailure = () => {
+    heroSoundRequested = false;
+    heroAudio.pause();
+    setSoundControl(false);
+    setHeroStatus('Your browser blocked audio playback.');
+    heroSoundToggle.disabled = false;
+  };
+
+  const playHeroSoundtrack = () => {
+    if (!heroVideo || !heroAudio || !heroSoundToggle) return;
+    heroSoundRequested = true;
+    heroSoundToggle.disabled = true;
+    heroVideo.pause();
+    heroVideo.currentTime = 0;
+    if (heroAudio.readyState >= 1) heroAudio.currentTime = 0;
+    setHeroStatus('Loading soundtrack…');
+
+    const startVideoWithSoundtrack = () => {
+      if (!heroSoundRequested) return;
+      heroVideo.currentTime = 0;
+      heroVideo.play().then(() => {
+        setSoundControl(true);
+        setHeroStatus('Sound on. Cinematic restarted for synchronization.');
+        heroSoundToggle.disabled = false;
+      }).catch(handleSoundPlaybackFailure);
+    };
+    heroAudio.addEventListener('playing', startVideoWithSoundtrack, { once:true });
+    heroAudio.play().catch(handleSoundPlaybackFailure);
+  };
+
+  const loadHeroVideo = () => {
+    if (!heroVideo || heroVideo.src || reducedMotionQuery.matches || constrainedConnection) return;
+    heroVideo.src = heroVideo.dataset.mutedSrc;
+    heroVideo.load();
+    heroVideo.play().catch(() => {
+      setHeroStatus(heroVideo.error
+        ? 'Cinematic video unavailable; showing the poster.'
+        : 'Cinematic motion paused by your browser.');
+    });
+  };
+
+  const scheduleHeroVideoLoad = () => {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(loadHeroVideo, { timeout:1200 });
+    } else {
+      window.setTimeout(loadHeroVideo, 150);
+    }
+  };
+
+  if (heroVideo && heroAudio && heroSoundToggle) {
+    if (reducedMotionQuery.matches) {
+      setHeroStatus('Cinematic motion is paused for your reduced-motion preference.');
+    } else if (constrainedConnection) {
+      setHeroStatus('Showing the cinematic poster to conserve data.');
+    } else {
+      heroVideo.addEventListener('loadeddata', () => {
+        heroVideo.dataset.ready = 'true';
+        heroSoundToggle.disabled = false;
+        setHeroStatus('');
+      }, { once:true });
+      heroVideo.addEventListener('error', () => {
+        heroVideo.dataset.ready = 'false';
+        heroSoundToggle.disabled = true;
+        setHeroStatus('Cinematic video unavailable; showing the poster.');
+      });
+
+      if (document.readyState === 'complete') {
+        scheduleHeroVideoLoad();
+      } else {
+        window.addEventListener('load', scheduleHeroVideoLoad, { once:true });
+      }
+    }
+
+    heroSoundToggle.addEventListener('click', () => {
+      if (soundIsEnabled()) {
+        heroSoundRequested = false;
+        heroAudio.pause();
+        setSoundControl(false);
+        setHeroStatus('Sound muted.');
+        return;
+      }
+
+      if (!heroAudio.src) {
+        heroSoundToggle.disabled = true;
+        setHeroStatus('Loading soundtrack…');
+        heroAudio.src = heroAudio.dataset.src;
+        heroAudio.load();
+        playHeroSoundtrack();
+      } else {
+        playHeroSoundtrack();
+      }
+    });
+
+    heroAudio.addEventListener('error', () => {
+      heroSoundRequested = false;
+      heroAudio.pause();
+      heroSoundToggle.disabled = false;
+      setSoundControl(false);
+      setHeroStatus('Soundtrack unavailable.');
+    });
+    heroVideo.addEventListener('ratechange', () => {
+      heroAudio.playbackRate = heroVideo.playbackRate;
+    });
+    heroVideo.addEventListener('pause', () => {
+      if (soundIsEnabled()) heroAudio.pause();
+    });
+    heroVideo.addEventListener('playing', () => {
+      if (!soundIsEnabled() || !heroAudio.paused) return;
+      heroAudio.play().catch(() => {
+        heroSoundRequested = false;
+        setSoundControl(false);
+        setHeroStatus('Soundtrack paused by your browser.');
+      });
+    });
+
+    reducedMotionQuery.addEventListener('change', (event) => {
+      if (!event.matches) {
+        setHeroStatus('');
+        loadHeroVideo();
+        return;
+      }
+      heroVideo.pause();
+      heroSoundRequested = false;
+      heroAudio.pause();
+      heroAudio.removeAttribute('src');
+      heroAudio.load();
+      heroVideo.removeAttribute('src');
+      heroVideo.load();
+      heroVideo.dataset.ready = 'false';
+      heroSoundToggle.disabled = true;
+      setSoundControl(false);
+      setHeroStatus('Cinematic motion is paused for your reduced-motion preference.');
+    });
+  }
+
   /* ---------------------------------------------------------------------
      RELICS (MERCH) SETUP — this is the part that needs your own accounts.
 
@@ -2316,7 +2636,7 @@
     const card = document.createElement('div');
     card.className = 'product';
 
-    const shotStyle = p.image ? ` style="background-image:url('${p.image}')"` : '';
+    const shotStyle = p.image ? ` data-bg="${p.image}"` : '';
     const shotLabel = p.image ? '' : 'No image yet';
 
     const buyButton = p.link
@@ -2333,6 +2653,36 @@
     `;
     grid.appendChild(card);
   });
+
+  const lazyMedia = document.querySelectorAll('[data-bg], img[data-src]');
+  const revealMedia = (element) => {
+    if (element.matches('img[data-src]')) {
+      if (element.dataset.srcset) {
+        element.srcset = element.dataset.srcset;
+        element.removeAttribute('data-srcset');
+      }
+      element.src = element.dataset.src;
+      element.removeAttribute('data-src');
+      return;
+    }
+    const backgroundSource = element.dataset.bg;
+    if (!backgroundSource) return;
+    element.style.backgroundImage = `url("${backgroundSource}")`;
+    element.removeAttribute('data-bg');
+  };
+
+  if ('IntersectionObserver' in window) {
+    const mediaObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        revealMedia(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin:'600px 0px' });
+    lazyMedia.forEach(element => mediaObserver.observe(element));
+  } else {
+    lazyMedia.forEach(revealMedia);
+  }
 </script>
 
 </body>
