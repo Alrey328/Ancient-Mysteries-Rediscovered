@@ -24,16 +24,16 @@
     const video = escapeHtml(assetUrl(original.videoUrl, prefix));
     const title = escapeHtml(original.title || 'AMR Original Film');
     const description = escapeHtml(original.description || '');
-    const frames = Array.isArray(original.viewFrames) && original.viewFrames.length >= 3
+    const frames = original.livingPosterEnabled && Array.isArray(original.viewFrames) && original.viewFrames.length >= 3
       ? original.viewFrames.map(path => escapeHtml(assetUrl(path, prefix)))
       : [];
     return `
       <article class="premiere-card premiere-card--original">
-        <div class="premiere-card-platform">AMR Originals · Interactive Cinema</div>
+        <div class="premiere-card-platform">AMR Originals · Exclusive Film</div>
         <div class="premiere-card-media amr-living-poster" data-living-poster
              ${frames.length ? `data-frames="${escapeHtml(JSON.stringify(frames))}"` : ''}>
           <img src="${poster}" alt="Official story poster for ${title}" width="941" height="1672" loading="lazy">
-          ${frames.length ? '<span class="living-poster-hint" aria-hidden="true">Drag to explore</span>' : ''}
+          <a class="premiere-play" href="${video}" aria-label="Play ${title}" title="Play ${title}">&#9654;</a>
         </div>
         <div class="premiere-card-copy">
           <h3>${title}</h3>
@@ -132,7 +132,7 @@
       const kicker = document.querySelector('.premiere-kicker');
       if (kicker) kicker.textContent = 'Three experiences · one AMR stage';
       const intro = document.querySelector('.premiere-stage-intro p');
-      if (intro) intro.textContent = 'Explore our newest Facebook Reel, YouTube film, and interactive AMR Original.';
+      if (intro) intro.textContent = 'Explore our newest Facebook Reel, YouTube film, and our newest AMR Original film.';
       initLivingPosters(root);
     }
   }
