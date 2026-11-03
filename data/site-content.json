@@ -224,5 +224,14 @@
       "poster": "assets/youtube/KvDYA25gzFQ.jpg",
       "videoUrl": "https://www.youtube.com/watch?v=KvDYA25gzFQ"
     }
-  ]
+  ],
+  "featuredOriginal": {
+    "enabled": true,
+    "livingPosterEnabled": false,
+    "title": "The Laestrygonians — The Terrifying Giants of the Odyssey",
+    "description": "A cinematic AMR Original: Odysseus enters a harbor of giants. Only one ship escapes.",
+    "poster": "assets/originals/laestrygonians/poster.webp",
+    "videoUrl": "assets/originals/laestrygonians/film.mp4",
+    "viewFrames": []
+  }
 }

@@ -703,3 +703,26 @@
     transition: none;
   }
 }
+
+/* AMR Originals V1: equal spotlight without disturbing the existing two-card stage. */
+@media (min-width: 721px) {
+  .premiere-stage-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2.5vw, 32px);
+  }
+  .premiere-stage-grid--three .premiere-card-copy { padding: clamp(18px, 2vw, 26px); }
+  .premiere-stage-grid--three .premiere-card-copy h3 { font-size: clamp(1.1rem, 1.6vw, 1.55rem); }
+}
+.amr-living-poster[data-frames] { touch-action: pan-y; cursor: ew-resize; }
+.amr-living-poster[data-frames] img { user-select: none; -webkit-user-drag: none; pointer-events: none; }
+.living-poster-hint {
+  position: absolute; z-index: 2; bottom: 14px; left: 50%;
+  transform: translateX(-50%); padding: 7px 12px;
+  border: 1px solid rgba(230,189,93,.65); background: rgba(9,11,16,.82);
+  color: #f1ead9; font: 600 .65rem/1.3 'JetBrains Mono', monospace;
+  letter-spacing: .06em; white-space: nowrap; pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .amr-living-poster[data-frames] { cursor: default; }
+  .living-poster-hint { display: none; }
+}

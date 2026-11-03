@@ -16,6 +16,77 @@
   const findFeaturedFilm = (content) =>
     content.youtubeFilms.find((film) => film.id === content.featuredYoutubeId) || content.youtubeFilms[0];
 
+  // A release is featured only when both approved media assets are configured.
+  // Viewpoint frames are optional; a static poster remains the accessible fallback.
+  function renderOriginalCard(original, prefix) {
+    if (!original || !original.poster || !original.videoUrl || !original.enabled) return '';
+    const poster = escapeHtml(assetUrl(original.poster, prefix));
+    const video = escapeHtml(assetUrl(original.videoUrl, prefix));
+    const title = escapeHtml(original.title || 'AMR Original Film');
+    const description = escapeHtml(original.description || '');
+    const frames = original.livingPosterEnabled && Array.isArray(original.viewFrames) && original.viewFrames.length >= 3
+      ? original.viewFrames.map(path => escapeHtml(assetUrl(path, prefix)))
+      : [];
+    return `
+      <article class="premiere-card premiere-card--original">
+        <div class="premiere-card-platform">AMR Originals · Exclusive Film</div>
+        <div class="premiere-card-media amr-living-poster" data-living-poster
+             ${frames.length ? `data-frames="${escapeHtml(JSON.stringify(frames))}"` : ''}>
+          <img src="${poster}" alt="Official story poster for ${title}" width="941" height="1672" loading="lazy">
+          <a class="premiere-play" href="${video}" aria-label="Play ${title}" title="Play ${title}">&#9654;</a>
+        </div>
+        <div class="premiere-card-copy">
+          <h3>${title}</h3>
+          <p>${description}</p>
+          <div class="premiere-actions">
+            <a class="premiere-cta" href="${video}" data-original-watch>Watch the Film &#9654;</a>
+            <a class="premiere-more" href="exclusives/">Explore AMR Originals &#8594;</a>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function initLivingPosters(root) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.querySelectorAll('[data-living-poster][data-frames]').forEach(stage => {
+      let frames;
+      try { frames = JSON.parse(stage.dataset.frames); } catch { return; }
+      if (!Array.isArray(frames) || frames.length < 3) return;
+      const img = stage.querySelector('img');
+      const original = img.src;
+      // Preload all viewpoints; never show a blank frame while images load.
+      const loaded = frames.map(src => {
+        const image = new Image();
+        image.src = src;
+        return image;
+      });
+      let active = false;
+      let current = -1;
+      function showFrame(index) {
+        if (index === current) return;
+        const frame = loaded[index];
+        if (!frame?.complete || !frame.naturalWidth) return;
+        current = index;
+        img.src = frame.src;
+      }
+      stage.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        active = true;
+        stage.setPointerCapture(event.pointerId);
+      });
+      stage.addEventListener('pointermove', event => {
+        if (!active) return;
+        const rect = stage.getBoundingClientRect();
+        const fraction = Math.max(0, Math.min(0.999, (event.clientX - rect.left) / rect.width));
+        showFrame(Math.floor(fraction * frames.length));
+      });
+      const reset = () => { active = false; current = -1; img.src = original; };
+      stage.addEventListener('pointerup', reset);
+      stage.addEventListener('pointercancel', reset);
+      stage.addEventListener('lostpointercapture', reset);
+    });
+  }
+
   function renderHomepageStage(root, content) {
     const reel = content.featuredReel;
     const film = findFeaturedFilm(content);
@@ -53,7 +124,17 @@
             <a class="premiere-more" href="${escapeHtml(youtubeHref)}">See More YouTube Videos &#8594;</a>
           </div>
         </div>
-      </article>`;
+      </article>${renderOriginalCard(content.featuredOriginal, prefix)}`;
+    if (content.featuredOriginal?.enabled && content.featuredOriginal.poster && content.featuredOriginal.videoUrl) {
+      root.classList.add('premiere-stage-grid--three');
+      const heading = document.getElementById('premiere-stage-title');
+      if (heading) heading.textContent = 'Featured Premieres';
+      const kicker = document.querySelector('.premiere-kicker');
+      if (kicker) kicker.textContent = 'Three experiences · one AMR stage';
+      const intro = document.querySelector('.premiere-stage-intro p');
+      if (intro) intro.textContent = 'Explore our newest Facebook Reel, YouTube film, and our newest AMR Original film.';
+      initLivingPosters(root);
+    }
   }
 
   function renderLibrary(root, content) {
