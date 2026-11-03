@@ -226,10 +226,10 @@
     }
   ],
   "featuredOriginal": {
-    "enabled": false,
+    "enabled": true,
     "livingPosterEnabled": false,
-    "title": "The Laestrygonians — A Kingdom of Giants",
-    "description": "Odysseus enters a harbor ruled by giants. A cinematic AMR Original.",
+    "title": "The Laestrygonians — The Terrifying Giants of the Odyssey",
+    "description": "A cinematic AMR Original: Odysseus enters a harbor of giants. Only one ship escapes.",
     "poster": "assets/originals/laestrygonians/poster.webp",
     "videoUrl": "assets/originals/laestrygonians/film.mp4",
     "viewFrames": []
