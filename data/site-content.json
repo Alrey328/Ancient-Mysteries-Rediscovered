@@ -224,5 +224,14 @@
       "poster": "assets/youtube/KvDYA25gzFQ.jpg",
       "videoUrl": "https://www.youtube.com/watch?v=KvDYA25gzFQ"
     }
-  ]
+  ],
+  "featuredOriginal": {
+    "enabled": false,
+    "livingPosterEnabled": false,
+    "title": "The Laestrygonians — A Kingdom of Giants",
+    "description": "Odysseus enters a harbor ruled by giants. A cinematic AMR Original.",
+    "poster": "assets/originals/laestrygonians/poster.webp",
+    "videoUrl": "assets/originals/laestrygonians/film.mp4",
+    "viewFrames": []
+  }
 }
