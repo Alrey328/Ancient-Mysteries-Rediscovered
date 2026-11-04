@@ -1,34 +1,50 @@
-# AMR Exclusive counters — staged Cloudflare Worker + D1
+# AMR Exclusive engagement — Cloudflare Worker + D1
 
-This is an **undeployed** candidate backend. Do not publish until owner approves a Cloudflare account/database, confirms costs, and validates the complete flow.
+This service owns anonymous Like totals and qualified View totals for AMR-hosted original films. It is intentionally independent of Facebook, YouTube, and GoatCounter.
 
-## Provisioning (owner approval required)
-1. Create a Cloudflare D1 database named `amr-exclusive-engagement`.
-2. Fill the real D1 binding in `wrangler.toml`; do not commit account secrets.
-3. Apply `schema.sql` to D1.
-4. Configure `VISITOR_HASH_SECRET` using a secret (never in GitHub).
-5. Deploy Worker under an HTTPS endpoint, then configure `window.AMR_ENGAGEMENT_ENDPOINT` before the page's engagement script.
-6. Confirm CORS on the production origin, real Like/unlike persistence, qualified plays, mobile playback and browser errors.
+## Existing resources
 
-## Counting semantics
-- Likes: one active Like per locally generated anonymous visitor UUID and film; toggling is idempotent.
-- Views: one qualified event per UUID, film, and UTC day, after the browser reports 3 seconds of sequential playback.
-- Counters are independent of Facebook and YouTube. A visitor can clear storage or forge requests; this is **not** one-per-human, proof-of-watch, or bot-proof.
-- Request-rate limiting is approximate; investigate stronger bot protection if abuse occurs.
-- Visitor UUIDs and IPs are HMAC-hashed server-side. Rate-limit records require periodic cleanup and a documented retention policy.
-- Keep the worker's allowlist updated when adding a new AMR Original.
+- Worker: `amr-exclusive-engagement`
+- URL: `https://amr-exclusive-engagement.belizean328.workers.dev`
+- D1 database and binding: `amr-exclusive-engagement` as `DB`
+- D1 database ID: recorded in `wrangler.toml`
+- Secret: `VISITOR_HASH_SECRET` must exist as a Cloudflare Worker secret and must be at least 32 characters. Never store or print its value.
 
-## Release blockers
-- Confirm Cloudflare D1 billing and limits; this code does not provision an account.
-- Validate API error paths, CORS preflight, replay/refresh, mobile playback, and rate limits.
-- Implement retention cleanup for rate_events and privacy disclosure.
-- Verify that existing Enuk player and featured Laestrygonians routes work end-to-end.
-- Test against a nonproduction D1 database first.
+Do not create replacement resources. Do not enable a paid plan, paid overages, or a trial that converts to paid.
 
-## Owner cost policy (November 2026)
-- **Workers Free + D1 Free only**. Do not enable Workers Paid, paid overages, automatic upgrades, or a trial-to-paid subscription.
-- Official limits checked: Workers 100,000 requests/day; D1 5 million rows read/day, 100,000 rows written/day, 5 GB account storage, 500 MB maximum per free database.
-- Free-tier exhaustion must degrade engagement counters gracefully, never affect film playback or charge the owner.
-- Before deployment, optimize COUNT(*) reads and rate-event retention so traffic does not exhaust D1 quotas; run load/abuse simulations.
-- Review Cloudflare account plan and billing controls before provisioning. No deployment until owner has approved the Cloudflare setup.
-- Sources: https://developers.cloudflare.com/workers/platform/limits/ and https://developers.cloudflare.com/d1/platform/pricing/ and https://developers.cloudflare.com/d1/reference/faq/
+## Safe validation and deployment
+
+From this directory:
+
+```sh
+npm test
+npx wrangler d1 execute amr-exclusive-engagement --local --file schema.sql
+npx wrangler dev --local
+```
+
+Remote inspection and all writes require the owner's Cloudflare login. Before deployment, verify the account is on Workers Free and the existing binding is named exactly `DB`. Applying `schema.sql` is idempotent and migrates the earlier event tables to indexed, trigger-maintained totals.
+
+Only after explicit owner approval:
+
+```sh
+npx wrangler d1 execute amr-exclusive-engagement --remote --file schema.sql
+npx wrangler secret put VISITOR_HASH_SECRET
+npx wrangler deploy
+```
+
+Generate a new high-entropy secret locally and paste it only into Wrangler's hidden prompt. Never put the value on a command line. Rotating the secret breaks association with prior anonymous visitor hashes, so treat rotation as an operational migration.
+
+## Counting and privacy semantics
+
+- Likes: one active Like per locally generated anonymous UUID and film; PUT/DELETE are idempotent.
+- Views: one View per UUID, film, and UTC day after at least three seconds of actual progressive playback.
+- The browser UUID is HMAC-hashed before D1 storage. Cloudflare's connecting IP is separately HMAC-hashed and retained only in minute rate-limit buckets.
+- Rate-limit buckets expire after 48 hours through sampled indexed cleanup.
+- No raw IP address, account identity, email, or secret is stored.
+- Clearing storage, changing devices, or forging requests can create additional anonymous identities. These are engagement indicators, not audited unique-person metrics.
+
+## Free-tier behavior
+
+Counter reads are point lookups from `engagement_totals`, avoiding repeated `COUNT(*)` scans. Database triggers keep totals synchronized only when an idempotent insert/delete actually changes a row. Mutation traffic is rate-limited to 6 view attempts or 10 Like operations per IP per minute. If the Worker, D1, network, or free quota is unavailable, the static video continues to play and only the counters degrade.
+
+The video allowlist and `engagement_totals` seed rows must both be extended when a new AMR Original is released.

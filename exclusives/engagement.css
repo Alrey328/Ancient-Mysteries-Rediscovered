@@ -1,7 +1,9 @@
 /* AMR Exclusive engagement: reusable across releases */
 .amr-engagement{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin:14px auto;color:#e9e3d0;font:600 14px/1.4 system-ui,sans-serif}
-.amr-engagement button{background:#292c36;color:#f4dc9c;border:1px solid #947444;border-radius:24px;padding:9px 16px;font:inherit;min-width:88px}
+.amr-engagement button{background:#292c36;color:#f4dc9c;border:1px solid #947444;border-radius:24px;padding:9px 16px;font:inherit;min-width:96px;min-height:44px;cursor:pointer}
 .amr-engagement button[aria-pressed="true"]{background:#71551f;color:#fff}
 .amr-engagement button:focus-visible{outline:3px solid #f5db98;outline-offset:3px}
 .amr-engagement button:disabled{opacity:.65;cursor:not-allowed}
-.amr-engagement [data-amr-status]{flex-basis:100%;font-size:12px;font-weight:400;color:#bbb5a2}
+.amr-engagement [data-amr-likes],.amr-engagement [data-amr-views]{min-width:6.5em;font-variant-numeric:tabular-nums}
+.amr-engagement [data-amr-status]{flex-basis:100%;min-height:1.4em;font-size:12px;font-weight:400;color:#bbb5a2}
+@media(max-width:420px){.amr-engagement{gap:9px}.amr-engagement button{flex-basis:100%}}

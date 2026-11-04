@@ -1,23 +1,40 @@
-# AMR Exclusive engagement V1 — backend integration contract
+# AMR Exclusive engagement integration
 
-The frontend is staged only. It **does not** provide public counters until an owner-approved HTTPS backend is configured using `window.AMR_ENGAGEMENT_ENDPOINT` before `engagement.js`. Do not merge until backend and integration tests pass.
+The shared `engagement.js` component is enabled only on AMR-hosted originals. Each page supplies a video ID, player ID, and the existing Worker endpoint through the `amr-engagement-api` meta tag.
 
-## API
-For video ID `enuk`:
-- `GET /videos/enuk` -> `{"likes":0,"views":0}`
-- `PUT /videos/enuk/like` with `{"visitorKey":"uuid"}` -> updated totals
-- `DELETE /videos/enuk/like` with same payload -> updated totals
-- `POST /videos/enuk/view` with `{"visitorKey":"uuid","qualifiedSeconds":3}` -> updated totals
+## API contract
 
-All responses must be JSON with nonnegative integer `likes` and `views`. CORS must allow the AMR site origin and methods GET/PUT/DELETE/POST. No secret tokens in public JS.
+For each allowlisted video ID (`enuk` and `laestrygonians`):
 
-## Required backend protections
-- Atomic increments and decrements; idempotent per-visitor Like state and qualified view deduplication.
-- Server-side validation, rate limits, origin checks, and bot mitigation. Never trust client-reported seconds as proof of watching.
-- Anonymous visitor keys are weak identifiers and may be cleared, forged or duplicated; do not promise exact unique viewers or one Like per human.
-- Establish privacy/retention policy for visitor keys and IP metadata; minimize collected data.
-- Never substitute GoatCounter pageviews for qualified plays.
-- Configure health checks and test on mobile/desktop before release.
+- `GET /videos/:id` returns `{"likes":0,"views":0}`.
+- `PUT /videos/:id/like` with `{"visitorKey":"uuid"}` records an idempotent Like.
+- `DELETE /videos/:id/like` with the same body removes that Like.
+- `POST /videos/:id/view` with `{"visitorKey":"uuid","qualifiedSeconds":3}` records an idempotent daily qualified View.
 
-## Current limitations
-The static GitHub Pages frontend cannot securely persist global counters by itself. The UI fails closed with unavailable labels. Backend selection, deployment, CORS, real persistence, and end-to-end tests remain pending.
+All successful responses contain nonnegative integer totals. Mutation CORS is restricted to the AMR production origins. No secret or raw personal information is present in public JavaScript.
+
+## Playback behavior
+
+- Qualification accumulates wall-clock time only while the media is actually advancing, not while paused, seeking, stalled, or merely loaded.
+- Playback speed does not shorten the three-second threshold.
+- Looping cannot submit a second View in the same page session.
+- Refreshes and repeat playback are deduplicated by the backend for the same anonymous visitor, film, and UTC day.
+- Failed View submissions retry idempotently up to three times and never pause or block the film.
+- If local storage is unavailable, a memory-only anonymous UUID is used for the current page lifetime.
+
+## Reuse for a future AMR Original
+
+Add an allowlisted backend ID and an `engagement_totals` seed row, then add the standard markup to the AMR-hosted film page:
+
+```html
+<meta name="amr-engagement-api" content="https://amr-exclusive-engagement.belizean328.workers.dev">
+<video id="film-player" controls playsinline>...</video>
+<div class="amr-engagement" data-amr-engagement data-video-id="new-film" data-player-id="film-player">
+  <button type="button" data-amr-like disabled aria-pressed="false">♡ Like</button>
+  <span data-amr-likes aria-live="polite">Likes unavailable</span>
+  <span data-amr-views aria-live="polite">Views unavailable</span>
+  <span data-amr-status role="status"></span>
+</div>
+```
+
+Never add this component to Facebook Reels, YouTube embeds, or outbound cards.
