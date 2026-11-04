@@ -22,6 +22,7 @@
     if (!original || !original.poster || !original.videoUrl || !original.enabled) return '';
     const poster = escapeHtml(assetUrl(original.poster, prefix));
     const video = escapeHtml(assetUrl(original.videoUrl, prefix));
+    const watchPage = escapeHtml(assetUrl('exclusives/laestrygonians/', prefix));
     const title = escapeHtml(original.title || 'AMR Original Film');
     const description = escapeHtml(original.description || '');
     const frames = original.livingPosterEnabled && Array.isArray(original.viewFrames) && original.viewFrames.length >= 3
@@ -33,13 +34,13 @@
         <div class="premiere-card-media amr-living-poster" data-living-poster
              ${frames.length ? `data-frames="${escapeHtml(JSON.stringify(frames))}"` : ''}>
           <img src="${poster}" alt="Official story poster for ${title}" width="941" height="1672" loading="lazy">
-          <a class="premiere-play" href="${video}" aria-label="Play ${title}" title="Play ${title}">&#9654;</a>
+          <a class="premiere-play" href="${watchPage}" aria-label="Play ${title}" title="Play ${title}">&#9654;</a>
         </div>
         <div class="premiere-card-copy">
           <h3>${title}</h3>
           <p>${description}</p>
           <div class="premiere-actions">
-            <a class="premiere-cta" href="${video}" data-original-watch>Watch the Film &#9654;</a>
+            <a class="premiere-cta" href="${watchPage}" data-original-watch>Watch the Film &#9654;</a>
             <a class="premiere-more" href="exclusives/">Explore AMR Originals &#8594;</a>
           </div>
         </div>
