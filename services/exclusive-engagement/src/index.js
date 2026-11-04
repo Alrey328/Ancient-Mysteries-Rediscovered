@@ -35,7 +35,7 @@ async function rateLimit(db, key, action, limit) {
 export default {
   async fetch(request, env) {
     const origin=request.headers.get('Origin')||'';
-    if (request.method==='OPTIONS') return origin===ALLOWED_ORIGIN ? json({},204,origin) : json({error:'Origin denied'},403);
+    if (request.method==='OPTIONS') return origin===ALLOWED_ORIGIN ? new Response(null,{status:204,headers:{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Methods':'GET, PUT, DELETE, POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type, Accept','Vary':'Origin'}}) : json({error:'Origin denied'},403);
     if (!env.DB || !env.VISITOR_HASH_SECRET) return json({error:'Service not configured'},503,origin);
     const url=new URL(request.url);
     const match=url.pathname.match(/^\/videos\/([a-z0-9-]+)(?:\/(like|view))?\/?$/);
