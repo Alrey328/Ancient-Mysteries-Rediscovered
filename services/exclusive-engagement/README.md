@@ -24,3 +24,11 @@ This is an **undeployed** candidate backend. Do not publish until owner approves
 - Implement retention cleanup for rate_events and privacy disclosure.
 - Verify that existing Enuk player and featured Laestrygonians routes work end-to-end.
 - Test against a nonproduction D1 database first.
+
+## Owner cost policy (November 2026)
+- **Workers Free + D1 Free only**. Do not enable Workers Paid, paid overages, automatic upgrades, or a trial-to-paid subscription.
+- Official limits checked: Workers 100,000 requests/day; D1 5 million rows read/day, 100,000 rows written/day, 5 GB account storage, 500 MB maximum per free database.
+- Free-tier exhaustion must degrade engagement counters gracefully, never affect film playback or charge the owner.
+- Before deployment, optimize COUNT(*) reads and rate-event retention so traffic does not exhaust D1 quotas; run load/abuse simulations.
+- Review Cloudflare account plan and billing controls before provisioning. No deployment until owner has approved the Cloudflare setup.
+- Sources: https://developers.cloudflare.com/workers/platform/limits/ and https://developers.cloudflare.com/d1/platform/pricing/ and https://developers.cloudflare.com/d1/reference/faq/
