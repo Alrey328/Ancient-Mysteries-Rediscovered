@@ -1,0 +1,9 @@
+name = "amr-exclusive-engagement"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Set the D1 database_id after creating a database in the owner's Cloudflare account.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "amr-exclusive-engagement"
+# database_id = "REPLACE_WITH_REAL_D1_ID"
