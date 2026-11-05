@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ancientmysteriesrediscovered.com/sitemap.xml
