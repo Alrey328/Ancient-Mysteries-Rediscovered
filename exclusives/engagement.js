@@ -78,6 +78,12 @@
 
     try { liked = localStorage.getItem(storageKey) === 'yes'; } catch (_) {}
 
+    function syncButtonState() {
+      button.disabled = !totalsLoaded || busy;
+      button.setAttribute('aria-pressed', String(liked));
+      button.textContent = liked ? '♥ Liked' : '♡ Like';
+    }
+
     function render(data) {
       if (!data
         || !Number.isSafeInteger(data.likes)
@@ -88,11 +94,9 @@
       }
       likes.textContent = displayCount(data.likes, 'Like');
       views.textContent = displayCount(data.views, 'View');
-      button.disabled = false;
-      button.setAttribute('aria-pressed', String(liked));
-      button.textContent = liked ? '♥ Liked' : '♡ Like';
       status.textContent = '';
       totalsLoaded = true;
+      syncButtonState();
     }
 
     async function request(path, options = {}) {
@@ -122,12 +126,13 @@
       status.textContent = 'Engagement counters are temporarily unavailable. Playback is unaffected.';
     }
 
+    syncButtonState();
     request('').then(render).catch(showUnavailable);
 
     button.addEventListener('click', async () => {
       if (busy || button.disabled) return;
       busy = true;
-      button.disabled = true;
+      syncButtonState();
       const next = !liked;
       try {
         const data = await request('/like', {
@@ -140,9 +145,9 @@
         render(data);
       } catch (_) {
         status.textContent = 'Could not update your Like. Please try again.';
-        button.disabled = false;
       } finally {
         busy = false;
+        syncButtonState();
       }
     });
 
@@ -217,6 +222,7 @@
     video.addEventListener('waiting', stopPlaybackClock);
     video.addEventListener('seeking', resetPlaybackSample);
     video.addEventListener('ended', stopPlaybackClock);
+    window.addEventListener('pageshow', syncButtonState);
     window.addEventListener('pagehide', stopPlaybackClock, { once: true });
   }
 

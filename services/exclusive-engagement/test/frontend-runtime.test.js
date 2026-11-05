@@ -12,11 +12,12 @@ const componentSource = fs.readFileSync(
   'utf8'
 );
 
-function runtime() {
+function runtime(runtimeOptions = {}) {
   const listeners = new Map();
   const buttonListeners = new Map();
+  const windowListeners = new Map();
   const calls = [];
-  const storage = new Map();
+  const storage = new Map(runtimeOptions.storageEntries || []);
   const nodes = {
     button: {
       disabled: true,
@@ -66,6 +67,7 @@ function runtime() {
     },
     fetch: async (url, options) => {
       calls.push({ url, options });
+      if (runtimeOptions.fetch) return runtimeOptions.fetch(url, options);
       return { ok: true, status: 200, json: async () => ({ likes: 4, views: 7 }) };
     },
     localStorage: {
@@ -77,13 +79,18 @@ function runtime() {
     clearInterval: () => { intervalHandler = undefined; },
     setTimeout: () => 1,
     clearTimeout: () => {},
-    window: { addEventListener: () => {} }
+    window: {
+      addEventListener(name, handler) { windowListeners.set(name, handler); }
+    }
   };
   vm.runInNewContext(componentSource, context, { filename: 'engagement.js' });
   return {
     calls,
+    click() { return buttonListeners.get('click')?.(); },
     emit(name) { listeners.get(name)?.(); },
+    emitWindow(name) { windowListeners.get(name)?.(); },
     nodes,
+    storage,
     video,
     tick(milliseconds = 250) {
       now += milliseconds;
@@ -137,4 +144,72 @@ test('pause time and seeking jumps do not qualify as playback', async () => {
   for (let index = 0; index < 8; index += 1) page.tick();
   await flush();
   assert.equal(page.calls.filter(call => call.options.method === 'POST').length, 0);
+});
+
+test('refresh restores liked state and permits unlike then Like again', async () => {
+  let totals = { likes: 1, views: 1 };
+  const page = runtime({
+    storageEntries: [
+      ['amr-exclusive-liked:enuk', 'yes'],
+      ['amr-exclusive-visitor-v1', '123e4567-e89b-42d3-a456-426614174000']
+    ],
+    fetch: async (_url, options) => {
+      if (options.method === 'DELETE') totals = { ...totals, likes: 0 };
+      if (options.method === 'PUT') totals = { ...totals, likes: 1 };
+      return { ok: true, status: 200, json: async () => totals };
+    }
+  });
+  await flush();
+
+  assert.equal(page.nodes.button.disabled, false);
+  assert.equal(page.nodes.button.attributes.get('aria-pressed'), 'true');
+  assert.equal(page.nodes.button.textContent, '♥ Liked');
+
+  await page.click();
+  assert.equal(page.calls.at(-1).options.method, 'DELETE');
+  assert.equal(page.storage.get('amr-exclusive-liked:enuk'), 'no');
+  assert.equal(page.nodes.button.disabled, false);
+  assert.equal(page.nodes.button.textContent, '♡ Like');
+  assert.equal(page.nodes.likes.textContent, '0 Likes');
+
+  await page.click();
+  assert.equal(page.calls.at(-1).options.method, 'PUT');
+  assert.equal(page.storage.get('amr-exclusive-liked:enuk'), 'yes');
+  assert.equal(page.nodes.button.disabled, false);
+  assert.equal(page.nodes.button.textContent, '♥ Liked');
+  assert.equal(page.nodes.likes.textContent, '1 Like');
+});
+
+test('pageshow repairs a browser-restored disabled state after totals load', async () => {
+  const page = runtime({
+    storageEntries: [['amr-exclusive-liked:enuk', 'yes']]
+  });
+  await flush();
+  assert.equal(page.nodes.button.disabled, false);
+
+  // Chrome may restore the static disabled form-control state during navigation.
+  page.nodes.button.disabled = true;
+  page.emitWindow('pageshow');
+
+  assert.equal(page.nodes.button.disabled, false);
+  assert.equal(page.nodes.button.attributes.get('aria-pressed'), 'true');
+  assert.equal(page.nodes.button.textContent, '♥ Liked');
+});
+
+test('a Like mutation failure preserves loaded totals and re-enables the control', async () => {
+  let requestCount = 0;
+  const page = runtime({
+    fetch: async () => {
+      requestCount += 1;
+      if (requestCount > 1) throw new Error('simulated mutation failure');
+      return { ok: true, status: 200, json: async () => ({ likes: 1, views: 1 }) };
+    }
+  });
+  await flush();
+  await page.click();
+
+  assert.equal(page.nodes.likes.textContent, '1 Like');
+  assert.equal(page.nodes.views.textContent, '1 View');
+  assert.equal(page.nodes.button.disabled, false);
+  assert.equal(page.nodes.status.textContent, 'Could not update your Like. Please try again.');
 });
