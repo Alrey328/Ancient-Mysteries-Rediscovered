@@ -71,11 +71,15 @@
 
   document.querySelectorAll('[data-cinema-comments]').forEach(target => {
     const term = target.dataset.cinemaComments;
-    if (typeof renderGiscus === 'function') {
-      target.replaceChildren();
-      renderGiscus(target, term);
-    } else {
-      target.innerHTML = '<p>Comments are temporarily unavailable. <a href="../../discussions/">Visit AMR Discussions</a>.</p>';
-    }
+    const loadButton = target.querySelector('[data-load-comments]');
+    if (!loadButton) return;
+    loadButton.addEventListener('click', () => {
+      if (typeof renderGiscus === 'function') {
+        target.replaceChildren();
+        renderGiscus(target, term);
+      } else {
+        target.innerHTML = '<p>Comments are temporarily unavailable. <a href="../../discussions/">Visit AMR Discussions</a>.</p>';
+      }
+    }, { once: true });
   });
 })();

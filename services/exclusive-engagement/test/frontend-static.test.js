@@ -90,6 +90,8 @@ test('Cinema SEO uses one collection canonical and existing film canonicals', ()
     const matches = [...html.matchAll(/<link rel="canonical" href="([^"]+)">/g)];
     assert.equal(matches.length, 1, `${page} has one canonical`);
     assert.equal(matches[0][1], canonical);
+    const openGraphUrl = html.match(/<meta property="og:url" content="([^"]+)">/)?.[1];
+    assert.equal(openGraphUrl, canonical, `${page} Open Graph URL matches its canonical`);
   }
   const sitemap = fs.readFileSync(path.join(repoDir, 'sitemap.xml'), 'utf8');
   assert.match(sitemap, /<loc>https:\/\/ancientmysteriesrediscovered\.com\/cinema\/<\/loc>/);

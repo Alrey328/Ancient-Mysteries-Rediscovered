@@ -576,6 +576,19 @@ video:focus-visible {
 
 .viewer-comments-note a { color: var(--cinema-gold-bright); }
 
+.viewer-comments [data-load-comments] {
+  min-height: 46px;
+  margin-top: 8px;
+  padding: 11px 18px;
+  border: 1px solid var(--cinema-gold);
+  background: var(--cinema-gold);
+  color: #0b0c10;
+  font: 700 0.7rem/1.2 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .viewer-related {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
