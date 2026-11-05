@@ -2,10 +2,11 @@
 
 ## Reused production systems
 
+- `/cinema/` is a direct featured-film viewing route: title, playable film, engagement/share controls, consent-based discussion, then recommendations. Dedicated film selections use the same uninterrupted layout.
 - Film media stays on the existing static site: `media/Enuk_AMR_Exclusive_web.mp4` and `assets/originals/laestrygonians/film.mp4`.
 - Posters and film IDs remain unchanged.
 - Cinema viewing pages load `exclusives/engagement.js` and use the existing `enuk` and `laestrygonians` IDs. Likes and qualified views therefore use the existing Worker, D1 records, visitor key, rate limits, and three-second view qualification.
-- Comments reuse the repository's existing Giscus configuration and GitHub Discussions category.
+- Comments reuse the repository's existing Giscus configuration and GitHub Discussions category. Cinema uses stable film-specific terms so the featured and dedicated Laestrygonians routes share one thread instead of splitting the conversation by pathname.
 - Existing Exclusives pages remain intact and are the canonical film URLs. Cinema viewing routes are alternate presentation URLs; only the distinct `/cinema/` collection page is added to the sitemap.
 
 ## Comment system decision

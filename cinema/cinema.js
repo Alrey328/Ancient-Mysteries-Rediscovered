@@ -76,7 +76,7 @@
     loadButton.addEventListener('click', () => {
       if (typeof renderGiscus === 'function') {
         target.replaceChildren();
-        renderGiscus(target, term);
+        renderGiscus(target, term, 'specific');
       } else {
         target.innerHTML = '<p>Comments are temporarily unavailable. <a href="../../discussions/">Visit AMR Discussions</a>.</p>';
       }

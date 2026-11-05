@@ -38,6 +38,12 @@
 
   <main class="viewer-main cinema-wrap">
     <p class="viewer-breadcrumb"><a href="../">AMR Cinema</a> <span aria-hidden="true">/</span> Screening room 002</p>
+    <section class="viewer-intro" aria-labelledby="film-title">
+      <p class="cinema-label">AMR Original · Release 002 · 34 seconds</p>
+      <h1 id="film-title">The Laestrygonians — The Terrifying Giants of the Odyssey</h1>
+      <p class="viewer-description">Odysseus enters a harbor of giants. Only one ship escapes. Step inside the legendary encounter and decide what the story may have preserved.</p>
+    </section>
+
     <section class="viewer-stage" aria-label="The Laestrygonians film player">
       <div class="viewer-player-shell" data-cinema-player>
         <video id="cinema-laestrygonians-video" class="viewer-player" controls playsinline preload="metadata" poster="../../assets/originals/laestrygonians/poster.webp" aria-label="Watch The Laestrygonians — The Terrifying Giants of the Odyssey">
@@ -50,27 +56,22 @@
       </div>
     </section>
 
-    <section class="viewer-copy" aria-labelledby="film-title">
-      <div>
-        <p class="cinema-label">AMR Original · Release 002 · 34 seconds</p>
-        <h1 id="film-title">The Laestrygonians — The Terrifying Giants of the Odyssey</h1>
-        <p class="viewer-description">Odysseus enters a harbor of giants. Only one ship escapes. Step inside the legendary encounter and decide what the story may have preserved.</p>
+    <section class="viewer-toolbar" aria-label="Film engagement and sharing">
+      <div class="amr-engagement" data-amr-engagement data-video-id="laestrygonians" data-player-id="cinema-laestrygonians-video" aria-label="Film engagement">
+        <span data-amr-views aria-live="polite">Views unavailable</span>
+        <button type="button" data-amr-like disabled aria-pressed="false">♡ Like</button>
+        <span data-amr-likes aria-live="polite">Likes unavailable</span>
+        <span data-amr-status role="status"></span>
       </div>
-      <div class="viewer-actions">
-        <div class="amr-engagement" data-amr-engagement data-video-id="laestrygonians" data-player-id="cinema-laestrygonians-video" aria-label="Film engagement">
-          <span data-amr-views aria-live="polite">Views unavailable</span>
-          <button type="button" data-amr-like disabled aria-pressed="false">♡ Like</button>
-          <span data-amr-likes aria-live="polite">Likes unavailable</span>
-          <span data-amr-status role="status"></span>
-        </div>
+      <div class="viewer-share-group">
         <button class="viewer-share" type="button" data-share-film data-share-title="The Laestrygonians | AMR Cinema" data-share-url="/cinema/laestrygonians/" aria-describedby="share-status">Share film</button>
         <p class="viewer-share-status" id="share-status" role="status"></p>
       </div>
     </section>
 
-    <section class="viewer-section" aria-labelledby="comments-title">
+    <section class="viewer-section viewer-section--comments" aria-labelledby="comments-title">
       <div class="viewer-section-heading">
-        <p>Viewer discussion</p>
+        <p>Comments &amp; discussion</p>
         <h2 id="comments-title">Join the conversation</h2>
         <p>Comments and replies are hosted through GitHub Discussions. Watching and liking never require an account; commenting currently requires a free GitHub account.</p>
       </div>
@@ -81,10 +82,10 @@
       <p class="viewer-comments-note">Comments are governed by GitHub's account and privacy policies. AMR moderators can hide, report, lock, or delete discussion content through the repository's Discussions controls.</p>
     </section>
 
-    <section class="viewer-section" aria-labelledby="related-title">
+    <section class="viewer-section" id="recommendations" aria-labelledby="related-title">
       <div class="viewer-section-heading">
-        <p>Continue watching</p>
-        <h2 id="related-title">Another AMR Original</h2>
+        <p>Watch another film</p>
+        <h2 id="related-title">More from AMR Cinema</h2>
       </div>
       <a class="viewer-related" href="../enuk/">
         <img src="../../Enkidu%20Poster.png" alt="Enuk: The Wildman poster" loading="lazy">

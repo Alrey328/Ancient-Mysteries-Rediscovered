@@ -491,16 +491,11 @@ video:focus-visible {
   box-shadow: 0 14px 50px rgba(0, 0, 0, 0.55);
 }
 
-.viewer-copy {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 28px 54px;
-  align-items: start;
-  padding-block: 42px 52px;
-  border-bottom: 1px solid var(--cinema-line);
+.viewer-intro {
+  padding-bottom: 30px;
 }
 
-.viewer-copy h1 {
+.viewer-intro h1 {
   max-width: 850px;
   margin: 10px 0 0;
   font: 600 clamp(2rem, 5vw, 4.4rem)/1.08 'Cinzel', serif;
@@ -509,19 +504,27 @@ video:focus-visible {
 
 .viewer-description { max-width: 760px; margin: 20px 0 0; color: var(--cinema-muted); font-size: 1.08rem; }
 
-.viewer-actions { min-width: 250px; }
+.viewer-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px 36px;
+  padding-block: 18px 32px;
+  border-bottom: 1px solid var(--cinema-line);
+}
 
 .viewer-page .amr-engagement {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: end;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
   gap: 10px 14px;
   margin: 0;
   color: var(--cinema-bone);
   font: 600 0.77rem/1.35 'JetBrains Mono', monospace;
 }
 
-.viewer-page .amr-engagement [data-amr-views] { grid-column: 1 / -1; color: var(--cinema-gold-bright); text-align: right; }
+.viewer-page .amr-engagement [data-amr-views] { color: var(--cinema-gold-bright); }
 
 .viewer-page .amr-engagement button {
   min-height: 44px;
@@ -537,12 +540,14 @@ video:focus-visible {
 .viewer-page .amr-engagement button[aria-pressed="true"] { background: #6f531f; color: #fff; }
 .viewer-page .amr-engagement button:disabled { opacity: 0.62; cursor: not-allowed; }
 .viewer-page .amr-engagement [data-amr-likes] { align-self: center; }
-.viewer-page .amr-engagement [data-amr-status] { grid-column: 1 / -1; max-width: 300px; min-height: 1.4em; color: var(--cinema-muted); font-size: 0.67rem; text-align: right; }
+.viewer-page .amr-engagement [data-amr-status] { flex-basis: 100%; min-height: 1.4em; color: var(--cinema-muted); font-size: 0.67rem; }
+
+.viewer-share-group { min-width: 190px; }
 
 .viewer-share {
   width: 100%;
   min-height: 44px;
-  margin-top: 12px;
+  margin: 0;
   border: 1px solid rgba(224, 189, 108, 0.35);
   background: transparent;
   color: var(--cinema-bone);
@@ -554,7 +559,8 @@ video:focus-visible {
 
 .viewer-share-status { min-height: 1.4em; margin: 7px 0 0; color: var(--cinema-muted); font-size: 0.8rem; text-align: right; }
 
-.viewer-section { padding-top: 72px; }
+.viewer-section { padding-top: 64px; }
+.viewer-section--comments { padding-top: 44px; }
 
 .viewer-section-heading p { margin: 0; color: var(--cinema-gold); font: 600 0.67rem/1.4 'JetBrains Mono', monospace; letter-spacing: 0.11em; text-transform: uppercase; }
 .viewer-section-heading h2 { margin: 9px 0 0; font: 600 clamp(1.7rem, 3vw, 2.7rem)/1.2 'Cinzel', serif; }
@@ -612,13 +618,9 @@ video:focus-visible {
   .cinema-feature-poster { min-height: 0; aspect-ratio: 4 / 5; }
   .cinema-grid { grid-template-columns: 1fr; }
   .cinema-card { grid-template-columns: minmax(180px, 0.62fr) minmax(0, 1.38fr); }
-  .viewer-copy { grid-template-columns: 1fr; }
-  .viewer-actions { min-width: 0; }
-  .viewer-page .amr-engagement { justify-content: start; }
-  .viewer-page .amr-engagement [data-amr-views],
-  .viewer-page .amr-engagement [data-amr-status],
+  .viewer-toolbar { flex-direction: column; }
+  .viewer-share-group { width: min(100%, 260px); }
   .viewer-share-status { text-align: left; }
-  .viewer-share { width: auto; min-width: 210px; }
 }
 
 @media (max-width: 680px) {
@@ -643,9 +645,10 @@ video:focus-visible {
   .viewer-main { padding-top: 24px; }
   .viewer-stage { min-height: 0; padding: 10px; }
   .viewer-player-shell { width: min(100%, 460px); max-height: none; }
-  .viewer-copy { padding-block: 30px 38px; }
-  .viewer-page .amr-engagement { grid-template-columns: 1fr 1fr; width: 100%; }
-  .viewer-page .amr-engagement button { width: 100%; }
+  .viewer-intro { padding-bottom: 24px; }
+  .viewer-toolbar { padding-block: 14px 28px; }
+  .viewer-page .amr-engagement { width: 100%; }
+  .viewer-page .amr-engagement [data-amr-views] { flex-basis: 100%; }
   .viewer-share { width: 100%; }
   .viewer-comments { padding: 16px; }
   .viewer-related { grid-template-columns: 118px minmax(0, 1fr); gap: 16px; }
