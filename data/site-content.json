@@ -232,6 +232,7 @@
     "description": "A cinematic AMR Original: Odysseus enters a harbor of giants. Only one ship escapes.",
     "poster": "assets/originals/laestrygonians/poster.webp",
     "videoUrl": "assets/originals/laestrygonians/film.mp4",
+    "watchPage": "exclusives/laestrygonians/",
     "viewFrames": []
   }
 }

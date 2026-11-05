@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="amr-engagement-api" content="https://amr-exclusive-engagement.belizean328.workers.dev">
 <title>AMR Exclusives | Ancient Mysteries Rediscovered</title>
 <meta name="description" content="Watch original cinematic mysteries independently hosted by Ancient Mysteries Rediscovered.">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="engagement.css">
 <style>
 .exclusive-feature{text-align:center;background:radial-gradient(ellipse at 50% 32%,#30313b 0%,#1b1d26 65%,#14161d 100%);border-color:#806637;box-shadow:0 18px 65px #0007;padding:clamp(16px,3vw,32px)}
 .exclusive-feature h2{font-size:clamp(1.5rem,4vw,2.3rem);margin:8px 0}
@@ -29,7 +30,7 @@
 <div class="enuk-stage" id="enuk-stage"><span class="enuk-stage-label">AMR Original Film · 25 sec</span>
 <video id="enuk-video" controls playsinline preload="metadata" poster="../Enkidu%20Poster.png" aria-label="Play Enuk the Wildman, an AMR original film"><source src="../media/Enuk_AMR_Exclusive_web.mp4" type="video/mp4">Your browser does not support video playback.</video>
 <button class="enuk-play" id="enuk-play" type="button" aria-label="Play Enuk the Wildman film"><span class="enuk-play-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5v17l14-8.5z"/></svg></span></button></div>
-<p class="release-note">AI-assisted artistic reconstruction. Legendary narratives are not presented as verified historical events.</p>
+<div class="amr-engagement" data-amr-engagement data-video-id="enuk" data-player-id="enuk-video" aria-label="Video engagement"><button type="button" data-amr-like disabled aria-pressed="false">♡ Like</button><span data-amr-likes aria-live="polite">Likes unavailable</span><span data-amr-views aria-live="polite">Views unavailable</span><span data-amr-status role="status"></span></div><p class="release-note">AI-assisted artistic reconstruction. Legendary narratives are not presented as verified historical events.</p>
 <button id="share" type="button">Share this mystery</button>
 </article></main>
 <footer><small>Ancient Mysteries Rediscovered · Independent original releases</small></footer>
@@ -40,4 +41,4 @@ enukVideo.addEventListener('play',()=>{enukPlay.hidden=true;enukStage.classList.
 enukVideo.addEventListener('ended',()=>{enukPlay.hidden=false;enukStage.classList.remove('is-playing')});
 enukVideo.addEventListener('error',()=>{enukPlay.hidden=false});
 document.getElementById('share').addEventListener('click',async()=>{const u=new URL('enuk/?utm_source=share&utm_medium=referral&utm_campaign=enuk_pilot',location.href).href;if(navigator.share){try{await navigator.share({title:'Enuk: The Wildman | AMR Exclusives',url:u})}catch(e){}}else if(navigator.clipboard){await navigator.clipboard.writeText(u);document.getElementById('share').textContent='Link copied'}});
-</script><script src="tracking.js" defer></script></body></html>
+</script><script src="tracking.js" defer></script><script src="engagement.js" defer></script></body></html>

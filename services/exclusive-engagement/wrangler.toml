@@ -1,0 +1,17 @@
+name = "amr-exclusive-engagement"
+main = "src/index.js"
+compatibility_date = "2026-11-04"
+preview_urls = false
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+invocation_logs = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "amr-exclusive-engagement"
+database_id = "d793f86f-7cd8-4ecb-bf7b-b58d69862b71"
