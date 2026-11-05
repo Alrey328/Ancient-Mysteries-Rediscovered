@@ -104,3 +104,21 @@ test('homepage exposes AMR Cinema without changing premiere destinations', () =>
   const content = JSON.parse(fs.readFileSync(path.join(repoDir, 'data/site-content.json'), 'utf8'));
   assert.equal(content.featuredOriginal.watchPage, 'exclusives/laestrygonians/');
 });
+
+test('Cinema keeps playback opt-in and exposes accessible controls', () => {
+  const landing = fs.readFileSync(path.join(repoDir, 'cinema/index.html'), 'utf8');
+  assert.match(landing, /class="skip-link"/);
+  assert.match(landing, /<h1[^>]*>/);
+  for (const page of ['cinema/enuk/index.html', 'cinema/laestrygonians/index.html']) {
+    const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
+    const videoTag = html.match(/<video\b[^>]*>/)?.[0] || '';
+    assert.match(html, /class="skip-link"/);
+    assert.match(videoTag, /\scontrols(?:\s|>)/);
+    assert.match(videoTag, /\splaysinline(?:\s|>)/);
+    assert.match(videoTag, /\spreload="metadata"/);
+    assert.match(videoTag, /\saria-label="[^"]+"/);
+    assert.doesNotMatch(videoTag, /\sautoplay(?:\s|=|>)/);
+    assert.match(html, /<button[^>]*type="button"[^>]*data-share-film/);
+    assert.match(html, /<button[^>]*type="button"[^>]*data-load-comments/);
+  }
+});
