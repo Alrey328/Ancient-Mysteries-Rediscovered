@@ -55,7 +55,7 @@ function getDiscussion(slug) {
   return DISCUSSIONS.find((item) => item.slug === slug);
 }
 
-function renderGiscus(target, term) {
+function renderGiscus(target, term, mapping = GISCUS_CONFIG.mapping) {
   if (!target) return;
 
   if (!GISCUS_CONFIG.repo || !GISCUS_CONFIG.repoId || !GISCUS_CONFIG.categoryId) {
@@ -76,7 +76,7 @@ function renderGiscus(target, term) {
   script.setAttribute("data-repo-id", GISCUS_CONFIG.repoId);
   script.setAttribute("data-category", GISCUS_CONFIG.category);
   script.setAttribute("data-category-id", GISCUS_CONFIG.categoryId);
-  script.setAttribute("data-mapping", GISCUS_CONFIG.mapping);
+  script.setAttribute("data-mapping", mapping);
   script.setAttribute("data-term", term);
   script.setAttribute("data-strict", GISCUS_CONFIG.strict);
   script.setAttribute("data-reactions-enabled", GISCUS_CONFIG.reactionsEnabled);
