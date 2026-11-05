@@ -76,28 +76,28 @@ video:focus-visible {
 
 .cinema-nav {
   display: flex;
-  min-height: 86px;
+  min-height: 62px;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 18px;
 }
 
 .cinema-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   color: var(--cinema-bone);
   text-decoration: none;
 }
 
 .cinema-brand-mark {
   display: grid;
-  width: 48px;
-  height: 48px;
+  width: 34px;
+  height: 34px;
   place-items: center;
   border: 1px solid var(--cinema-gold);
   color: var(--cinema-gold-bright);
-  font: 700 0.68rem/1 'Cinzel', serif;
+  font: 700 0.56rem/1 'Cinzel', serif;
   letter-spacing: 0.08em;
 }
 
@@ -106,15 +106,15 @@ video:focus-visible {
 
 .cinema-brand strong {
   color: var(--cinema-gold-bright);
-  font: 600 1.1rem/1.2 'Cinzel', serif;
+  font: 600 0.88rem/1.15 'Cinzel', serif;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
 .cinema-brand small {
-  margin-top: 4px;
+  margin-top: 2px;
   color: var(--cinema-muted);
-  font: 500 0.58rem/1.2 'JetBrains Mono', monospace;
+  font: 500 0.5rem/1.15 'JetBrains Mono', monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -123,13 +123,13 @@ video:focus-visible {
   display: flex;
   margin: 0;
   padding: 0;
-  gap: 30px;
+  gap: 22px;
   list-style: none;
 }
 
 .cinema-nav-links a {
   color: var(--cinema-muted);
-  font: 600 0.68rem/1.2 'JetBrains Mono', monospace;
+  font: 600 0.64rem/1.2 'JetBrains Mono', monospace;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -139,7 +139,7 @@ video:focus-visible {
 
 .cinema-menu {
   display: none;
-  min-height: 42px;
+  min-height: 38px;
   border: 1px solid var(--cinema-line);
   background: transparent;
   color: var(--cinema-gold-bright);
@@ -425,7 +425,7 @@ video:focus-visible {
 /* Film viewing rooms */
 .viewer-page { background: #0b0c10; }
 
-.viewer-main { padding-block: 42px 100px; }
+.viewer-main { padding-block: 16px 80px; }
 
 .viewer-breadcrumb {
   margin: 0 0 24px;
@@ -438,9 +438,11 @@ video:focus-visible {
 
 .viewer-stage {
   display: grid;
-  min-height: 560px;
+  width: min(100%, 470px);
+  min-height: 0;
+  margin-inline: auto;
   place-items: center;
-  padding: clamp(16px, 3vw, 36px);
+  padding: 10px;
   border: 1px solid var(--cinema-line);
   background:
     radial-gradient(ellipse at center, rgba(59, 63, 76, 0.62), transparent 58%),
@@ -450,8 +452,8 @@ video:focus-visible {
 
 .viewer-player-shell {
   position: relative;
-  width: min(100%, 520px);
-  max-height: 78vh;
+  width: min(100%, 420px, 40.5vh);
+  max-height: none;
   aspect-ratio: 9 / 16;
   background: #000;
 }
@@ -481,8 +483,8 @@ video:focus-visible {
 
 .viewer-play-button span {
   display: grid;
-  width: 84px;
-  height: 84px;
+  width: 68px;
+  height: 68px;
   place-items: center;
   border: 1px solid currentColor;
   border-radius: 50%;
@@ -491,25 +493,40 @@ video:focus-visible {
   box-shadow: 0 14px 50px rgba(0, 0, 0, 0.55);
 }
 
-.viewer-intro {
-  padding-bottom: 30px;
+.viewer-film-meta {
+  padding-block: 20px 6px;
 }
 
-.viewer-intro h1 {
+.viewer-film-meta h1 {
   max-width: 850px;
-  margin: 10px 0 0;
-  font: 600 clamp(2rem, 5vw, 4.4rem)/1.08 'Cinzel', serif;
+  margin: 7px 0 0;
+  font: 600 clamp(1.35rem, 3vw, 2.35rem)/1.16 'Cinzel', serif;
   text-wrap: balance;
 }
 
-.viewer-description { max-width: 760px; margin: 20px 0 0; color: var(--cinema-muted); font-size: 1.08rem; }
+.viewer-about {
+  max-width: 760px;
+  margin-top: 12px;
+  color: var(--cinema-muted);
+}
+
+.viewer-about summary {
+  width: fit-content;
+  color: var(--cinema-gold-bright);
+  font: 600 0.68rem/1.4 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.viewer-about p { margin: 12px 0 0; font-size: 0.98rem; }
 
 .viewer-toolbar {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 18px 36px;
-  padding-block: 18px 32px;
+  padding-block: 12px 26px;
   border-bottom: 1px solid var(--cinema-line);
 }
 
@@ -559,8 +576,8 @@ video:focus-visible {
 
 .viewer-share-status { min-height: 1.4em; margin: 7px 0 0; color: var(--cinema-muted); font-size: 0.8rem; text-align: right; }
 
-.viewer-section { padding-top: 64px; }
-.viewer-section--comments { padding-top: 44px; }
+.viewer-section { padding-top: 58px; }
+.viewer-section--comments { padding-top: 38px; }
 
 .viewer-section-heading p { margin: 0; color: var(--cinema-gold); font: 600 0.67rem/1.4 'JetBrains Mono', monospace; letter-spacing: 0.11em; text-transform: uppercase; }
 .viewer-section-heading h2 { margin: 9px 0 0; font: 600 clamp(1.7rem, 3vw, 2.7rem)/1.2 'Cinzel', serif; }
@@ -625,10 +642,10 @@ video:focus-visible {
 
 @media (max-width: 680px) {
   .cinema-wrap { width: min(100% - 32px, var(--cinema-wrap)); }
-  .cinema-nav { min-height: 76px; flex-wrap: wrap; padding-block: 12px; }
-  .cinema-brand-mark { width: 40px; height: 40px; }
-  .cinema-brand strong { font-size: 0.9rem; }
-  .cinema-brand small { font-size: 0.48rem; }
+  .cinema-nav { min-height: 58px; flex-wrap: wrap; padding-block: 7px; }
+  .cinema-brand-mark { width: 32px; height: 32px; }
+  .cinema-brand strong { font-size: 0.82rem; }
+  .cinema-brand small { font-size: 0.45rem; }
   .cinema-menu { display: block; margin-left: auto; }
   .cinema-nav-links { display: none; width: 100%; grid-template-columns: 1fr; gap: 0; padding-top: 8px; border-top: 1px solid var(--cinema-line); }
   .cinema-nav-links[data-open="true"] { display: grid; }
@@ -642,11 +659,11 @@ video:focus-visible {
   .cinema-card { grid-template-columns: 1fr; }
   .cinema-card-poster { min-height: 0; aspect-ratio: 4 / 5; }
   .cinema-card-copy { padding: 24px; }
-  .viewer-main { padding-top: 24px; }
-  .viewer-stage { min-height: 0; padding: 10px; }
-  .viewer-player-shell { width: min(100%, 460px); max-height: none; }
-  .viewer-intro { padding-bottom: 24px; }
-  .viewer-toolbar { padding-block: 14px 28px; }
+  .viewer-main { padding-top: 10px; }
+  .viewer-stage { padding: 6px; }
+  .viewer-player-shell { width: min(100%, 420px); }
+  .viewer-film-meta { padding-block: 16px 5px; }
+  .viewer-toolbar { padding-block: 10px 24px; }
   .viewer-page .amr-engagement { width: 100%; }
   .viewer-page .amr-engagement [data-amr-views] { flex-basis: 100%; }
   .viewer-share { width: 100%; }

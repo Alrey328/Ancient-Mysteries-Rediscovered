@@ -128,17 +128,24 @@ test('Cinema uses a direct video to engagement to discussion flow', () => {
   for (const page of pages) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
     const video = html.indexOf('<video');
+    const title = html.indexOf('<h1');
+    const about = html.indexOf('<details class="viewer-about">');
     const engagement = html.indexOf('data-amr-engagement');
     const share = html.indexOf('data-share-film');
     const comments = html.indexOf('data-cinema-comments');
     const recommendations = html.indexOf('id="recommendations"');
-    assert.ok(video >= 0 && video < engagement, `${page}: video precedes engagement`);
+    assert.ok(video >= 0 && video < title, `${page}: video precedes the compact title`);
+    assert.ok(title < about && about < engagement, `${page}: title and About disclosure precede engagement`);
     assert.ok(engagement < share, `${page}: engagement precedes share`);
     assert.ok(share < comments, `${page}: sharing precedes discussion`);
     assert.ok(comments < recommendations, `${page}: discussion precedes recommendations`);
+    assert.doesNotMatch(html, /viewer-intro|viewer-breadcrumb/);
   }
   const cinemaHome = fs.readFileSync(path.join(repoDir, 'cinema/index.html'), 'utf8');
   assert.doesNotMatch(cinemaHome, /cinema-hero|Choose a film|Enter screening/);
   const cinemaScript = fs.readFileSync(path.join(repoDir, 'cinema/cinema.js'), 'utf8');
   assert.match(cinemaScript, /renderGiscus\(target, term, 'specific'\)/);
+  const cinemaStyles = fs.readFileSync(path.join(repoDir, 'cinema/cinema.css'), 'utf8');
+  assert.match(cinemaStyles, /\.cinema-nav\s*\{[^}]*min-height:\s*62px/s);
+  assert.match(cinemaStyles, /\.viewer-player-shell\s*\{[^}]*40\.5vh/s);
 });

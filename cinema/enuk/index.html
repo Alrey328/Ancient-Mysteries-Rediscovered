@@ -37,13 +37,6 @@
   </header>
 
   <main class="viewer-main cinema-wrap">
-    <p class="viewer-breadcrumb"><a href="../">AMR Cinema</a> <span aria-hidden="true">/</span> Screening room 001</p>
-    <section class="viewer-intro" aria-labelledby="film-title">
-      <p class="cinema-label">AMR Original · Release 001 · 26 seconds</p>
-      <h1 id="film-title">Enuk: The Wildman</h1>
-      <p class="viewer-description">An ancient mystery brought to life through cinematic reconstruction. Explore the legend of Enuk and the enduring fascination with the wildman.</p>
-    </section>
-
     <section class="viewer-stage" aria-label="Enuk film player">
       <div class="viewer-player-shell" data-cinema-player>
         <video id="cinema-enuk-video" class="viewer-player" controls playsinline preload="metadata" poster="../../Enkidu%20Poster.png" aria-label="Watch Enuk: The Wildman">
@@ -54,6 +47,12 @@
           <span aria-hidden="true">▶</span>
         </button>
       </div>
+    </section>
+
+    <section class="viewer-film-meta" aria-labelledby="film-title">
+      <p class="cinema-label">AMR Original · Release 001 · 26 seconds</p>
+      <h1 id="film-title">Enuk: The Wildman</h1>
+      <details class="viewer-about"><summary>About this film</summary><p>An ancient mystery brought to life through cinematic reconstruction. Explore the legend of Enuk and the enduring fascination with the wildman.</p></details>
     </section>
 
     <section class="viewer-toolbar" aria-label="Film engagement and sharing">
