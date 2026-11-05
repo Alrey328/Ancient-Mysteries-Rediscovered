@@ -130,6 +130,20 @@ test('preflight permits only an AMR origin', async () => {
   assert.equal(denied.status, 403);
 });
 
+test('an exact temporary preview origin can be configured without wildcard CORS', async () => {
+  const previewOrigin = 'http://127.0.0.1:4173';
+  const bindings = { ...env(), PREVIEW_ORIGIN: previewOrigin };
+  const allowed = await worker.fetch(request('/videos/enuk/like', {
+    method: 'OPTIONS', origin: previewOrigin
+  }), bindings, {});
+  assert.equal(allowed.status, 204);
+  assert.equal(allowed.headers.get('Access-Control-Allow-Origin'), previewOrigin);
+  const nearMatch = await worker.fetch(request('/videos/enuk/like', {
+    method: 'OPTIONS', origin: `${previewOrigin}.attacker.example`
+  }), bindings, {});
+  assert.equal(nearMatch.status, 403);
+});
+
 test('mutations reject missing origins, invalid visitors, and invalid thresholds', async () => {
   const bindings = env();
   const noOrigin = await worker.fetch(request('/videos/enuk/like', {

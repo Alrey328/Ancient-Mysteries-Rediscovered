@@ -50,6 +50,14 @@ BEGIN
   UPDATE engagement_totals SET views = views + 1 WHERE video_id = NEW.video_id;
 END;
 
+CREATE TRIGGER IF NOT EXISTS qualified_views_after_delete
+AFTER DELETE ON qualified_views
+BEGIN
+  UPDATE engagement_totals
+  SET views = CASE WHEN views > 0 THEN views - 1 ELSE 0 END
+  WHERE video_id = OLD.video_id;
+END;
+
 -- Reconcile counters when this migration is applied to an existing database.
 UPDATE engagement_totals
 SET likes = (SELECT COUNT(*) FROM likes WHERE likes.video_id = engagement_totals.video_id),

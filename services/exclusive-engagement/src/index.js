@@ -17,8 +17,13 @@ class HttpError extends Error {
   }
 }
 
-function corsHeaders(origin) {
-  if (!ALLOWED_ORIGINS.has(origin)) return {};
+function originAllowed(origin, env = {}) {
+  return ALLOWED_ORIGINS.has(origin)
+    || (typeof env.PREVIEW_ORIGIN === 'string' && env.PREVIEW_ORIGIN === origin);
+}
+
+function corsHeaders(origin, env) {
+  if (!originAllowed(origin, env)) return {};
   return {
     'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Methods': 'GET, PUT, DELETE, POST, OPTIONS',
@@ -27,14 +32,14 @@ function corsHeaders(origin) {
   };
 }
 
-function json(data, status = 200, origin = '', extraHeaders = {}) {
+function json(data, status = 200, origin = '', extraHeaders = {}, env = {}) {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': 'no-store',
       'Vary': 'Origin',
-      ...corsHeaders(origin),
+      ...corsHeaders(origin, env),
       ...extraHeaders
     }
   });
@@ -130,26 +135,26 @@ async function handleRequest(request, env, ctx) {
   const match = url.pathname.match(/^\/videos\/([a-z0-9-]+)(?:\/(like|view))?\/?$/);
 
   if (request.method === 'OPTIONS') {
-    if (!ALLOWED_ORIGINS.has(origin)) return json({ error: 'Origin denied' }, 403);
-    if (!match || !VIDEO_IDS.has(match[1])) return json({ error: 'Unknown video' }, 404, origin);
+    if (!originAllowed(origin, env)) return json({ error: 'Origin denied' }, 403, origin, {}, env);
+    if (!match || !VIDEO_IDS.has(match[1])) return json({ error: 'Unknown video' }, 404, origin, {}, env);
     return new Response(null, {
       status: 204,
-      headers: { ...corsHeaders(origin), 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers' }
+      headers: { ...corsHeaders(origin, env), 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers' }
     });
   }
 
   if (!env.DB || typeof env.VISITOR_HASH_SECRET !== 'string' || env.VISITOR_HASH_SECRET.length < 32) {
-    return json({ error: 'Service not configured' }, 503, origin);
+    return json({ error: 'Service not configured' }, 503, origin, {}, env);
   }
-  if (!match || !VIDEO_IDS.has(match[1])) return json({ error: 'Unknown video' }, 404, origin);
+  if (!match || !VIDEO_IDS.has(match[1])) return json({ error: 'Unknown video' }, 404, origin, {}, env);
 
   const videoId = match[1];
   const action = match[2] || '';
   if (!action) {
     if (request.method !== 'GET') {
-      return json({ error: 'Method not allowed' }, 405, origin, { Allow: 'GET, OPTIONS' });
+      return json({ error: 'Method not allowed' }, 405, origin, { Allow: 'GET, OPTIONS' }, env);
     }
-    return json(await totals(env.DB, videoId), 200, origin);
+    return json(await totals(env.DB, videoId), 200, origin, {}, env);
   }
 
   const allowedMethods = action === 'like' ? ['PUT', 'DELETE'] : ['POST'];
@@ -158,10 +163,11 @@ async function handleRequest(request, env, ctx) {
       { error: 'Method not allowed' },
       405,
       origin,
-      { Allow: `${allowedMethods.join(', ')}, OPTIONS` }
+      { Allow: `${allowedMethods.join(', ')}, OPTIONS` },
+      env
     );
   }
-  if (!ALLOWED_ORIGINS.has(origin)) return json({ error: 'Origin denied' }, 403);
+  if (!originAllowed(origin, env)) return json({ error: 'Origin denied' }, 403, origin, {}, env);
 
   const body = await readJson(request);
   if (!validVisitor(body?.visitorKey)) throw new HttpError(400, 'Invalid visitor key');
@@ -175,7 +181,7 @@ async function handleRequest(request, env, ctx) {
   const rate = await rateLimit(env.DB, ipHash, action, action === 'view' ? 6 : 10);
   maybeScheduleCleanup(ctx, env.DB, rate.windowStart);
   if (!rate.allowed) {
-    return json({ error: 'Rate limited' }, 429, origin, { 'Retry-After': '60' });
+    return json({ error: 'Rate limited' }, 429, origin, { 'Retry-After': '60' }, env);
   }
 
   if (action === 'like') {
@@ -196,7 +202,7 @@ async function handleRequest(request, env, ctx) {
     `).bind(videoId, visitorHash, day).run();
   }
 
-  return json(await totals(env.DB, videoId), 200, origin);
+  return json(await totals(env.DB, videoId), 200, origin, {}, env);
 }
 
 export default {
@@ -206,10 +212,10 @@ export default {
       return await handleRequest(request, env, ctx);
     } catch (error) {
       if (error instanceof HttpError) {
-        return json({ error: error.message }, error.status, origin, error.headers);
+        return json({ error: error.message }, error.status, origin, error.headers, env);
       }
       console.error('Engagement request failed', error?.name || 'Error');
-      return json({ error: 'Engagement service temporarily unavailable' }, 503, origin);
+      return json({ error: 'Engagement service temporarily unavailable' }, 503, origin, {}, env);
     }
   }
 };

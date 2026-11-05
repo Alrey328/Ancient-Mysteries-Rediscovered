@@ -64,10 +64,24 @@ test('schema migrates existing events and maintains exact idempotent totals', ()
   assert.equal(updatedEnuk.views, 0);
   database.exec("DELETE FROM likes WHERE video_id = 'enuk' AND visitor_hash = 'visitor-c'");
   assert.equal(database.prepare("SELECT likes FROM engagement_totals WHERE video_id = 'enuk'").get().likes, 1);
+  database.exec(`
+    DELETE FROM qualified_views
+    WHERE video_id = 'laestrygonians'
+      AND visitor_hash = 'visitor-b'
+      AND view_day = '2026-11-04'
+  `);
+  assert.equal(
+    database.prepare("SELECT views FROM engagement_totals WHERE video_id = 'laestrygonians'").get().views,
+    0
+  );
 
   // Reapplying the idempotent migration must reconcile without double-counting.
   database.exec(schema);
   assert.equal(database.prepare("SELECT likes FROM engagement_totals WHERE video_id = 'enuk'").get().likes, 1);
+  assert.equal(
+    database.prepare("SELECT views FROM engagement_totals WHERE video_id = 'laestrygonians'").get().views,
+    0
+  );
   database.close();
 });
 
