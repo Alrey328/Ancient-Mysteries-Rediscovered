@@ -50,6 +50,11 @@ test('schema migrates existing events and maintains exact idempotent totals', ()
   ).get('laestrygonians');
   assert.equal(laestrygonians.likes, 0);
   assert.equal(laestrygonians.views, 1);
+  const landOfTheDead = database.prepare(
+    'SELECT likes, views FROM engagement_totals WHERE video_id = ?'
+  ).get('land-of-the-dead');
+  assert.equal(landOfTheDead.likes, 0);
+  assert.equal(landOfTheDead.views, 0);
 
   database.exec(`
     INSERT OR IGNORE INTO likes (video_id, visitor_hash) VALUES ('enuk', 'visitor-a');
