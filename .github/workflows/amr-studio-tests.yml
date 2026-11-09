@@ -1,0 +1,26 @@
+name: AMR Studio tests
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/amr-studio-tests.yml'
+      - 'services/studio/**'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/studio
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run Studio validation tests
+        run: npm test
