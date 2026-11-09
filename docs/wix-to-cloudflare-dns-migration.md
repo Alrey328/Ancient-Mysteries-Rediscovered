@@ -2,8 +2,8 @@
 
 Status: prepared only. No production DNS record or nameserver was changed.
 
-Domain: `ancientmysteriesrediscovered.com`  
-Production origin: GitHub Pages  
+Domain: `ancientmysteriesrediscovered.com`
+Production origin: GitHub Pages
 Inventory re-verified: 2026-11-09 (America/Chicago)
 
 ## Current authoritative inventory

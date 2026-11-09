@@ -186,6 +186,24 @@ test('membership, comments, release consent, unsubscribe, and deletion work with
     assert.equal(comments.body.comments.length, 1);
     assert.equal(comments.body.comments[0].displayName, 'AMR Explorer');
 
+    const landLike = await responseJson(await worker.fetch(request('/videos/land-of-the-dead/like', {
+      method: 'PUT', token, body: { visitorKey: crypto.randomUUID() }
+    }), env, {}));
+    assert.deepEqual(landLike.body, { likes: 1, views: 0 });
+    const landLikeState = await responseJson(await worker.fetch(
+      request('/videos/land-of-the-dead/member-like', { token }), env, {}
+    ));
+    assert.deepEqual(landLikeState.body, { liked: true });
+    const landComment = await responseJson(await worker.fetch(request('/videos/land-of-the-dead/comments', {
+      method: 'POST', token, body: { body: 'The V7 descent preserves its own discussion and member activity.', website: '' }
+    }), env, {}));
+    assert.equal(landComment.status, 201);
+    const landComments = await responseJson(await worker.fetch(
+      request('/videos/land-of-the-dead/comments', { token }), env, {}
+    ));
+    assert.equal(landComments.body.comments.length, 1);
+    assert.equal(landComments.body.comments[0].id, landComment.body.comment.id);
+
     const preferences = await responseJson(await worker.fetch(request('/membership/preferences', {
       method: 'PUT', token, body: { cinemaReleases: true, investigations: false, seriesChapters: false }
     }), env, {}));
@@ -203,6 +221,11 @@ test('membership, comments, release consent, unsubscribe, and deletion work with
     }), env, {}));
     assert.deepEqual(release.body, { accepted: true, notificationMode: 'preview' });
     assert.equal(db.database.prepare('SELECT COUNT(*) AS count FROM notification_deliveries').get().count, 1);
+    let scheduledPromise;
+    await worker.scheduled({}, env, { waitUntil(promise) { scheduledPromise = promise; } });
+    await scheduledPromise;
+    assert.equal(resendCalls, 0, 'preview notification delivery must never call Resend');
+    assert.equal(db.database.prepare("SELECT status FROM notification_deliveries").get().status, 'queued');
 
     const secondNonce = 'second-preview-nonce-with-entropy';
     const secondCredential = await signIdentity(keyPair.privateKey, 'google-subject-2', 'later@example.com', secondNonce);
@@ -224,7 +247,6 @@ test('membership, comments, release consent, unsubscribe, and deletion work with
 
     const liveEnv = { ...env, NOTIFICATION_MODE: 'live', RESEND_API_KEY: 'preview-resend-key',
       EMAIL_FROM: 'AMR Preview <preview@updates.example>' };
-    let scheduledPromise;
     await worker.scheduled({}, liveEnv, { waitUntil(promise) { scheduledPromise = promise; } });
     await scheduledPromise;
     assert.equal(db.database.prepare("SELECT status FROM notification_deliveries").get().status, 'sent');
@@ -253,6 +275,10 @@ test('membership, comments, release consent, unsubscribe, and deletion work with
     assert.equal(db.database.prepare("SELECT COUNT(*) AS count FROM members WHERE email = 'explorer@example.com'").get().count, 0);
     assert.equal(db.database.prepare("SELECT likes FROM engagement_totals WHERE video_id = 'enuk'").get().likes, 0,
       'deleting a member removes that member Like without resetting unrelated totals');
+    assert.equal(db.database.prepare("SELECT likes FROM engagement_totals WHERE video_id = 'land-of-the-dead'").get().likes, 0,
+      'deleting a member removes the independent Land of the Dead Like');
+    assert.equal(db.database.prepare("SELECT COUNT(*) AS count FROM comments WHERE video_id = 'land-of-the-dead'").get().count, 0,
+      'deleting a member removes their Land of the Dead comments');
   } finally {
     globalThis.fetch = originalFetch;
     db.close();

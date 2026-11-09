@@ -43,7 +43,7 @@ Before any production migration in Phase D:
 
 1. Export the production D1 database and record its Time Travel bookmark.
 2. Record row counts and `SUM(likes)`, `SUM(views)` from `engagement_totals`.
-3. Apply only `migrations/0002_membership.sql` remotely.
+3. Apply `migrations/0002_membership.sql`, then the idempotent `migrations/0003_land_of_the_dead.sql` release seed remotely.
 4. Repeat row-count and aggregate checks; they must be identical.
 5. Run read-only integrity checks before deploying Worker code.
 

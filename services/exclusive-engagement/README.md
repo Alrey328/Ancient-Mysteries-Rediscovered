@@ -36,7 +36,7 @@ npx wrangler secret put VISITOR_HASH_SECRET
 npx wrangler deploy
 ```
 
-The membership release additionally requires `migrations/0002_membership.sql`, independent session/identity/unsubscribe/release secrets, Google client configuration, Turnstile, the final API origin, and Resend. Follow the ordered runbook in the membership document; do not run this older all-in-one schema command against production as a substitute for the reviewed migration.
+The combined membership and Land of the Dead release requires `migrations/0002_membership.sql` followed by `migrations/0003_land_of_the_dead.sql`, plus independent session/identity/unsubscribe/release secrets, Google client configuration, Turnstile, the final API origin, and Resend. Follow the ordered runbook in the membership document; do not run this older all-in-one schema command against production as a substitute for the reviewed migrations.
 
 Generate a new high-entropy secret locally and paste it only into Wrangler's hidden prompt. Never put the value on a command line. Rotating the secret breaks association with prior anonymous visitor hashes, so treat rotation as an operational migration.
 
