@@ -1,6 +1,6 @@
 // AMR Cinema engagement, membership, native comments, and release notifications.
 // Existing anonymous counters remain supported for legacy AMR Exclusives pages.
-const VIDEO_IDS = new Set(['enuk', 'laestrygonians']);
+const VIDEO_IDS = new Set(['enuk', 'laestrygonians', 'land-of-the-dead']);
 const PRODUCTION_ORIGINS = new Set([
   'https://ancientmysteriesrediscovered.com',
   'https://www.ancientmysteriesrediscovered.com'
