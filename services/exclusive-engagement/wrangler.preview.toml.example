@@ -1,0 +1,33 @@
+name = "amr-exclusive-engagement-preview"
+main = "src/index.js"
+compatibility_date = "2026-11-04"
+workers_dev = true
+preview_urls = true
+
+[vars]
+PREVIEW_MODE = "true"
+NOTIFICATION_MODE = "preview"
+TURNSTILE_REQUIRED = "false"
+SESSION_COOKIE_SAMESITE = "None"
+PREVIEW_ORIGINS = "https://REPLACE_WITH_VERCEL_PREVIEW_HOST"
+GOOGLE_CLIENT_ID = "REPLACE_WITH_PREVIEW_GOOGLE_WEB_CLIENT_ID"
+API_ORIGIN = "https://amr-exclusive-engagement-preview.REPLACE_WITH_WORKERS_SUBDOMAIN.workers.dev"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[[d1_databases]]
+binding = "DB"
+database_name = "amr-exclusive-engagement-preview"
+database_id = "REPLACE_WITH_PREVIEW_D1_DATABASE_ID"
+
+# Configure these with `wrangler secret put --config wrangler.preview.toml NAME`.
+# Never put their values in this file:
+# VISITOR_HASH_SECRET
+# SESSION_HMAC_SECRET
+# IDENTITY_HMAC_SECRET
+# UNSUBSCRIBE_HMAC_SECRET
+# RELEASE_WEBHOOK_SECRET
+# TURNSTILE_SECRET_KEY (only after TURNSTILE_REQUIRED is enabled)
+# RESEND_API_KEY (omit in preview; preview mode never sends email)

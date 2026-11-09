@@ -1,0 +1,33 @@
+name: AMR member release notifications
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: amr-member-notifications-production
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    if: >-
+      github.repository == 'Alrey328/Ancient-Mysteries-Rediscovered' &&
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'github-pages' &&
+      github.event.deployment.ref == 'main' &&
+      vars.AMR_NOTIFICATIONS_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: amr-member-notifications-production
+    steps:
+      - name: Check out the deployed revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.deployment.sha }}
+      - name: Submit published release manifest
+        env:
+          AMR_NOTIFICATIONS_ENABLED: ${{ vars.AMR_NOTIFICATIONS_ENABLED }}
+          AMR_API_ORIGIN: ${{ vars.AMR_API_ORIGIN }}
+          AMR_RELEASE_WEBHOOK_SECRET: ${{ secrets.AMR_RELEASE_WEBHOOK_SECRET }}
+        run: node scripts/notify-amr-release.mjs
