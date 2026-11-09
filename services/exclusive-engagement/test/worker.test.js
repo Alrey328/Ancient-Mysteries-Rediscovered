@@ -164,7 +164,7 @@ test('oversized and malformed payloads fail safely', async () => {
   const oversized = new Request('https://worker.example/videos/enuk/like', {
     method: 'PUT',
     headers: { Origin: ORIGIN, 'Content-Type': 'application/json' },
-    body: `{"visitorKey":"${'x'.repeat(3000)}"}`
+    body: `{"visitorKey":"${'x'.repeat(9000)}"}`
   });
   assert.equal((await worker.fetch(oversized, env(), {})).status, 413);
   const malformed = new Request('https://worker.example/videos/enuk/like', {
@@ -193,7 +193,7 @@ test('configuration and D1 failures return generic 503 JSON', async () => {
   db.fail = true;
   const failed = await jsonResponse(await worker.fetch(request('/videos/enuk'), env(db), {}));
   assert.equal(failed.status, 503);
-  assert.deepEqual(failed.body, { error: 'Engagement service temporarily unavailable' });
+  assert.deepEqual(failed.body, { error: 'AMR service temporarily unavailable' });
 });
 
 test('unknown videos and disallowed methods are rejected', async () => {

@@ -1,6 +1,8 @@
 # AMR Exclusive engagement — Cloudflare Worker + D1
 
-This service owns anonymous Like totals and qualified View totals for AMR-hosted original films. It is intentionally independent of Facebook, YouTube, and GoatCounter.
+This service owns anonymous Like totals and qualified View totals for AMR-hosted original films. The Phase B branch additively extends it with Google-authenticated membership, member Likes, native comments, moderation, account deletion, notification consent, and release-email delivery. It remains intentionally independent of Facebook, YouTube, and GoatCounter.
+
+The complete membership architecture, configuration, privacy model, cost thresholds, and approval gates are documented in [`../../docs/amr-membership-v1.md`](../../docs/amr-membership-v1.md). The production Worker and D1 database must not receive the membership migration or code until the owner separately approves Phase D.
 
 ## Existing resources
 
@@ -10,7 +12,7 @@ This service owns anonymous Like totals and qualified View totals for AMR-hosted
 - D1 database ID: recorded in `wrangler.toml`
 - Secret: `VISITOR_HASH_SECRET` must exist as a Cloudflare Worker secret and must be at least 32 characters. Never store or print its value.
 
-Do not create replacement resources. Do not enable a paid plan, paid overages, or a trial that converts to paid.
+Do not replace this production resource. Phase B uses a separate preview Worker and separate preview D1 database from `wrangler.preview.toml.example`. Do not enable a paid plan, paid overages, or a trial that converts to paid.
 
 ## Safe validation and deployment
 
@@ -22,15 +24,19 @@ npx wrangler d1 execute amr-exclusive-engagement --local --file schema.sql
 npx wrangler dev --local
 ```
 
+The local schema includes the additive membership tables. For a hosted preview, copy `wrangler.preview.toml.example` to an ignored `wrangler.preview.toml`, fill only preview resource IDs/origins, configure preview-only secrets, and deploy with `--config wrangler.preview.toml`. Keep `NOTIFICATION_MODE=preview`; do not configure a Resend key.
+
 Remote inspection and all writes require the owner's Cloudflare login. Before deployment, verify the account is on Workers Free and the existing binding is named exactly `DB`. Applying `schema.sql` is idempotent and migrates the earlier event tables to indexed, trigger-maintained totals.
 
-Only after explicit owner approval:
+Only after explicit Phase D owner approval:
 
 ```sh
 npx wrangler d1 execute amr-exclusive-engagement --remote --file schema.sql
 npx wrangler secret put VISITOR_HASH_SECRET
 npx wrangler deploy
 ```
+
+The membership release additionally requires `migrations/0002_membership.sql`, independent session/identity/unsubscribe/release secrets, Google client configuration, Turnstile, the final API origin, and Resend. Follow the ordered runbook in the membership document; do not run this older all-in-one schema command against production as a substitute for the reviewed migration.
 
 Generate a new high-entropy secret locally and paste it only into Wrangler's hidden prompt. Never put the value on a command line. Rotating the secret breaks association with prior anonymous visitor hashes, so treat rotation as an operational migration.
 
