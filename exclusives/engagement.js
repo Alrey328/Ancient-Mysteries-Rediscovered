@@ -46,8 +46,15 @@
     const views = root.querySelector('[data-amr-views]');
     const status = root.querySelector('[data-amr-status]');
     const endpoint = root.dataset.endpoint || metaEndpoint;
+    const membership = window.AMRMembership;
+    let endpointAllowed = false;
+    try {
+      const endpointUrl = new URL(endpoint);
+      endpointAllowed = endpointUrl.protocol === 'https:'
+        || (endpointUrl.protocol === 'http:' && ['127.0.0.1', 'localhost'].includes(endpointUrl.hostname));
+    } catch (_) {}
     const configured = typeof endpoint === 'string'
-      && /^https:\/\//.test(endpoint)
+      && endpointAllowed
       && videoId
       && video
       && button
@@ -76,7 +83,9 @@
     let viewInFlight = false;
     let viewAttempts = 0;
 
-    try { liked = localStorage.getItem(storageKey) === 'yes'; } catch (_) {}
+    if (!membership) {
+      try { liked = localStorage.getItem(storageKey) === 'yes'; } catch (_) {}
+    }
 
     function syncButtonState() {
       button.disabled = !totalsLoaded || busy;
@@ -104,10 +113,14 @@
       const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
       try {
         const response = await fetch(`${base}/videos/${encodeURIComponent(videoId)}${path}`, {
-          credentials: 'omit',
+          credentials: membership ? 'include' : 'omit',
           mode: 'cors',
           ...options,
-          headers: { Accept: 'application/json', ...options.headers },
+          headers: {
+            Accept: 'application/json',
+            ...(membership ? membership.requestHeaders() : {}),
+            ...options.headers
+          },
           signal: controller.signal
         });
         if (!response.ok) throw new Error(`Engagement request failed (${response.status})`);
@@ -128,9 +141,22 @@
 
     syncButtonState();
     request('').then(render).catch(showUnavailable);
+    if (membership) {
+      membership.ready.then(async () => {
+        if (membership.member) {
+          const state = await request('/member-like');
+          liked = state.liked === true;
+          syncButtonState();
+        }
+      }).catch(() => {});
+    }
 
     button.addEventListener('click', async () => {
       if (busy || button.disabled) return;
+      if (membership && !membership.member) {
+        await membership.requireMember();
+        return;
+      }
       busy = true;
       syncButtonState();
       const next = !liked;
@@ -138,10 +164,12 @@
         const data = await request('/like', {
           method: next ? 'PUT' : 'DELETE',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ visitorKey: getVisitorKey() })
+          body: JSON.stringify({ visitorKey: membership ? membership.visitorKey() : getVisitorKey() })
         });
         liked = next;
-        try { localStorage.setItem(storageKey, liked ? 'yes' : 'no'); } catch (_) {}
+        if (!membership) {
+          try { localStorage.setItem(storageKey, liked ? 'yes' : 'no'); } catch (_) {}
+        }
         render(data);
       } catch (_) {
         status.textContent = 'Could not update your Like. Please try again.';
@@ -171,7 +199,10 @@
         render(await request('/view', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ visitorKey: getVisitorKey(), qualifiedSeconds: 3 })
+          body: JSON.stringify({
+            visitorKey: membership ? membership.visitorKey() : getVisitorKey(),
+            qualifiedSeconds: 3
+          })
         }));
         viewRecorded = true;
       } catch (_) {
@@ -223,6 +254,15 @@
     video.addEventListener('seeking', resetPlaybackSample);
     video.addEventListener('ended', stopPlaybackClock);
     window.addEventListener('pageshow', syncButtonState);
+    if (membership) {
+      document.addEventListener('amr:member-changed', async () => {
+        liked = false;
+        if (membership.member) {
+          try { liked = (await request('/member-like')).liked === true; } catch (_) {}
+        }
+        syncButtonState();
+      });
+    }
     window.addEventListener('pagehide', stopPlaybackClock, { once: true });
   }
 

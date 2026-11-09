@@ -56,6 +56,7 @@ function runtime(runtimeOptions = {}) {
   const context = {
     AbortController,
     HTMLMediaElement: { HAVE_CURRENT_DATA: 2 },
+    URL,
     console,
     crypto: webcrypto,
     document: {

@@ -78,6 +78,10 @@ test('Cinema viewing pages preserve film IDs and media assets', () => {
     assert.ok(fs.existsSync(path.resolve(path.dirname(pagePath), expectation.media)));
     assert.match(html, /discussions\/discussion-data\.js/);
     assert.match(html, /data-cinema-comments=/);
+    assert.match(html, /data-amr-native-comments/);
+    assert.match(html, /data-amr-membership/);
+    assert.match(html, /membership\.js/);
+    assert.match(html, /runtime-config\.js/);
   }
 });
 
@@ -132,12 +136,16 @@ test('Cinema uses a direct video to engagement to discussion flow', () => {
     const about = html.indexOf('<details class="viewer-about">');
     const engagement = html.indexOf('data-amr-engagement');
     const share = html.indexOf('data-share-film');
+    const membership = html.indexOf('data-amr-membership');
+    const nativeComments = html.indexOf('data-amr-native-comments');
     const comments = html.indexOf('data-cinema-comments');
     const recommendations = html.indexOf('id="recommendations"');
     assert.ok(video >= 0 && video < title, `${page}: video precedes the compact title`);
     assert.ok(title < about && about < engagement, `${page}: title and About disclosure precede engagement`);
     assert.ok(engagement < share, `${page}: engagement precedes share`);
-    assert.ok(share < comments, `${page}: sharing precedes discussion`);
+    assert.ok(share < membership, `${page}: membership follows the interaction area`);
+    assert.ok(membership < nativeComments, `${page}: membership precedes native comments`);
+    assert.ok(nativeComments < comments, `${page}: native comments precede the preserved GitHub discussion`);
     assert.ok(comments < recommendations, `${page}: discussion precedes recommendations`);
     assert.doesNotMatch(html, /viewer-intro|viewer-breadcrumb/);
   }
@@ -148,4 +156,26 @@ test('Cinema uses a direct video to engagement to discussion flow', () => {
   const cinemaStyles = fs.readFileSync(path.join(repoDir, 'cinema/cinema.css'), 'utf8');
   assert.match(cinemaStyles, /\.cinema-nav\s*\{[^}]*min-height:\s*62px/s);
   assert.match(cinemaStyles, /\.viewer-player-shell\s*\{[^}]*40\.5vh/s);
+});
+
+test('My AMR is private to search and exposes account controls', () => {
+  const html = fs.readFileSync(path.join(repoDir, 'my-amr/index.html'), 'utf8');
+  assert.match(html, /name="robots" content="noindex, nofollow"/);
+  assert.match(html, /data-my-amr/);
+  assert.match(html, /membership\.js/);
+  assert.match(html, /privacy\/membership/);
+});
+
+test('membership privacy and community rules are present', () => {
+  const privacy = fs.readFileSync(path.join(repoDir, 'privacy/membership/index.html'), 'utf8');
+  const rules = fs.readFileSync(path.join(repoDir, 'community-guidelines/index.html'), 'utf8');
+  assert.match(privacy, /unchecked by default/i);
+  assert.match(privacy, /Deleting your account permanently removes/i);
+  assert.match(rules, /Members can report comments/i);
+});
+
+test('preview runtime never uses the production engagement database', () => {
+  const config = fs.readFileSync(path.join(repoDir, 'cinema/runtime-config.js'), 'utf8');
+  assert.match(config, /amr-exclusive-engagement-preview\.belizean328\.workers\.dev/);
+  assert.match(config, /productionHosts/);
 });
