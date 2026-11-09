@@ -3,11 +3,17 @@
 ## Reused production systems
 
 - `/cinema/` is a direct featured-film viewing route: title, playable film, engagement/share controls, consent-based discussion, then recommendations. Dedicated film selections use the same uninterrupted layout.
-- Film media stays on the existing static site: `media/Enuk_AMR_Exclusive_web.mp4` and `assets/originals/laestrygonians/film.mp4`.
-- Posters and film IDs remain unchanged.
-- Cinema viewing pages load `exclusives/engagement.js` and use the existing `enuk` and `laestrygonians` IDs. Likes and qualified views therefore use the existing Worker, D1 records, visitor key, rate limits, and three-second view qualification.
-- Comments reuse the repository's existing Giscus configuration and GitHub Discussions category. Cinema uses stable film-specific terms so the featured and dedicated Laestrygonians routes share one thread instead of splitting the conversation by pathname.
-- Existing Exclusives pages remain intact and are the canonical film URLs. Cinema viewing routes are alternate presentation URLs; only the distinct `/cinema/` collection page is added to the sitemap.
+- Film media stays on the existing static site: `media/Enuk_AMR_Exclusive_web.mp4`, `assets/originals/laestrygonians/film.mp4`, and `assets/originals/land-of-the-dead/film.mp4`.
+- Existing posters, film IDs, and film routes remain unchanged. Land of the Dead uses the new `land-of-the-dead` ID and a dedicated Cinema route.
+- Cinema viewing pages load `exclusives/engagement.js` and use the allowlisted `enuk`, `laestrygonians`, and `land-of-the-dead` IDs. Likes and qualified views therefore use the existing Worker, D1 records, visitor key, rate limits, and three-second view qualification.
+- Earlier discussions reuse the repository's existing Giscus configuration and GitHub Discussions category. Cinema uses stable film-specific terms so featured and dedicated routes for the same film share one thread instead of splitting the conversation by pathname.
+- Existing Exclusives pages remain intact and are the canonical URLs for Enuk and Laestrygonians. Their Cinema viewing routes remain alternate presentation URLs. Land of the Dead has no separate Exclusives page, so `/cinema/land-of-the-dead/` is its stable canonical film URL and appears in the sitemap alongside `/cinema/`.
+
+## Membership preview integration
+
+The Phase B membership branch additively introduces Google-authenticated member Likes, native comments, profiles, and notification preferences. On Cinema pages, native comments appear first while the existing Giscus thread remains available under “Earlier GitHub discussion.” Preview hosts are routed to the separate preview Worker/D1 by `cinema/runtime-config.js`; no production membership or notification service is activated by these static pages.
+
+Land of the Dead uses the same membership surface and the independent `land-of-the-dead` engagement ID. Production migration order is `0002_membership.sql` followed by the idempotent `0003_land_of_the_dead.sql` seed, only after explicit owner approval.
 
 ## Comment system decision
 
@@ -22,9 +28,9 @@ Privacy and operations:
 - Availability depends on GitHub, Giscus, repository Discussions, and the configured category.
 - Expected recurring infrastructure cost: $0.
 
-### Recommended general-audience evolution
+### Implemented in the Phase B preview
 
-When the owner approves a native comment backend, extend `amr-exclusive-engagement` rather than create a second Worker or database. Add comment, report, and moderation tables to the existing D1 database and expose narrowly scoped endpoints from the existing Worker.
+The membership preview extends `amr-exclusive-engagement` with comment, report, and moderation tables in a separate preview D1 database. Production activation remains prohibited until the membership approval gates are completed.
 
 Recommended identity flow:
 

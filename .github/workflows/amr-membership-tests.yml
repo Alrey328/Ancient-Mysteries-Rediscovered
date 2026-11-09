@@ -1,0 +1,48 @@
+name: AMR membership tests
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/amr-member-notifications.yml'
+      - '.github/workflows/amr-membership-tests.yml'
+      - 'cinema/**'
+      - 'community-guidelines/**'
+      - 'data/member-notification-releases.json'
+      - 'exclusives/engagement.js'
+      - 'my-amr/**'
+      - 'privacy/membership/**'
+      - 'scripts/notify-amr-release.mjs'
+      - 'services/exclusive-engagement/**'
+  push:
+    branches:
+      - 'feat/amr-membership-notifications-v1'
+    paths:
+      - '.github/workflows/amr-member-notifications.yml'
+      - '.github/workflows/amr-membership-tests.yml'
+      - 'cinema/**'
+      - 'community-guidelines/**'
+      - 'data/member-notification-releases.json'
+      - 'exclusives/engagement.js'
+      - 'my-amr/**'
+      - 'privacy/membership/**'
+      - 'scripts/notify-amr-release.mjs'
+      - 'services/exclusive-engagement/**'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run Worker and browser-runtime tests
+        working-directory: services/exclusive-engagement
+        run: npm test
+      - name: Verify notification sender remains disabled by default
+        run: node scripts/notify-amr-release.mjs

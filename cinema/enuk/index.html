@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="amr-engagement-api" content="https://amr-exclusive-engagement.belizean328.workers.dev">
+  <meta name="amr-membership-api" content="https://amr-exclusive-engagement.belizean328.workers.dev">
+  <meta name="amr-google-client-id" content="CONFIGURE_GOOGLE_CLIENT_ID">
+  <meta name="amr-turnstile-site-key" content="">
   <title>Watch Enuk: The Wildman | AMR Cinema</title>
   <meta name="description" content="Watch Enuk: The Wildman free in AMR Cinema, then like the film and join the viewer discussion.">
   <link rel="canonical" href="https://ancientmysteriesrediscovered.com/exclusives/enuk/">
@@ -16,7 +19,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../cinema.css">
+  <link rel="stylesheet" href="../membership.css">
   <link rel="stylesheet" href="../../exclusives/engagement.css">
+  <script src="../runtime-config.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Enuk: The Wildman","description":"An AMR original cinematic reconstruction exploring the legend of Enuk.","thumbnailUrl":"https://ancientmysteriesrediscovered.com/Enkidu%20Poster.png","contentUrl":"https://ancientmysteriesrediscovered.com/media/Enuk_AMR_Exclusive_web.mp4","url":"https://ancientmysteriesrediscovered.com/exclusives/enuk/","duration":"PT26S"}</script>
 </head>
 <body class="cinema-page viewer-page">
@@ -68,17 +73,27 @@
       </div>
     </section>
 
+    <section class="viewer-membership" data-amr-membership aria-label="AMR membership">
+      <p>Loading free AMR membership…</p>
+    </section>
+
     <section class="viewer-section viewer-section--comments" aria-labelledby="comments-title">
       <div class="viewer-section-heading">
         <p>Comments &amp; discussion</p>
         <h2 id="comments-title">Join the conversation</h2>
-        <p>Comments and replies are hosted through GitHub Discussions. Watching and liking never require an account; commenting currently requires a free GitHub account.</p>
+        <p>Member comments live directly beneath the film. Watching never requires an account.</p>
       </div>
-      <div class="viewer-comments" data-cinema-comments="cinema-enuk" aria-label="Comments for Enuk">
-        <p>Load the discussion when you are ready to connect to Giscus and GitHub.</p>
-        <button type="button" data-load-comments>Load comments</button>
+      <div class="viewer-comments amr-native-comments" data-amr-native-comments data-video-id="enuk" aria-label="Member comments for Enuk: The Wildman">
+        <p>Loading member comments…</p>
       </div>
-      <p class="viewer-comments-note">Comments are governed by GitHub's account and privacy policies. AMR moderators can hide, report, lock, or delete discussion content through the repository's Discussions controls.</p>
+      <details class="amr-legacy-discussion">
+        <summary>Earlier GitHub discussion</summary>
+        <div class="viewer-comments" data-cinema-comments="cinema-enuk" aria-label="Earlier GitHub discussion for Enuk: The Wildman">
+          <p>Load the earlier discussion when you are ready to connect to Giscus and GitHub.</p>
+          <button type="button" data-load-comments>Load earlier discussion</button>
+        </div>
+        <p class="viewer-comments-note">These existing comments remain governed by GitHub's account and privacy policies and are not copied into AMR membership.</p>
+      </details>
     </section>
 
     <section class="viewer-section" id="recommendations" aria-labelledby="related-title">
@@ -96,6 +111,7 @@
   <footer class="cinema-footer"><div class="cinema-wrap"><p>AI-assisted artistic reconstruction. Legendary narratives are not presented as verified historical events.</p><p><a href="../">AMR Cinema</a> <span aria-hidden="true">·</span> <a href="../../exclusives/enuk/">Original film page</a></p></div></footer>
   <script src="../../discussions/discussion-data.js"></script>
   <script src="../cinema.js"></script>
+  <script src="../membership.js"></script>
   <script src="../../exclusives/engagement.js"></script>
 </body>
 </html>

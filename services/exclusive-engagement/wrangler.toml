@@ -11,6 +11,9 @@ head_sampling_rate = 1
 enabled = true
 invocation_logs = true
 
+[triggers]
+crons = ["*/5 * * * *"]
+
 [[d1_databases]]
 binding = "DB"
 database_name = "amr-exclusive-engagement"

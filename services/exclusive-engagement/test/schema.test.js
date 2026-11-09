@@ -6,6 +6,14 @@ import { fileURLToPath } from 'node:url';
 
 const schemaUrl = new URL('../schema.sql', import.meta.url);
 const schema = fs.readFileSync(fileURLToPath(schemaUrl), 'utf8');
+const membershipMigration = fs.readFileSync(
+  fileURLToPath(new URL('../migrations/0002_membership.sql', import.meta.url)),
+  'utf8'
+);
+const landOfTheDeadMigration = fs.readFileSync(
+  fileURLToPath(new URL('../migrations/0003_land_of_the_dead.sql', import.meta.url)),
+  'utf8'
+);
 
 function oldSchema(database) {
   database.exec(`
@@ -50,6 +58,11 @@ test('schema migrates existing events and maintains exact idempotent totals', ()
   ).get('laestrygonians');
   assert.equal(laestrygonians.likes, 0);
   assert.equal(laestrygonians.views, 1);
+  const landOfTheDead = database.prepare(
+    'SELECT likes, views FROM engagement_totals WHERE video_id = ?'
+  ).get('land-of-the-dead');
+  assert.equal(landOfTheDead.likes, 0);
+  assert.equal(landOfTheDead.views, 0);
 
   database.exec(`
     INSERT OR IGNORE INTO likes (video_id, visitor_hash) VALUES ('enuk', 'visitor-a');
@@ -90,5 +103,36 @@ test('retention cleanup can use the window_start index', () => {
   database.exec(schema);
   const plan = database.prepare('EXPLAIN QUERY PLAN DELETE FROM rate_events WHERE window_start < ?').all(100);
   assert.ok(plan.some(row => String(row.detail).includes('idx_rate_events_window')), JSON.stringify(plan));
+  database.close();
+});
+
+test('ordered production migrations preserve existing totals and register Land of the Dead', () => {
+  const database = new DatabaseSync(':memory:');
+  oldSchema(database);
+  database.exec(`
+    CREATE TABLE engagement_totals (
+      video_id TEXT PRIMARY KEY,
+      likes INTEGER NOT NULL DEFAULT 0 CHECK (likes >= 0),
+      views INTEGER NOT NULL DEFAULT 0 CHECK (views >= 0)
+    );
+    INSERT INTO engagement_totals (video_id, likes, views) VALUES ('enuk', 7, 11);
+    INSERT INTO engagement_totals (video_id, likes, views) VALUES ('laestrygonians', 5, 9);
+  `);
+
+  database.exec(membershipMigration);
+  database.exec(landOfTheDeadMigration);
+  database.exec(membershipMigration);
+  database.exec(landOfTheDeadMigration);
+
+  assert.deepEqual(
+    [...database.prepare('SELECT video_id, likes, views FROM engagement_totals ORDER BY video_id').iterate()]
+      .map(row => ({ ...row })),
+    [
+      { video_id: 'enuk', likes: 7, views: 11 },
+      { video_id: 'laestrygonians', likes: 5, views: 9 },
+      { video_id: 'land-of-the-dead', likes: 0, views: 0 }
+    ]
+  );
+  assert.ok(database.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'members'").get());
   database.close();
 });

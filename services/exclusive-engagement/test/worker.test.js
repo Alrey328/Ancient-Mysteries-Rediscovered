@@ -13,7 +13,8 @@ class MockD1 {
     this.rates = new Map();
     this.counts = new Map([
       ['enuk', { likes: 0, views: 0 }],
-      ['laestrygonians', { likes: 0, views: 0 }]
+      ['laestrygonians', { likes: 0, views: 0 }],
+      ['land-of-the-dead', { likes: 0, views: 0 }]
     ]);
     this.fail = false;
   }
@@ -96,6 +97,12 @@ test('GET returns point-read totals and production CORS', async () => {
   assert.equal(result.headers.get('Cache-Control'), 'no-store');
 });
 
+test('Land of the Dead has an independent engagement record', async () => {
+  const result = await jsonResponse(await worker.fetch(request('/videos/land-of-the-dead'), env(), {}));
+  assert.equal(result.status, 200);
+  assert.deepEqual(result.body, { likes: 0, views: 0 });
+});
+
 test('like and unlike are idempotent', async () => {
   const db = new MockD1();
   const bindings = env(db);
@@ -164,7 +171,7 @@ test('oversized and malformed payloads fail safely', async () => {
   const oversized = new Request('https://worker.example/videos/enuk/like', {
     method: 'PUT',
     headers: { Origin: ORIGIN, 'Content-Type': 'application/json' },
-    body: `{"visitorKey":"${'x'.repeat(3000)}"}`
+    body: `{"visitorKey":"${'x'.repeat(9000)}"}`
   });
   assert.equal((await worker.fetch(oversized, env(), {})).status, 413);
   const malformed = new Request('https://worker.example/videos/enuk/like', {
@@ -193,7 +200,7 @@ test('configuration and D1 failures return generic 503 JSON', async () => {
   db.fail = true;
   const failed = await jsonResponse(await worker.fetch(request('/videos/enuk'), env(db), {}));
   assert.equal(failed.status, 503);
-  assert.deepEqual(failed.body, { error: 'Engagement service temporarily unavailable' });
+  assert.deepEqual(failed.body, { error: 'AMR service temporarily unavailable' });
 });
 
 test('unknown videos and disallowed methods are rejected', async () => {
