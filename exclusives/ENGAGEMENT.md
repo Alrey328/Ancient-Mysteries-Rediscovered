@@ -4,7 +4,7 @@ The shared `engagement.js` component is enabled only on AMR-hosted originals. Ea
 
 ## API contract
 
-For each allowlisted video ID (`enuk` and `laestrygonians`):
+For each allowlisted video ID (`enuk`, `laestrygonians`, and `land-of-the-dead`):
 
 - `GET /videos/:id` returns `{"likes":0,"views":0}`.
 - `PUT /videos/:id/like` with `{"visitorKey":"uuid"}` records an idempotent Like.

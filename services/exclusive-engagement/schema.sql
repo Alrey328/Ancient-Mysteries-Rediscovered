@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS engagement_totals (
 
 INSERT OR IGNORE INTO engagement_totals (video_id) VALUES ('enuk');
 INSERT OR IGNORE INTO engagement_totals (video_id) VALUES ('laestrygonians');
+INSERT OR IGNORE INTO engagement_totals (video_id) VALUES ('land-of-the-dead');
 
 CREATE TRIGGER IF NOT EXISTS likes_after_insert
 AFTER INSERT ON likes

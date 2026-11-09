@@ -1,6 +1,6 @@
 // AMR Exclusives engagement service — Cloudflare Worker + D1.
 // Anonymous counters are best-effort and are not a fraud-proof audience census.
-const VIDEO_IDS = new Set(['enuk', 'laestrygonians']);
+const VIDEO_IDS = new Set(['enuk', 'laestrygonians', 'land-of-the-dead']);
 const ALLOWED_ORIGINS = new Set([
   'https://ancientmysteriesrediscovered.com',
   'https://www.ancientmysteriesrediscovered.com'

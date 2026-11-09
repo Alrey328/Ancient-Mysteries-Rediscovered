@@ -13,7 +13,8 @@ class MockD1 {
     this.rates = new Map();
     this.counts = new Map([
       ['enuk', { likes: 0, views: 0 }],
-      ['laestrygonians', { likes: 0, views: 0 }]
+      ['laestrygonians', { likes: 0, views: 0 }],
+      ['land-of-the-dead', { likes: 0, views: 0 }]
     ]);
     this.fail = false;
   }
@@ -94,6 +95,12 @@ test('GET returns point-read totals and production CORS', async () => {
   assert.deepEqual(result.body, { likes: 0, views: 0 });
   assert.equal(result.headers.get('Access-Control-Allow-Origin'), ORIGIN);
   assert.equal(result.headers.get('Cache-Control'), 'no-store');
+});
+
+test('Land of the Dead has an independent engagement record', async () => {
+  const result = await jsonResponse(await worker.fetch(request('/videos/land-of-the-dead'), env(), {}));
+  assert.equal(result.status, 200);
+  assert.deepEqual(result.body, { likes: 0, views: 0 });
 });
 
 test('like and unlike are idempotent', async () => {

@@ -559,7 +559,14 @@ video:focus-visible {
 .viewer-page .amr-engagement [data-amr-likes] { align-self: center; }
 .viewer-page .amr-engagement [data-amr-status] { flex-basis: 100%; min-height: 1.4em; color: var(--cinema-muted); font-size: 0.67rem; }
 
-.viewer-share-group { min-width: 190px; }
+.viewer-share-group,
+.viewer-action-group { min-width: 190px; }
+
+.viewer-action-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
 
 .viewer-share {
   width: 100%;
@@ -574,7 +581,20 @@ video:focus-visible {
   cursor: pointer;
 }
 
-.viewer-share-status { min-height: 1.4em; margin: 7px 0 0; color: var(--cinema-muted); font-size: 0.8rem; text-align: right; }
+.viewer-comments-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(224, 189, 108, 0.35);
+  color: var(--cinema-bone);
+  font: 600 0.7rem/1.2 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.viewer-share-status { grid-column: 1 / -1; min-height: 1.4em; margin: 0; color: var(--cinema-muted); font-size: 0.8rem; text-align: right; }
 
 .viewer-section { padding-top: 58px; }
 .viewer-section--comments { padding-top: 38px; }
@@ -612,12 +632,17 @@ video:focus-visible {
   cursor: pointer;
 }
 
+.viewer-related-list {
+  display: grid;
+  max-width: 760px;
+  gap: 18px;
+  margin-top: 28px;
+}
+
 .viewer-related {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 28px;
-  max-width: 760px;
-  margin-top: 28px;
   border: 1px solid var(--cinema-line);
   background: var(--cinema-panel);
   color: inherit;
@@ -636,7 +661,8 @@ video:focus-visible {
   .cinema-grid { grid-template-columns: 1fr; }
   .cinema-card { grid-template-columns: minmax(180px, 0.62fr) minmax(0, 1.38fr); }
   .viewer-toolbar { flex-direction: column; }
-  .viewer-share-group { width: min(100%, 260px); }
+  .viewer-share-group,
+  .viewer-action-group { width: min(100%, 320px); }
   .viewer-share-status { text-align: left; }
 }
 
