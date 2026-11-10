@@ -2,12 +2,12 @@
 
 ## Reused production systems
 
-- `/cinema/` is a direct featured-film viewing route: title, playable film, engagement/share controls, consent-based discussion, then recommendations. Dedicated film selections use the same uninterrupted layout.
-- Film media stays on the existing static site: `media/Enuk_AMR_Exclusive_web.mp4` and `assets/originals/laestrygonians/film.mp4`.
-- Posters and film IDs remain unchanged.
-- Cinema viewing pages load `exclusives/engagement.js` and use the existing `enuk` and `laestrygonians` IDs. Likes and qualified views therefore use the existing Worker, D1 records, visitor key, rate limits, and three-second view qualification.
+- `/cinema/` is a direct featured-film viewing route: title, playable film, share controls, consent-based discussion, then inline recommendations. One Play activation starts each featured or recommended film in place; dedicated film selections use the same uninterrupted layout.
+- Film media stays on the existing static site: `media/Enuk_AMR_Exclusive_web.mp4`, `assets/originals/laestrygonians/film.mp4`, and `assets/originals/land-of-the-dead/film.mp4`.
+- Existing posters, film IDs, and film routes remain unchanged. Land of the Dead uses a dedicated Cinema route and self-hosted assets, without a YouTube dependency.
+- Enuk and Laestrygonians viewing pages continue to load `exclusives/engagement.js` with their existing IDs. Their Likes and qualified Views therefore keep using the existing Worker, D1 records, visitor key, rate limits, and three-second view qualification. Land of the Dead does not add a production Worker allowlist or D1 migration in this Cinema-only release.
 - Comments reuse the repository's existing Giscus configuration and GitHub Discussions category. Cinema uses stable film-specific terms so the featured and dedicated Laestrygonians routes share one thread instead of splitting the conversation by pathname.
-- Existing Exclusives pages remain intact and are the canonical film URLs. Cinema viewing routes are alternate presentation URLs; only the distinct `/cinema/` collection page is added to the sitemap.
+- Existing Exclusives pages remain intact and are the canonical URLs for Enuk and Laestrygonians. Their Cinema viewing routes are alternate presentation URLs. Land of the Dead has no separate Exclusives page, so `/cinema/land-of-the-dead/` is its stable canonical film URL and appears in the sitemap alongside `/cinema/`.
 
 ## Comment system decision
 
