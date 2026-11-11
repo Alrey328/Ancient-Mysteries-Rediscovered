@@ -6,3 +6,13 @@ article:has(.player)>p:first-child{max-width:590px;margin:0 auto 10px}
 article:has(.player)>#video-status{margin:10px auto 16px}
 article:has(.player)>p:last-child{margin-bottom:0}
 @media(max-width:600px){header,main,footer{padding:16px}article:has(.player){padding:14px 10px}article:has(.player)>.player{width:min(100%,440px);margin:14px auto 12px}}
+
+/* AMR interior readability V2: Exclusives navigation and supporting copy. */
+header nav { display:flex;align-items:center;gap:10px }
+header nav > a,body nav.exclusive-library > a { display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:11px 16px;border:1px solid #b78d42;border-radius:5px;background:#22242c;color:#f8eed7;font:600 1rem/1.3 Georgia,serif;text-decoration:none;text-align:center }
+header nav > a:hover,header nav > a:focus-visible,body nav.exclusive-library > a:hover,body nav.exclusive-library > a:focus-visible { border-color:#f0ce7a;background:#594019;color:#fff8e8 }
+header nav > a:focus-visible,body nav.exclusive-library > a:focus-visible,body .exclusive-actions a:focus-visible { outline:3px solid #f0ce7a;outline-offset:3px }
+body .exclusive-actions a { font-size:1rem;color:#f8eed7 }
+body .exclusive-feature p,body article > p { color:#e7dfd1 }
+body small { color:#d1c9b9;font-size:.86rem }
+@media(max-width:600px){header nav{gap:9px}header nav > a,body nav.exclusive-library > a{min-height:48px;padding:11px 13px;font-size:.98rem}}
