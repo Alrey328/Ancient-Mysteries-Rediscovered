@@ -54,3 +54,17 @@
 .door-copy{padding-block:clamp(1rem,4vw,4rem);text-align:center}
 @media(max-width:900px){.door-beyond{min-height:auto}.door-layout{grid-template-columns:1fr;gap:2.5rem}.door-media{width:min(100%,680px);justify-self:center}.door-copy{padding-block:1rem 0}}
 @media(max-width:650px){.door-beyond{padding-block:4.5rem}.door-layout{gap:2rem}.door-copy{padding-block:0}.door-question{margin-block:2rem}.door-boundary{margin-top:1.75rem}.door-credit{margin-top:1.5rem}}
+
+/* AMR interior readability V2: investigation tabs, actions, and evidence labels. */
+.site-nav .brand { color:#f7efdd;font-size:clamp(.89rem,1.15vw,1rem);letter-spacing:.04em;line-height:1.35 }
+.site-nav .brand span { color:var(--gold-bright) }
+.site-nav .nav-track { min-width:0;gap:.45rem }
+.site-nav .nav-track a { min-height:44px;flex:0 0 auto;padding:.55rem .7rem;border:1px solid rgba(246,205,121,.42);border-radius:3px;background:rgba(22,26,24,.92);color:#f4eee3;font-size:.83rem;letter-spacing:.025em;line-height:1.3 }
+.site-nav .nav-track a:hover,.site-nav .nav-track a:focus-visible { color:#fff6e1;border-color:var(--gold-bright);background:#554020 }
+.site-nav a:focus-visible,.primary-action:focus-visible,.secondary-action:focus-visible { outline:3px solid var(--gold-bright);outline-offset:2px }
+.primary-action,.secondary-action { font-size:.86rem }
+.evidence-tag { font-size:.78rem;letter-spacing:.035em }
+.eyebrow { color:var(--gold-bright);font-size:.84rem;letter-spacing:.09em }
+.index-grid span,.measurement span,.ledger span { font-size:.8rem }
+.reconstruction-frame figcaption,.archaeology-frame figcaption { color:#e1d9ca;font-size:.93rem }
+@media(max-width:720px){.site-nav .brand{font-size:.85rem;letter-spacing:.02em;white-space:normal}.site-nav .nav-track{width:100%;gap:.4rem;padding-block:.25rem .5rem}.site-nav .nav-track a{font-size:.86rem}}
