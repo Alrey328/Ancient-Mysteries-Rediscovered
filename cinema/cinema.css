@@ -660,14 +660,27 @@ video:focus-visible {
 }
 
 .cinema-library { scroll-margin-top: 18px; }
-.cinema-library--top { padding-top: 10px; }
-.cinema-library--top + .viewer-stage { margin-top: 48px; }
+.cinema-library--top { padding-top: 0; }
+
+.cinema-library-page .viewer-main {
+  width: min(1320px, calc(100% - 32px));
+  padding-block: 10px 20px;
+}
+
+.cinema-library-page .cinema-footer { padding-block: 12px; }
+
+.cinema-library--top .viewer-section-heading h1 {
+  margin: 4px 0 0;
+  font: 600 clamp(1.45rem, 2.5vw, 2.15rem)/1.15 'Cinzel', serif;
+}
+
+.cinema-library--top .viewer-section-heading > p:last-child { margin-top: 4px; }
 
 .cinema-library-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 24px);
-  margin-top: 24px;
+  gap: clamp(12px, 1.5vw, 20px);
+  margin-top: 14px;
 }
 
 .cinema-library-card {
@@ -695,7 +708,7 @@ video:focus-visible {
 .cinema-library-poster {
   position: relative;
   display: block;
-  height: clamp(280px, 40vh, 350px);
+  height: clamp(200px, calc(100vh - 330px), 320px);
   overflow: hidden;
   background: #000;
 }
@@ -725,8 +738,8 @@ video:focus-visible {
 
 .cinema-library-copy {
   display: grid;
-  gap: 7px;
-  padding: 14px 16px 16px;
+  gap: 5px;
+  padding: 10px 13px 12px;
 }
 
 .cinema-library-copy small {
@@ -738,7 +751,7 @@ video:focus-visible {
 
 .cinema-library-copy strong {
   color: var(--cinema-bone);
-  font: 600 clamp(0.95rem, 1.45vw, 1.2rem)/1.25 'Cinzel', serif;
+  font: 600 clamp(0.86rem, 1.25vw, 1.08rem)/1.2 'Cinzel', serif;
 }
 
 .cinema-library-copy > span {
@@ -787,13 +800,15 @@ video:focus-visible {
   .viewer-page .amr-engagement [data-amr-views] { flex-basis: 100%; }
   .viewer-share { width: 100%; }
   .viewer-comments { padding: 16px; }
+}
+
+@media (max-width: 620px) {
   .cinema-library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .cinema-library-poster { height: min(58vw, 265px); }
-  .cinema-library--top + .viewer-stage { margin-top: 36px; }
-  .cinema-library-copy { padding: 11px 12px 13px; }
-  .cinema-library-copy small { font-size: 0.52rem; }
-  .cinema-library-copy strong { font-size: 0.86rem; }
-  .cinema-library-copy > span { font-size: 0.55rem; }
+  .cinema-library-poster { height: min(50vw, 250px); }
+  .cinema-library-copy { padding: 9px 10px 11px; }
+  .cinema-library-copy small { font-size: 0.5rem; }
+  .cinema-library-copy strong { font-size: 0.8rem; }
+  .cinema-library-copy > span { font-size: 0.52rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

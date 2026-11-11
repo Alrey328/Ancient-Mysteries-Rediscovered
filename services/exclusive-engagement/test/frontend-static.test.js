@@ -43,7 +43,7 @@ test('exclusive media paths resolve to repository assets', () => {
     ['exclusives/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4']],
     ['exclusives/enuk/index.html', ['../../Enkidu%20Poster.png', '../../media/Enuk_AMR_Exclusive_web.mp4']],
     ['exclusives/laestrygonians/index.html', ['../../assets/originals/laestrygonians/poster.webp', '../../assets/originals/laestrygonians/film.mp4']],
-    ['cinema/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4']],
+    ['cinema/index.html', ['../assets/originals/land-of-the-dead/poster.png']],
     ['cinema/land-of-the-dead/index.html', ['../../assets/originals/land-of-the-dead/poster.png', '../../assets/originals/land-of-the-dead/film.mp4']]
   ]);
   for (const [page, assets] of expectations) {
@@ -131,7 +131,7 @@ test('AMR Exclusives features Land inline while preserving existing releases', (
 });
 
 test('Cinema keeps playback opt-in and exposes accessible controls', () => {
-  for (const page of ['cinema/index.html', 'cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
+  for (const page of ['cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
     const videoTag = html.match(/<video\b[^>]*>/)?.[0] || '';
     assert.match(html, /class="skip-link"/);
@@ -174,7 +174,7 @@ test('Cinema uses a direct video to engagement to discussion flow', () => {
 });
 
 test('Land of the Dead is the featured self-hosted release without backend changes', () => {
-  for (const page of ['cinema/index.html', 'cinema/land-of-the-dead/index.html']) {
+  for (const page of ['cinema/land-of-the-dead/index.html']) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
     const video = html.indexOf('<video');
     const title = html.indexOf('<h1');
@@ -190,7 +190,7 @@ test('Land of the Dead is the featured self-hosted release without backend chang
 });
 
 test('each Cinema viewing page preserves one-click playback', () => {
-  for (const page of ['cinema/index.html', 'cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
+  for (const page of ['cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
     const players = [...html.matchAll(/data-cinema-player/g)];
     const playButtons = [...html.matchAll(/data-cinema-play(?:\s|>)/g)];
@@ -216,10 +216,11 @@ test('Cinema exposes all published films in a compact responsive library', () =>
   assert.match(library, /The Laestrygonians/);
   assert.match(library, /Enuk: The Wildman/);
   assert.doesNotMatch(library, /<video\b/);
-  assert.ok(html.indexOf('id="film-library"') < html.indexOf('class="viewer-stage"'), 'library precedes the featured player');
+  assert.match(html, /<main[^>]*>\s*<section[^>]*id="film-library"/s);
+  assert.doesNotMatch(html, /viewer-stage|data-cinema-player|data-cinema-comments/);
   assert.match(styles, /\.cinema-library-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,/s);
   assert.match(styles, /\.cinema-library-poster img\s*\{[^}]*object-fit:\s*contain/s);
-  assert.match(styles, /@media \(max-width: 680px\)[\s\S]*?\.cinema-library-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,/);
+  assert.match(styles, /@media \(max-width: 620px\)[\s\S]*?\.cinema-library-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,/);
 
   for (const page of ['cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
     const viewingPage = fs.readFileSync(path.join(repoDir, page), 'utf8');
