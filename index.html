@@ -1336,20 +1336,24 @@
     }
     .hero > p:not(.hero-media-status){
       width:min(100%, 580px);
-      padding:13px 15px;
+      padding:0 4px;
       margin-top:8px;
-      color:#fffaf0;
-      font-size:clamp(1.1rem, 4.7vw, 1.25rem);
-      font-weight:500;
+      color:#ffe4ad;
+      font-size:clamp(1.18rem, 5vw, 1.33rem);
+      font-weight:600;
       line-height:1.55;
-      text-shadow:0 2px 5px #000;
-      background:linear-gradient(90deg,
-        rgba(5,10,17,0.8),
-        rgba(5,10,17,0.92) 24%,
-        rgba(5,10,17,0.92) 76%,
-        rgba(5,10,17,0.8));
-      box-shadow:0 0 22px rgba(5,10,17,0.35);
-      border-radius:6px;
+      /* Lettering floats directly over the movie; no obscuring panel. */
+      background:none;
+      box-shadow:none;
+      border-radius:0;
+      -webkit-text-stroke:0.4px rgba(5,10,17,0.94);
+      text-shadow:
+        -1px -1px 1px rgba(0,0,0,0.98),
+         1px -1px 1px rgba(0,0,0,0.98),
+        -1px  1px 1px rgba(0,0,0,0.98),
+         1px  1px 1px rgba(0,0,0,0.98),
+         0 3px 8px rgba(0,0,0,0.9),
+         0 0 16px rgba(236,187,92,0.32);
     }
   }
   @media (max-width:340px){
