@@ -22,7 +22,6 @@
     if (!original || !original.poster || !original.videoUrl || !original.enabled) return '';
     const poster = escapeHtml(assetUrl(original.poster, prefix));
     const video = escapeHtml(assetUrl(original.videoUrl, prefix));
-    const watchPage = escapeHtml(assetUrl(original.watchPage || 'exclusives/laestrygonians/', prefix));
     const originalsPage = escapeHtml(assetUrl('exclusives/', prefix));
     const title = escapeHtml(original.title || 'AMR Original Film');
     const description = escapeHtml(original.description || '');
@@ -32,20 +31,53 @@
     return `
       <article class="premiere-card premiere-card--original">
         <div class="premiere-card-platform">AMR Originals · Exclusive Film</div>
-        <div class="premiere-card-media amr-living-poster" data-living-poster
+        <div class="premiere-card-media amr-living-poster" data-original-player data-living-poster
              ${frames.length ? `data-frames="${escapeHtml(JSON.stringify(frames))}"` : ''}>
-          <img src="${poster}" alt="Official story poster for ${title}" width="941" height="1672" loading="lazy">
-          <a class="premiere-play" href="${watchPage}" aria-label="Play ${title}" title="Play ${title}">&#9654;</a>
+          <video controls playsinline preload="metadata" poster="${poster}" aria-label="Watch ${title}" data-original-video>
+            <source src="${video}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button class="premiere-play" type="button" data-original-play aria-label="Play ${title}" title="Play ${title}">&#9654;</button>
+          <p class="premiere-play-status" data-original-play-status role="status" aria-live="polite"></p>
         </div>
         <div class="premiere-card-copy">
           <h3>${title}</h3>
           <p>${description}</p>
           <div class="premiere-actions">
-            <a class="premiere-cta" href="${watchPage}" data-original-watch>Watch the Film &#9654;</a>
+            <button class="premiere-cta" type="button" data-original-play data-original-watch>Watch the Film &#9654;</button>
             <a class="premiere-more" href="${originalsPage}">Explore AMR Originals &#8594;</a>
           </div>
         </div>
       </article>`;
+  }
+
+  function initOriginalPlayback(root) {
+    const stage = root.querySelector('[data-original-player]');
+    const video = stage?.querySelector('[data-original-video]');
+    const buttons = root.querySelectorAll('[data-original-play]');
+    const overlay = stage?.querySelector('.premiere-play');
+    const status = stage?.querySelector('[data-original-play-status]');
+    if (!stage || !video || !buttons.length) return;
+
+    buttons.forEach(button => button.addEventListener('click', async () => {
+      if (status) status.textContent = '';
+      video.muted = false;
+      try {
+        await video.play();
+      } catch (_error) {
+        if (overlay) overlay.hidden = false;
+        if (status) status.textContent = 'Playback could not start. Use the video controls to try again.';
+      }
+    }));
+    video.addEventListener('play', () => {
+      if (overlay) overlay.hidden = true;
+      if (status) status.textContent = '';
+    });
+    video.addEventListener('ended', () => { if (overlay) overlay.hidden = false; });
+    video.addEventListener('error', () => {
+      if (overlay) overlay.hidden = false;
+      if (status) status.textContent = 'This film could not be loaded. Please try again.';
+    });
   }
 
   function initLivingPosters(root) {
@@ -135,6 +167,7 @@
       if (kicker) kicker.textContent = 'Three experiences · one AMR stage';
       const intro = document.querySelector('.premiere-stage-intro p');
       if (intro) intro.textContent = 'Explore our newest Facebook Reel, YouTube film, and our newest AMR Original film.';
+      initOriginalPlayback(root);
       initLivingPosters(root);
     }
   }

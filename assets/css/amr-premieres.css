@@ -112,6 +112,7 @@
 }
 
 .premiere-card-media img,
+.premiere-card-media video,
 .library-feature-media img,
 .film-card-media img {
   width: 100%;
@@ -119,6 +120,11 @@
   display: block;
   object-fit: cover;
   transition: transform 0.55s ease, filter 0.55s ease;
+}
+
+.premiere-card-media video {
+  object-fit: contain;
+  background: #000;
 }
 
 .premiere-card--reel .premiere-card-media img {
@@ -150,6 +156,29 @@
   transform: translate(-50%, -50%);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.42);
 }
+
+button.premiere-play {
+  padding: 0;
+  cursor: pointer;
+}
+
+.premiere-play[hidden] { display: none; }
+
+.premiere-play-status {
+  position: absolute;
+  z-index: 2;
+  right: 12px;
+  bottom: 56px;
+  left: 12px;
+  margin: 0;
+  padding: 8px 10px;
+  background: rgba(9, 11, 16, 0.94);
+  color: #f1ead9;
+  font: 600 0.66rem/1.4 'JetBrains Mono', monospace;
+  text-align: center;
+}
+
+.premiere-play-status:empty { display: none; }
 
 .premiere-card-copy {
   padding: clamp(22px, 3vw, 34px);
@@ -194,6 +223,8 @@
   text-transform: uppercase;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
+
+button.premiere-cta { cursor: pointer; }
 
 .premiere-cta:hover,
 .premiere-cta:focus-visible,

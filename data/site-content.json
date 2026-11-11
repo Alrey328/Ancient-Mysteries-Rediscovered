@@ -228,11 +228,11 @@
   "featuredOriginal": {
     "enabled": true,
     "livingPosterEnabled": false,
-    "title": "The Laestrygonians — The Terrifying Giants of the Odyssey",
-    "description": "A cinematic AMR Original: Odysseus enters a harbor of giants. Only one ship escapes.",
-    "poster": "assets/originals/laestrygonians/poster.webp",
-    "videoUrl": "assets/originals/laestrygonians/film.mp4",
-    "watchPage": "exclusives/laestrygonians/",
+    "title": "Odysseus — The Land of the Dead",
+    "description": "Odysseus descends into the land of the dead seeking a way home—and confronts the shades of his past.",
+    "poster": "assets/originals/land-of-the-dead/poster.png",
+    "videoUrl": "assets/originals/land-of-the-dead/film.mp4",
+    "watchPage": "exclusives/",
     "viewFrames": []
   }
 }

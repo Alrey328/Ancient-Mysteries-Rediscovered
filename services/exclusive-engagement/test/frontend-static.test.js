@@ -7,7 +7,6 @@ import { fileURLToPath } from 'node:url';
 const serviceDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const repoDir = path.resolve(serviceDir, '..', '..');
 const engagementPages = [
-  'exclusives/index.html',
   'exclusives/enuk/index.html',
   'exclusives/laestrygonians/index.html',
   'cinema/enuk/index.html',
@@ -41,7 +40,7 @@ test('engagement controls are absent from every non-AMR-film HTML page', () => {
 
 test('exclusive media paths resolve to repository assets', () => {
   const expectations = new Map([
-    ['exclusives/index.html', ['../Enkidu%20Poster.png', '../media/Enuk_AMR_Exclusive_web.mp4']],
+    ['exclusives/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4']],
     ['exclusives/enuk/index.html', ['../../Enkidu%20Poster.png', '../../media/Enuk_AMR_Exclusive_web.mp4']],
     ['exclusives/laestrygonians/index.html', ['../../assets/originals/laestrygonians/poster.webp', '../../assets/originals/laestrygonians/film.mp4']],
     ['cinema/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4']],
@@ -57,12 +56,17 @@ test('exclusive media paths resolve to repository assets', () => {
   }
 });
 
-test('homepage original card uses the configured internal watch page', () => {
+test('homepage AMR Exclusive config features the self-hosted Land of the Dead release', () => {
   const content = JSON.parse(fs.readFileSync(path.join(repoDir, 'data/site-content.json'), 'utf8'));
-  assert.equal(content.featuredOriginal.watchPage, 'exclusives/laestrygonians/');
+  assert.equal(content.featuredOriginal.title, 'Odysseus — The Land of the Dead');
+  assert.equal(content.featuredOriginal.poster, 'assets/originals/land-of-the-dead/poster.png');
+  assert.equal(content.featuredOriginal.videoUrl, 'assets/originals/land-of-the-dead/film.mp4');
+  assert.equal(content.featuredOriginal.watchPage, 'exclusives/');
   assert.equal(content.featuredOriginal.enabled, true);
   const renderer = fs.readFileSync(path.join(repoDir, 'assets/js/amr-premieres.js'), 'utf8');
-  assert.match(renderer, /original\.watchPage/);
+  assert.match(renderer, /data-original-player/);
+  assert.match(renderer, /data-original-play/);
+  assert.match(renderer, /await video\.play\(\)/);
 });
 
 test('existing Cinema viewing pages preserve engagement IDs and media assets', () => {
@@ -106,7 +110,24 @@ test('homepage exposes AMR Cinema without changing premiere destinations', () =>
   const homepage = fs.readFileSync(path.join(repoDir, 'index.html'), 'utf8');
   assert.match(homepage, /<a href="cinema\/">AMR Cinema<\/a>/);
   const content = JSON.parse(fs.readFileSync(path.join(repoDir, 'data/site-content.json'), 'utf8'));
-  assert.equal(content.featuredOriginal.watchPage, 'exclusives/laestrygonians/');
+  assert.equal(content.featuredOriginal.watchPage, 'exclusives/');
+});
+
+test('AMR Exclusives features Land inline while preserving existing releases', () => {
+  const html = fs.readFileSync(path.join(repoDir, 'exclusives/index.html'), 'utf8');
+  const videoTag = html.match(/<video\b[^>]*id="featured-video"[^>]*>/)?.[0] || '';
+  assert.match(html, /Odysseus — The Land of the Dead/);
+  assert.match(videoTag, /\scontrols(?:\s|>)/);
+  assert.match(videoTag, /\splaysinline(?:\s|>)/);
+  assert.match(videoTag, /\spreload="metadata"/);
+  assert.doesNotMatch(videoTag, /\sautoplay(?:\s|=|>)/);
+  assert.match(html, /assets\/originals\/land-of-the-dead\/poster\.png/);
+  assert.match(html, /assets\/originals\/land-of-the-dead\/film\.mp4/);
+  assert.match(html, /id="featured-play"[^>]*aria-label="Play Odysseus — The Land of the Dead"/);
+  assert.match(html, /href="enuk\/"/);
+  assert.match(html, /href="laestrygonians\/"/);
+  assert.match(html, /cinema\/land-of-the-dead\/#comments-title/);
+  assert.doesNotMatch(html, /data-amr-engagement|data-video-id=|youtube\.com|youtu\.be/);
 });
 
 test('Cinema keeps playback opt-in and exposes accessible controls', () => {
