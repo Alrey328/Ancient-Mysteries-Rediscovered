@@ -216,3 +216,28 @@
 @media(max-width:600px){.continue-grid{grid-template-columns:1fr}.continue-card:last-child{grid-column:auto;max-width:none}.continue-image{aspect-ratio:4/4}.continue-copy p{min-height:0}.story-band .story-status h2{font-size:clamp(43px,10vw,60px)}}
 @media(max-width:430px){.story-poster{max-width:205px}.story-status{padding-left:20px}.story-band .story-status h2{font-size:clamp(40px,11vw,51px)}.story-status .reel-watch{width:100%;justify-content:space-between}.continue-investigation h2{font-size:clamp(46px,12vw,59px)}.continue-copy h3{font-size:38px}}
 
+
+/* AMR remaining investigations readability V2 — Sa-Nakht navigation and labels. */
+.site-nav .brand { color:#f7ead6; font-size:clamp(18px,1.7vw,23px); letter-spacing:.04em; line-height:1.1; }
+.site-nav .brand span { color:#f1d29d; font-size:11px; letter-spacing:.18em; }
+.site-nav .nav-links { gap:8px; min-width:0; }
+.site-nav .nav-links a {
+  display:inline-flex; align-items:center; justify-content:center; min-height:46px;
+  padding:10px 13px; border:1px solid rgba(218,173,87,.55); border-radius:4px;
+  background:rgba(19,23,24,.93); color:#f8eee0; font-size:14px;
+  letter-spacing:.035em; line-height:1.3; white-space:nowrap;
+}
+.site-nav .nav-links a:hover,.site-nav .nav-links a:focus-visible { color:#fff8e9; background:#57401f; border-color:#f5d68d; }
+.site-nav a:focus-visible { outline:3px solid #f5d68d; outline-offset:2px; }
+.eyebrow { color:#f5d68d; font-size:13px; letter-spacing:.09em; }
+@media(max-width:760px){
+  .site-nav { flex-wrap:wrap; align-items:flex-start; gap:9px; padding:12px 18px; }
+  .site-nav .brand { flex:0 0 100%; font-size:21px; }
+  .site-nav .brand span { font-size:10px; }
+  .site-nav .nav-links { display:flex; width:100%; flex-wrap:nowrap; overflow-x:auto; gap:7px; padding:3px 0 5px; }
+  .site-nav .nav-links a, .site-nav .nav-links a:nth-child(2) { display:inline-flex; min-height:48px; font-size:14px; flex:0 0 auto; }
+  .hero-copy .eyebrow { font-size:13px; }
+}
+@media(max-width:430px){
+  .site-nav .nav-links a:first-child { display:inline-flex; }
+}
