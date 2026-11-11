@@ -29,7 +29,7 @@
       </a>
       <button class="cinema-menu" type="button" aria-expanded="false" aria-controls="cinema-navigation">Menu</button>
       <ul id="cinema-navigation" class="cinema-nav-links" data-open="false">
-        <li><a href="../">All Films</a></li>
+        <li><a href="../#film-library">All Films</a></li>
         <li><a href="../land-of-the-dead/">Newest Film</a></li>
         <li><a href="../../">AMR Home</a></li>
       </ul>
@@ -66,6 +66,7 @@
       <div class="viewer-share-group">
         <button class="viewer-share" type="button" data-share-film data-share-title="The Laestrygonians | AMR Cinema" data-share-url="/cinema/laestrygonians/" aria-describedby="share-status">Share film</button>
         <p class="viewer-share-status" id="share-status" role="status"></p>
+        <a class="viewer-library-link" href="../#film-library">Explore More AMR Videos</a>
       </div>
     </section>
 
@@ -82,30 +83,6 @@
       <p class="viewer-comments-note">Comments are governed by GitHub's account and privacy policies. AMR moderators can hide, report, lock, or delete discussion content through the repository's Discussions controls.</p>
     </section>
 
-    <section class="viewer-section" id="recommendations" aria-labelledby="related-title">
-      <div class="viewer-section-heading">
-        <p>Watch another film</p>
-        <h2 id="related-title">More from AMR Cinema</h2>
-      </div>
-      <div class="viewer-related-list">
-        <article class="viewer-related-card">
-          <div class="viewer-related-player" data-cinema-player>
-            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../../assets/originals/land-of-the-dead/poster.png" aria-label="Watch Odysseus — The Land of the Dead"><source src="../../assets/originals/land-of-the-dead/film.mp4" type="video/mp4"></video>
-            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play Odysseus — The Land of the Dead here"><span aria-hidden="true">▶</span></button>
-            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
-          </div>
-          <div class="viewer-related-copy"><span>Newest film · 1 min 6 sec</span><h3>Odysseus — The Land of the Dead</h3><p>Odysseus descends among the shades seeking a way home.</p><a href="../land-of-the-dead/">Film details &amp; comments</a></div>
-        </article>
-        <article class="viewer-related-card">
-          <div class="viewer-related-player" data-cinema-player>
-            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../../Enkidu%20Poster.png" aria-label="Watch Enuk: The Wildman"><source src="../../media/Enuk_AMR_Exclusive_web.mp4" type="video/mp4"></video>
-            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play Enuk: The Wildman here"><span aria-hidden="true">▶</span></button>
-            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
-          </div>
-          <div class="viewer-related-copy"><span>AMR Original · 26 seconds</span><h3>Enuk: The Wildman</h3><p>An ancient mystery brought to life through cinematic reconstruction.</p><a href="../enuk/">Film details, likes &amp; comments</a></div>
-        </article>
-      </div>
-    </section>
   </main>
 
   <footer class="cinema-footer"><div class="cinema-wrap"><p>AI-assisted artistic reconstruction. Legendary narratives are not presented as verified historical events.</p><p><a href="../">AMR Cinema</a> <span aria-hidden="true">·</span> <a href="../../exclusives/laestrygonians/">Original film page</a></p></div></footer>

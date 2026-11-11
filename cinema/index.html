@@ -27,13 +27,35 @@
       </a>
       <button class="cinema-menu" type="button" aria-expanded="false" aria-controls="cinema-navigation">Menu</button>
       <ul id="cinema-navigation" class="cinema-nav-links" data-open="false">
-        <li><a href="#recommendations">Other Films</a></li>
+        <li><a href="#film-library">Film Library</a></li>
         <li><a href="../">AMR Home</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="viewer-main cinema-wrap">
+    <section class="viewer-section cinema-library cinema-library--top" id="film-library" aria-labelledby="film-library-title">
+      <div class="viewer-section-heading">
+        <p>AMR Cinema library</p>
+        <h2 id="film-library-title">Explore More AMR Videos</h2>
+        <p>Select a film to open its viewing page.</p>
+      </div>
+      <div class="cinema-library-grid">
+        <a class="cinema-library-card" href="./land-of-the-dead/" aria-label="Watch Odysseus — The Land of the Dead">
+          <span class="cinema-library-poster"><img src="../assets/originals/land-of-the-dead/poster.png" alt="Odysseus — The Land of the Dead poster" loading="eager"><span class="cinema-library-play" aria-hidden="true">▶</span></span>
+          <span class="cinema-library-copy"><small>Newest release · 1 min 6 sec</small><strong>Odysseus — The Land of the Dead</strong><span>Watch film →</span></span>
+        </a>
+        <a class="cinema-library-card" href="./enuk/" aria-label="Watch Enuk: The Wildman">
+          <span class="cinema-library-poster"><img src="../Enkidu%20Poster.png" alt="Enuk: The Wildman poster" loading="eager"><span class="cinema-library-play" aria-hidden="true">▶</span></span>
+          <span class="cinema-library-copy"><small>AMR Original · 26 seconds</small><strong>Enuk: The Wildman</strong><span>Watch film →</span></span>
+        </a>
+        <a class="cinema-library-card" href="./laestrygonians/" aria-label="Watch The Laestrygonians">
+          <span class="cinema-library-poster"><img src="../assets/originals/laestrygonians/poster.webp" alt="The Laestrygonians poster" loading="eager"><span class="cinema-library-play" aria-hidden="true">▶</span></span>
+          <span class="cinema-library-copy"><small>AMR Original · 34 seconds</small><strong>The Laestrygonians</strong><span>Watch film →</span></span>
+        </a>
+      </div>
+    </section>
+
     <section class="viewer-stage" aria-label="Odysseus — The Land of the Dead film player">
       <div class="viewer-player-shell" data-cinema-player>
         <video id="cinema-featured-video" class="viewer-player" controls playsinline preload="metadata" poster="../assets/originals/land-of-the-dead/poster.png" aria-label="Watch Odysseus — The Land of the Dead">
@@ -57,6 +79,7 @@
       <div class="viewer-action-group">
         <button class="viewer-share" type="button" data-share-film data-share-title="Odysseus — The Land of the Dead | AMR Cinema" data-share-url="/cinema/land-of-the-dead/" aria-describedby="featured-share-status">Share film</button>
         <a class="viewer-comments-link" href="#comments-title">Comments</a>
+        <a class="viewer-library-link" href="#film-library">Explore More AMR Videos</a>
         <p class="viewer-share-status" id="featured-share-status" role="status"></p>
       </div>
     </section>
@@ -74,35 +97,6 @@
       <p class="viewer-comments-note">Comments are governed by GitHub's account and privacy policies. AMR moderators can hide, report, lock, or delete discussion content through the repository's Discussions controls.</p>
     </section>
 
-    <section class="viewer-section" id="recommendations" aria-labelledby="related-title">
-      <div class="viewer-section-heading">
-        <p>Watch another film</p>
-        <h2 id="related-title">More from AMR Cinema</h2>
-        <p>Press Play on any poster to begin the film here in one click.</p>
-      </div>
-      <div class="viewer-related-list">
-        <article class="viewer-related-card">
-          <div class="viewer-related-player" data-cinema-player>
-            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../assets/originals/laestrygonians/poster.webp" aria-label="Watch The Laestrygonians">
-              <source src="../assets/originals/laestrygonians/film.mp4" type="video/mp4">
-            </video>
-            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play The Laestrygonians here"><span aria-hidden="true">▶</span></button>
-            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
-          </div>
-          <div class="viewer-related-copy"><span>AMR Original · 34 seconds</span><h3>The Laestrygonians</h3><p>Odysseus enters a harbor of giants. Only one ship escapes.</p><a href="./laestrygonians/">Film details, likes &amp; comments</a></div>
-        </article>
-        <article class="viewer-related-card">
-          <div class="viewer-related-player" data-cinema-player>
-            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../Enkidu%20Poster.png" aria-label="Watch Enuk: The Wildman">
-              <source src="../media/Enuk_AMR_Exclusive_web.mp4" type="video/mp4">
-            </video>
-            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play Enuk: The Wildman here"><span aria-hidden="true">▶</span></button>
-            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
-          </div>
-          <div class="viewer-related-copy"><span>AMR Original · 26 seconds</span><h3>Enuk: The Wildman</h3><p>An ancient mystery brought to life through cinematic reconstruction.</p><a href="./enuk/">Film details, likes &amp; comments</a></div>
-        </article>
-      </div>
-    </section>
   </main>
 
   <footer class="cinema-footer"><div class="cinema-wrap"><p>AI-assisted artistic reconstruction. Legendary narratives are not presented as verified historical events.</p><p><a href="../">AMR Home</a> <span aria-hidden="true">·</span> <a href="../mysteries/land-of-the-dead/">Explore the investigation</a></p></div></footer>

@@ -156,12 +156,12 @@ test('Cinema uses a direct video to engagement to discussion flow', () => {
     const engagement = html.indexOf('data-amr-engagement');
     const share = html.indexOf('data-share-film');
     const comments = html.indexOf('data-cinema-comments');
-    const recommendations = html.indexOf('id="recommendations"');
+    const libraryLink = html.indexOf('href="../#film-library"');
     assert.ok(video >= 0 && video < title, `${page}: video precedes the compact title`);
     assert.ok(title < about && about < engagement, `${page}: title and About disclosure precede engagement`);
     assert.ok(engagement < share, `${page}: engagement precedes share`);
     assert.ok(share < comments, `${page}: sharing precedes discussion`);
-    assert.ok(comments < recommendations, `${page}: discussion precedes recommendations`);
+    assert.ok(libraryLink >= 0, `${page}: links directly to the compact film library`);
     assert.doesNotMatch(html, /viewer-intro|viewer-breadcrumb/);
   }
   const cinemaHome = fs.readFileSync(path.join(repoDir, 'cinema/index.html'), 'utf8');
@@ -189,15 +189,40 @@ test('Land of the Dead is the featured self-hosted release without backend chang
   }
 });
 
-test('featured and related Cinema films expose one-click inline playback', () => {
+test('each Cinema viewing page preserves one-click playback', () => {
   for (const page of ['cinema/index.html', 'cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
     const players = [...html.matchAll(/data-cinema-player/g)];
     const playButtons = [...html.matchAll(/data-cinema-play(?:\s|>)/g)];
-    assert.ok(players.length >= 2, `${page}: includes featured and inline related players`);
+    assert.equal(players.length, 1, `${page}: includes one primary player`);
     assert.equal(playButtons.length, players.length, `${page}: every player has one Play control`);
-    assert.match(html, /viewer-related-video[^>]*\scontrols(?:\s|>)/);
-    assert.match(html, /viewer-related-video[^>]*\splaysinline(?:\s|>)/);
     assert.doesNotMatch(html, /<video\b[^>]*\sautoplay(?:\s|=|>)/);
+  }
+});
+
+test('Cinema exposes all published films in a compact responsive library', () => {
+  const html = fs.readFileSync(path.join(repoDir, 'cinema/index.html'), 'utf8');
+  const styles = fs.readFileSync(path.join(repoDir, 'cinema/cinema.css'), 'utf8');
+  const library = html.match(/<section[^>]*id="film-library"[\s\S]*?<\/section>/)?.[0] || '';
+
+  assert.equal([...library.matchAll(/class="cinema-library-card"/g)].length, 3);
+  assert.match(library, /href="\.\/land-of-the-dead\/"/);
+  assert.match(library, /href="\.\/laestrygonians\/"/);
+  assert.match(library, /href="\.\/enuk\/"/);
+  assert.match(library, /assets\/originals\/land-of-the-dead\/poster\.png/);
+  assert.match(library, /assets\/originals\/laestrygonians\/poster\.webp/);
+  assert.match(library, /Enkidu%20Poster\.png/);
+  assert.match(library, /Odysseus — The Land of the Dead/);
+  assert.match(library, /The Laestrygonians/);
+  assert.match(library, /Enuk: The Wildman/);
+  assert.doesNotMatch(library, /<video\b/);
+  assert.ok(html.indexOf('id="film-library"') < html.indexOf('class="viewer-stage"'), 'library precedes the featured player');
+  assert.match(styles, /\.cinema-library-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,/s);
+  assert.match(styles, /\.cinema-library-poster img\s*\{[^}]*object-fit:\s*contain/s);
+  assert.match(styles, /@media \(max-width: 680px\)[\s\S]*?\.cinema-library-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,/);
+
+  for (const page of ['cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
+    const viewingPage = fs.readFileSync(path.join(repoDir, page), 'utf8');
+    assert.match(viewingPage, /href="\.\.\/#film-library">Explore More AMR Videos<\/a>/);
   }
 });
