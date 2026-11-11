@@ -15,7 +15,7 @@
   const fragment=`precision highp float;varying vec2 uv;uniform sampler2D uPhoto;uniform sampler2D uDepth;uniform vec2 uShift;uniform float uStrength;uniform int uOriginal;
 void main(){if(uOriginal==1){gl_FragColor=texture2D(uPhoto,uv);return;}
   vec2 base=(uv-.5)/1.19+.5;vec2 pos=base;
-  for(int i=0;i<6;i++){float depth=pow(max(texture2D(uDepth,clamp(pos,.0,1.0)).r,0.0),0.88);pos=base-uShift*uStrength*depth;}
+  for(int i=0;i<6;i++){float depth=pow(max(texture2D(uDepth,clamp(pos,vec2(.001),vec2(.999))).r,0.0),0.88);pos=base-uShift*uStrength*depth;}
   gl_FragColor=texture2D(uPhoto,clamp(pos,vec2(.001),vec2(.999)));}`;
   function compile(type,source){const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(shader)||'Shader compilation failed');return shader;}
   function texture(img,index){const tex=gl.createTexture();gl.activeTexture(gl.TEXTURE0+index);gl.bindTexture(gl.TEXTURE_2D,tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,img);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);return tex;}
