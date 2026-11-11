@@ -757,3 +757,22 @@ button.premiere-cta { cursor: pointer; }
   .amr-living-poster[data-frames] { cursor: default; }
   .living-poster-hint { display: none; }
 }
+
+/* AMR interior readability V2: YouTube library only; homepage premieres unchanged. */
+.youtube-library-page .library-brand-subtitle { color:#f2ecdf;font-size:.76rem;letter-spacing:.035em;line-height:1.35;text-shadow:0 2px 9px rgba(0,0,0,.8) }
+.youtube-library-page .library-nav-links { gap:8px }
+.youtube-library-page .library-nav-links a { display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 13px;border:1px solid rgba(218,177,88,.55);border-radius:4px;background:rgba(10,15,22,.86);color:#f8f1e6;font-size:.94rem;line-height:1.25;letter-spacing:.015em;text-align:center }
+.youtube-library-page .library-nav-links a:hover,.youtube-library-page .library-nav-links a:focus-visible { border-color:#f1d080;color:#fff9ec;background:rgba(79,55,24,.96) }
+.youtube-library-page .library-menu-toggle { min-width:48px;min-height:48px;border-color:#d8ad45;background:rgba(10,15,22,.92);color:#fff0cb }
+.youtube-library-page .library-cta,.youtube-library-page .film-card-link,.youtube-library-page .library-home-link { font-size:.85rem }
+.youtube-library-page .library-format,.youtube-library-page .film-card-format { font-size:.78rem }
+.youtube-library-page .film-card p { color:#d4ccbc;font-size:1rem }
+@media(max-width:720px){
+ .youtube-library-page .library-nav-links { gap:8px;padding:12px 0 }
+ .youtube-library-page .library-nav-links a { display:flex;min-height:48px;padding:12px 8px;font-size:.91rem }
+ .youtube-library-page .library-brand-subtitle { font-size:.7rem;letter-spacing:.015em }
+}
+@media(max-width:380px){
+ .youtube-library-page .library-brand-mark { display:none }
+ .youtube-library-page .library-brand-subtitle { font-size:.67rem }
+}
