@@ -493,6 +493,22 @@ video:focus-visible {
   box-shadow: 0 14px 50px rgba(0, 0, 0, 0.55);
 }
 
+.viewer-play-status {
+  position: absolute;
+  z-index: 4;
+  right: 10px;
+  bottom: 54px;
+  left: 10px;
+  margin: 0;
+  padding: 8px 10px;
+  background: rgba(8, 9, 12, 0.94);
+  color: var(--cinema-bone);
+  font: 600 0.68rem/1.4 'JetBrains Mono', monospace;
+  text-align: center;
+}
+
+.viewer-play-status:empty { display: none; }
+
 .viewer-film-meta {
   padding-block: 20px 6px;
 }
@@ -559,7 +575,16 @@ video:focus-visible {
 .viewer-page .amr-engagement [data-amr-likes] { align-self: center; }
 .viewer-page .amr-engagement [data-amr-status] { flex-basis: 100%; min-height: 1.4em; color: var(--cinema-muted); font-size: 0.67rem; }
 
-.viewer-share-group { min-width: 190px; }
+.viewer-share-group,
+.viewer-action-group { min-width: 190px; }
+
+.viewer-action-group {
+  display: grid;
+  width: min(100%, 320px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-left: auto;
+}
 
 .viewer-share {
   width: 100%;
@@ -574,7 +599,20 @@ video:focus-visible {
   cursor: pointer;
 }
 
-.viewer-share-status { min-height: 1.4em; margin: 7px 0 0; color: var(--cinema-muted); font-size: 0.8rem; text-align: right; }
+.viewer-comments-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(224, 189, 108, 0.35);
+  color: var(--cinema-bone);
+  font: 600 0.7rem/1.2 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.viewer-share-status { grid-column: 1 / -1; min-height: 1.4em; margin: 0; color: var(--cinema-muted); font-size: 0.8rem; text-align: right; }
 
 .viewer-section { padding-top: 58px; }
 .viewer-section--comments { padding-top: 38px; }
@@ -612,6 +650,71 @@ video:focus-visible {
   cursor: pointer;
 }
 
+.viewer-related-list {
+  display: grid;
+  max-width: 860px;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.viewer-related-card {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+  overflow: hidden;
+  border: 1px solid var(--cinema-line);
+  background: var(--cinema-panel);
+}
+
+.viewer-related-player {
+  position: relative;
+  width: 220px;
+  aspect-ratio: 9 / 16;
+  background: #000;
+}
+
+.viewer-related-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
+.viewer-related-play {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  border: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.58));
+  color: var(--cinema-gold-bright);
+  cursor: pointer;
+}
+
+.viewer-related-play[hidden] { display: none; }
+
+.viewer-related-play span {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: rgba(8, 9, 12, 0.86);
+  font: 1rem/1 sans-serif;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.55);
+}
+
+.viewer-related-copy { align-self: center; padding: 24px 30px 24px 0; }
+.viewer-related-copy span { color: var(--cinema-gold); font: 600 0.66rem/1.4 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+.viewer-related-copy h3 { margin: 10px 0 0; color: var(--cinema-bone); font: 600 1.45rem/1.25 'Cinzel', serif; }
+.viewer-related-copy p { margin: 12px 0 0; color: var(--cinema-muted); }
+.viewer-related-copy a { display: inline-block; margin-top: 16px; font: 600 0.68rem/1.35 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; }
+
 .viewer-related {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
@@ -636,7 +739,8 @@ video:focus-visible {
   .cinema-grid { grid-template-columns: 1fr; }
   .cinema-card { grid-template-columns: minmax(180px, 0.62fr) minmax(0, 1.38fr); }
   .viewer-toolbar { flex-direction: column; }
-  .viewer-share-group { width: min(100%, 260px); }
+  .viewer-share-group,
+  .viewer-action-group { width: min(100%, 320px); margin-left: 0; }
   .viewer-share-status { text-align: left; }
 }
 
@@ -668,6 +772,12 @@ video:focus-visible {
   .viewer-page .amr-engagement [data-amr-views] { flex-basis: 100%; }
   .viewer-share { width: 100%; }
   .viewer-comments { padding: 16px; }
+  .viewer-related-card { grid-template-columns: 132px minmax(0, 1fr); gap: 16px; }
+  .viewer-related-player { width: 132px; }
+  .viewer-related-copy { padding: 18px 16px 18px 0; }
+  .viewer-related-copy h3 { font-size: 1rem; }
+  .viewer-related-copy p { display: none; }
+  .viewer-related-copy a { font-size: 0.6rem; }
   .viewer-related { grid-template-columns: 118px minmax(0, 1fr); gap: 16px; }
   .viewer-related img { height: 190px; }
   .viewer-related div { padding: 18px 16px 18px 0; }

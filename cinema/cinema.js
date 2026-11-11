@@ -20,15 +20,28 @@
   document.querySelectorAll('[data-cinema-player]').forEach(shell => {
     const video = shell.querySelector('video');
     const button = shell.querySelector('[data-cinema-play]');
+    const status = shell.querySelector('[data-cinema-play-status]');
     if (!video || !button) return;
 
-    button.addEventListener('click', () => {
-      const playback = video.play();
-      if (playback?.catch) playback.catch(() => { button.hidden = false; });
+    button.addEventListener('click', async () => {
+      if (status) status.textContent = '';
+      video.muted = false;
+      try {
+        await video.play();
+      } catch (_error) {
+        button.hidden = false;
+        if (status) status.textContent = 'Playback could not start. Use the video controls to try again.';
+      }
     });
-    video.addEventListener('play', () => { button.hidden = true; });
+    video.addEventListener('play', () => {
+      button.hidden = true;
+      if (status) status.textContent = '';
+    });
     video.addEventListener('ended', () => { button.hidden = false; });
-    video.addEventListener('error', () => { button.hidden = false; });
+    video.addEventListener('error', () => {
+      button.hidden = false;
+      if (status) status.textContent = 'This film could not be loaded. Please try again.';
+    });
   });
 
   async function copyText(value) {

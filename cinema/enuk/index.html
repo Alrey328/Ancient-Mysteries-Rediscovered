@@ -46,6 +46,7 @@
         <button class="viewer-play-button" type="button" data-cinema-play aria-label="Play Enuk: The Wildman">
           <span aria-hidden="true">▶</span>
         </button>
+        <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -86,10 +87,24 @@
         <p>Watch another film</p>
         <h2 id="related-title">More from AMR Cinema</h2>
       </div>
-      <a class="viewer-related" href="../laestrygonians/">
-        <img src="../../assets/originals/laestrygonians/poster.webp" alt="The Laestrygonians poster" loading="lazy">
-        <div><span>Up next · 34 seconds</span><h3>The Laestrygonians</h3><p>Odysseus enters a harbor of giants. Only one ship escapes.</p></div>
-      </a>
+      <div class="viewer-related-list">
+        <article class="viewer-related-card">
+          <div class="viewer-related-player" data-cinema-player>
+            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../../assets/originals/land-of-the-dead/poster.png" aria-label="Watch Odysseus — The Land of the Dead"><source src="../../assets/originals/land-of-the-dead/film.mp4" type="video/mp4"></video>
+            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play Odysseus — The Land of the Dead here"><span aria-hidden="true">▶</span></button>
+            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
+          </div>
+          <div class="viewer-related-copy"><span>Newest film · 1 min 6 sec</span><h3>Odysseus — The Land of the Dead</h3><p>Odysseus descends among the shades seeking a way home.</p><a href="../land-of-the-dead/">Film details &amp; comments</a></div>
+        </article>
+        <article class="viewer-related-card">
+          <div class="viewer-related-player" data-cinema-player>
+            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../../assets/originals/laestrygonians/poster.webp" aria-label="Watch The Laestrygonians"><source src="../../assets/originals/laestrygonians/film.mp4" type="video/mp4"></video>
+            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play The Laestrygonians here"><span aria-hidden="true">▶</span></button>
+            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
+          </div>
+          <div class="viewer-related-copy"><span>AMR Original · 34 seconds</span><h3>The Laestrygonians</h3><p>Odysseus enters a harbor of giants. Only one ship escapes.</p><a href="../laestrygonians/">Film details, likes &amp; comments</a></div>
+        </article>
+      </div>
     </section>
   </main>
 

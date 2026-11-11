@@ -30,7 +30,7 @@
       <button class="cinema-menu" type="button" aria-expanded="false" aria-controls="cinema-navigation">Menu</button>
       <ul id="cinema-navigation" class="cinema-nav-links" data-open="false">
         <li><a href="../">All Films</a></li>
-        <li><a href="../enuk/">Next Film</a></li>
+        <li><a href="../land-of-the-dead/">Newest Film</a></li>
         <li><a href="../../">AMR Home</a></li>
       </ul>
     </nav>
@@ -46,6 +46,7 @@
         <button class="viewer-play-button" type="button" data-cinema-play aria-label="Play The Laestrygonians">
           <span aria-hidden="true">▶</span>
         </button>
+        <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -86,10 +87,24 @@
         <p>Watch another film</p>
         <h2 id="related-title">More from AMR Cinema</h2>
       </div>
-      <a class="viewer-related" href="../enuk/">
-        <img src="../../Enkidu%20Poster.png" alt="Enuk: The Wildman poster" loading="lazy">
-        <div><span>Up next · 26 seconds</span><h3>Enuk: The Wildman</h3><p>An ancient mystery brought to life through cinematic reconstruction.</p></div>
-      </a>
+      <div class="viewer-related-list">
+        <article class="viewer-related-card">
+          <div class="viewer-related-player" data-cinema-player>
+            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../../assets/originals/land-of-the-dead/poster.png" aria-label="Watch Odysseus — The Land of the Dead"><source src="../../assets/originals/land-of-the-dead/film.mp4" type="video/mp4"></video>
+            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play Odysseus — The Land of the Dead here"><span aria-hidden="true">▶</span></button>
+            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
+          </div>
+          <div class="viewer-related-copy"><span>Newest film · 1 min 6 sec</span><h3>Odysseus — The Land of the Dead</h3><p>Odysseus descends among the shades seeking a way home.</p><a href="../land-of-the-dead/">Film details &amp; comments</a></div>
+        </article>
+        <article class="viewer-related-card">
+          <div class="viewer-related-player" data-cinema-player>
+            <video class="viewer-related-video" controls playsinline preload="metadata" poster="../../Enkidu%20Poster.png" aria-label="Watch Enuk: The Wildman"><source src="../../media/Enuk_AMR_Exclusive_web.mp4" type="video/mp4"></video>
+            <button class="viewer-related-play" type="button" data-cinema-play aria-label="Play Enuk: The Wildman here"><span aria-hidden="true">▶</span></button>
+            <p class="viewer-play-status" data-cinema-play-status role="status" aria-live="polite"></p>
+          </div>
+          <div class="viewer-related-copy"><span>AMR Original · 26 seconds</span><h3>Enuk: The Wildman</h3><p>An ancient mystery brought to life through cinematic reconstruction.</p><a href="../enuk/">Film details, likes &amp; comments</a></div>
+        </article>
+      </div>
     </section>
   </main>
 
