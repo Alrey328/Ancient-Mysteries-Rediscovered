@@ -67,6 +67,12 @@ test('homepage AMR Exclusive config features the self-hosted Land of the Dead re
   assert.match(renderer, /data-original-player/);
   assert.match(renderer, /data-original-play/);
   assert.match(renderer, /await video\.play\(\)/);
+  // The initial poster must not show a native mobile play control beneath AMR's Play button.
+  assert.match(renderer, /<video playsinline preload="metadata" poster=/);
+  assert.doesNotMatch(renderer, /<video controls playsinline preload="metadata" poster=/);
+  // Native controls return when playback starts, then give way to the overlay on completion.
+  assert.match(renderer, /video\.addEventListener\('play',[\s\S]*?video\.controls = true;/);
+  assert.match(renderer, /video\.addEventListener\('ended',[\s\S]*?video\.controls = false;/);
 });
 
 test('existing Cinema viewing pages preserve engagement IDs and media assets', () => {

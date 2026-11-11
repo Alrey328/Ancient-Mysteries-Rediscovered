@@ -33,7 +33,7 @@
         <div class="premiere-card-platform">AMR Originals · Exclusive Film</div>
         <div class="premiere-card-media amr-living-poster" data-original-player data-living-poster
              ${frames.length ? `data-frames="${escapeHtml(JSON.stringify(frames))}"` : ''}>
-          <video controls playsinline preload="metadata" poster="${poster}" aria-label="Watch ${title}" data-original-video>
+          <video playsinline preload="metadata" poster="${poster}" aria-label="Watch ${title}" data-original-video>
             <source src="${video}" type="video/mp4">
             Your browser does not support HTML5 video.
           </video>
@@ -65,16 +65,24 @@
       try {
         await video.play();
       } catch (_error) {
-        if (overlay) overlay.hidden = false;
+        // Keep one visible Play control at a time, even when playback is blocked.
+        video.controls = true;
+        if (overlay) overlay.hidden = true;
         if (status) status.textContent = 'Playback could not start. Use the video controls to try again.';
       }
     }));
     video.addEventListener('play', () => {
+      // The custom button owns the poster; native controls belong to playback.
+      video.controls = true;
       if (overlay) overlay.hidden = true;
       if (status) status.textContent = '';
     });
-    video.addEventListener('ended', () => { if (overlay) overlay.hidden = false; });
+    video.addEventListener('ended', () => {
+      video.controls = false;
+      if (overlay) overlay.hidden = false;
+    });
     video.addEventListener('error', () => {
+      video.controls = false;
       if (overlay) overlay.hidden = false;
       if (status) status.textContent = 'This film could not be loaded. Please try again.';
     });
