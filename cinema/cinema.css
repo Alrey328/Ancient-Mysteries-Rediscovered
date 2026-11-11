@@ -789,3 +789,24 @@ video:focus-visible {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+/* AMR interior readability V2: Cinema navigation and supporting labels. */
+.cinema-brand strong { font-size:clamp(1rem,1.4vw,1.15rem);letter-spacing:.045em }
+.cinema-brand small { color:#f1e7d5;font-size:.7rem;letter-spacing:.025em;line-height:1.35 }
+.cinema-nav-links { gap:8px }
+.cinema-nav-links a { display:inline-flex;align-items:center;min-height:44px;padding:10px 14px;border:1px solid rgba(240,206,122,.5);border-radius:4px;background:rgba(26,29,36,.9);color:#f7f0e2;font-size:.94rem;letter-spacing:.02em;line-height:1.25 }
+.cinema-nav-links a:hover,.cinema-nav-links a:focus-visible { background:#55401f;border-color:#f0ce7a;color:#fff7e6 }
+.cinema-menu { min-height:44px;padding:10px 14px;border-color:#d2a84a;background:#1e2026;font-size:.87rem }
+.cinema-button,.viewer-comments-link,.viewer-related-copy a { font-size:.83rem;line-height:1.35 }
+.viewer-related-copy span,.viewer-section-heading > p:first-child,.viewer-about summary { font-size:.78rem }
+@media(max-width:680px){
+ .cinema-brand strong { font-size:.96rem }
+ .cinema-brand small { font-size:.67rem }
+ .cinema-nav-links { gap:8px;padding:12px 0 }
+ .cinema-nav-links a { display:flex;min-height:48px;justify-content:center;padding:12px 14px;font-size:.95rem }
+ .viewer-related-copy a { font-size:.8rem }
+}
+@media(max-width:380px){
+ .cinema-brand-mark { display:none }
+ .cinema-brand small { font-size:.66rem }
+}
