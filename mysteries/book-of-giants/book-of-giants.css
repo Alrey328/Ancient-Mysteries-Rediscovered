@@ -125,3 +125,18 @@
 
 @media(max-width:980px){.chapter-four-gateway-grid,.artifact-layout,.chapter-four-plate-grid,.chapter-four-plate-grid.portrait-feature,.bow-section .chapter-four-plate-grid{grid-template-columns:1fr}.chapter-four-gateway-copy{text-align:center}.chapter-four-gateway-copy h2,.chapter-four-gateway-copy p{margin-inline:auto}.artifact-display{order:1}.artifact-copy{order:2}.chapter-four-plate-grid>.chapter-four-wide,.chapter-four-plate-grid>.chapter-four-portrait{order:1}.chapter-four-plate-grid>.chapter-four-copy{order:2}.relationship-map{grid-template-columns:1fr}.relationship-map>b{transform:none}.uncertainty-cards{grid-template-columns:1fr}.chapter-four-wide{max-width:840px;margin-inline:auto}}
 @media(max-width:720px){.chapter-four-gateway,.chapter-four-hero,.chapter-four-manuscript,.chapter-four-plate,.interpretation-section,.response-warning,.thematic-center,.fathers-cannot-save,.spirits-section,.relationship-section,.chapter-four-verdict{padding-block:5rem}.chapter-four-gateway-grid,.artifact-layout,.chapter-four-plate-grid{gap:2rem}.chapter-four-gateway-copy h2{font-size:clamp(3rem,16vw,5rem)}.movement.chapter-four-movement{min-height:auto;padding-block:7rem}.chapter-four-movement h2{font-size:clamp(3.5rem,17vw,6rem)}.compact-evidence-ladder li,.evidence-definition>div{grid-template-columns:1fr}.dream-pair,.evidence-strip,.parallel-requests{grid-template-columns:1fr}.reversal-section{min-height:auto;padding-block:8rem}.reversal-shell h2{gap:3rem}.uncertainty-cards{gap:.75rem}.integrity-statement{font-size:clamp(1.8rem,9vw,3rem)}.relationship-map div{min-height:auto}.door-ornament{width:min(calc(100vw - 3rem),700px)}.door-beyond-four{min-height:auto;padding-block:8rem}}
+
+/* AMR interior readability V2: investigation tabs, actions, and evidence labels. */
+.site-nav .brand { color:#f7efdd;font-size:clamp(.89rem,1.15vw,1rem);letter-spacing:.04em;line-height:1.35 }
+.site-nav .brand span { color:var(--gold-bright) }
+.site-nav .nav-track { min-width:0;gap:.45rem }
+.site-nav .nav-track a { display:inline-flex;align-items:center;min-height:44px;flex:0 0 auto;padding:.55rem .7rem;border:1px solid rgba(246,205,121,.42);border-radius:3px;background:rgba(26,22,18,.94);color:#f4eee3;font-size:.83rem;letter-spacing:.025em;line-height:1.3 }
+.site-nav .nav-track a:hover,.site-nav .nav-track a:focus-visible { color:#fff6e1;border-color:var(--gold-bright);background:#554020 }
+.site-nav a:focus-visible,.primary-action:focus-visible,.secondary-action:focus-visible,.chapter-nav-row a:focus-visible { outline:3px solid var(--gold-bright);outline-offset:2px }
+.primary-action,.secondary-action { font-size:.86rem }
+.evidence-tag { font-size:.78rem;letter-spacing:.035em }
+.eyebrow { color:var(--gold-bright);font-size:.86rem;letter-spacing:.09em }
+.chapter-nav-row a,.chapter-disabled { font-size:.86rem;letter-spacing:.035em }
+.index-grid span,.source-line { font-size:.85rem;letter-spacing:.055em }
+.index-grid small { color:#d3cab9;font-size:.94rem }
+@media(max-width:720px){.site-nav .brand{font-size:.85rem;letter-spacing:.02em;white-space:normal}.site-nav .nav-track{width:100%;gap:.4rem;padding-block:.25rem .5rem}.site-nav .nav-track a{font-size:.86rem}}
