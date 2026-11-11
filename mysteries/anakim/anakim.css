@@ -533,3 +533,30 @@ footer p { margin: 0; color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+
+/* AMR remaining investigations readability V2 — Anakim navigation and evidence labels. */
+.site-header .brand { color:#f6e8d0; font-size:.86rem; letter-spacing:.04em; line-height:1.3; }
+.site-header .brand b { color:#f3cf8d; letter-spacing:.1em; }
+.site-header nav { gap:8px; }
+.site-header nav a {
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:44px; padding:10px 12px; border:1px solid rgba(226,187,116,.55);
+  border-radius:4px; background:rgba(17,13,10,.92); color:#f8ecda;
+  font-size:.87rem; letter-spacing:.025em; line-height:1.3;
+}
+.site-header nav a:hover,.site-header nav a:focus-visible { background:#5a381d; color:#fff6de; border-color:#f3dfb3; }
+.site-header a:focus-visible { outline:3px solid #f3dfb3; outline-offset:3px; }
+.eyebrow,.section-ledger { color:#f1d6a6; font-size:.81rem; letter-spacing:.065em; line-height:1.4; }
+@media(max-width:960px){
+  .site-header { flex-direction:column; align-items:stretch; gap:10px; padding-block:12px; background:rgba(13,9,6,.97); }
+  .site-header nav { display:flex; width:100%; min-width:0; gap:7px; overflow-x:auto; padding-bottom:3px; }
+  .site-header nav a:not(.nav-watch) { display:inline-flex; }
+  .site-header nav a { flex:0 0 auto; font-size:.84rem; }
+  .site-header .brand { max-width:100%; }
+  .hero { padding-top:155px; }
+}
+@media(max-width:720px){
+  .site-header .brand { font-size:.82rem; }
+  .hero { padding-top:158px; }
+}
