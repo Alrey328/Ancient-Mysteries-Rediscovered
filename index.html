@@ -1317,6 +1317,47 @@
   @media (prefers-reduced-motion:reduce){
     .nav-links a{ transition:none; }
   }
+
+  /* AMR Mobile Hero Legibility — retain moving entrance, improve text visibility. */
+  @media (max-width:640px){
+    .brand-subtitle{
+      display:inline-block;
+      color:#fff7e8;
+      font-size:clamp(0.73rem, 3vw, 0.82rem);
+      font-weight:600;
+      letter-spacing:0.015em;
+      line-height:1.35;
+      padding:2px 3px;
+      margin-left:-3px;
+      background:rgba(5,10,17,0.88);
+      text-shadow:0 1px 3px #000, 0 0 12px #000;
+      box-shadow:0 0 13px 5px rgba(5,10,17,0.62);
+      border-radius:2px;
+    }
+    .hero > p:not(.hero-media-status){
+      width:min(100%, 580px);
+      padding:13px 15px;
+      margin-top:8px;
+      color:#fffaf0;
+      font-size:clamp(1.1rem, 4.7vw, 1.25rem);
+      font-weight:500;
+      line-height:1.55;
+      text-shadow:0 2px 5px #000;
+      background:linear-gradient(90deg,
+        rgba(5,10,17,0.8),
+        rgba(5,10,17,0.92) 24%,
+        rgba(5,10,17,0.92) 76%,
+        rgba(5,10,17,0.8));
+      box-shadow:0 0 22px rgba(5,10,17,0.35);
+      border-radius:6px;
+    }
+  }
+  @media (max-width:340px){
+    .brand-subtitle{
+      font-size:0.69rem;
+      letter-spacing:0;
+    }
+  }
 </style>
 <link rel="stylesheet" href="assets/css/amr-premieres.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="assets/css/amr-premieres.css"></noscript>
