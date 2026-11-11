@@ -1225,6 +1225,98 @@
       font-size:0.48rem;
     }
   }
+
+  /* AMR Navigation Visibility V2 — homepage masthead only.
+     Strong text contrast over the moving cinematic entrance; no link or media changes. */
+  @media (min-width:641px){
+    .nav{
+      flex-direction:column;
+      align-items:stretch;
+      gap:14px;
+      padding-bottom:20px;
+    }
+    .brand-lockup{ align-self:flex-start; }
+    .nav-links{
+      width:100%;
+      justify-content:center;
+      gap:10px 11px;
+    }
+  }
+  .nav-links a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:46px;
+    padding:10px 14px;
+    border:1px solid rgba(223,189,118,0.62);
+    border-radius:4px;
+    background:rgba(8,14,23,0.88);
+    color:#f6f1e7;
+    font-size:1rem;
+    font-weight:500;
+    line-height:1.25;
+    letter-spacing:0.025em;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,0.9);
+    box-shadow:0 3px 12px rgba(0,0,0,0.28);
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+    transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .nav-links a[href="cinema/"],
+  .nav-links a[href="exclusives/"]{
+    border-color:rgba(245,198,102,0.9);
+    background:rgba(63,44,18,0.91);
+    color:#ffedc6;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible{
+    border-color:#f2cd7c;
+    background:rgba(96,66,26,0.96);
+    color:#fff9e9;
+    text-shadow:none;
+  }
+  .nav-links a:focus-visible,
+  .menu-toggle:focus-visible{
+    outline:3px solid #f5d58e;
+    outline-offset:3px;
+  }
+  @media (max-width:640px){
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .menu-toggle{
+      min-width:48px;
+      min-height:48px;
+      border-color:#e7be67;
+      background:rgba(8,14,23,0.93);
+      color:#ffe1a0;
+    }
+    .nav-links{
+      gap:9px;
+      padding:14px 10px 12px;
+      border:1px solid rgba(227,189,104,0.56);
+      border-radius:5px;
+      background:rgba(7,13,21,0.96);
+      box-shadow:0 16px 34px rgba(0,0,0,0.44);
+    }
+    .nav-links a{
+      display:flex;
+      min-height:48px;
+      padding:10px 7px;
+      font-size:clamp(0.81rem, 3.5vw, 0.94rem);
+      line-height:1.2;
+      letter-spacing:0;
+      white-space:normal;
+      overflow-wrap:normal;
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .nav-links a{ transition:none; }
+  }
 </style>
 <link rel="stylesheet" href="assets/css/amr-premieres.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="assets/css/amr-premieres.css"></noscript>
