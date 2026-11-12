@@ -40,7 +40,7 @@ test('engagement controls are absent from every non-AMR-film HTML page', () => {
 
 test('exclusive media paths resolve to repository assets', () => {
   const expectations = new Map([
-    ['exclusives/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4']],
+    ['exclusives/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4', '../Enkidu%20Poster.png', '../media/Enuk_AMR_Exclusive_web.mp4', '../assets/originals/laestrygonians/poster.webp', '../assets/originals/laestrygonians/film.mp4']],
     ['exclusives/enuk/index.html', ['../../Enkidu%20Poster.png', '../../media/Enuk_AMR_Exclusive_web.mp4']],
     ['exclusives/laestrygonians/index.html', ['../../assets/originals/laestrygonians/poster.webp', '../../assets/originals/laestrygonians/film.mp4']],
     ['cinema/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4']],
@@ -133,6 +133,43 @@ test('AMR Exclusives features Land inline while preserving existing releases', (
   assert.match(html, /href="enuk\/"/);
   assert.match(html, /href="laestrygonians\/"/);
   assert.match(html, /cinema\/land-of-the-dead\/#comments-title/);
+  assert.doesNotMatch(html, /data-amr-engagement|data-video-id=|youtube\.com|youtu\.be/);
+});
+
+
+test('mobile Exclusives library shows both film posters with one-tap inline playback', () => {
+  const html = fs.readFileSync(path.join(repoDir, 'exclusives/index.html'), 'utf8');
+  const films = [
+    { id: 'enuk', title: 'Enuk: The Wildman', poster: '../Enkidu%20Poster.png', film: '../media/Enuk_AMR_Exclusive_web.mp4', href: 'enuk/' },
+    { id: 'laestrygonians', title: 'The Laestrygonians', poster: '../assets/originals/laestrygonians/poster.webp', film: '../assets/originals/laestrygonians/film.mp4', href: 'laestrygonians/' }
+  ];
+  assert.equal(html.split('<div class="exclusive-film-stage" data-exclusive-player>').length - 1, 2);
+  assert.equal(html.split('<button class="featured-play" type="button" data-exclusive-play').length - 1, 2);
+  for (const film of films) {
+    const videoTag = html.match(new RegExp('<video[^>]*id="exclusive-' + film.id + '-video"[^>]*>'))?.[0] || '';
+    assert.ok(videoTag.includes('poster="' + film.poster + '"'));
+    assert.ok(videoTag.includes(' playsinline '));
+    assert.ok(videoTag.includes(' preload="metadata"'));
+    assert.ok(!videoTag.includes(' autoplay'));
+    assert.ok(!videoTag.includes(' controls'));
+    assert.ok(html.includes('src="' + film.film + '"'));
+    assert.ok(html.includes('data-exclusive-play aria-label="Play ' + film.title + '"'));
+    assert.ok(html.includes('href="' + film.href + '"'));
+    assert.ok(html.includes('data-share-url="' + film.href + '"'));
+    assert.ok(html.includes('data-exclusive-share data-share-title="' + film.title + ' | AMR Exclusives"'));
+  }
+  assert.equal(html.split('data-exclusive-share data-share-title=').length - 1, 2);
+  assert.equal(html.split('data-exclusive-share-status role="status"').length - 1, 2);
+  assert.ok(html.includes('.exclusive-film-actions button,.exclusive-film-actions a{'));
+  assert.ok(html.includes('min-height:48px'));
+  assert.ok(html.includes("document.querySelectorAll('[data-exclusive-share]').forEach"));
+  assert.ok(html.includes('await navigator.share({title:button.dataset.shareTitle,url})'));
+  assert.ok(html.includes('await navigator.clipboard.writeText(url)'));
+  assert.ok(html.includes('.exclusive-film-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))'));
+  assert.ok(html.includes('@media(max-width:600px){.exclusive-film-grid{grid-template-columns:1fr'));
+  assert.ok(html.includes("document.querySelectorAll('[data-exclusive-player]').forEach"));
+  assert.ok(html.includes('try{await video.play()}catch'));
+  assert.ok(html.includes('video.controls=true'));
   assert.doesNotMatch(html, /data-amr-engagement|data-video-id=|youtube\.com|youtu\.be/);
 });
 
