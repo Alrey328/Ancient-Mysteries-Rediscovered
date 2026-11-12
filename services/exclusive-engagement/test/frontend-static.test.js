@@ -143,24 +143,25 @@ test('mobile Exclusives library shows both film posters with one-tap inline play
     { id: 'enuk', title: 'Enuk: The Wildman', poster: '../Enkidu%20Poster.png', film: '../media/Enuk_AMR_Exclusive_web.mp4', href: 'enuk/' },
     { id: 'laestrygonians', title: 'The Laestrygonians', poster: '../assets/originals/laestrygonians/poster.webp', film: '../assets/originals/laestrygonians/film.mp4', href: 'laestrygonians/' }
   ];
-  assert.equal([...html.matchAll(/<div class="exclusive-film-stage" data-exclusive-player>/g)].length, 2);
-  assert.equal([...html.matchAll(/<button class="featured-play" type="button" data-exclusive-play/g)].length, 2);
+  assert.equal(html.split('<div class="exclusive-film-stage" data-exclusive-player>').length - 1, 2);
+  assert.equal(html.split('<button class="featured-play" type="button" data-exclusive-play').length - 1, 2);
   for (const film of films) {
-    const videoTag = html.match(new RegExp(`<video\\b[^>]*id="exclusive-${film.id}-video"[^>]*>`))?.[0] || '';
-    assert.ok(videoTag.includes(`poster="${film.poster}"`));
-    assert.match(videoTag, /\\splaysinline(?:\\s|>)/);
-    assert.match(videoTag, /\\spreload="metadata"/);
-    assert.doesNotMatch(videoTag, /\\s(?:autoplay|controls)(?:\\s|=|>)/);
-    assert.ok(html.includes(`src="${film.film}"`));
-    assert.ok(html.includes(`data-exclusive-play aria-label="Play ${film.title}"`));
-    assert.ok(html.includes(`href="${film.href}"`));
+    const videoTag = html.match(new RegExp('<video[^>]*id="exclusive-' + film.id + '-video"[^>]*>'))?.[0] || '';
+    assert.ok(videoTag.includes('poster="' + film.poster + '"'));
+    assert.ok(videoTag.includes(' playsinline '));
+    assert.ok(videoTag.includes(' preload="metadata"'));
+    assert.ok(!videoTag.includes(' autoplay'));
+    assert.ok(!videoTag.includes(' controls'));
+    assert.ok(html.includes('src="' + film.film + '"'));
+    assert.ok(html.includes('data-exclusive-play aria-label="Play ' + film.title + '"'));
+    assert.ok(html.includes('href="' + film.href + '"'));
   }
-  assert.match(html, /\\.exclusive-film-grid\\{display:grid;grid-template-columns:repeat\\(2,minmax\\(0,1fr\\)\\)/);
-  assert.match(html, /@media\\(max-width:600px\\)\\{\\.exclusive-film-grid\\{grid-template-columns:1fr/);
-  assert.match(html, /document\\.querySelectorAll\\('\\[data-exclusive-player\\]'\\)\\.forEach/);
-  assert.match(html, /try\\{await video\\.play\\(\\)\\}catch/);
-  assert.match(html, /video\\.controls=true/);
-  assert.doesNotMatch(html, /data-amr-engagement|data-video-id=|youtube\\.com|youtu\\.be/);
+  assert.ok(html.includes('.exclusive-film-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))'));
+  assert.ok(html.includes('@media(max-width:600px){.exclusive-film-grid{grid-template-columns:1fr'));
+  assert.ok(html.includes("document.querySelectorAll('[data-exclusive-player]').forEach"));
+  assert.ok(html.includes('try{await video.play()}catch'));
+  assert.ok(html.includes('video.controls=true'));
+  assert.doesNotMatch(html, /data-amr-engagement|data-video-id=|youtube\.com|youtu\.be/);
 });
 
 test('Cinema keeps playback opt-in and exposes accessible controls', () => {
