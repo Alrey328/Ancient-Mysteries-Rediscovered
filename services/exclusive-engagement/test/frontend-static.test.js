@@ -155,7 +155,16 @@ test('mobile Exclusives library shows both film posters with one-tap inline play
     assert.ok(html.includes('src="' + film.film + '"'));
     assert.ok(html.includes('data-exclusive-play aria-label="Play ' + film.title + '"'));
     assert.ok(html.includes('href="' + film.href + '"'));
+    assert.ok(html.includes('data-share-url="' + film.href + '"'));
+    assert.ok(html.includes('data-exclusive-share data-share-title="' + film.title + ' | AMR Exclusives"'));
   }
+  assert.equal(html.split('data-exclusive-share data-share-title=').length - 1, 2);
+  assert.equal(html.split('data-exclusive-share-status role="status"').length - 1, 2);
+  assert.ok(html.includes('.exclusive-film-actions button,.exclusive-film-actions a{'));
+  assert.ok(html.includes('min-height:48px'));
+  assert.ok(html.includes("document.querySelectorAll('[data-exclusive-share]').forEach"));
+  assert.ok(html.includes('await navigator.share({title:button.dataset.shareTitle,url})'));
+  assert.ok(html.includes('await navigator.clipboard.writeText(url)'));
   assert.ok(html.includes('.exclusive-film-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))'));
   assert.ok(html.includes('@media(max-width:600px){.exclusive-film-grid{grid-template-columns:1fr'));
   assert.ok(html.includes("document.querySelectorAll('[data-exclusive-player]').forEach"));
