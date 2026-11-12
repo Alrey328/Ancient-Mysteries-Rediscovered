@@ -30,6 +30,23 @@
     .exclusive-actions a,.exclusive-library a{display:inline-flex;min-height:44px;align-items:center;padding:8px 14px;border:1px solid #806637;border-radius:6px;text-decoration:none}
     .exclusive-library{margin:26px auto 0;padding-top:22px;border-top:1px solid #65552e}
     .release-note{font-size:.9rem;color:#bbb5a2}
+
+    .exclusive-library{display:block;margin:26px auto 0;padding-top:22px;border-top:1px solid #65552e}
+    .exclusive-library h3{margin:0;color:#f5dfaa;font-size:clamp(1.25rem,3vw,1.7rem)}
+    .exclusive-film-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:720px;margin:18px auto 0}
+    .exclusive-film-card{min-width:0;padding:16px;background:#161821;border:1px solid #725a32;border-radius:12px}
+    .exclusive-film-card h4{font-size:1.18rem;margin:8px 0 4px;color:#f6ecd3}
+    .exclusive-film-card > p{font-size:.92rem;margin:6px auto 12px}
+    .exclusive-film-stage{position:relative;width:min(100%,260px);margin:0 auto 12px}
+    .exclusive-film-stage video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;box-sizing:border-box;border:1px solid #947444;border-radius:10px;background:#090b0e;box-shadow:0 12px 35px #0009}
+    .exclusive-film-stage .featured-play-icon{width:72px;height:72px}
+    .exclusive-film-stage .featured-play svg{width:32px;height:32px}
+    .exclusive-film-stage .featured-stage-label{top:10px;left:10px;font-size:10px;letter-spacing:.08em}
+    .exclusive-film-stage.is-playing .featured-stage-label{display:none}
+    .exclusive-film-card .featured-play-status{font-size:.85rem;min-height:0;margin:4px auto}
+    .exclusive-film-card .featured-play-status:empty{display:none}
+    .exclusive-film-card > a{justify-content:center;color:#f8eed7;font-size:.93rem}
+    @media(max-width:600px){.exclusive-film-grid{grid-template-columns:1fr;gap:18px}.exclusive-film-card{padding:14px 10px}.exclusive-film-stage{width:min(100%,320px)}.exclusive-film-stage .featured-play-icon{width:76px;height:76px}}
     @media(max-width:600px){.featured-stage{width:min(100%,440px)}.featured-play-icon{width:76px;height:76px}}
   </style>
   <script data-goatcounter="https://amr-exclusives.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -52,16 +69,76 @@
       <p class="featured-play-status" id="featured-play-status" role="status" aria-live="polite"></p>
       <p class="release-note">AI-assisted artistic reconstruction. Legendary narratives are not presented as verified historical events.</p>
       <div class="exclusive-actions"><button id="share" type="button">Share this film</button><a href="../cinema/land-of-the-dead/#comments-title">Film details &amp; comments</a></div>
-      <nav class="exclusive-library" aria-label="Other AMR Exclusives"><a href="enuk/">Enuk: The Wildman</a><a href="laestrygonians/">The Laestrygonians</a></nav>
+      <section class="exclusive-library" aria-labelledby="other-releases-title">
+        <h3 id="other-releases-title">More AMR Exclusives</h3>
+        <p>Tap a poster to watch the film here, or open its page for details and viewer engagement.</p>
+        <div class="exclusive-film-grid">
+          <div class="exclusive-film-card">
+            <h4>Enuk: The Wildman</h4>
+            <div class="exclusive-film-stage" data-exclusive-player>
+              <span class="featured-stage-label">AMR Original Film</span>
+              <video id="exclusive-enuk-video" playsinline preload="metadata" poster="../Enkidu%20Poster.png" aria-label="Watch Enuk: The Wildman"><source src="../media/Enuk_AMR_Exclusive_web.mp4" type="video/mp4">Your browser does not support video playback.</video>
+              <button class="featured-play" type="button" data-exclusive-play aria-label="Play Enuk: The Wildman"><span class="featured-play-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5v17l14-8.5z"/></svg></span></button>
+            </div>
+            <p class="featured-play-status" data-exclusive-status role="status" aria-live="polite"></p>
+            <p>An ancient wildman brought to life through cinematic reconstruction.</p>
+            <a href="enuk/">Film details, likes &amp; views</a>
+          </div>
+          <div class="exclusive-film-card">
+            <h4>The Laestrygonians</h4>
+            <div class="exclusive-film-stage" data-exclusive-player>
+              <span class="featured-stage-label">AMR Original Film</span>
+              <video id="exclusive-laestrygonians-video" playsinline preload="metadata" poster="../assets/originals/laestrygonians/poster.webp" aria-label="Watch The Laestrygonians"><source src="../assets/originals/laestrygonians/film.mp4" type="video/mp4">Your browser does not support video playback.</video>
+              <button class="featured-play" type="button" data-exclusive-play aria-label="Play The Laestrygonians"><span class="featured-play-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5v17l14-8.5z"/></svg></span></button>
+            </div>
+            <p class="featured-play-status" data-exclusive-status role="status" aria-live="polite"></p>
+            <p>Odysseus enters the harbor of giants. Only one ship escapes.</p>
+            <a href="laestrygonians/">Film details, likes &amp; views</a>
+          </div>
+        </div>
+      </section>
     </article>
   </main>
   <footer><small>Ancient Mysteries Rediscovered · Independent original releases</small></footer>
   <script>
     const featuredVideo=document.getElementById('featured-video'),featuredPlay=document.getElementById('featured-play'),featuredStage=document.getElementById('featured-stage'),featuredStatus=document.getElementById('featured-play-status');
     featuredPlay.addEventListener('click',async()=>{featuredStatus.textContent='';featuredVideo.muted=false;try{await featuredVideo.play()}catch(_error){featuredPlay.hidden=false;featuredStatus.textContent='Playback could not start. Use the video controls to try again.'}});
-    featuredVideo.addEventListener('play',()=>{featuredPlay.hidden=true;featuredStage.classList.add('is-playing');featuredStatus.textContent=''});
+    featuredVideo.addEventListener('play',()=>{document.querySelectorAll('[data-exclusive-player] video').forEach(other=>{if(!other.paused)other.pause()});featuredPlay.hidden=true;featuredStage.classList.add('is-playing');featuredStatus.textContent=''});
     featuredVideo.addEventListener('ended',()=>{featuredPlay.hidden=false;featuredStage.classList.remove('is-playing')});
     featuredVideo.addEventListener('error',()=>{featuredPlay.hidden=false;featuredStatus.textContent='This film could not be loaded. Please try again.'});
+
+    document.querySelectorAll('[data-exclusive-player]').forEach(stage=>{
+      const video=stage.querySelector('video');
+      const playButton=stage.querySelector('[data-exclusive-play]');
+      const status=stage.parentElement.querySelector('[data-exclusive-status]');
+      playButton.addEventListener('click',async()=>{
+        status.textContent='';
+        video.muted=false;
+        try{await video.play()}catch(_error){
+          video.controls=true;
+          playButton.hidden=false;
+          status.textContent='Playback could not start. Use the video controls to try again.';
+        }
+      });
+      video.addEventListener('play',()=>{
+        if(!featuredVideo.paused)featuredVideo.pause();
+        document.querySelectorAll('[data-exclusive-player] video').forEach(other=>{if(other!==video&&!other.paused)other.pause()});
+        video.controls=true;
+        playButton.hidden=true;
+        stage.classList.add('is-playing');
+        status.textContent='';
+      });
+      video.addEventListener('ended',()=>{
+        video.controls=false;
+        playButton.hidden=false;
+        stage.classList.remove('is-playing');
+      });
+      video.addEventListener('error',()=>{
+        video.controls=true;
+        playButton.hidden=false;
+        status.textContent='This film could not be loaded. Please try again.';
+      });
+    });
     document.getElementById('share').addEventListener('click',async()=>{const url=new URL('../cinema/land-of-the-dead/',location.href).href;try{if(navigator.share){await navigator.share({title:'Odysseus — The Land of the Dead | AMR Exclusives',url})}else if(navigator.clipboard){await navigator.clipboard.writeText(url);document.getElementById('share').textContent='Link copied'}}catch(error){if(error?.name!=='AbortError')featuredStatus.textContent='Sharing is unavailable. Copy the address from your browser.'}});
   </script>
 </body>
