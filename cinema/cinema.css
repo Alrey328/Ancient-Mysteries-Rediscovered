@@ -599,7 +599,8 @@ video:focus-visible {
   cursor: pointer;
 }
 
-.viewer-comments-link {
+.viewer-comments-link,
+.viewer-library-link {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -610,6 +611,14 @@ video:focus-visible {
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.viewer-action-group .viewer-library-link,
+.viewer-action-group .viewer-share-status { grid-column: 1 / -1; }
+
+.viewer-share-group .viewer-library-link {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .viewer-share-status { grid-column: 1 / -1; min-height: 1.4em; margin: 0; color: var(--cinema-muted); font-size: 0.8rem; text-align: right; }
@@ -650,88 +659,107 @@ video:focus-visible {
   cursor: pointer;
 }
 
-.viewer-related-list {
-  display: grid;
-  max-width: 860px;
-  gap: 18px;
-  margin-top: 28px;
+.cinema-library { scroll-margin-top: 18px; }
+.cinema-library--top { padding-top: 0; }
+
+.cinema-library-page .viewer-main {
+  width: min(1320px, calc(100% - 32px));
+  padding-block: 10px 20px;
 }
 
-.viewer-related-card {
+.cinema-library-page .cinema-footer { padding-block: 12px; }
+
+.cinema-library--top .viewer-section-heading h1 {
+  margin: 4px 0 0;
+  font: 600 clamp(1.45rem, 2.5vw, 2.15rem)/1.15 'Cinzel', serif;
+}
+
+.cinema-library--top .viewer-section-heading > p:last-child { margin-top: 4px; }
+
+.cinema-library-grid {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.5vw, 20px);
+  margin-top: 14px;
+}
+
+.cinema-library-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   overflow: hidden;
-  border: 1px solid var(--cinema-line);
-  background: var(--cinema-panel);
-}
-
-.viewer-related-player {
-  position: relative;
-  width: 220px;
-  aspect-ratio: 9 / 16;
-  background: #000;
-}
-
-.viewer-related-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  background: #000;
-}
-
-.viewer-related-play {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  display: grid;
-  width: 100%;
-  height: 100%;
-  place-items: center;
-  border: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.58));
-  color: var(--cinema-gold-bright);
-  cursor: pointer;
-}
-
-.viewer-related-play[hidden] { display: none; }
-
-.viewer-related-play span {
-  display: grid;
-  width: 58px;
-  height: 58px;
-  place-items: center;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  background: rgba(8, 9, 12, 0.86);
-  font: 1rem/1 sans-serif;
-  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.55);
-}
-
-.viewer-related-copy { align-self: center; padding: 24px 30px 24px 0; }
-.viewer-related-copy span { color: var(--cinema-gold); font: 600 0.66rem/1.4 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
-.viewer-related-copy h3 { margin: 10px 0 0; color: var(--cinema-bone); font: 600 1.45rem/1.25 'Cinzel', serif; }
-.viewer-related-copy p { margin: 12px 0 0; color: var(--cinema-muted); }
-.viewer-related-copy a { display: inline-block; margin-top: 16px; font: 600 0.68rem/1.35 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; }
-
-.viewer-related {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 28px;
-  max-width: 760px;
-  margin-top: 28px;
   border: 1px solid var(--cinema-line);
   background: var(--cinema-panel);
   color: inherit;
   text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease;
 }
 
-.viewer-related img { width: 100%; height: 280px; display: block; object-fit: cover; }
-.viewer-related div { align-self: center; padding: 24px 30px 24px 0; }
-.viewer-related span { color: var(--cinema-gold); font: 600 0.66rem/1.4 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
-.viewer-related h3 { margin: 10px 0 0; color: var(--cinema-bone); font: 600 1.45rem/1.25 'Cinzel', serif; }
-.viewer-related p { margin: 12px 0 0; color: var(--cinema-muted); }
+.cinema-library-card:hover,
+.cinema-library-card:focus-visible {
+  border-color: var(--cinema-gold);
+  transform: translateY(-3px);
+}
+
+.cinema-library-card:focus-visible {
+  outline: 2px solid var(--cinema-gold-bright);
+  outline-offset: 3px;
+}
+
+.cinema-library-poster {
+  position: relative;
+  display: block;
+  height: clamp(200px, calc(100vh - 330px), 320px);
+  overflow: hidden;
+  background: #000;
+}
+
+.cinema-library-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cinema-library-play {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: rgba(8, 9, 12, 0.86);
+  color: var(--cinema-gold-bright);
+  font: 0.9rem/1 sans-serif;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+}
+
+.cinema-library-copy {
+  display: grid;
+  gap: 5px;
+  padding: 10px 13px 12px;
+}
+
+.cinema-library-copy small {
+  color: var(--cinema-gold);
+  font: 600 0.61rem/1.35 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cinema-library-copy strong {
+  color: var(--cinema-bone);
+  font: 600 clamp(0.86rem, 1.25vw, 1.08rem)/1.2 'Cinzel', serif;
+}
+
+.cinema-library-copy > span {
+  color: var(--cinema-gold-bright);
+  font: 600 0.62rem/1.35 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 
 @media (max-width: 900px) {
   .cinema-feature { grid-template-columns: 1fr; }
@@ -772,17 +800,15 @@ video:focus-visible {
   .viewer-page .amr-engagement [data-amr-views] { flex-basis: 100%; }
   .viewer-share { width: 100%; }
   .viewer-comments { padding: 16px; }
-  .viewer-related-card { grid-template-columns: 132px minmax(0, 1fr); gap: 16px; }
-  .viewer-related-player { width: 132px; }
-  .viewer-related-copy { padding: 18px 16px 18px 0; }
-  .viewer-related-copy h3 { font-size: 1rem; }
-  .viewer-related-copy p { display: none; }
-  .viewer-related-copy a { font-size: 0.6rem; }
-  .viewer-related { grid-template-columns: 118px minmax(0, 1fr); gap: 16px; }
-  .viewer-related img { height: 190px; }
-  .viewer-related div { padding: 18px 16px 18px 0; }
-  .viewer-related h3 { font-size: 1rem; }
-  .viewer-related p { display: none; }
+}
+
+@media (max-width: 620px) {
+  .cinema-library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cinema-library-poster { height: min(50vw, 250px); }
+  .cinema-library-copy { padding: 9px 10px 11px; }
+  .cinema-library-copy small { font-size: 0.5rem; }
+  .cinema-library-copy strong { font-size: 0.8rem; }
+  .cinema-library-copy > span { font-size: 0.52rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
