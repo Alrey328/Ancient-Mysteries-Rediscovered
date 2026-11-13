@@ -1,0 +1,27 @@
+name = "amr-studio-v1-test"
+main = "src/index.js"
+compatibility_date = "2026-11-09"
+preview_urls = true
+
+# This is an isolated prototype. Never point these bindings at AMR production data.
+[[d1_databases]]
+binding = "DB"
+database_name = "amr-studio-v1-test"
+database_id = "123e4567-e89b-42d3-a456-426614174000"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "amr-studio-v1-test"
+preview_bucket_name = "amr-studio-v1-preview"
+
+[vars]
+STUDIO_ENVIRONMENT = "test"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+invocation_logs = true
