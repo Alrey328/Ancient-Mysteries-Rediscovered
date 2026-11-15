@@ -14,9 +14,9 @@ const root = path.resolve(__dirname, '..');
 const expected = {
   poster: {
     relative: 'assets/3d/sirens/canva-poster.png',
-    sha256: 'd5595d834aeb6b09e28419f66dfcac1f8cdada0eaa6a0e93818d82588a2dbd56',
+    sha256: '9035a361e98a7a8b6769f688ae5969a51c532fbbb110937b12def1e604121070',
     bitDepth: 8,
-    colorType: 6
+    colorType: 2
   },
   depth: {
     relative: 'assets/3d/sirens/wavespeed-depth-16bit.png',
@@ -133,7 +133,7 @@ for (const [kind, spec] of Object.entries(expected)) {
       if (foregroundFrame <= background + 1000) throw new Error(`Depth direction failed: light frame ${foregroundFrame} is not nearer than dark background ${background}`);
       console.log(`PASS: ${spec.relative} ${metadata.width}x${metadata.height} 16-bit grayscale; ${unique.size} unique values; white-near orientation ${foregroundFrame} > ${background}`);
     } else {
-      console.log(`PASS: ${spec.relative} ${metadata.width}x${metadata.height} 8-bit RGBA; exact approved hash`);
+      console.log(`PASS: ${spec.relative} ${metadata.width}x${metadata.height} 8-bit RGB; exact approved hash`);
     }
   } catch (error) {
     console.error(`FAIL: ${spec.relative}: ${error.message}`);

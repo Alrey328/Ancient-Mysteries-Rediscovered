@@ -45,7 +45,7 @@ test('Sirens uses the exact poster and strict native 16-bit depth path',()=>{
   assert.equal(poster.readUInt32BE(16),1024);
   assert.equal(poster.readUInt32BE(20),1536);
   assert.equal(poster[24],8);
-  assert.equal(poster[25],6);
+  assert.equal(poster[25],2);
   assert.equal(depth.readUInt32BE(16),1024);
   assert.equal(depth.readUInt32BE(20),1536);
   assert.equal(depth[24],16);
