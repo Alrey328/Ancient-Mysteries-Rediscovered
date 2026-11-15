@@ -228,10 +228,10 @@
   "featuredOriginal": {
     "enabled": true,
     "livingPosterEnabled": false,
-    "title": "Odysseus — The Land of the Dead",
-    "description": "Odysseus descends into the land of the dead seeking a way home—and confronts the shades of his past.",
-    "poster": "assets/originals/land-of-the-dead/poster.png",
-    "videoUrl": "assets/originals/land-of-the-dead/film.mp4",
+    "title": "Ancient Legend Unveiled — The Sirens",
+    "description": "One ship escaped the Sirens' song. But a lesser-known ancient prophecy reveals why that survival may have doomed the Sirens themselves.",
+    "poster": "assets/originals/sirens/poster.webp",
+    "videoUrl": "assets/originals/sirens/film.mp4",
     "watchPage": "exclusives/",
     "viewFrames": []
   }
