@@ -31,6 +31,9 @@
       <div class="viewer-stage" id="stage"
            data-photo="../../assets/3d/gigantes/canva-poster.jpg"
            data-depth="../../assets/3d/gigantes/wavespeed-depth.png"
+           data-default-strength="78"
+           data-max-shift-x="0.048"
+           data-max-shift-y="0.030"
            aria-label="Gigantes depth photograph: drag to tilt or move the mouse">
         <img class="viewer-fallback" id="poster" src="../../assets/3d/gigantes/canva-poster.jpg" alt="Cinematic Gigantes giant scene, original flat artwork" width="1148" height="1536" fetchpriority="high">
         <canvas id="depth-canvas" aria-hidden="true"></canvas>
@@ -44,7 +47,6 @@
           <button type="button" id="auto-drift" aria-pressed="false">Auto drift: Off</button>
           <button type="button" id="phone-tilt" aria-pressed="false" hidden>Phone tilt: Off</button>
         </div>
-        <label class="strength-control" for="depth-strength"><span>Depth strength</span><input id="depth-strength" type="range" min="35" max="125" step="5" value="85"><output id="depth-value" for="depth-strength">85%</output></label>
       </div>
       <p class="viewer-help">If graphics are unavailable, the unmodified poster is displayed automatically. Phone tilt may require browser permission; finger drag always works without sensor access.</p>
     </section>

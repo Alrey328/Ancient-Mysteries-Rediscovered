@@ -7,6 +7,7 @@ import test from 'node:test';
 const repo=resolve(dirname(fileURLToPath(import.meta.url)),'../../..');
 const gallery=readFileSync(resolve(repo,'3d/index.html'),'utf8');
 const viewer=readFileSync(resolve(repo,'3d/gigantes/index.html'),'utf8');
+const odysseus=readFileSync(resolve(repo,'3d/odysseus/index.html'),'utf8');
 const sirens=readFileSync(resolve(repo,'3d/sirens/index.html'),'utf8');
 const css=readFileSync(resolve(repo,'3d/gallery.css'),'utf8');
 const script=readFileSync(resolve(repo,'3d/gigantes/viewer.js'),'utf8');
@@ -19,17 +20,40 @@ test('living gallery entry and Gigantes exhibit exist without changing productio
   assert.ok(existsSync(resolve(repo,'assets/3d/gigantes/canva-poster.jpg')));
   assert.ok(existsSync(resolve(repo,'assets/3d/gigantes/wavespeed-depth.png')));
 });
-test('depth viewer preserves safe navigation, fallback, and explicit user input',()=>{
+test('depth viewer preserves safe navigation, fallback, and natural interaction',()=>{
   assert.match(viewer,/class="viewer-fallback"/);
   assert.match(viewer,/id="reset-view"/);
   assert.match(viewer,/id="show-original"/);
-  assert.match(viewer,/id="depth-strength"/);
   assert.match(viewer,/id="phone-tilt"/);
   assert.match(script,/strictDepth16\?'webgl2':'webgl'/);
   assert.match(script,/webglcontextlost/);
   assert.match(script,/pointermove/);
   assert.match(script,/DeviceOrientationEvent\.requestPermission/);
   assert.match(script,/prefers-reduced-motion/);
+});
+test('approved Odysseus pair is present and linked from the gallery',()=>{
+  const poster=readFileSync(resolve(repo,'assets/3d/odysseus/canva-poster.png'));
+  const depth=readFileSync(resolve(repo,'assets/3d/odysseus/wavespeed-depth.png'));
+  assert.equal(poster.readUInt32BE(16),1264);
+  assert.equal(poster.readUInt32BE(20),1264);
+  assert.equal(depth.readUInt32BE(16),1264);
+  assert.equal(depth.readUInt32BE(20),1264);
+  assert.match(gallery,/href="\.\/odysseus\/"/);
+  assert.match(gallery,/assets\/3d\/odysseus\/canva-poster\.png/);
+  assert.match(odysseus,/data-photo="\.\.\/\.\.\/assets\/3d\/odysseus\/canva-poster\.png"/);
+  assert.match(odysseus,/data-depth="\.\.\/\.\.\/assets\/3d\/odysseus\/wavespeed-depth\.png"/);
+});
+test('all exhibits use calibrated presets without a visitor depth slider',()=>{
+  for(const html of [viewer,odysseus,sirens]) {
+    assert.match(html,/data-default-strength="\d+"/);
+    assert.match(html,/data-max-shift-x="0\.\d+"/);
+    assert.match(html,/data-max-shift-y="0\.\d+"/);
+    assert.doesNotMatch(html,/depth-strength|type="range"|Adjust 3D Depth/i);
+  }
+  assert.doesNotMatch(script,/depth-strength|depth-value|range\.value/);
+  assert.match(script,/float edgeGuard/);
+  assert.match(script,/vec2 base=uv/);
+  assert.doesNotMatch(script,/\/1\.19/);
 });
 test('mobile interaction is opt-in and preview pages are noindex until owner approval',()=>{
   assert.match(css,/touch-action:none/);

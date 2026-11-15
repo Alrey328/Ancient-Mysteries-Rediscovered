@@ -22,7 +22,7 @@
 </nav></header>
 <main class="wrap viewer-layout" id="main">
 <div class="viewer-intro">
-<p class="eyebrow">AMR STUDIOS · GOLD STANDARD EXHIBIT · PRELAUNCH</p>
+<p class="eyebrow">AMR STUDIOS · LIVING GALLERY · EXHIBIT 002</p>
 <h1>ODYSSEUS <em>THE LAND OF THE DEAD</em></h1>
 <p class="lede">A son crosses the boundary of death to find his mother.</p>
 <p class="viewer-instructions">Move your mouse on desktop or drag the artwork on your phone. Experience subtle depth throughout the composition.</p>
@@ -30,7 +30,7 @@
 </div>
 <section class="viewer-area" aria-labelledby="stage-heading">
 <h2 class="visually-hidden" id="stage-heading">Interactive Odysseus depth poster</h2>
-<div class="viewer-stage" id="stage" data-photo="../../assets/3d/odysseus/canva-poster.png" data-depth="../../assets/3d/odysseus/wavespeed-depth.png" aria-label="Odysseus cinematic poster: drag to reveal depth">
+<div class="viewer-stage" id="stage" data-photo="../../assets/3d/odysseus/canva-poster.png" data-depth="../../assets/3d/odysseus/wavespeed-depth.png" data-default-strength="74" data-max-shift-x="0.042" data-max-shift-y="0.026" aria-label="Odysseus cinematic poster: drag to reveal depth">
 <img class="viewer-fallback" id="poster" src="../../assets/3d/odysseus/canva-poster.png" width="1264" height="1264" alt="Odysseus reunites with his mother in the Land of the Dead, cinematic artwork" fetchpriority="high">
 <canvas id="depth-canvas" aria-hidden="true"></canvas>
 <div class="viewer-corner" aria-hidden="true">AMR · GOLD STANDARD 3D</div>
@@ -43,7 +43,6 @@
 <button type="button" id="auto-drift" aria-pressed="false">Auto drift: Off</button>
 <button type="button" id="phone-tilt" aria-pressed="false" hidden>Phone tilt: Off</button>
 </div>
-<label class="strength-control" for="depth-strength"><span>Depth strength</span><input id="depth-strength" type="range" min="35" max="125" step="5" value="85"><output id="depth-value" for="depth-strength">85%</output></label>
 </div>
 <p class="viewer-help">If interactive depth cannot load, the original poster is shown. Finger drag works without motion-sensor permission.</p>
 </section>
