@@ -57,16 +57,25 @@ test('exclusive media paths resolve to repository assets', () => {
   }
 });
 
-test('homepage AMR Exclusive config features the self-hosted Land of the Dead release', () => {
+test('homepage AMR cinematic config features the approved self-hosted Sirens release', () => {
   const content = JSON.parse(fs.readFileSync(path.join(repoDir, 'data/site-content.json'), 'utf8'));
-  assert.equal(content.featuredOriginal.title, 'Odysseus — The Land of the Dead');
-  assert.equal(content.featuredOriginal.poster, 'assets/originals/land-of-the-dead/poster.png');
-  assert.equal(content.featuredOriginal.videoUrl, 'assets/originals/land-of-the-dead/film.mp4');
+  assert.equal(content.featuredOriginal.title, 'Ancient Legend Unveiled — The Sirens');
+  assert.equal(content.featuredOriginal.poster, 'assets/originals/sirens/poster.webp');
+  assert.equal(content.featuredOriginal.videoUrl, 'assets/originals/sirens/film.mp4');
   assert.equal(content.featuredOriginal.watchPage, 'exclusives/');
   assert.equal(content.featuredOriginal.enabled, true);
+  assert.ok(fs.existsSync(path.join(repoDir, content.featuredOriginal.poster)));
+  assert.ok(fs.existsSync(path.join(repoDir, content.featuredOriginal.videoUrl)));
+  // Preserve the other two premiere selections and the Dual Featured Premieres shell.
+  assert.equal(content.featuredReel.videoUrl, 'https://www.facebook.com/share/r/1EtfycqkWy/');
+  assert.equal(content.featuredYoutubeId, 'island-of-giants-immersive');
+  const homepage = fs.readFileSync(path.join(repoDir, 'index.html'), 'utf8');
+  assert.match(homepage, /id="premiere-stage-title">Dual Featured Premieres/);
+  assert.match(homepage, /data-muted-src="assets\/hero\/amr-hero-web\.mp4"/);
   const renderer = fs.readFileSync(path.join(repoDir, 'assets/js/amr-premieres.js'), 'utf8');
   assert.match(renderer, /data-original-player/);
   assert.match(renderer, /data-original-play/);
+  assert.match(renderer, /video\.muted = false/);
   assert.match(renderer, /await video\.play\(\)/);
   // The initial poster must not show a native mobile play control beneath AMR's Play button.
   assert.match(renderer, /<video playsinline preload="metadata" poster=/);
