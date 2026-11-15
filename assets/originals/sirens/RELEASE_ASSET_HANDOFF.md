@@ -1,6 +1,6 @@
-# AMR Sirens — release asset handoff (DRAFT)
+# AMR Sirens — release asset handoff (READY FOR OWNER REVIEW)
 
-This branch integrates **The Sirens — Ancient Legend Unveiled** into AMR Exclusives and AMR Cinema, but **MUST NOT be merged or deployed until both media files are uploaded and playback is verified**.
+This branch integrates **The Sirens — Ancient Legend Unveiled** into AMR Exclusives and AMR Cinema. The approved media assets are present and the local release gate passed on **November 15, 2026**. Keep the pull request in draft until the owner approves production deployment.
 
 ## Required self-hosted assets
 
@@ -13,8 +13,22 @@ This branch integrates **The Sirens — Ancient Legend Unveiled** into AMR Exclu
 2. `assets/originals/sirens/poster.webp`
    - Use the official approved Sirens release poster (the artwork used for the published YouTube Short); retain its visual identity.
    - Optimize the original poster to WebP without new artwork or unrelated frames. Verify it on mobile and desktop.
+   - Final derivative: lossless WebP, 981×1602, 2,529,434 bytes, SHA-256 `561c41864c959b03649673ff5c2a25d6639e53ed3bb6982bf722df53fa769295`.
+   - Decoded RGB frame hash matches the source PNG exactly; no crop, resize, or artistic change was introduced.
 
-## No-launch gate
+## QA completed
+
+- `node scripts/verify-sirens-media.mjs` passes the exact master checksum/size and validates the poster format and dimensions.
+- `npm test --prefix services/exclusive-engagement` passes all 40 tests.
+- Headless Chrome 157 verified desktop (1440×1100) and mobile (390×844) rendering with no horizontal overflow.
+- Sirens responds as `video/mp4` with byte-range seeking and the poster responds as `image/webp`.
+- One activation starts unmuted playback at full volume; metadata reports 87.166667 seconds and 540×960; seeking and native controls work.
+- The native fullscreen control renders and the browser exposes the Fullscreen API. Headless Chrome does not grant an actual fullscreen transition.
+- Share uses the Sirens title and `/cinema/sirens/`; comments mount with the stable `cinema-sirens` term.
+- Starting a related film pauses the current film. No film autoplays.
+- Land of the Dead, Enuk and Laestrygonians retain playable media, controls, mobile layout, share/comments routes, and their existing engagement IDs. Worker mutation behavior remains covered by the passing runtime tests; QA did not create production Likes or Views.
+
+## Production deployment gate
 
 - Both assets must be present, reachable through their public paths, and respond with video/mp4 and image/webp MIME types.
 - Run `node scripts/verify-sirens-media.mjs`; it must pass before release.

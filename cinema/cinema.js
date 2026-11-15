@@ -17,6 +17,7 @@
     });
   }
 
+  const cinemaVideos = [...document.querySelectorAll('[data-cinema-player] video')];
   document.querySelectorAll('[data-cinema-player]').forEach(shell => {
     const video = shell.querySelector('video');
     const button = shell.querySelector('[data-cinema-play]');
@@ -34,6 +35,9 @@
       }
     });
     video.addEventListener('play', () => {
+      cinemaVideos.forEach(other => {
+        if (other !== video && !other.paused) other.pause();
+      });
       button.hidden = true;
       if (status) status.textContent = '';
     });
