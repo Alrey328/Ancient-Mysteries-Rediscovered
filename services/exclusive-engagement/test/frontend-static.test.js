@@ -40,11 +40,12 @@ test('engagement controls are absent from every non-AMR-film HTML page', () => {
 
 test('exclusive media paths resolve to repository assets', () => {
   const expectations = new Map([
-    ['exclusives/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4', '../Enkidu%20Poster.png', '../media/Enuk_AMR_Exclusive_web.mp4', '../assets/originals/laestrygonians/poster.webp', '../assets/originals/laestrygonians/film.mp4']],
+    ['exclusives/index.html', ['../assets/originals/sirens/poster.webp', '../assets/originals/sirens/film.mp4', '../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4', '../Enkidu%20Poster.png', '../media/Enuk_AMR_Exclusive_web.mp4', '../assets/originals/laestrygonians/poster.webp', '../assets/originals/laestrygonians/film.mp4']],
     ['exclusives/enuk/index.html', ['../../Enkidu%20Poster.png', '../../media/Enuk_AMR_Exclusive_web.mp4']],
     ['exclusives/laestrygonians/index.html', ['../../assets/originals/laestrygonians/poster.webp', '../../assets/originals/laestrygonians/film.mp4']],
-    ['cinema/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4']],
-    ['cinema/land-of-the-dead/index.html', ['../../assets/originals/land-of-the-dead/poster.png', '../../assets/originals/land-of-the-dead/film.mp4']]
+    ['cinema/index.html', ['../assets/originals/land-of-the-dead/poster.png', '../assets/originals/land-of-the-dead/film.mp4', '../assets/originals/sirens/poster.webp', '../assets/originals/sirens/film.mp4']],
+    ['cinema/land-of-the-dead/index.html', ['../../assets/originals/land-of-the-dead/poster.png', '../../assets/originals/land-of-the-dead/film.mp4']],
+    ['cinema/sirens/index.html', ['../../assets/originals/sirens/poster.webp', '../../assets/originals/sirens/film.mp4']]
   ]);
   for (const [page, assets] of expectations) {
     const pagePath = path.join(repoDir, page);
@@ -96,7 +97,8 @@ test('Cinema SEO uses one collection canonical and existing film canonicals', ()
     ['cinema/index.html', 'https://ancientmysteriesrediscovered.com/cinema/'],
     ['cinema/enuk/index.html', 'https://ancientmysteriesrediscovered.com/exclusives/enuk/'],
     ['cinema/laestrygonians/index.html', 'https://ancientmysteriesrediscovered.com/exclusives/laestrygonians/'],
-    ['cinema/land-of-the-dead/index.html', 'https://ancientmysteriesrediscovered.com/cinema/land-of-the-dead/']
+    ['cinema/land-of-the-dead/index.html', 'https://ancientmysteriesrediscovered.com/cinema/land-of-the-dead/'],
+    ['cinema/sirens/index.html', 'https://ancientmysteriesrediscovered.com/cinema/sirens/']
   ]);
   for (const [page, canonical] of expectations) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
@@ -109,6 +111,7 @@ test('Cinema SEO uses one collection canonical and existing film canonicals', ()
   const sitemap = fs.readFileSync(path.join(repoDir, 'sitemap.xml'), 'utf8');
   assert.match(sitemap, /<loc>https:\/\/ancientmysteriesrediscovered\.com\/cinema\/<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/ancientmysteriesrediscovered\.com\/cinema\/land-of-the-dead\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/ancientmysteriesrediscovered\.com\/cinema\/sirens\/<\/loc>/);
   assert.doesNotMatch(sitemap, /<loc>https:\/\/ancientmysteriesrediscovered\.com\/cinema\/(enuk|laestrygonians)\/<\/loc>/);
 });
 
@@ -137,14 +140,15 @@ test('AMR Exclusives features Land inline while preserving existing releases', (
 });
 
 
-test('mobile Exclusives library shows both film posters with one-tap inline playback', () => {
+test('mobile Exclusives library shows all film posters with one-tap inline playback', () => {
   const html = fs.readFileSync(path.join(repoDir, 'exclusives/index.html'), 'utf8');
   const films = [
+    { id: 'sirens', title: 'The Sirens — Ancient Legend Unveiled', poster: '../assets/originals/sirens/poster.webp', film: '../assets/originals/sirens/film.mp4', href: '../cinema/sirens/' },
     { id: 'enuk', title: 'Enuk: The Wildman', poster: '../Enkidu%20Poster.png', film: '../media/Enuk_AMR_Exclusive_web.mp4', href: 'enuk/' },
     { id: 'laestrygonians', title: 'The Laestrygonians', poster: '../assets/originals/laestrygonians/poster.webp', film: '../assets/originals/laestrygonians/film.mp4', href: 'laestrygonians/' }
   ];
-  assert.equal(html.split('<div class="exclusive-film-stage" data-exclusive-player>').length - 1, 2);
-  assert.equal(html.split('<button class="featured-play" type="button" data-exclusive-play').length - 1, 2);
+  assert.equal([...html.matchAll(/<div[^>]*data-exclusive-player[^>]*>/g)].length, films.length);
+  assert.equal(html.split('<button class="featured-play" type="button" data-exclusive-play').length - 1, films.length);
   for (const film of films) {
     const videoTag = html.match(new RegExp('<video[^>]*id="exclusive-' + film.id + '-video"[^>]*>'))?.[0] || '';
     assert.ok(videoTag.includes('poster="' + film.poster + '"'));
@@ -158,8 +162,8 @@ test('mobile Exclusives library shows both film posters with one-tap inline play
     assert.ok(html.includes('data-share-url="' + film.href + '"'));
     assert.ok(html.includes('data-exclusive-share data-share-title="' + film.title + ' | AMR Exclusives"'));
   }
-  assert.equal(html.split('data-exclusive-share data-share-title=').length - 1, 2);
-  assert.equal(html.split('data-exclusive-share-status role="status"').length - 1, 2);
+  assert.equal(html.split('data-exclusive-share data-share-title=').length - 1, films.length);
+  assert.equal(html.split('data-exclusive-share-status role="status"').length - 1, films.length);
   assert.ok(html.includes('.exclusive-film-actions button,.exclusive-film-actions a{'));
   assert.ok(html.includes('min-height:48px'));
   assert.ok(html.includes("document.querySelectorAll('[data-exclusive-share]').forEach"));
@@ -174,7 +178,7 @@ test('mobile Exclusives library shows both film posters with one-tap inline play
 });
 
 test('Cinema keeps playback opt-in and exposes accessible controls', () => {
-  for (const page of ['cinema/index.html', 'cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
+  for (const page of ['cinema/index.html', 'cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html', 'cinema/sirens/index.html']) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
     const videoTag = html.match(/<video\b[^>]*>/)?.[0] || '';
     assert.match(html, /class="skip-link"/);
@@ -232,8 +236,23 @@ test('Land of the Dead is the featured self-hosted release without backend chang
   }
 });
 
+test('Sirens uses the approved self-hosted release with sharing and discussion', () => {
+  const page = 'cinema/sirens/index.html';
+  const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
+  const video = html.indexOf('<video');
+  const title = html.indexOf('<h1');
+  const share = html.indexOf('data-share-film');
+  const comments = html.indexOf('data-cinema-comments');
+  assert.match(html, /The Sirens — Ancient Legend Unveiled/);
+  assert.match(html, /assets\/originals\/sirens\/film\.mp4/);
+  assert.match(html, /assets\/originals\/sirens\/poster\.webp/);
+  assert.match(html, /data-cinema-comments="cinema-sirens"/);
+  assert.ok(video >= 0 && video < title && title < share && share < comments, `${page}: direct viewer flow`);
+  assert.doesNotMatch(html, /data-amr-engagement|engagement\.js|youtube\.com|youtu\.be/);
+});
+
 test('featured and related Cinema films expose one-click inline playback', () => {
-  for (const page of ['cinema/index.html', 'cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html']) {
+  for (const page of ['cinema/index.html', 'cinema/enuk/index.html', 'cinema/laestrygonians/index.html', 'cinema/land-of-the-dead/index.html', 'cinema/sirens/index.html']) {
     const html = fs.readFileSync(path.join(repoDir, page), 'utf8');
     const players = [...html.matchAll(/data-cinema-player/g)];
     const playButtons = [...html.matchAll(/data-cinema-play(?:\s|>)/g)];
@@ -243,4 +262,6 @@ test('featured and related Cinema films expose one-click inline playback', () =>
     assert.match(html, /viewer-related-video[^>]*\splaysinline(?:\s|>)/);
     assert.doesNotMatch(html, /<video\b[^>]*\sautoplay(?:\s|=|>)/);
   }
+  const cinemaScript = fs.readFileSync(path.join(repoDir, 'cinema/cinema.js'), 'utf8');
+  assert.match(cinemaScript, /other !== video && !other\.paused[\s\S]*other\.pause\(\)/);
 });

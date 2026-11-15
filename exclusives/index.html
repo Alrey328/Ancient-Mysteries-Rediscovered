@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="canonical" href="https://ancientmysteriesrediscovered.com/exclusives/">
   <title>AMR Exclusives | Ancient Mysteries Rediscovered</title>
-  <meta name="description" content="Watch Odysseus — The Land of the Dead and other original cinematic mysteries independently hosted by Ancient Mysteries Rediscovered.">
+  <meta name="description" content="Watch The Sirens, Odysseus — The Land of the Dead, and original cinematic mysteries independently hosted by Ancient Mysteries Rediscovered.">
   <meta property="og:type" content="video.other">
-  <meta property="og:title" content="Odysseus — The Land of the Dead | AMR Exclusives">
+  <meta property="og:title" content="The Sirens — Ancient Legend Unveiled | AMR Exclusives">
   <meta property="og:url" content="https://ancientmysteriesrediscovered.com/exclusives/">
-  <meta property="og:image" content="https://ancientmysteriesrediscovered.com/assets/originals/land-of-the-dead/poster.png">
+  <meta property="og:image" content="https://ancientmysteriesrediscovered.com/assets/originals/sirens/poster.webp">
   <link rel="stylesheet" href="style.css">
   <style>
     .exclusive-feature{text-align:center;background:radial-gradient(ellipse at 50% 32%,#30313b 0%,#1b1d26 65%,#14161d 100%);border-color:#806637;box-shadow:0 18px 65px #0007;padding:clamp(16px,3vw,32px)}
@@ -54,6 +54,10 @@
     .exclusive-share-status{min-height:0;font-size:.86rem;margin:6px auto 0}
     .exclusive-share-status:empty{display:none}
     @media(max-width:600px){.exclusive-film-grid{grid-template-columns:1fr;gap:18px}.exclusive-film-card{padding:14px 10px}.exclusive-film-stage{width:min(100%,320px)}.exclusive-film-stage .featured-play-icon{width:76px;height:76px}}
+    .exclusive-feature--sirens{margin-bottom:24px;border-color:#b9985a;background:radial-gradient(ellipse at 50% 20%,#2a3540 0%,#171c25 70%,#12161c 100%)}
+    .exclusive-feature--sirens .eyebrow{color:#f0d698}
+    .exclusive-feature--sirens .featured-stage{width:min(100%,520px)}
+    .exclusive-feature--sirens .featured-play-status{margin:10px auto}
     @media(max-width:600px){.featured-stage{width:min(100%,440px)}.featured-play-icon{width:76px;height:76px}}
   </style>
   <script data-goatcounter="https://amr-exclusives.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -64,8 +68,30 @@
     <p class="eyebrow">Ancient Mysteries Rediscovered</p>
     <h1>AMR Exclusives</h1>
     <p>Original cinematic mysteries, independently released. Watch directly here—no outside platforms.</p>
+    <article class="exclusive-feature exclusive-feature--sirens" aria-labelledby="sirens-feature-title">
+      <p class="eyebrow">AMR Exclusive · New Featured Release</p>
+      <h2 id="sirens-feature-title">The Sirens — Ancient Legend Unveiled</h2>
+      <p>One ship escaped the Sirens' song. But a lesser-known ancient prophecy reveals why that survival may have doomed the Sirens themselves.</p>
+      <div class="featured-stage" data-exclusive-player>
+        <span class="featured-stage-label">AMR Original Film · 1 min 27 sec</span>
+        <video id="exclusive-sirens-video" playsinline preload="metadata" poster="../assets/originals/sirens/poster.webp" aria-label="Watch The Sirens — Ancient Legend Unveiled">
+          <source src="../assets/originals/sirens/film.mp4" type="video/mp4">
+          Your browser does not support video playback.
+        </video>
+        <button class="featured-play" type="button" data-exclusive-play aria-label="Play The Sirens — Ancient Legend Unveiled">
+          <span class="featured-play-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5v17l14-8.5z"/></svg></span>
+        </button>
+      </div>
+      <p class="featured-play-status" data-exclusive-status role="status" aria-live="polite"></p>
+      <p class="release-note">AI-assisted artistic reconstruction of Greek myth. The Sirens' prophecy is reported in later ancient traditions, not established history.</p>
+      <div class="exclusive-film-actions">
+        <button type="button" data-exclusive-share data-share-title="The Sirens — Ancient Legend Unveiled | AMR Exclusives" data-share-url="../cinema/sirens/" aria-label="Share The Sirens">Share this film</button>
+        <a href="../cinema/sirens/">Film details &amp; comments</a>
+      </div>
+      <p class="exclusive-share-status" data-exclusive-share-status role="status" aria-live="polite"></p>
+    </article>
     <article class="exclusive-feature">
-      <p class="eyebrow">AMR Exclusive · Featured Release</p>
+      <p class="eyebrow">AMR Exclusive · Featured Film</p>
       <h2>Odysseus — The Land of the Dead</h2>
       <p>Odysseus descends into the land of the dead seeking a way home. Among the shades, he confronts grief, memory, and the cost of returning to the living.</p>
       <div class="featured-stage" id="featured-stage">
@@ -155,7 +181,7 @@
       });
     });
     document.querySelectorAll('[data-exclusive-share]').forEach(button=>{
-      const status=button.closest('.exclusive-film-card').querySelector('[data-exclusive-share-status]');
+      const status=button.closest('.exclusive-film-card, .exclusive-feature').querySelector('[data-exclusive-share-status]');
       button.addEventListener('click',async()=>{
         status.textContent='';
         const url=new URL(button.dataset.shareUrl,location.href).href;
