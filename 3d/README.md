@@ -10,7 +10,7 @@ This stacked draft provides `/3d/`, `/3d/gigantes/`, `/3d/odysseus/`, and `/3d/s
 - The approved 1264×1264 Odysseus pair remains required at `assets/3d/odysseus/`; its route stays fail-closed until those originals are available.
 
 ## Behavior
-- Zero third-party JavaScript or paid API. Existing 8-bit exhibits retain the WebGL1 path. Sirens parses its PNG scanlines and uploads native unsigned 16-bit samples to a WebGL2 `R16` texture; it never routes that map through an ordinary browser image decode.
+- Zero third-party JavaScript or paid API. Existing 8-bit exhibits retain the WebGL1 path. Sirens parses its PNG scanlines and uploads native unsigned 16-bit samples to a WebGL2 `R16UI` texture, with manual bilinear sampling in the shader; it never routes that map through an ordinary browser image decode.
 - Entire flattened scene shifts at constrained angles; NOT a true 360-degree model.
 - Mouse hover, finger drag, reset, original-image comparison, controlled depth strength, optional drift, and permission-gated phone sensor tilt.
 - Graceful image fallback when WebGL or images fail. Motion preferences disable auto drift.

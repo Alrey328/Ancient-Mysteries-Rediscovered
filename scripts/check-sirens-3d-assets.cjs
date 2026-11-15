@@ -147,8 +147,9 @@ try {
   if (!html.includes('../../assets/3d/sirens/canva-poster.png')) throw new Error('Sirens poster path is not wired');
   if (!html.includes('../../assets/3d/sirens/wavespeed-depth-16bit.png')) throw new Error('Sirens depth path is not wired');
   if (!html.includes('data-depth-format="png16"')) throw new Error('Sirens is not configured for strict 16-bit decoding');
-  if (!viewer.includes('gl.R16') || !viewer.includes('gl.UNSIGNED_SHORT')) throw new Error('Viewer lacks a WebGL2 R16 upload path');
-  console.log('PASS: Sirens route requires the strict WebGL2 R16 decoder and original-image fallback.');
+  if (!viewer.includes('gl.R16UI') || !viewer.includes('gl.RED_INTEGER') || !viewer.includes('gl.UNSIGNED_SHORT')) throw new Error('Viewer lacks a WebGL2 R16UI upload path');
+  if (!viewer.includes('usampler2D') || !viewer.includes('/65535.0')) throw new Error('Viewer lacks full-range unsigned 16-bit sampling');
+  console.log('PASS: Sirens route requires strict WebGL2 R16UI decoding, full-range sampling, and original-image fallback.');
 } catch (error) {
   console.error(`FAIL: exhibit wiring: ${error.message}`);
   failed = true;

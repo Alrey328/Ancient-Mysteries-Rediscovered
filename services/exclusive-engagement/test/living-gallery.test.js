@@ -57,8 +57,11 @@ test('Sirens uses the exact poster and strict native 16-bit depth path',()=>{
   assert.match(sirens,/id="phone-tilt"/);
   assert.match(sirens,/id="show-original"/);
   assert.match(script,/DecompressionStream\('deflate'\)/);
-  assert.match(script,/gl\.R16/);
+  assert.match(script,/gl\.R16UI/);
+  assert.match(script,/gl\.RED_INTEGER/);
   assert.match(script,/gl\.UNSIGNED_SHORT/);
+  assert.match(script,/usampler2D/);
+  assert.match(script,/\/65535\.0/);
   assert.match(script,/strictDepth16\?depth16Texture\(depth,1\):imageTexture\(depth,1\)/);
 });
 
