@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "homepageFeaturedSlug": "sirens",
+  "films": [
+    {
+      "slug": "sirens",
+      "title": "The Sirens — Ancient Legend Unveiled",
+      "description": "One ship escaped the Sirens' song. A lesser-known ancient prophecy reveals why that survival may have doomed the Sirens themselves.",
+      "releaseDate": "2026-11-14",
+      "duration": "PT1M27.167S",
+      "durationLabel": "1 min 27 sec",
+      "placements": {
+        "cinema": true,
+        "exclusives": true,
+        "homepage": true
+      },
+      "cinemaPath": "cinema/sirens/",
+      "videoUrl": "https://ancientmysteriesrediscovered.com/assets/originals/sirens/film.mp4",
+      "posterUrl": "https://ancientmysteriesrediscovered.com/assets/originals/sirens/poster.webp"
+    },
+    {
+      "slug": "land-of-the-dead",
+      "title": "Odysseus — The Land of the Dead",
+      "description": "Odysseus descends into the land of the dead seeking a way home—and confronts the shades of his past.",
+      "releaseDate": "2026-11-09",
+      "duration": "PT1M5.958S",
+      "durationLabel": "1 min 6 sec",
+      "placements": {
+        "cinema": true,
+        "exclusives": true,
+        "homepage": false
+      },
+      "cinemaPath": "cinema/land-of-the-dead/",
+      "videoUrl": "https://ancientmysteriesrediscovered.com/assets/originals/land-of-the-dead/film.mp4",
+      "posterUrl": "https://ancientmysteriesrediscovered.com/assets/originals/land-of-the-dead/poster.png"
+    },
+    {
+      "slug": "laestrygonians",
+      "title": "The Laestrygonians",
+      "description": "Odysseus enters a harbor of giants. Only one ship escapes.",
+      "releaseDate": "2026-10-31",
+      "duration": "PT34S",
+      "durationLabel": "34 seconds",
+      "placements": {
+        "cinema": true,
+        "exclusives": true,
+        "homepage": false
+      },
+      "cinemaPath": "cinema/laestrygonians/",
+      "videoUrl": "https://ancientmysteriesrediscovered.com/assets/originals/laestrygonians/film.mp4",
+      "posterUrl": "https://ancientmysteriesrediscovered.com/assets/originals/laestrygonians/poster.webp"
+    },
+    {
+      "slug": "enuk",
+      "title": "Enuk: The Wildman",
+      "description": "An ancient mystery brought to life through cinematic reconstruction.",
+      "releaseDate": "2026-10-01",
+      "duration": "PT26S",
+      "durationLabel": "26 seconds",
+      "placements": {
+        "cinema": true,
+        "exclusives": true,
+        "homepage": false
+      },
+      "cinemaPath": "cinema/enuk/",
+      "videoUrl": "https://ancientmysteriesrediscovered.com/media/Enuk_AMR_Exclusive_web.mp4",
+      "posterUrl": "https://ancientmysteriesrediscovered.com/Enkidu%20Poster.png"
+    }
+  ]
+}

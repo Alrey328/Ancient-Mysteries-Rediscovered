@@ -1,4 +1,6 @@
-# AMR Studio V1 prototype review
+# AMR Studio V1 prototype review (historical PR #47 audit)
+
+This document records the original isolated prototype. The completed production design, current costs, owner authorization gate, and rollback procedure are in `docs/amr-studio-v1-production.md`.
 
 ## Scope and isolation
 

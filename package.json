@@ -1,0 +1,11 @@
+{
+  "name": "ancient-mysteries-rediscovered-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cinema:apply": "node scripts/cinematic-release.mjs apply",
+    "cinema:check": "node scripts/cinematic-release.mjs check",
+    "cinema:plan": "node scripts/cinematic-release.mjs plan",
+    "test": "node --test test/*.test.mjs && npm test --prefix services/exclusive-engagement && npm test --prefix services/studio"
+  }
+}

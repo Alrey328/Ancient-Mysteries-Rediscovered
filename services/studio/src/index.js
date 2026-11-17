@@ -4,6 +4,9 @@ const SESSION_SECONDS = 8 * 60 * 60;
 const MAX_JSON_BYTES = 12_000;
 const MAX_VIDEO_BYTES = 50 * 1024 * 1024;
 const MAX_POSTER_BYTES = 5 * 1024 * 1024;
+const MULTIPART_PART_BYTES = 25 * 1024 * 1024;
+const MAX_MULTIPART_PARTS = 10_000;
+const MAX_MULTIPART_VIDEO_BYTES = MULTIPART_PART_BYTES * MAX_MULTIPART_PARTS;
 const LOGIN_WINDOW_SECONDS = 15 * 60;
 const LOGIN_LIMIT = 10;
 const COOKIE = 'amr_studio_session';
@@ -22,6 +25,17 @@ const LOCAL_SCHEMA = [
 `CREATE TABLE IF NOT EXISTS studio_login_attempts (
   ip_hash TEXT NOT NULL, window_start INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (ip_hash, window_start)
+)`,
+`CREATE TABLE IF NOT EXISTS studio_multipart_uploads (
+  film_id TEXT NOT NULL, kind TEXT NOT NULL, upload_id TEXT NOT NULL,
+  object_key TEXT NOT NULL, file_name TEXT NOT NULL, content_type TEXT NOT NULL,
+  expected_bytes INTEGER NOT NULL, created_at TEXT NOT NULL,
+  PRIMARY KEY (film_id, kind)
+)`,
+`CREATE TABLE IF NOT EXISTS studio_release_requests (
+  film_id TEXT PRIMARY KEY, request_json TEXT NOT NULL, request_digest TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'owner_approval_required',
+  created_at TEXT NOT NULL, updated_at TEXT NOT NULL
 )`
 ];
 
@@ -138,6 +152,24 @@ function slugify(title, id) {
   return `${base}-${id.slice(0, 6)}`;
 }
 
+function releaseSlug(value) {
+  const slug = cleanText(value, 'Release slug', 80, true).toLowerCase();
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new HttpError(400, 'Release slug must use lowercase letters, numbers, and hyphens');
+  return slug;
+}
+
+function productionAsset(value, kind, bytes, sha256) {
+  const reference = cleanText(value, `${kind} production reference`, 500, true);
+  const digest = cleanText(sha256, `${kind} SHA-256`, 64, true).toLowerCase();
+  if (!/^[a-f0-9]{64}$/.test(digest)) throw new HttpError(400, `${kind} SHA-256 must be 64 hexadecimal characters`);
+  if (!Number.isInteger(bytes) || bytes < 8) throw new HttpError(400, `${kind} byte count is invalid`);
+  if (/^https:\/\//.test(reference)) return { source: 'external', url: reference, contentType: kind === 'video' ? 'video/mp4' : undefined, bytes, sha256: digest };
+  if (reference.startsWith('/') || reference.includes('\\') || reference.split('/').includes('..')) throw new HttpError(400, `${kind} repository path is unsafe`);
+  if (kind === 'video' && !reference.toLowerCase().endsWith('.mp4')) throw new HttpError(400, 'Video repository path must end in .mp4');
+  if (kind === 'poster' && !/\.(?:jpe?g|png|webp)$/i.test(reference)) throw new HttpError(400, 'Poster repository path must identify a JPEG, PNG, or WebP');
+  return { source: 'repository', path: reference, contentType: kind === 'video' ? 'video/mp4' : `image/${reference.toLowerCase().endsWith('.png') ? 'png' : reference.toLowerCase().endsWith('.webp') ? 'webp' : 'jpeg'}`, bytes, sha256: digest };
+}
+
 function filmJson(row) {
   return {
     ...row,
@@ -238,13 +270,165 @@ async function uploadAsset(request, env, id, kind) {
   });
   const extension = kind === 'video' ? 'mp4' : ({ 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' })[mime];
   const key = `drafts/${film.id}/${kind}.${extension}`;
-  await env.MEDIA.put(key, stream, { httpMetadata: { contentType: mime }, customMetadata: { filmId: film.id, environment: 'test' } });
+  const fixed = typeof FixedLengthStream === 'function' ? new FixedLengthStream(bytes) : null;
+  const body = fixed ? fixed.readable : stream;
+  const write = fixed ? stream.pipeTo(fixed.writable) : Promise.resolve();
+  await Promise.all([
+    env.MEDIA.put(key, body, { httpMetadata: { contentType: mime }, customMetadata: { filmId: film.id, environment: 'test' } }),
+    write
+  ]);
   const name = cleanText(request.headers.get('X-File-Name') || `${kind}.${extension}`, 'File name', 180, true);
   const now = new Date().toISOString();
   const prefix = kind === 'video' ? 'video' : 'poster';
   await env.DB.prepare(`UPDATE studio_films SET ${prefix}_key = ?, ${prefix}_name = ?, ${prefix}_bytes = ?, updated_at = ? WHERE id = ?`)
     .bind(key, name, bytes, now, film.id).run();
   return json(filmJson(await getFilm(env.DB, id)));
+}
+
+async function createMultipartUpload(request, env, id) {
+  const film = await getFilm(env.DB, id);
+  const body = await readJson(request);
+  const bytes = Number(body.bytes);
+  if (!Number.isInteger(bytes) || bytes <= MAX_VIDEO_BYTES || bytes > MAX_MULTIPART_VIDEO_BYTES) {
+    throw new HttpError(413, `Multipart video must be larger than ${MAX_VIDEO_BYTES / 1024 / 1024} MB and no larger than ${MAX_MULTIPART_VIDEO_BYTES / 1024 / 1024} MB`);
+  }
+  if (body.contentType !== 'video/mp4') throw new HttpError(415, 'Multipart video must be an MP4');
+  const fileName = cleanText(body.fileName, 'File name', 180, true);
+  const key = `drafts/${film.id}/video.mp4`;
+  const upload = await env.MEDIA.createMultipartUpload(key, {
+    httpMetadata: { contentType: 'video/mp4' },
+    customMetadata: { filmId: film.id, environment: 'test' }
+  });
+  const now = new Date().toISOString();
+  await env.DB.prepare(`INSERT INTO studio_multipart_uploads
+    (film_id, kind, upload_id, object_key, file_name, content_type, expected_bytes, created_at)
+    VALUES (?, 'video', ?, ?, ?, 'video/mp4', ?, ?)
+    ON CONFLICT(film_id, kind) DO UPDATE SET upload_id=excluded.upload_id, object_key=excluded.object_key,
+      file_name=excluded.file_name, content_type=excluded.content_type, expected_bytes=excluded.expected_bytes, created_at=excluded.created_at`)
+    .bind(film.id, upload.uploadId, key, fileName, bytes, now).run();
+  return json({ uploadId: upload.uploadId, partSize: MULTIPART_PART_BYTES, expectedBytes: bytes }, 201);
+}
+
+async function getMultipartSession(env, id, uploadId) {
+  await getFilm(env.DB, id);
+  const row = await env.DB.prepare(`SELECT * FROM studio_multipart_uploads WHERE film_id = ? AND kind = 'video'`).bind(id).first();
+  if (!row || !timingSafeEqual(row.upload_id, uploadId)) throw new HttpError(404, 'Multipart upload not found');
+  return row;
+}
+
+async function uploadMultipartPart(request, env, id, uploadId, partNumber) {
+  const session = await getMultipartSession(env, id, uploadId);
+  const bytes = Number(request.headers.get('Content-Length'));
+  const minimum = 5 * 1024 * 1024;
+  const maximum = 95 * 1024 * 1024;
+  if (!Number.isInteger(bytes) || bytes < 1 || bytes > maximum) throw new HttpError(413, 'Multipart part must be between 1 byte and 95 MB');
+  const expectedParts = Math.ceil(Number(session.expected_bytes) / MULTIPART_PART_BYTES);
+  if (!Number.isInteger(partNumber) || partNumber < 1 || partNumber > expectedParts) throw new HttpError(400, 'Invalid multipart part number');
+  if (partNumber < expectedParts && bytes < minimum) throw new HttpError(400, 'Every non-final multipart part must be at least 5 MB');
+  if (!request.body) throw new HttpError(400, 'Missing multipart part');
+  let stream = request.body;
+  if (partNumber === 1) {
+    const reader = stream.getReader();
+    const first = await reader.read();
+    if (first.done || !validMagic('video', 'video/mp4', first.value.slice(0, 16))) {
+      await reader.cancel();
+      throw new HttpError(415, 'File is not a valid MP4');
+    }
+    stream = new ReadableStream({
+      start(controller) {
+        controller.enqueue(first.value);
+        const pump = () => reader.read().then(({ done, value }) => {
+          if (done) return controller.close();
+          controller.enqueue(value);
+          return pump();
+        }).catch(error => controller.error(error));
+        return pump();
+      },
+      cancel(reason) { return reader.cancel(reason); }
+    });
+  }
+  const fixed = typeof FixedLengthStream === 'function' ? new FixedLengthStream(bytes) : null;
+  const uploadBody = fixed ? fixed.readable : stream;
+  const write = fixed ? stream.pipeTo(fixed.writable) : Promise.resolve();
+  const multipart = env.MEDIA.resumeMultipartUpload(session.object_key, session.upload_id);
+  const [part] = await Promise.all([multipart.uploadPart(partNumber, uploadBody), write]);
+  return json(part);
+}
+
+async function completeMultipartUpload(request, env, id, uploadId) {
+  const session = await getMultipartSession(env, id, uploadId);
+  const body = await readJson(request);
+  if (!Array.isArray(body.parts) || body.parts.length < 2 || body.parts.length > MAX_MULTIPART_PARTS) throw new HttpError(400, 'Multipart completion requires uploaded parts');
+  const parts = body.parts.map(part => ({ partNumber: Number(part.partNumber), etag: cleanText(part.etag, 'Part ETag', 200, true) }));
+  const numbers = new Set(parts.map(part => part.partNumber));
+  if (numbers.size !== parts.length || parts.some(part => !Number.isInteger(part.partNumber) || part.partNumber < 1)) throw new HttpError(400, 'Multipart parts are invalid');
+  const multipart = env.MEDIA.resumeMultipartUpload(session.object_key, session.upload_id);
+  const object = await multipart.complete(parts.sort((left, right) => left.partNumber - right.partNumber));
+  if (Number(object.size) !== Number(session.expected_bytes)) {
+    await env.MEDIA.delete(session.object_key);
+    throw new HttpError(409, 'Completed video size does not match the selected file');
+  }
+  const head = await env.MEDIA.get(session.object_key, { range: { offset: 0, length: 16 } });
+  const magic = head ? new Uint8Array(await new Response(head.body).arrayBuffer()) : new Uint8Array();
+  if (!validMagic('video', 'video/mp4', magic)) {
+    await env.MEDIA.delete(session.object_key);
+    throw new HttpError(415, 'Completed file is not a valid MP4');
+  }
+  const now = new Date().toISOString();
+  await env.DB.prepare('UPDATE studio_films SET video_key = ?, video_name = ?, video_bytes = ?, updated_at = ? WHERE id = ?')
+    .bind(session.object_key, session.file_name, Number(session.expected_bytes), now, id).run();
+  await env.DB.prepare(`DELETE FROM studio_multipart_uploads WHERE film_id = ? AND kind = 'video'`).bind(id).run();
+  return json(filmJson(await getFilm(env.DB, id)));
+}
+
+async function abortMultipartUpload(env, id, uploadId) {
+  const session = await getMultipartSession(env, id, uploadId);
+  await env.MEDIA.resumeMultipartUpload(session.object_key, session.upload_id).abort();
+  await env.DB.prepare(`DELETE FROM studio_multipart_uploads WHERE film_id = ? AND kind = 'video'`).bind(id).run();
+  return new Response(null, { status: 204 });
+}
+
+async function createReleaseRequest(request, env, id) {
+  const film = await getFilm(env.DB, id);
+  if (!film.video_key || !film.poster_key) throw new HttpError(409, 'Upload both the MP4 and poster before requesting owner approval');
+  const body = await readJson(request);
+  const slug = releaseSlug(body.slug);
+  const releaseDate = cleanText(body.releaseDate, 'Release date', 10, true);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) throw new HttpError(400, 'Release date must use YYYY-MM-DD');
+  const duration = cleanText(body.duration, 'ISO duration', 32, true);
+  if (!/^PT(?:\d+H)?(?:\d+M)?(?:\d+(?:\.\d+)?S)?$/.test(duration)) throw new HttpError(400, 'Duration must be an ISO 8601 duration');
+  const durationLabel = cleanText(body.durationLabel, 'Duration label', 40, true);
+  const requestPlan = {
+    schemaVersion: 1,
+    status: 'prepared',
+    ownerAuthorization: 'required',
+    requestedAt: new Date().toISOString(),
+    film: {
+      slug,
+      title: film.title,
+      description: film.description,
+      about: cleanText(body.about ?? film.description, 'About', 2000, true),
+      releaseDate,
+      duration,
+      durationLabel,
+      status: 'prepared',
+      placements: { cinema: true, exclusives: true, homepage: body.homepageFeatured === true },
+      video: productionAsset(body.videoReference, 'video', Number(body.videoBytes ?? film.video_bytes), body.videoSha256),
+      poster: productionAsset(body.posterReference, 'poster', Number(body.posterBytes ?? film.poster_bytes), body.posterSha256),
+      discussionTerm: `cinema-${slug}`,
+      engagement: { enabled: body.engagementEnabled === true, id: slug }
+    }
+  };
+  const encoded = JSON.stringify(requestPlan);
+  const digest = base64Url(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(encoded)));
+  const now = new Date().toISOString();
+  await env.DB.prepare(`INSERT INTO studio_release_requests
+    (film_id, request_json, request_digest, status, created_at, updated_at)
+    VALUES (?, ?, ?, 'owner_approval_required', ?, ?)
+    ON CONFLICT(film_id) DO UPDATE SET request_json=excluded.request_json, request_digest=excluded.request_digest,
+      status='owner_approval_required', updated_at=excluded.updated_at`)
+    .bind(id, encoded, digest, now, now).run();
+  return json({ digest, plan: requestPlan, nextStep: 'Open a focused draft pull request containing this prepared manifest entry. Production publishing requires the owner to approve and merge that pull request.' }, 201);
 }
 
 async function streamAsset(request, env, id, kind) {
@@ -279,6 +463,17 @@ async function handleAuthenticated(request, env, url) {
   if (url.pathname === '/api/logout' && request.method === 'POST') return json({ ok: true }, 200, { 'Set-Cookie': `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0` });
   if (url.pathname === '/api/films' && request.method === 'GET') return listFilms(env);
   if (url.pathname === '/api/films' && request.method === 'POST') return createFilm(request, env);
+  const multipartMatch = url.pathname.match(/^\/api\/films\/([0-9a-f-]{36})\/video\/multipart(?:\/([A-Za-z0-9_-]+)(?:\/(\d+))?)?\/?$/i);
+  if (multipartMatch) {
+    const [, id, uploadId, partText] = multipartMatch;
+    if (!uploadId && request.method === 'POST') return createMultipartUpload(request, env, id);
+    if (uploadId && partText && request.method === 'PUT') return uploadMultipartPart(request, env, id, uploadId, Number(partText));
+    if (uploadId && !partText && request.method === 'POST') return completeMultipartUpload(request, env, id, uploadId);
+    if (uploadId && !partText && request.method === 'DELETE') return abortMultipartUpload(env, id, uploadId);
+    throw new HttpError(405, 'Method not allowed');
+  }
+  const releaseMatch = url.pathname.match(/^\/api\/films\/([0-9a-f-]{36})\/release-request\/?$/i);
+  if (releaseMatch && request.method === 'POST') return createReleaseRequest(request, env, releaseMatch[1]);
   const match = url.pathname.match(/^\/api\/films\/([0-9a-f-]{36})(?:\/(video|poster|publish|unpublish))?\/?$/i);
   if (match) {
     const [, id, action] = match;
@@ -311,7 +506,11 @@ async function handleRequest(request, env) {
   return handleAuthenticated(request, env, url);
 }
 
-export { handleRequest, timingSafeEqual, validMagic };
+function studioLimits() {
+  return { maxVideoBytes: MAX_VIDEO_BYTES, multipartPartBytes: MULTIPART_PART_BYTES };
+}
+
+export { handleRequest, timingSafeEqual, validMagic, studioLimits };
 
 export default {
   async fetch(request, env) {
