@@ -1,0 +1,95 @@
+name: Cinematic release gate
+
+on:
+  pull_request:
+    paths:
+      - 'data/cinematic-releases.json'
+      - 'data/cinematic-releases.public.json'
+      - 'data/site-content.json'
+      - 'cinema/**'
+      - 'exclusives/**'
+      - 'scripts/cinematic-release.mjs'
+      - 'test/cinematic-release.test.mjs'
+      - 'package.json'
+      - 'services/studio/**'
+      - 'services/exclusive-engagement/test/**'
+      - '.github/workflows/cinematic-release.yml'
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Prepared film slug to publish
+        required: true
+        type: string
+      manifest_sha256:
+        description: SHA-256 of the reviewed data/cinematic-releases.json
+        required: true
+        type: string
+      homepage_feature:
+        description: Make this the homepage featured cinematic?
+        required: true
+        default: 'no'
+        type: choice
+        options: ['no', 'yes']
+      authorization:
+        description: Type PUBLISH followed by a space and the exact slug
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  release-integrity:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify generated release state
+        run: npm run cinema:check
+      - name: Run complete regression suite
+        run: npm test
+      - name: Verify Sirens approved media
+        run: node scripts/verify-sirens-media.mjs
+
+  owner-authorized-publish:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: cinematic-production-publish
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify owner-only workflow dispatch
+        if: github.actor != 'Alrey328'
+        run: |
+          echo "Only repository owner Alrey328 may authorize a production cinematic release."
+          exit 1
+      - name: Apply exact reviewed release
+        env:
+          SLUG: ${{ inputs.slug }}
+          FEATURE: ${{ inputs.homepage_feature }}
+          AUTHORIZATION: ${{ inputs.authorization }}
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+        run: node scripts/cinematic-release.mjs authorize --slug "$SLUG" --feature "$FEATURE" --authorization "$AUTHORIZATION" --manifest-sha256 "$MANIFEST_SHA256"
+      - name: Run the complete regression suite
+        run: npm test
+      - name: Commit one atomic production release
+        env:
+          SLUG: ${{ inputs.slug }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cinematic-releases.json data/cinematic-releases.public.json data/site-content.json cinema exclusives/index.html sitemap.xml
+          git commit -m "Publish cinematic: $SLUG"
+          git push origin main

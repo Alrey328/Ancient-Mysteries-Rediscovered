@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "productionBaseUrl": "https://ancientmysteriesrediscovered.com/",
+  "homepageFeaturedSlug": "sirens",
+  "films": [
+    {
+      "slug": "sirens",
+      "title": "The Sirens — Ancient Legend Unveiled",
+      "description": "One ship escaped the Sirens' song. A lesser-known ancient prophecy reveals why that survival may have doomed the Sirens themselves.",
+      "about": "Odysseus survived the song that doomed countless sailors. But a later Greek tradition tells of a prophecy: if anyone passed the Sirens alive, their own fate would be sealed.",
+      "releaseDate": "2026-11-14",
+      "duration": "PT1M27.167S",
+      "durationLabel": "1 min 27 sec",
+      "status": "published",
+      "placements": { "cinema": true, "exclusives": true, "homepage": true },
+      "video": {
+        "source": "repository",
+        "path": "assets/originals/sirens/film.mp4",
+        "contentType": "video/mp4",
+        "bytes": 17646122,
+        "sha256": "6c9ccc5f43c36f5e6771f77357f1e8cec2077bfe19f4daa433f07313fc9ede42"
+      },
+      "poster": {
+        "source": "repository",
+        "path": "assets/originals/sirens/poster.webp",
+        "contentType": "image/webp",
+        "bytes": 2529434,
+        "sha256": "561c41864c959b03649673ff5c2a25d6639e53ed3bb6982bf722df53fa769295"
+      },
+      "discussionTerm": "cinema-sirens",
+      "engagement": { "enabled": false, "id": "sirens" }
+    },
+    {
+      "slug": "land-of-the-dead",
+      "title": "Odysseus — The Land of the Dead",
+      "description": "Odysseus descends into the land of the dead seeking a way home—and confronts the shades of his past.",
+      "about": "Odysseus descends into the land of the dead seeking a way home. Among the shades, he confronts grief, memory, and the cost of returning to the living.",
+      "releaseDate": "2026-11-09",
+      "duration": "PT1M5.958S",
+      "durationLabel": "1 min 6 sec",
+      "status": "published",
+      "placements": { "cinema": true, "exclusives": true, "homepage": false },
+      "video": {
+        "source": "repository",
+        "path": "assets/originals/land-of-the-dead/film.mp4",
+        "contentType": "video/mp4",
+        "bytes": 34373187,
+        "sha256": "ab8287dee28fe6f6a0bc241930e10df3baca3055da3ea1d8b49c7b252da41f10"
+      },
+      "poster": {
+        "source": "repository",
+        "path": "assets/originals/land-of-the-dead/poster.png",
+        "contentType": "image/png",
+        "bytes": 2993344,
+        "sha256": "0cf7e69bdfbae0a4f002522b2796c0458e942e0fde6a34ddd1d8dd15660010f8"
+      },
+      "discussionTerm": "cinema-land-of-the-dead",
+      "engagement": { "enabled": false, "id": "land-of-the-dead" },
+      "investigationPath": "mysteries/land-of-the-dead/"
+    },
+    {
+      "slug": "laestrygonians",
+      "title": "The Laestrygonians",
+      "description": "Odysseus enters a harbor of giants. Only one ship escapes.",
+      "about": "An AMR original cinematic reconstruction of Odysseus and the terrifying giants of the Odyssey.",
+      "releaseDate": "2026-10-31",
+      "duration": "PT34S",
+      "durationLabel": "34 seconds",
+      "status": "published",
+      "placements": { "cinema": true, "exclusives": true, "homepage": false },
+      "video": {
+        "source": "repository",
+        "path": "assets/originals/laestrygonians/film.mp4",
+        "contentType": "video/mp4",
+        "bytes": 17602761,
+        "sha256": "9041f6aa1a4c1bcd4c620f859ab08ce65e99a00aab0e3dbe9fd3c0809fb45e4f"
+      },
+      "poster": {
+        "source": "repository",
+        "path": "assets/originals/laestrygonians/poster.webp",
+        "contentType": "image/webp",
+        "bytes": 397474,
+        "sha256": "33157cb29284748df3d5dddaa651b4694707507ecb481a40969cca42543db042"
+      },
+      "discussionTerm": "cinema-laestrygonians",
+      "engagement": { "enabled": true, "id": "laestrygonians" },
+      "legacyExclusivePath": "exclusives/laestrygonians/"
+    },
+    {
+      "slug": "enuk",
+      "title": "Enuk: The Wildman",
+      "description": "An ancient mystery brought to life through cinematic reconstruction.",
+      "about": "Explore the legend of Enuk and the enduring fascination with the wildman.",
+      "releaseDate": "2026-10-01",
+      "duration": "PT26S",
+      "durationLabel": "26 seconds",
+      "status": "published",
+      "placements": { "cinema": true, "exclusives": true, "homepage": false },
+      "video": {
+        "source": "repository",
+        "path": "media/Enuk_AMR_Exclusive_web.mp4",
+        "contentType": "video/mp4",
+        "bytes": 4897556,
+        "sha256": "e020e835dc8fc303f9fd2c41811a269d434b749ec5ba0095694dcb099f6289e8"
+      },
+      "poster": {
+        "source": "repository",
+        "path": "Enkidu Poster.png",
+        "contentType": "image/png",
+        "bytes": 2667349,
+        "sha256": "4eba983061dc55808b48b04f5c65849066892b603b47587150906f66f8275730"
+      },
+      "discussionTerm": "cinema-enuk",
+      "engagement": { "enabled": true, "id": "enuk" },
+      "legacyExclusivePath": "exclusives/enuk/"
+    }
+  ]
+}
