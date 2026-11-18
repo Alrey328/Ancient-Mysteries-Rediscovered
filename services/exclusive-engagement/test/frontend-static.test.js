@@ -64,9 +64,18 @@ test('homepage AMR Exclusive config follows the canonical Sirens feature', () =>
   assert.equal(content.featuredOriginal.videoUrl, 'assets/originals/sirens/film.mp4');
   assert.equal(content.featuredOriginal.watchPage, 'cinema/sirens/');
   assert.equal(content.featuredOriginal.enabled, true);
+  assert.ok(fs.existsSync(path.join(repoDir, content.featuredOriginal.poster)));
+  assert.ok(fs.existsSync(path.join(repoDir, content.featuredOriginal.videoUrl)));
+  // Preserve the other two premiere selections and the Dual Featured Premieres shell.
+  assert.equal(content.featuredReel.videoUrl, 'https://www.facebook.com/share/r/1EtfycqkWy/');
+  assert.equal(content.featuredYoutubeId, 'island-of-giants-immersive');
+  const homepage = fs.readFileSync(path.join(repoDir, 'index.html'), 'utf8');
+  assert.match(homepage, /id="premiere-stage-title">Dual Featured Premieres/);
+  assert.match(homepage, /data-muted-src="assets\/hero\/amr-hero-web\.mp4"/);
   const renderer = fs.readFileSync(path.join(repoDir, 'assets/js/amr-premieres.js'), 'utf8');
   assert.match(renderer, /data-original-player/);
   assert.match(renderer, /data-original-play/);
+  assert.match(renderer, /video\.muted = false/);
   assert.match(renderer, /await video\.play\(\)/);
   // The initial poster must not show a native mobile play control beneath AMR's Play button.
   assert.match(renderer, /<video playsinline preload="metadata" poster=/);
