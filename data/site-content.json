@@ -228,11 +228,11 @@
   "featuredOriginal": {
     "enabled": true,
     "livingPosterEnabled": false,
-    "title": "Ancient Legend Unveiled — The Sirens",
-    "description": "One ship escaped the Sirens' song. But a lesser-known ancient prophecy reveals why that survival may have doomed the Sirens themselves.",
-    "poster": "assets/originals/sirens/poster.webp",
-    "videoUrl": "assets/originals/sirens/film.mp4",
-    "watchPage": "exclusives/",
+    "title": "Odysseus — Scylla & Charybdis: No Safe Passage",
+    "description": "Two horrors. No safe passage. Odysseus must steer between a monstrous whirlpool and the deadly creatures waiting in the cliffs.",
+    "poster": "assets/originals/scylla-charybdis/poster.webp",
+    "videoUrl": "assets/originals/scylla-charybdis/film.mp4",
+    "watchPage": "exclusives/#scylla-charybdis",
     "viewFrames": []
   }
 }
