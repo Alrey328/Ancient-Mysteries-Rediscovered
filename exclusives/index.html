@@ -63,12 +63,25 @@
       width:min(100%,520px,45vh);
       width:min(100%,520px,45svh);
     }
-    #exclusive-scylla-video:fullscreen {
+    #exclusive-scylla-video:fullscreen,
+    #scylla-charybdis.is-expanded #exclusive-scylla-video {
       width:100%;
       height:100%;
       border:0;
       border-radius:0;
       background:#000;
+    }
+    body:has(#scylla-charybdis.is-expanded){overflow:hidden}
+    #scylla-charybdis.is-expanded #exclusive-scylla-video {
+      position:fixed;
+      inset:0;
+      z-index:10;
+    }
+    #scylla-charybdis.is-expanded [data-exclusive-fullscreen] {
+      position:fixed;
+      top:12px;
+      right:12px;
+      z-index:11;
     }
     .exclusive-film-actions button[hidden]{display:none}
   </style>
@@ -188,15 +201,36 @@
       const status=stage.parentElement.querySelector('[data-exclusive-status]');
       const fullscreenButton=stage.parentElement.querySelector('[data-exclusive-fullscreen]');
       if(fullscreenButton){
-        fullscreenButton.hidden=!(document.fullscreenEnabled || typeof video.webkitEnterFullscreen==='function');
+        const film=stage.parentElement;
+        const closeExpandedView=()=>{
+          film.classList.remove('is-expanded');
+          fullscreenButton.textContent='Fullscreen';
+          fullscreenButton.focus({preventScroll:true});
+        };
+        fullscreenButton.hidden=false;
         fullscreenButton.addEventListener('click',async()=>{
+          if(film.classList.contains('is-expanded')){
+            closeExpandedView();
+            return;
+          }
           video.controls=true;
           try{
-            if(document.fullscreenEnabled) await video.requestFullscreen();
-            else video.webkitEnterFullscreen();
+            if(document.fullscreenEnabled){
+              await video.requestFullscreen();
+              return;
+            }
+            if(typeof video.webkitEnterFullscreen==='function' && video.webkitSupportsFullscreen){
+              video.webkitEnterFullscreen();
+              return;
+            }
           }catch(_error){
-            status.textContent='Fullscreen is unavailable in this browser.';
+            // Some in-app browsers advertise fullscreen but reject the request.
           }
+          film.classList.add('is-expanded');
+          fullscreenButton.textContent='Exit fullscreen';
+        });
+        document.addEventListener('keydown',event=>{
+          if(event.key==='Escape' && film.classList.contains('is-expanded')) closeExpandedView();
         });
       }
       playButton.addEventListener('click',async()=>{
