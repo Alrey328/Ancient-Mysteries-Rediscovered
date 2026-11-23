@@ -59,6 +59,18 @@
     .exclusive-feature--sirens .featured-stage{width:min(100%,520px)}
     .exclusive-feature--sirens .featured-play-status{margin:10px auto}
     @media(max-width:600px){.featured-stage{width:min(100%,440px)}.featured-play-icon{width:76px;height:76px}}
+    #scylla-charybdis .featured-stage {
+      width:min(100%,520px,45vh);
+      width:min(100%,520px,45svh);
+    }
+    #exclusive-scylla-video:fullscreen {
+      width:100%;
+      height:100%;
+      border:0;
+      border-radius:0;
+      background:#000;
+    }
+    .exclusive-film-actions button[hidden]{display:none}
   </style>
   <script data-goatcounter="https://amr-exclusives.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -83,11 +95,12 @@
         </button>
       </div>
       <p class="featured-play-status" data-exclusive-status role="status" aria-live="polite"></p>
-      <p class="release-note">AI-assisted artistic reconstruction of Greek myth, based on the Odyssey, Book XII. Featuring an original AMR score.</p>
       <div class="exclusive-film-actions">
+        <button type="button" data-exclusive-fullscreen hidden aria-controls="exclusive-scylla-video">Fullscreen</button>
         <button type="button" data-exclusive-share data-share-title="Scylla &amp; Charybdis — No Safe Passage | AMR Exclusives" data-share-url="./#scylla-charybdis" aria-label="Share Scylla and Charybdis">Share this film</button>
       </div>
       <p class="exclusive-share-status" data-exclusive-share-status role="status" aria-live="polite"></p>
+      <p class="release-note">AI-assisted artistic reconstruction of Greek myth, based on the Odyssey, Book XII. Featuring an original AMR score.</p>
     </article>
     <article class="exclusive-feature exclusive-feature--sirens" aria-labelledby="sirens-feature-title">
       <p class="eyebrow">AMR Exclusive · Featured Film</p>
@@ -173,10 +186,31 @@
       const video=stage.querySelector('video');
       const playButton=stage.querySelector('[data-exclusive-play]');
       const status=stage.parentElement.querySelector('[data-exclusive-status]');
+      const fullscreenButton=stage.parentElement.querySelector('[data-exclusive-fullscreen]');
+      if(fullscreenButton){
+        fullscreenButton.hidden=!(document.fullscreenEnabled || typeof video.webkitEnterFullscreen==='function');
+        fullscreenButton.addEventListener('click',async()=>{
+          video.controls=true;
+          try{
+            if(document.fullscreenEnabled) await video.requestFullscreen();
+            else video.webkitEnterFullscreen();
+          }catch(_error){
+            status.textContent='Fullscreen is unavailable in this browser.';
+          }
+        });
+      }
       playButton.addEventListener('click',async()=>{
         status.textContent='';
         video.muted=false;
-        try{await video.play()}catch(_error){
+        try{
+          await video.play();
+          if(fullscreenButton){
+            const bounds=stage.getBoundingClientRect();
+            if(bounds.top<0 || bounds.bottom>window.innerHeight){
+              stage.scrollIntoView({block:'center'});
+            }
+          }
+        }catch(_error){
           video.controls=true;
           playButton.hidden=false;
           status.textContent='Playback could not start. Use the video controls to try again.';
